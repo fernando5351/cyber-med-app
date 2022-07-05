@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View} from 'react-native';
 import PantallaCarga from './src/views/charging/charging';
 
+
 export default function App() {
   return (
     <View style={styles.container}>
