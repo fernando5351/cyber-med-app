@@ -11,7 +11,7 @@ const Profile = () => {
     <View style={styles.containerM}>
       <View style={styles.top}>
         <Image style={styles.profileI} source={ProfileB} />
-        <Text style={styles.titleP}>PERFIL</Text>
+        <Text style={styles.titleP}>PROFILE</Text>
       </View>
       <View style={styles.containerS}>
         <View style={styles.containeIco}>
@@ -22,7 +22,7 @@ const Profile = () => {
         </View>
         <View style={styles.containerForm}>
           <TouchableOpacity style={styles.buttonU}>
-            <Text style={styles.textButton}>EDIT</Text>
+            <Text style={styles.textButton}>EDITAR</Text>
           </TouchableOpacity>
         </View>
       </View>
