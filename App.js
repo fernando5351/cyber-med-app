@@ -1,15 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View} from 'react-native';
-import PantallaCarga from './src/views/charging/charging';
-import OpcionesLogin from './src/views/login/opcions';
-import ProfileE from './src/views/profile/ProfileE';
-
-
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, View } from "react-native";
+import Step1 from "./src/views/description/Step1";
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <OpcionesLogin/>
+      <Step1 />
       <StatusBar style="auto" />
     </View>
   );
