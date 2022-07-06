@@ -1,6 +1,9 @@
-import { StatusBar } from "expo-status-bar";
+import react from "react";
 import { StyleSheet, View } from "react-native";
-import Step1 from "./src/views/description/Step1";
+import Constants from "expo-constants";
+/* import PantallaCarga from './src/views/charging/charging'; */
+import Profile from "./src/views/profile/Profile";
+import ProfileE from "./src/views/profile/ProfileE";
 
 export default function App() {
   return (
@@ -14,5 +17,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: Constants.statusBarHeight,
   },
 });
