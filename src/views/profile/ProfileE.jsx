@@ -1,60 +1,67 @@
-import React from "react";
 import {
-  View,
-  Text,
   Image,
   StyleSheet,
-  TouchableOpacity,
+  Text,
   TextInput,
+  TouchableOpacity,
+  View,
+  Keyboard,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import ProfileW from "../../../assets/icons/profile/user.png";
 import BackG from "../../../assets/icons/arrows/grayreturn.png";
 import ProfileSB from "../../../assets/icons/profile/blueusercircle.png";
+import ProfileW from "../../../assets/icons/profile/user.png";
+import Fondo from "../../../assets/images/backgroundmain.jpeg";
 
 const ProfileE = () => {
   return (
-    <KeyboardAwareScrollView style={styles.containerSubM}>
-      <View style={styles.containerTop}>
-        <Image style={styles.profileTop} source={ProfileW} />
-        <Text style={styles.titleEdit}>Editar Perfil</Text>
-      </View>
-      <View style={styles.containerCenter}>
-        <View style={styles.containerBtn}>
-          <TouchableOpacity>
-            <Image style={styles.btnBack} source={BackG} />
-          </TouchableOpacity>
-          <Image style={styles.profileCenter} source={ProfileSB} />
+    <KeyboardAwareScrollView style={styles.keyboard}>
+      <View source={Fondo} style={styles.containerMain}>
+        <View style={styles.containerTop}>
+          <Image style={styles.profileTop} source={ProfileW} />
+          <Text style={styles.titleTop}>Editar Perfil</Text>
         </View>
-        <TextInput
-          style={styles.inputProfile}
-          placeholder="Nombres"
-          placeholderTextColor={"#8DCFEC"}
-        />
-        <TextInput
-          style={styles.inputProfile}
-          placeholder="Apellidos"
-          placeholderTextColor={"#8DCFEC"}
-        />
-        <TextInput
-          style={styles.inputProfile}
-          placeholder="Correo"
-          placeholderTextColor={"#8DCFEC"}
-        />
-        <TextInput
-          style={styles.inputProfile}
-          placeholder="Contraseña"
-          placeholderTextColor={"#8DCFEC"}
-        />
-        <TextInput
-          keyboardType="numeric"
-          style={styles.inputProfile}
-          placeholder="Número de Tarjeta"
-          placeholderTextColor={"#8DCFEC"}
-        />
-        <TouchableOpacity style={styles.buttonSave}>
-          <Text style={styles.textBtn}>Guardar</Text>
-        </TouchableOpacity>
+        <View style={styles.containerCenter}>
+          <View style={styles.containerBtn}>
+            <TouchableOpacity>
+              <Image source={BackG} style={styles.btnBack} />
+            </TouchableOpacity>
+            <Image source={ProfileSB} style={styles.profileCenter} />
+          </View>
+          <View style={styles.containerForm}>
+            <TextInput
+              placeholder="Nombres"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.inputProfile}
+            />
+            <TextInput
+              placeholder="Apellidos"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.inputProfile}
+            />
+            <TextInput
+              placeholder="Correo"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.inputProfile}
+            />
+            <TextInput
+              placeholder="Contraseña"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.inputProfile}
+            />
+            <TextInput
+              placeholder="Numero de Tarjeta"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.inputProfile}
+            />
+            <TouchableOpacity
+              onPress={Keyboard.dismiss}
+              style={styles.buttonSave}
+            >
+              <Text style={styles.textButton}>Guardar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
     </KeyboardAwareScrollView>
   );
@@ -63,62 +70,87 @@ const ProfileE = () => {
 export default ProfileE;
 
 const styles = StyleSheet.create({
-  containerSubM: {
+  containerMain: {
+    height: "100%",
     backgroundColor: "#8DCFEC",
+    flex: 1,
   },
   containerTop: {
-    height: 115,
+    height: "20%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+    flex: 1,
+    marginTop: "3%",
   },
   profileTop: {
     width: 90,
     height: 90,
   },
-  titleEdit: {
-    color: "#fff",
-    fontSize: 35,
-    fontWeight: "600",
-    letterSpacing: 0,
+  titleTop: {
     fontFamily: "monospace",
+    fontSize: 29,
+    color: "#fff",
+    fontWeight: "bold",
+    letterSpacing: -1,
   },
   containerCenter: {
-    backgroundColor: "#fff",
-    height: 650,
+    marginTop: "3%",
+    height: "80%",
+    backgroundColor: "#FFF",
     alignItems: "center",
+    flex: 1,
   },
   containerBtn: {
     flexDirection: "row",
-    justifyContent: "flex-start",
-    marginTop: 10,
-    marginBottom: 10,
+    height: "15%",
+    width: "100%",
+    flex: 1,
   },
   btnBack: {
-    width: 40,
-    height: 40,
-    marginLeft: -150,
+    width: 45,
+    height: 45,
+    marginLeft: "10%",
+    marginTop: "25%",
   },
   profileCenter: {
     width: 75,
     height: 75,
+    marginLeft: "20%",
+    marginTop: "3%",
+  },
+  containerForm: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    height: "85%",
   },
   inputProfile: {
     borderBottomColor: "#8DCFEC",
     borderBottomWidth: 2,
-    width: 300,
-    height: 80,
-    color: "#8DCFEC",
-    fontFamily: "monospace",
+    height: 60,
+    width: "90%",
+    marginBottom: "6%",
+    flex: 1,
   },
   buttonSave: {
     backgroundColor: "#8DCFEC",
-    padding: 15,
-    marginTop: 50,
+    height: "10%",
+    width: "30%",
+    padding: 8,
+    marginTop: "8%",
+    marginBottom: "8%",
+    flex: 1,
   },
-  textBtn: {
+  textButton: {
+    textAlign: "center",
+    fontSize: 26,
     color: "#fff",
-    fontSize: 20,
-    fontFamily: "monospace",
+    flex: 1,
+  },
+  keyboard: {
+    flex: 1,
+    backgroundColor: "#8DCFEC",
+    height: "100%",
   },
 });

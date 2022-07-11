@@ -8,23 +8,32 @@ const Profile = () => {
   /* const [text, onChangeText] = React.useState("Useless Text");
         const [number, onChangeNumber] = React.useState(null); */
   return (
-    <View style={styles.containerM}>
-      <View style={styles.top}>
-        <Image style={styles.profileI} source={ProfileB} />
-        <Text style={styles.titleP}>PROFILE</Text>
+    <View style={styles.containerMain}>
+      <View style={styles.containerTop}>
+        <Image style={styles.profileTop} source={ProfileB} />
+        <Text style={styles.titleTop}>Perfil</Text>
       </View>
-      <View style={styles.containerS}>
-        <View style={styles.containeIco}>
+      <View style={styles.containerCenter}>
+        <View style={styles.containerBtn}>
           <TouchableOpacity>
-            <Image style={styles.back} source={BackW} />
+            <Image style={styles.btnBack} source={BackW} />
           </TouchableOpacity>
-          <Image style={styles.profileM} source={ProfileSW} />
+          <Image style={styles.profileCenter} source={ProfileSW} />
         </View>
         <View style={styles.containerForm}>
-          <TouchableOpacity style={styles.buttonU}>
-            <Text style={styles.textButton}>EDITAR</Text>
-          </TouchableOpacity>
+          <Text style={styles.textEstablish}>Nombre : Diego Enrique</Text>
+          <Text style={styles.textEstablish}>Apellidos : Carias Hernandez</Text>
+          <Text style={styles.textEstablish}>
+            Correo : diegocarias503ida9@gmail.com
+          </Text>
+          <Text style={styles.textEstablish}>Contraseña : Holagatiti123</Text>
+          <Text style={styles.textEstablish}>
+            Numero de tarjeta : 12345678910
+          </Text>
         </View>
+        <TouchableOpacity style={styles.buttonEdit}>
+          <Text style={styles.textBtn}>EDITAR</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -33,62 +42,69 @@ const Profile = () => {
 export default Profile;
 
 const styles = StyleSheet.create({
-  containerM: {
+  containerMain: {
     backgroundColor: "#fff",
     height: "100%",
-    width: "100%",
   },
-  top: {
-    backgroundColor: "#fff",
-    display: "flex",
+  containerTop: {
+    height: "14%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "1%",
-    height: "10%",
   },
-  profileI: {
-    width: 88,
+  profileTop: {
+    width: 90,
     height: 90,
   },
-  titleP: {
-    fontSize: 40,
-    fontWeight: "600",
+  titleTop: {
     color: "#8DCFEC",
+    fontSize: 35,
+    fontWeight: "bold",
+    letterSpacing: -1,
+    fontFamily: "monospace",
   },
-  containerS: {
+  containerCenter: {
     backgroundColor: "#8DCFEC",
-    height: "80%",
-    display: "flex",
-    flexDirection: "column",
+    height: "75%",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  back: {
+  containerBtn: {
+    flexDirection: "row",
+    height: "15%",
+    width: "100%",
+    marginBottom: "1%",
+  },
+  btnBack: {
     width: 40,
     height: 40,
+    marginLeft: "10%",
   },
-  profileM: {
-    width: 70,
-    height: 70,
-    marginLeft: "30%",
-  },
-  containeIco: {
-    marginTop: "3%",
-    marginLeft: "3%",
-    display: "flex",
-    flexDirection: "row",
+  profileCenter: {
+    width: 80,
+    height: 80,
+    marginLeft: "20%",
   },
   containerForm: {
-    display: "flex",
-    alignItems: "center",
-    marginTop: "3%",
+    height: "60%",
+    width: "100%",
   },
-  buttonU: {
+  textEstablish: {
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#fff",
+    marginLeft: "5%",
+    marginTop: "5%",
+    marginBottom: "5%",
+  },
+  buttonEdit: {
     backgroundColor: "#fff",
-    width: "40%",
+    padding: 15,
+    width: "30%",
   },
-  textButton: {
+  textBtn: {
     color: "#8DCFEC",
-    textAlign: "center",
-    padding: 20,
+    fontSize: 20,
+    fontFamily: "monospace",
   },
 });
