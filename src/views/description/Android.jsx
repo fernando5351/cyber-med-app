@@ -1,16 +1,19 @@
 import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Image } from "react-native";
 import ImagenFondo from "../../../assets/images/thankyoubackground.jpg";
 import { ImageBackground } from "react-native";
+import ImagenCasita from "../../../assets/icons/steps/checkcircle.png";
 
 const Android = () => {
   return (
     <ImageBackground source={ImagenFondo} style={styles.ImagenFondo}>
       <View style={styles.contentFondo}>
-        <Text style={styles.textCenter}>¡GRACIAS POR TU COMPRA!</Text>
+        <Text style={styles.textCenter}>¡GRACIAS POR TU</Text>
+        <Text style={styles.textCenter}>COMPRA!</Text>
         <Text style={styles.textFinal}>
           Recuerda, tu salud es lo que importa
         </Text>
+        <Image style={styles.ImagenCasita} source={ImagenCasita}></Image>
       </View>
     </ImageBackground>
   );
@@ -34,10 +37,15 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: "500",
     color: "#fff",
-    marginTop: -50,
   },
   textFinal: {
     color: "#fff",
-    marginTop: 15,
+    marginTop: 35,
+    fontSize: 25,
+  },
+  ImagenCasita: {
+    width: 50,
+    height: 50,
+    marginTop: 40,
   },
 });

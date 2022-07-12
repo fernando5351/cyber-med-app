@@ -1,5 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Text, Image, TextInput } from "react-native";
+
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenCard from "../../../assets/icons/steps/creditcard.png";
@@ -11,14 +19,10 @@ const Step1 = () => {
         <Image style={styles.ImagenCheck} source={ImagenCheck} />
         <Text style={styles.styleText}>Paso 1</Text>
       </View>
-      <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
-      <Text style={styles.styleTextDos}>Registro de tarjeta</Text>
-      <Image style={styles.ImagenCard} source={ImagenCard} />
-      <Text style={styles.styleTextTres}>
-        Introduce los datos que se te piden
-      </Text>
-      <View style={styles.containerViewDos}>
-        <TextInput style={styles.styleTextTres} placeholder="Titular" />
+      <View style={styles.containerSecundario}>
+        <View style={styles.subcontent}></View>
+        <View style={styles.contentCentral}></View>
+        <View style={styles.contentFinal}></View>
       </View>
     </View>
   );
@@ -41,48 +45,34 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#8DCFEC",
   },
-  styleText: {
-    fontFamily: "Raleway",
-    fontSize: 50,
-    fontWeight: "900",
-    color: "#fff",
-    marginLeft: 15,
-  },
   ImagenCheck: {
     width: 50,
     height: 50,
   },
-  styleTextDos: {
-    fontFamily: "Raleway",
-    fontSize: 20,
-    fontWeight: "700",
-    marginLeft: 60,
-    marginTop: -33,
-    color: "#3271A5",
+  styleText: {
+    fontSize: 40,
+    fontWeight: "600",
+    color: "#fff",
+    marginLeft: 15,
   },
-  ImagenFlecha: {
-    width: 40,
-    height: 40,
-    marginTop: 5,
-    marginLeft: 5,
-  },
-  ImagenCard: {
-    width: 40,
-    height: 40,
-    marginTop: 30,
-    marginLeft: 40,
-  },
-  styleTextTres: {
-    fontFamily: "Raleway",
-    fontSize: 20,
-    fontWeight: "700",
-    marginLeft: 90,
-    marginTop: -33,
-    color: "#3271A5",
-  },
-  containerViewDos: {
+  containerSecundario: {
     width: "100%",
-    height: "55%",
+    height: "75%",
     backgroundColor: "#000",
+  },
+  subcontent: {
+    width: "100%",
+    height: "20%",
+    backgroundColor: "#794747",
+  },
+  contentCentral: {
+    width: "100%",
+    height: "35%",
+    backgroundColor: "#EFCACA",
+  },
+  contentFinal: {
+    width: "100%",
+    height: "20%",
+    backgroundColor: "#794747",
   },
 });
