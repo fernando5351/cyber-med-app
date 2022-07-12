@@ -81,6 +81,8 @@ const styles = StyleSheet.create({
     height: 60,
     top: 45,
     margin: 20,
+    color: "#FFFFFF",
+    letterSpacing: 2
   },
   TextBotonInicio:{
     color:'#FFFFFF',

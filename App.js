@@ -5,6 +5,8 @@ import Constants from "expo-constants";
 import PantallaCarga from "./src/views/charging/charging";
 import Profile from "./src/views/profile/Profile";
 import ProfileE from "./src/views/profile/ProfileE";
+import IniciarSesion from "./src/views/login/login";
+import RegistroUsuario from "./src/views/login/registration";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +16,8 @@ export default function App() {
       <View style={styles.containerMainApp}>
         <Stack.Navigator>
           <Stack.Screen
-            name="ProfileEdit"
-            component={Profile}
+            name="Registrarse"
+            component={RegistroUsuario}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
