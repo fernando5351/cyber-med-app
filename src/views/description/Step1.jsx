@@ -21,8 +21,7 @@ const Step1 = () => {
       </View>
       <View style={styles.containerSecundario}>
         <View style={styles.subcontent}></View>
-        <View style={styles.contentCentral}></View>
-        <View style={styles.contentFinal}></View>
+        <View style={styles.contentForm}></View>
       </View>
     </View>
   );
@@ -34,7 +33,7 @@ const styles = StyleSheet.create({
   containerView: {
     width: "100%",
     height: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: "#8DCFEC",
   },
   contentAzul: {
     width: "100%",
@@ -62,17 +61,12 @@ const styles = StyleSheet.create({
   },
   subcontent: {
     width: "100%",
-    height: "20%",
+    height: "25%",
     backgroundColor: "#794747",
   },
-  contentCentral: {
+  contentForm: {
     width: "100%",
-    height: "35%",
+    height: "75%",
     backgroundColor: "#EFCACA",
-  },
-  contentFinal: {
-    width: "100%",
-    height: "20%",
-    backgroundColor: "#794747",
   },
 });

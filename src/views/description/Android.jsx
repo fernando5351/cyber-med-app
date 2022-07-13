@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     height: "50%",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#000",
   },
   textCenter: {
     fontSize: 40,
@@ -41,7 +40,7 @@ const styles = StyleSheet.create({
   textFinal: {
     color: "#fff",
     marginTop: 35,
-    fontSize: 25,
+    fontSize: 15,
   },
   ImagenCasita: {
     width: 50,

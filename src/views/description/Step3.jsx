@@ -44,16 +44,18 @@ const styles = StyleSheet.create({
     height: 50,
   },
   paso4: {
-    fontFamily: "Raleway",
-    fontSize: 50,
+    fontFamily: "monospace",
+    fontSize: 40,
     fontWeight: "900",
     color: "#fff",
     marginLeft: 15,
+    letterSpacing: -2,
   },
   tercerContent: {
     width: "100%",
     height: "75%",
     backgroundColor: "#fff",
+    alignItems: "center",
   },
   subContent: {
     width: "100%",
@@ -68,7 +70,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   TextCodigo: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "700",
     color: "#3271A5",
     marginLeft: 60,
@@ -77,14 +79,14 @@ const styles = StyleSheet.create({
   Lapiz: {
     width: 40,
     height: 40,
-    marginLeft: 10,
-    marginTop: 45,
+    marginTop: "10%",
+    marginLeft: "8%",
   },
   Text: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "700",
-    marginLeft: 50,
-    marginTop: -33,
+    marginLeft: "20%",
+    marginTop: "-8%",
     color: "#3271A5",
   },
   subContentDos: {
