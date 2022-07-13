@@ -96,21 +96,11 @@ const styles = StyleSheet.create({
     height: 90,
   },
   titleTop: {
-<<<<<<< HEAD
-    fontFamily: "Roboto",
-    fontSize: 35,
-    color: "#fff",
-    fontWeight: "bold",
-    letterSpacing: 1,
-    top: 5,
-    left: 5,
-=======
     fontSize: 29,
     color: "#fff",
     fontWeight: "bold",
     fontFamily: "Roboto",
     letterSpacing: 1,
->>>>>>> diego
   },
   containerCenter: {
     marginTop: "3%",
