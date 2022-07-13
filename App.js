@@ -6,8 +6,14 @@ import PantallaCarga from "./src/views/charging/charging";
 import Profile from "./src/views/profile/Profile";
 import ProfileE from "./src/views/profile/ProfileE";
 import Home from "./src/views/home/home";
+<<<<<<< HEAD
 import Description from "./src/views/description/Description";
 import Step1 from "./src/views/description/Step1";
+=======
+import Historial from "./src/components/record/record";
+import Pedidos from "./src/components/orders/orders";
+import Carrito from "./src/components/shoppingcart/cart";
+>>>>>>> develop
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +21,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
+<<<<<<< HEAD
         <Stack.Navigator initialRouteName="Step1">
           <Stack.Screen
             name="Home"
@@ -41,6 +48,15 @@ export default function App() {
             component={Step1}
             options={{ headerShown: false }}
           />
+=======
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="ProfileEdit" component={ProfileE} />
+>>>>>>> develop
         </Stack.Navigator>
       </View>
     </NavigationContainer>
