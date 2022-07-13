@@ -88,11 +88,13 @@ const styles = StyleSheet.create({
     height: 90,
   },
   titleTop: {
-    fontFamily: "monospace",
-    fontSize: 29,
+    fontFamily: "Roboto",
+    fontSize: 35,
     color: "#fff",
     fontWeight: "bold",
-    letterSpacing: -1,
+    letterSpacing: 1,
+    top: 5,
+    left: 5,
   },
   containerCenter: {
     marginTop: "3%",

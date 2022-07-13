@@ -7,6 +7,9 @@ import Profile from "./src/views/profile/Profile";
 import ProfileE from "./src/views/profile/ProfileE";
 import IniciarSesion from "./src/views/login/login";
 import RegistroUsuario from "./src/views/login/registration";
+import Pedidos from "./src/components/orders/orders";
+import Carrito from "./src/components/shoppingcart/cart";
+import Historial from "./src/components/record/record";
 
 const Stack = createNativeStackNavigator();
 
@@ -17,7 +20,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Registrarse"
-            component={RegistroUsuario}
+            component={Historial}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
