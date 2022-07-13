@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   containerTop: {
-    height: "14%",
+    height: "15%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -73,7 +73,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     height: "15%",
     width: "100%",
-    marginBottom: "1%",
   },
   btnBack: {
     width: 40,
@@ -106,5 +105,6 @@ const styles = StyleSheet.create({
     color: "#8DCFEC",
     fontSize: 20,
     fontFamily: "monospace",
+    textAlign: "center",
   },
 });
