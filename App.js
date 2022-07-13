@@ -13,22 +13,13 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={Profile}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="ProfileEdit"
-            component={ProfileE}
-            options={{ headerShown: false }}
-          />
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="ProfileEdit" component={ProfileE} />
         </Stack.Navigator>
       </View>
     </NavigationContainer>
