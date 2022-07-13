@@ -13,7 +13,7 @@ import ProfileSB from "../../../assets/icons/profile/blueusercircle.png";
 import ProfileW from "../../../assets/icons/profile/user.png";
 import Fondo from "../../../assets/images/backgroundmain.jpeg";
 
-const ProfileE = () => {
+const ProfileE = ({ navigation }) => {
   return (
     <KeyboardAwareScrollView style={styles.keyboard}>
       <View source={Fondo} style={styles.containerMain}>
@@ -23,7 +23,11 @@ const ProfileE = () => {
         </View>
         <View style={styles.containerCenter}>
           <View style={styles.containerBtn}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate("Profile");
+              }}
+            >
               <Image source={BackG} style={styles.btnBack} />
             </TouchableOpacity>
             <Image source={ProfileSB} style={styles.profileCenter} />
@@ -92,6 +96,7 @@ const styles = StyleSheet.create({
     height: 90,
   },
   titleTop: {
+<<<<<<< HEAD
     fontFamily: "Roboto",
     fontSize: 35,
     color: "#fff",
@@ -99,6 +104,13 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     top: 5,
     left: 5,
+=======
+    fontSize: 29,
+    color: "#fff",
+    fontWeight: "bold",
+    fontFamily: "Roboto",
+    letterSpacing: 1,
+>>>>>>> diego
   },
   containerCenter: {
     marginTop: "3%",
@@ -138,6 +150,7 @@ const styles = StyleSheet.create({
     width: "90%",
     marginBottom: "6%",
     flex: 1,
+    fontFamily: "Roboto",
   },
   buttonSave: {
     backgroundColor: "#8DCFEC",
@@ -149,6 +162,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   textButton: {
+    fontFamily: "Roboto",
     textAlign: "center",
     fontSize: 26,
     color: "#fff",
