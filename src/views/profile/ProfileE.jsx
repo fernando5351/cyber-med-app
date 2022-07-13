@@ -30,11 +30,13 @@ const ProfileE = () => {
           </View>
           <View style={styles.containerForm}>
             <TextInput
+              value={Text}
               placeholder="Nombres"
               placeholderTextColor={"#8DCFEC"}
               style={styles.inputProfile}
             />
             <TextInput
+              value={Text}
               placeholder="Apellidos"
               placeholderTextColor={"#8DCFEC"}
               style={styles.inputProfile}
@@ -45,11 +47,13 @@ const ProfileE = () => {
               style={styles.inputProfile}
             />
             <TextInput
+              secureTextEntry={true}
               placeholder="Contraseña"
               placeholderTextColor={"#8DCFEC"}
               style={styles.inputProfile}
             />
             <TextInput
+              keyboardType="numeric"
               placeholder="Numero de Tarjeta"
               placeholderTextColor={"#8DCFEC"}
               style={styles.inputProfile}
