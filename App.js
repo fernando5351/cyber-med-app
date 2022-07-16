@@ -6,14 +6,12 @@ import PantallaCarga from "./src/views/charging/charging";
 import Profile from "./src/views/profile/Profile";
 import ProfileE from "./src/views/profile/ProfileE";
 import Home from "./src/views/home/home";
-<<<<<<< HEAD
 import Description from "./src/views/description/Description";
 import Step1 from "./src/views/description/Step1";
-=======
+import Step2 from "./src/views/description/Step2";
 import Historial from "./src/components/record/record";
 import Pedidos from "./src/components/orders/orders";
 import Carrito from "./src/components/shoppingcart/cart";
->>>>>>> develop
 
 const Stack = createNativeStackNavigator();
 
@@ -21,42 +19,16 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
-<<<<<<< HEAD
-        <Stack.Navigator initialRouteName="Step1">
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={Profile}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="ProfileEdit"
-            component={ProfileE}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Description"
-            component={Description}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Step1"
-            component={Step1}
-            options={{ headerShown: false }}
-          />
-=======
         <Stack.Navigator
-          initialRouteName="Home"
+          initialRouteName="Step2"
           screenOptions={{ headerShown: false }}
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen name="ProfileEdit" component={ProfileE} />
->>>>>>> develop
+          <Stack.Screen name="Description" component={Description} />
+          <Stack.Screen name="Step1" component={Step1} />
+          <Stack.Screen name="Step2" component={Step2} />
         </Stack.Navigator>
       </View>
     </NavigationContainer>

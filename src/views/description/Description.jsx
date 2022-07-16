@@ -1,7 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import SearchBar from "../../components/searchbar/SearchBar";
-import ImagenLupa from "../../../assets/icons/search/search.png";
 
 const Description = () => {
   return (
@@ -23,7 +22,6 @@ const styles = StyleSheet.create({
   },
   content: {
     width: "100%",
-    height: "15%",
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#8DCFEC",

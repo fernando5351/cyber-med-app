@@ -15,8 +15,8 @@ const SearchBarH = () => {
 
 const styles = StyleSheet.create({
   containerSearchbar: {
-    width: "70%",
-    height: 50,
+    width: "90%",
+    height: 55,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
   },
   icoLoupe: {
-    width: "15%",
-    height: "80%",
+    width: "10%",
+    height: "70%",
   },
 });
 

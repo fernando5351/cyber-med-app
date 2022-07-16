@@ -1,51 +1,100 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
-import ImagenFondo from "../../../assets/images/thankyoubackground.jpg";
-import { ImageBackground } from "react-native";
-import ImagenCasita from "../../../assets/icons/steps/checkcircle.png";
+import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
+import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
+import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
+import ImagenRectangle from "../../../assets/icons/steps/check.png";
+import { ScrollView } from "react-native-gesture-handler";
 
-const Android = () => {
+const Step2 = () => {
   return (
-    <ImageBackground source={ImagenFondo} style={styles.ImagenFondo}>
-      <View style={styles.contentFondo}>
-        <Text style={styles.textCenter}>¡GRACIAS POR TU</Text>
-        <Text style={styles.textCenter}>COMPRA!</Text>
-        <Text style={styles.textFinal}>
-          Recuerda, tu salud es lo que importa
-        </Text>
-        <Image style={styles.ImagenCasita} source={ImagenCasita}></Image>
+    <View style={styles.containerPrin}>
+      <View style={styles.contentTop}>
+        <Image style={styles.ImagenCheck} source={ImagenCheck} />
+        <Text style={styles.styleText}>Paso 2</Text>
       </View>
-    </ImageBackground>
+      <View style={styles.contentCompra}>
+        <TouchableOpacity>
+          <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
+        </TouchableOpacity>
+        <Text style={styles.styleTextDos}>Completar Compra</Text>
+        <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
+        <Text style={styles.textoIntro}>Completa tu Compra</Text>
+      </View>
+      <ScrollView style={styles.ScrollView}>
+        <View style={styles.miniContent}></View>
+      </ScrollView>
+    </View>
   );
 };
 
-export default Android;
+export default Step2;
 
 const styles = StyleSheet.create({
-  ImagenFondo: {
+  containerPrin: {
     flex: 1,
-    justifyContent: "center",
-  },
-  contentFondo: {
     width: "100%",
-    height: "50%",
+    height: "100%",
+    backgroundColor: "#fff",
+  },
+  contentTop: {
+    width: "100%",
+    height: "15%",
+    display: "flex",
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#000",
+    backgroundColor: "#8DCFEC",
   },
-  textCenter: {
-    fontSize: 40,
-    fontWeight: "500",
-    color: "#fff",
-  },
-  textFinal: {
-    color: "#fff",
-    marginTop: 35,
-    fontSize: 25,
-  },
-  ImagenCasita: {
+  ImagenCheck: {
     width: 50,
     height: 50,
-    marginTop: 40,
+  },
+  styleText: {
+    fontSize: 40,
+    fontWeight: "bold",
+    color: "#fff",
+    marginLeft: 15,
+    fontFamily: "Roboto",
+  },
+  contentCompra: {
+    width: "100%",
+    height: "15%",
+    backgroundColor: "#fff",
+  },
+  ImagenFlecha: {
+    width: 40,
+    height: 40,
+    marginTop: "3%",
+    marginLeft: "3%",
+  },
+  styleTextDos: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#3271A5",
+    marginLeft: "15%",
+    marginTop: "-8%",
+  },
+  ImagenRectangle: {
+    width: 35,
+    height: 35,
+    marginTop: "10%",
+    marginLeft: "25%",
+  },
+  textoIntro: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#3271A5",
+    marginLeft: "36%",
+    marginTop: "-7%",
+    marginBottom: "5%",
+  },
+  ScrollView: {
+    width: "80%",
+    height: "100%",
+    marginBottom: "20%",
+    marginLeft: "10%",
+    marginTop: "5%",
+    borderRadius: 30,
+    backgroundColor: "#D6F2FF",
   },
 });

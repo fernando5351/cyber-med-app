@@ -1,38 +1,39 @@
 import { View, TextInput, StyleSheet, Image } from "react-native";
 import Loupe from "../../../assets/icons/search/search.png";
 
-export const SearchBarD = () => {
+const SearchBarD = () => {
   return (
-    <View style={styles.containerSearchbarD}>
+    <View style={styles.containerSearchbar}>
       <TextInput
-        style={styles.inputSearchD}
+        style={styles.inputSearch}
         placeholder="Buscar por Nombre o Tipo"
       />
-      <Image style={styles.icoLoupeD} source={Loupe} />
+      <Image style={styles.icoLoupe} source={Loupe} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  containerSearchbarD: {
+  containerSearchbar: {
     width: "90%",
-    height: 70,
+    height: 40,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
     marginTop: "7%",
     marginBottom: "7%",
-    borderRadius: 40,
+    borderRadius: 30,
   },
-  inputSearchD: {
+  inputSearch: {
     color: "#3271A5",
     width: "80%",
     height: "100%",
     fontFamily: "Roboto",
   },
-  icoLoupeD: {
+  icoLoupe: {
     width: "15%",
     height: "80%",
   },
 });
+export default SearchBarD;
