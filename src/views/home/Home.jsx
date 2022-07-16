@@ -15,7 +15,7 @@ function Home({ navigation }) {
     <ScrollView>
       <View style={styles.containerMain}>
         <View style={styles.containerTop}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <Image style={styles.icoMenu} source={Menu} />
           </TouchableOpacity>
           <SearchBarH />

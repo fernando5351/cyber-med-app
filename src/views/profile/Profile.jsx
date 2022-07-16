@@ -5,8 +5,6 @@ import BackW from "../../../assets/icons/arrows/return.png";
 import ProfileSW from "../../../assets/icons/profile/usercircle.png";
 
 const Profile = ({ navigation }) => {
-  /* const [text, onChangeText] = React.useState("Useless Text");
-        const [number, onChangeNumber] = React.useState(null); */
   return (
     <View style={styles.containerMain}>
       <View style={styles.containerTop}>
@@ -17,7 +15,7 @@ const Profile = ({ navigation }) => {
         <View iew style={styles.containerBtn}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Home");
+              navigation.navigate("HomeP");
             }}
           >
             <Image style={styles.btnBack} source={BackW} />
@@ -37,7 +35,7 @@ const Profile = ({ navigation }) => {
         </View>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("ProfileEdit");
+            navigation.navigate("EditProfile");
           }}
           style={styles.buttonEdit}
         >

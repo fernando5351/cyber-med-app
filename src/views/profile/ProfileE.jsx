@@ -34,13 +34,11 @@ const ProfileE = ({ navigation }) => {
           </View>
           <View style={styles.containerForm}>
             <TextInput
-              value={Text}
               placeholder="Nombres"
               placeholderTextColor={"#8DCFEC"}
               style={styles.inputProfile}
             />
             <TextInput
-              value={Text}
               placeholder="Apellidos"
               placeholderTextColor={"#8DCFEC"}
               style={styles.inputProfile}
