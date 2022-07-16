@@ -1,4 +1,5 @@
 import { View, TextInput, StyleSheet, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import Loupe from "../../../assets/icons/search/search.png";
 
 export const SearchBarD = () => {
@@ -8,7 +9,9 @@ export const SearchBarD = () => {
         style={styles.inputSearchD}
         placeholder="Buscar por Nombre o Tipo"
       />
-      <Image style={styles.icoLoupeD} source={Loupe} />
+      <TouchableOpacity>
+        <Image style={styles.icoLoupeD} source={Loupe} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -32,7 +35,7 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
   },
   icoLoupeD: {
-    width: "15%",
-    height: "80%",
+    width: 40,
+    height: 40,
   },
 });
