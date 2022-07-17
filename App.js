@@ -12,6 +12,7 @@ import Step2 from "./src/views/description/Step2";
 import Historial from "./src/components/record/record";
 import Pedidos from "./src/components/orders/orders";
 import Carrito from "./src/components/shoppingcart/cart";
+import Scroll from "./src/components/scrollView/Scroll";
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
           <Stack.Screen name="Description" component={Description} />
           <Stack.Screen name="Step1" component={Step1} />
           <Stack.Screen name="Step2" component={Step2} />
+          <Stack.Screen name="Scroll" component={Scroll} />
         </Stack.Navigator>
       </View>
     </NavigationContainer>

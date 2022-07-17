@@ -3,7 +3,7 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenRectangle from "../../../assets/icons/steps/check.png";
-import { ScrollView } from "react-native-gesture-handler";
+import Scroll from "../../components/scrollView/Scroll";
 
 const Step2 = () => {
   return (
@@ -20,9 +20,7 @@ const Step2 = () => {
         <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
-      <ScrollView style={styles.ScrollView}>
-        <View style={styles.miniContent}></View>
-      </ScrollView>
+      <Scroll />
     </View>
   );
 };
@@ -87,14 +85,5 @@ const styles = StyleSheet.create({
     marginLeft: "36%",
     marginTop: "-7%",
     marginBottom: "5%",
-  },
-  ScrollView: {
-    width: "80%",
-    height: "100%",
-    marginBottom: "20%",
-    marginLeft: "10%",
-    marginTop: "5%",
-    borderRadius: 30,
-    backgroundColor: "#D6F2FF",
   },
 });
