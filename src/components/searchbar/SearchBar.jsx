@@ -25,6 +25,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 40,
+    marginTop: "5%",
+    marginBottom: "5%",
   },
   inputSearch: {
     color: "#3271A5",
