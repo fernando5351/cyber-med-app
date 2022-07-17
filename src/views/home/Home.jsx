@@ -6,18 +6,24 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import SearchBarH from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
 
-function Home() {
+function Home({ navigation }) {
   return (
     <ScrollView>
       <View style={styles.containerMain}>
         <View style={styles.containerTop}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.openDrawer()}>
             <Image style={styles.icoMenu} source={Menu} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <SearchBarH />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("Profile");
+            }}
+          >
             <Image style={styles.icoProfile} source={Profile} />
           </TouchableOpacity>
         </View>
@@ -62,7 +68,6 @@ const styles = StyleSheet.create({
     color: "#3271A5",
     fontSize: 20,
     fontWeight: "bold",
-    fontFamily: "monospace",
-    letterSpacing: -1,
+    fontFamily: "Roboto",
   },
 });

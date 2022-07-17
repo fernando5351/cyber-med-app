@@ -1,77 +1,53 @@
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet, View } from "react-native";
+import "react-native-gesture-handler";
 import Constants from "expo-constants";
+import DrawerNavigation from "./src/navigation/DrawerNavigation";
 import PantallaCarga from "./src/views/charging/charging";
-import Profile from "./src/views/profile/Profile";
-import ProfileE from "./src/views/profile/ProfileE";
-import Home from "./src/views/home/home";
-import Historial from "./src/components/record/record";
-import Pedidos from "./src/components/orders/orders";
-import Carrito from "./src/components/shoppingcart/cart";
-import OpcionesLogin from "./src/views/login/opcions";
-import IniciarSesion from "./src/views/login/login";
-import RegistroUsuario from "./src/views/login/registration";
-
-
-const Stack = createNativeStackNavigator();
 
 export default function App() {
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [userToken, setUserToken] = React.useState("asdf");
+
+  const authContext = React.useMemo(() => {
+    return {
+      sigIn: () => {
+        setIsLoading(false);
+        setUserToken("asdf");
+      },
+      sigUp: () => {
+        setIsLoading(false);
+        setUserToken("asdf");
+      },
+      sigOut: () => {
+        setIsLoading(false);
+        setUserToken(null);
+      },
+    };
+  }, []);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1500);
+  }, []);
+
+  if (isLoading) {
+    return <PantallaCarga />;
+  }
+
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
-        <Stack.Navigator initialRouteName="Pedidos">
-        <Stack.Screen
-            name="PantallaCarga"
-            component={PantallaCarga}
-            options={{ headerShown: false }}
-          />
-        <Stack.Screen
-            name="Historial"
-            component={Historial}
-            options={{ headerShown: false }}
-          />
-           <Stack.Screen
-            name="Carrito"
-            component={Carrito}
-            options={{ headerShown: false }}
-          />
-           <Stack.Screen
-            name="Pedidos"
-            component={Pedidos}
-            options={{ headerShown: false }}
-          />
-        <Stack.Screen
-            name="Opciones"
-            component={OpcionesLogin}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Login"
-            component={IniciarSesion}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Registro"
-            component={RegistroUsuario}
-            options={{ headerShown: false }}
-          /> 
-          <Stack.Screen
-            name="Home"
-            component={Home}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Profile"
-            component={Profile}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="ProfileEdit"
-            component={ProfileE}
-            options={{ headerShown: false }}
-          />
-        </Stack.Navigator>
+        {userToken ? (
+          <DrawerNavigation />
+        ) : (
+          <Stack.Navigator screenOptions={{ headerShown: false }}>
+            <Stack.Screen name="LoadingScreen" component={PantallaCarga} />
+          </Stack.Navigator>
+        )}
       </View>
     </NavigationContainer>
   );

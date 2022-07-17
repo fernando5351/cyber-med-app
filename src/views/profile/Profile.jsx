@@ -4,9 +4,7 @@ import ProfileB from "../../../assets/icons/profile/blueuser.png";
 import BackW from "../../../assets/icons/arrows/return.png";
 import ProfileSW from "../../../assets/icons/profile/usercircle.png";
 
-const Profile = () => {
-  /* const [text, onChangeText] = React.useState("Useless Text");
-        const [number, onChangeNumber] = React.useState(null); */
+const Profile = ({ navigation }) => {
   return (
     <View style={styles.containerMain}>
       <View style={styles.containerTop}>
@@ -14,8 +12,12 @@ const Profile = () => {
         <Text style={styles.titleTop}>Perfil</Text>
       </View>
       <View style={styles.containerCenter}>
-        <View style={styles.containerBtn}>
-          <TouchableOpacity>
+        <View iew style={styles.containerBtn}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("HomeP");
+            }}
+          >
             <Image style={styles.btnBack} source={BackW} />
           </TouchableOpacity>
           <Image style={styles.profileCenter} source={ProfileSW} />
@@ -31,7 +33,12 @@ const Profile = () => {
             Numero de tarjeta : 12345678910
           </Text>
         </View>
-        <TouchableOpacity style={styles.buttonEdit}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("EditProfile");
+          }}
+          style={styles.buttonEdit}
+        >
           <Text style={styles.textBtn}>EDITAR</Text>
         </TouchableOpacity>
       </View>
@@ -60,8 +67,8 @@ const styles = StyleSheet.create({
     color: "#8DCFEC",
     fontSize: 35,
     fontWeight: "bold",
-    letterSpacing: -1,
-    fontFamily: "monospace",
+    fontFamily: "Roboto",
+    letterSpacing: 2,
   },
   containerCenter: {
     backgroundColor: "#8DCFEC",
@@ -90,11 +97,12 @@ const styles = StyleSheet.create({
   },
   textEstablish: {
     fontSize: 18,
-    fontWeight: "600",
+    fontWeight: "700",
     color: "#fff",
     marginLeft: "5%",
     marginTop: "5%",
     marginBottom: "5%",
+    fontFamily: "Roboto",
   },
   buttonEdit: {
     backgroundColor: "#fff",
@@ -104,7 +112,9 @@ const styles = StyleSheet.create({
   textBtn: {
     color: "#8DCFEC",
     fontSize: 20,
-    fontFamily: "monospace",
+    letterSpacing: 2,
+    fontWeight: "700",
+    fontFamily: "Roboto",
     textAlign: "center",
   },
 });
