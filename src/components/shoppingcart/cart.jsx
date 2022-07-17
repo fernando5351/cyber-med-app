@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, SafeAreaView, ScrollView, View, Image, TouchableOpacity} from 'react-native';
-import ImagenCarrito from '../../../assets/icons/orders/basket.png'
+import ImagenCarrito from '../../../assets/icons/orders/cartblue.png'
 import ImagenFlechaC from '../../../assets/icons/arrows/return.png'
+import MenuCarrito from '../../../assets/icons/home/menublue.png'
 
 const Carrito = () => {
   return (
@@ -9,6 +10,9 @@ const Carrito = () => {
       <ScrollView style={styles.scrollView}>
     <View style={styles.PedidosTop}>
     <Image source={ImagenCarrito} style={styles.ImagePedidos}/>
+    <TouchableOpacity> 
+    <Image source={MenuCarrito} style={styles.ImagenMenuC}/>
+    </TouchableOpacity>
     <Text style={styles.TextPedidos}>Carrito</Text>
     </View>
     <View> 
@@ -37,6 +41,11 @@ const styles = StyleSheet.create({
   ContenedorRetrocederC:{
 
   },
+  ImagenMenuC:{
+    width: 30,
+    height: 40,
+    right: 155,
+  },
     FlechaCarrito:{
     width: 31,
     height: 29,
@@ -62,6 +71,7 @@ const styles = StyleSheet.create({
   ImagePedidos:{
     width: 90,
     height: 90,
+    left: 20,
     },
     TextPedidos:{
       fontFamily: "Roboto",
@@ -70,7 +80,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       letterSpacing: 1,
       top: 5,
-      left: 5,
+      right: 5,
       },
   scrollView: {
   },

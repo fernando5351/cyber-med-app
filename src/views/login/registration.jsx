@@ -1,14 +1,20 @@
 import React from "react";
-import {View,Text,StyleSheet,TouchableOpacity,TextInput, ImageBackground} from "react-native";
+import {View,Text,StyleSheet,TouchableOpacity,TextInput, ImageBackground, Image} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import FondoRegistrarse from "../../../assets/images/backgroundrecord.jpg"
+import FlechaRegreRegistrar from "../../../assets/icons/arrows/returndouble.png"
 
-const RegistroUsuario = () => {
+function RegistroUsuario({navigation}) {
   return (
     <ImageBackground source={FondoRegistrarse} style={styles.containerRegis}> 
     <KeyboardAwareScrollView>
-      <View style={styles.containerCenterRegis}> 
+    <View style={styles.containerCenterRegis}> 
         <View>
+          <View style={styles.ContenedorRegistroFlecha} > 
+        <TouchableOpacity onPress={() => {navigation.navigate("Opciones");}}> 
+        <Image source={FlechaRegreRegistrar} style={styles.FlechaRegistro}/>
+        </TouchableOpacity>
+        </View>
         <Text style={styles.TextRegistrarseUnder}>REGISTRARSE</Text>
         <Text style={styles.TextParaCuenta}>Para tu cuenta</Text>
         </View>
@@ -27,17 +33,17 @@ const RegistroUsuario = () => {
           placeholder="Correo"
           placeholderTextColor={"#FFFFFF"}
         />
+        <TouchableOpacity onPress={() => {navigation.navigate("Login");}}>
+          <Text style={styles.TextFormularioRegis1}>Ya tienes cuenta? Inicia Sesion</Text>
+        </TouchableOpacity>
         <TextInput
           style={styles.inputRegis}
           placeholder="Contraseña"
           placeholderTextColor={"#FFFFFF"}
           secureTextEntry={true} 
         />
-        <TouchableOpacity>
-          <Text style={styles.TextFormularioRegis1}>Ya tienes cuenta? Inicia Sesion</Text>
-        </TouchableOpacity>
           <Text style={styles.TextFormularioRegis2}>Minimo 8 caracteres*</Text>
-        <TouchableOpacity style={styles.BotonRegis}>
+        <TouchableOpacity onPress={() => {navigation.navigate("Home");}} style={styles.BotonRegis}>
           <Text style={styles.TextBotonRegis}>REGISTRARSE</Text>
         </TouchableOpacity>
       </View>
@@ -51,6 +57,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",    
+  },
+  ContenedorRegistroFlecha:{
+   width:400,
+  },
+  FlechaRegistro:{
+    marginBottom:3,
+    width:27,
+    height: 27,
+    left: 5,
+    top: 20, 
   },
   TextRegistrarseUnder: {
     color: "#FFFFFF",
@@ -73,20 +89,20 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontFamily: "monospace",
     textAlign: 'right',
-    top:-150,
-    lineHeight: 60,
+    top: -30,
+    right: 19,
   },
   TextFormularioRegis2: {
     color: "#FFFFFF",
     fontFamily: "monospace",
     textAlign: 'right',
-    top:-125,
-    lineHeight: 60,
+   top: -35,
+   right: 19,
   },
   containerCenterRegis: {
     height: 730,
     justifyContent: "flex-start",
-    top: 140,
+    top: 105,
     flex:  1,
   },
   inputRegis: {
@@ -96,7 +112,9 @@ const styles = StyleSheet.create({
     height: 50,
     color: "#FFFFFF",
     marginBottom: 40,
-    letterSpacing: 2 
+    letterSpacing: 2,
+    left: 30,
+    
   },
   TextBotonRegis:{
     color:'#8DCFEC',
@@ -114,7 +132,7 @@ const styles = StyleSheet.create({
     elevation: 6,
     borderRadius: 4,
     alignSelf: "center",
-    top: -115,
+    top: -15,
     
   },
 });

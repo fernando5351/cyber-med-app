@@ -1,14 +1,20 @@
 import React from "react";
-import {View,Text,StyleSheet,TouchableOpacity,TextInput, ImageBackground} from "react-native";
+import {View,Text,StyleSheet,TouchableOpacity,TextInput, ImageBackground, Image} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import FondoIniciar from "../../../assets/images/startbackground.jpg"
+import FlechaInicio from "../../../assets/icons/arrows/blue-returndouble.png"
 
-const IniciarSesion = () => {
+function IniciarSesion ({navigation}) {
   return (
     <ImageBackground source={FondoIniciar} style={styles.containerInicio}> 
     <KeyboardAwareScrollView>
       <View style={styles.containerCenterInicio}>
         <View>
+        <View style={styles.ContenedorInicioFlecha} > 
+        <TouchableOpacity onPress={() => {navigation.navigate("Opciones");}}> 
+        <Image source={FlechaInicio} style={styles.FlechaInicio}/>
+        </TouchableOpacity>
+        </View>
         <Text style={styles.TextIniciarSesionUnder}>INICIAR SESION</Text>
         <Text style={styles.TextParaSeguir}>Para seguir</Text>
         </View>
@@ -17,7 +23,7 @@ const IniciarSesion = () => {
           placeholder="Correo"
           placeholderTextColor={"#3271A5"}
         />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => {navigation.navigate("Registro");}}>
           <Text style={styles.TextFormularioUnder}>No tienes cuenta? Registrate</Text>
         </TouchableOpacity>
         <TextInput
@@ -29,7 +35,7 @@ const IniciarSesion = () => {
         <TouchableOpacity>
           <Text style={styles.TextFormularioUnder}>Olvidaste tu Contraseña?</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.BotonIniciarS}>
+        <TouchableOpacity onPress={() => {navigation.navigate("Home");}}  style={styles.BotonIniciarS}>
           <Text style={styles.TextBotonInicio}>INICIAR SESION</Text>
         </TouchableOpacity>
       </View>
@@ -43,6 +49,15 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "space-between",    
+  },
+  ContenedorInicioFlecha:{
+    width:400,
+   },
+  FlechaInicio:{
+    width:25,
+    height: 25,
+    left: 5,
+    top: -5, 
   },
   TextIniciarSesionUnder: {
     color: "#6ABCE2",
@@ -65,6 +80,7 @@ const styles = StyleSheet.create({
     fontFamily: "monospace",
     textAlign: 'right',
     top: 30,
+    right: 2,
   },
   containerCenterInicio: {
     height: 730,

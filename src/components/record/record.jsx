@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, SafeAreaView, ScrollView, View, Image, TouchableOpacity} from 'react-native';
 import ImagenHistorial from '../../../assets/icons/orders/medicalcross.png'
 import ImagenFlechaH from '../../../assets/icons/arrows/bluereturn.png'
+import MenuHistorial from '../../../assets/icons/home/menu.png'
 
 const Historial = () => {
   return (
@@ -9,6 +10,9 @@ const Historial = () => {
       <ScrollView style={styles.scrollViewH}>
     <View style={styles.HistorialTop}>
     <Image source={ImagenHistorial} style={styles.ImageHistorial}/>
+    <TouchableOpacity> 
+    <Image source={MenuHistorial} style={styles.ImagenMenuH}/>
+    </TouchableOpacity>
     <Text style={styles.TextHistorial}>Historial</Text>
     </View>
     <View style={styles.ContenedorRetrocederH}> 
@@ -32,6 +36,11 @@ const styles = StyleSheet.create({
   },
   ContenedorRetrocederH:{
 
+  },
+  ImagenMenuH:{
+    width: 30,
+    height: 40,
+    right: 145,
   },
   ContenedorFlechaH:{
     backgroundColor: "#FFFFFF",
@@ -61,6 +70,7 @@ const styles = StyleSheet.create({
   ImageHistorial:{
     width: 90,
     height: 90,
+    left: 20,
     },
     TextHistorial:{
       fontFamily: "Roboto",
@@ -69,7 +79,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       letterSpacing: 1,
       
-      left: 5,
+      right:2,
       },
   scrollViewH: {
   },

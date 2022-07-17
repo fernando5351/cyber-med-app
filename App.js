@@ -9,6 +9,9 @@ import Home from "./src/views/home/home";
 import Historial from "./src/components/record/record";
 import Pedidos from "./src/components/orders/orders";
 import Carrito from "./src/components/shoppingcart/cart";
+import OpcionesLogin from "./src/views/login/opcions";
+import IniciarSesion from "./src/views/login/login";
+import RegistroUsuario from "./src/views/login/registration";
 
 
 const Stack = createNativeStackNavigator();
@@ -17,12 +20,42 @@ export default function App() {
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
-        <Stack.Navigator initialRouteName="Carrito">
+        <Stack.Navigator initialRouteName="Pedidos">
         <Stack.Screen
+            name="PantallaCarga"
+            component={PantallaCarga}
+            options={{ headerShown: false }}
+          />
+        <Stack.Screen
+            name="Historial"
+            component={Historial}
+            options={{ headerShown: false }}
+          />
+           <Stack.Screen
             name="Carrito"
             component={Carrito}
             options={{ headerShown: false }}
           />
+           <Stack.Screen
+            name="Pedidos"
+            component={Pedidos}
+            options={{ headerShown: false }}
+          />
+        <Stack.Screen
+            name="Opciones"
+            component={OpcionesLogin}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Login"
+            component={IniciarSesion}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Registro"
+            component={RegistroUsuario}
+            options={{ headerShown: false }}
+          /> 
           <Stack.Screen
             name="Home"
             component={Home}

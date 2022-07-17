@@ -2,12 +2,16 @@ import React from 'react';
 import { StyleSheet, Text, SafeAreaView, ScrollView, View, Image, TouchableOpacity} from 'react-native';
 import ImagenPedidos from '../../../assets/icons/orders/basket.png'
 import ImagenFlechaP from '../../../assets/icons/arrows/bluereturn.png'
+import MenuPedidos from '../../../assets/icons/home/menu.png'
 
 const Pedidos = () => {
   return (
     <SafeAreaView style={styles.containerPedidos}>
       <ScrollView style={styles.scrollView}>
     <View style={styles.PedidosTop}>
+    <TouchableOpacity> 
+    <Image source={MenuPedidos} style={styles.ImagenMenuP}/>
+    </TouchableOpacity>
     <Image source={ImagenPedidos} style={styles.ImagePedidos}/>
     <Text style={styles.TextPedidos}>Pedidos</Text>
     </View>
@@ -32,6 +36,11 @@ const styles = StyleSheet.create({
   },
   ContenedorRetroceder:{
 
+  },
+  ImagenMenuP:{
+    width: 30,
+    height: 40,
+    right:50,
   },
   ContenedorFlecha:{
     backgroundColor: "#FFFFFF",

@@ -3,15 +3,15 @@ import { StyleSheet, Image, ImageBackground, TouchableOpacity, Text} from 'react
 import ImagenCarga from '../../../assets/images/cibermed.png';
 import ImagenFondoCarga from '../../../assets/images/loginregister.jpg';
 
-const OpcionesLogin = () => {
+function OpcionesLogin ({ navigation}) {
   return (
 
     <ImageBackground source={ImagenFondoCarga} style={styles.containerIniciarRegistrar}>
       <Image style={styles.ImageCarga} source={ImagenCarga}/>
-     <TouchableOpacity style={styles.Boton1Carga}>
+     <TouchableOpacity onPress={() => {navigation.navigate("Registro");}} style={styles.Boton1Carga}>
       <Text style={styles.Text1Carga}>REGISTRARSE</Text>
      </TouchableOpacity>
-     <TouchableOpacity style={styles.Boton2Carga}>
+     <TouchableOpacity onPress={() => {navigation.navigate("Login");}} style={styles.Boton2Carga}>
       <Text style={styles.Text2Carga}>INICIAR SESION</Text>
      </TouchableOpacity>
     </ImageBackground>
