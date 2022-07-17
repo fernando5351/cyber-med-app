@@ -7,6 +7,8 @@ import Constants from "expo-constants";
 import DrawerNavigation from "./src/navigation/DrawerNavigation";
 import PantallaCarga from "./src/views/charging/charging";
 
+const Stack = createNativeStackNavigator();
+
 export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
   const [userToken, setUserToken] = React.useState("asdf");
@@ -31,7 +33,7 @@ export default function App() {
   React.useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 1000);
   }, []);
 
   if (isLoading) {

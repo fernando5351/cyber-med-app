@@ -15,7 +15,7 @@ const Profile = ({ navigation }) => {
         <View iew style={styles.containerBtn}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("HomeP");
+              navigation.goBack();
             }}
           >
             <Image style={styles.btnBack} source={BackW} />
@@ -32,15 +32,15 @@ const Profile = ({ navigation }) => {
           <Text style={styles.textEstablish}>
             Numero de tarjeta : 12345678910
           </Text>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("EditProfile");
+            }}
+            style={styles.buttonEdit}
+          >
+            <Text style={styles.textBtn}>EDITAR</Text>
+          </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("EditProfile");
-          }}
-          style={styles.buttonEdit}
-        >
-          <Text style={styles.textBtn}>EDITAR</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   containerTop: {
-    height: "15%",
+    height: "14%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
@@ -74,12 +74,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#8DCFEC",
     height: "75%",
     alignItems: "center",
-    justifyContent: "center",
   },
   containerBtn: {
     flexDirection: "row",
     height: "15%",
     width: "100%",
+    marginTop: "5%",
   },
   btnBack: {
     width: 40,
@@ -96,18 +96,20 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   textEstablish: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "700",
     color: "#fff",
-    marginLeft: "5%",
-    marginTop: "5%",
-    marginBottom: "5%",
+    marginLeft: "4%",
+    marginTop: "6%",
+    marginBottom: "6%",
     fontFamily: "Roboto",
   },
   buttonEdit: {
     backgroundColor: "#fff",
     padding: 15,
     width: "30%",
+    marginLeft: "35%",
+    marginTop: "10%",
   },
   textBtn: {
     color: "#8DCFEC",
