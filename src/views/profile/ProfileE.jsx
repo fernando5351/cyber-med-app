@@ -25,7 +25,7 @@ const ProfileE = ({ navigation }) => {
           <View style={styles.containerBtn}>
             <TouchableOpacity
               onPress={() => {
-                navigation.navigate("Profile");
+                navigation.goBack();
               }}
             >
               <Image source={BackG} style={styles.btnBack} />
@@ -142,9 +142,8 @@ const styles = StyleSheet.create({
   },
   buttonSave: {
     backgroundColor: "#8DCFEC",
-    height: "10%",
     width: "30%",
-    padding: 8,
+    padding: 15,
     marginTop: "8%",
     marginBottom: "8%",
     flex: 1,
@@ -152,7 +151,8 @@ const styles = StyleSheet.create({
   textButton: {
     fontFamily: "Roboto",
     textAlign: "center",
-    fontSize: 26,
+    fontSize: 22,
+    fontWeight: "700",
     color: "#fff",
     flex: 1,
   },

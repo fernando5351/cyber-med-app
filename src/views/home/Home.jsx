@@ -12,26 +12,26 @@ import Profile from "../../../assets/icons/profile/usercircle.png";
 
 function Home({ navigation }) {
   return (
-    <ScrollView>
-      <View style={styles.containerMain}>
-        <View style={styles.containerTop}>
-          <TouchableOpacity onPress={() => navigation.openDrawer()}>
-            <Image style={styles.icoMenu} source={Menu} />
-          </TouchableOpacity>
-          <SearchBarH />
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("Profile");
-            }}
-          >
-            <Image style={styles.icoProfile} source={Profile} />
-          </TouchableOpacity>
-        </View>
-        <View style={styles.containerCenter}>
-          <Text style={styles.titleMain}>Destacados</Text>
-        </View>
+    <View style={styles.containerMain}>
+      <View style={styles.containerTop}>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          <Image style={styles.icoMenu} source={Menu} />
+        </TouchableOpacity>
+        <SearchBarH />
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Profile");
+          }}
+        >
+          <Image style={styles.icoProfile} source={Profile} />
+        </TouchableOpacity>
       </View>
-    </ScrollView>
+      <ScrollView style={styles.containerCenter}>
+        <TouchableOpacity>
+          <Text style={styles.titleMain}>Destacados</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </View>
   );
 }
 
@@ -41,24 +41,23 @@ const styles = StyleSheet.create({
   containerMain: {
     height: "100%",
     width: "100%",
-    flex: 1,
   },
+
   containerTop: {
-    height: "15%",
+    height: "13%",
     backgroundColor: "#8DCFEC",
-    flex: 1,
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
     width: "100%",
   },
   icoMenu: {
-    width: 30,
-    height: 40,
+    width: 35,
+    height: 50,
   },
   icoProfile: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
   },
   containerCenter: {
     height: "80%",
