@@ -6,24 +6,29 @@ import "react-native-gesture-handler";
 import Constants from "expo-constants";
 import DrawerNavigation from "./src/navigation/DrawerNavigation";
 import PantallaCarga from "./src/views/charging/charging";
+import OpcionesLogin from "./src/views/login/opcions";
+import IniciarSesion from "./src/views/login/login";
+import RegistroUsuario from "./src/views/login/registration";
+
+import { AuthUser } from "./src/users/User";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [isLoading, setIsLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState("asdf");
+  const [userToken, setUserToken] = React.useState(null);
 
-  const authContext = React.useMemo(() => {
+  const authUser = React.useMemo(() => {
     return {
-      sigIn: () => {
+      signIn: () => {
         setIsLoading(false);
         setUserToken("asdf");
       },
-      sigUp: () => {
+      signUp: () => {
         setIsLoading(false);
         setUserToken("asdf");
       },
-      sigOut: () => {
+      signOut: () => {
         setIsLoading(false);
         setUserToken(null);
       },
@@ -41,17 +46,21 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <View style={styles.containerMainApp}>
-        {userToken ? (
-          <DrawerNavigation />
-        ) : (
-          <Stack.Navigator screenOptions={{ headerShown: false }}>
-            <Stack.Screen name="LoadingScreen" component={PantallaCarga} />
-          </Stack.Navigator>
-        )}
-      </View>
-    </NavigationContainer>
+    <AuthUser.Provider value={authUser}>
+      <NavigationContainer>
+        <View style={styles.containerMainApp}>
+          {userToken ? (
+            <DrawerNavigation />
+          ) : (
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+              <Stack.Screen name="Login" component={OpcionesLogin} />
+              <Stack.Screen name="SignUp" component={RegistroUsuario} />
+              <Stack.Screen name="SignIn" component={IniciarSesion} />
+            </Stack.Navigator>
+          )}
+        </View>
+      </NavigationContainer>
+    </AuthUser.Provider>
   );
 }
 

@@ -9,7 +9,11 @@ import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
 
+import { AuthUser } from "../../users/User";
+
 const CustomDrawer = (props) => {
+  const { signOut } = React.useContext(AuthUser);
+
   return (
     <View style={styles.containerDrawer}>
       <TouchableOpacity onPress={() => props.navigation.goBack()}>
@@ -29,7 +33,7 @@ const CustomDrawer = (props) => {
       </DrawerContentScrollView>
       <View style={styles.containerBottomD}>
         <TouchableOpacity
-          /* onPress={() => props.navigation.navigate("LoadingScreen")} */
+          onPress={() => signOut()}
           style={styles.subContainerB}
         >
           <Image style={styles.icoLogOut} source={Logout} />

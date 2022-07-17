@@ -19,14 +19,14 @@ const SearchBarH = () => {
 const styles = StyleSheet.create({
   containerSearchbar: {
     width: "65%",
-    height: 50,
+    height: 55,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
     borderRadius: 40,
-    marginTop: "5%",
-    marginBottom: "5%",
+    marginTop: "7%",
+    marginBottom: "7%",
   },
   inputSearch: {
     color: "#3271A5",
