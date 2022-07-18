@@ -4,7 +4,7 @@ import ImagenHistorial from '../../../assets/icons/orders/medicalcross.png'
 import ImagenFlechaH from '../../../assets/icons/arrows/bluereturn.png'
 import MenuHistorial from '../../../assets/icons/home/menu.png'
 
-function Pedidos({ navigation }){
+function Historial({ navigation }){
   return (
     <SafeAreaView style={styles.containerHistorial}>
       <ScrollView style={styles.scrollView}>
@@ -86,4 +86,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Pedidos;
+export default Historial;

@@ -4,8 +4,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Home from "../views/home/Home";
-import Profile from "../views/profile/Profile";
-import ProfileE from "../views/profile/ProfileE";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
 import Pedidos from "../components/orders/Orders";
 import Historial from "../components/record/record";

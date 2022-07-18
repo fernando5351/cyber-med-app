@@ -4,7 +4,7 @@ import ImagenCarrito from '../../../assets/icons/orders/cartblue.png'
 import ImagenFlechaC from '../../../assets/icons/arrows/return.png'
 import MenuCarrito from '../../../assets/icons/home/menublue.png'
 
-function Pedidos({ navigation }){
+function Carrito({ navigation }){
   return (
     <SafeAreaView style={styles.containerCarrito}>
       <ScrollView style={styles.scrollView}>
@@ -85,4 +85,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Pedidos;
+export default Carrito;
