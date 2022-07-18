@@ -4,19 +4,19 @@ import ImagenHistorial from '../../../assets/icons/orders/medicalcross.png'
 import ImagenFlechaH from '../../../assets/icons/arrows/bluereturn.png'
 import MenuHistorial from '../../../assets/icons/home/menu.png'
 
-const Historial = () => {
+function Pedidos({ navigation }){
   return (
     <SafeAreaView style={styles.containerHistorial}>
-      <ScrollView style={styles.scrollViewH}>
+      <ScrollView style={styles.scrollView}>
     <View style={styles.HistorialTop}>
-    <Image source={ImagenHistorial} style={styles.ImageHistorial}/>
-    <TouchableOpacity> 
+    <TouchableOpacity onPress={() => navigation.openDrawer() }> 
     <Image source={MenuHistorial} style={styles.ImagenMenuH}/>
     </TouchableOpacity>
+    <Image source={ImagenHistorial} style={styles.ImageHistorial}/>
     <Text style={styles.TextHistorial}>Historial</Text>
     </View>
-    <View style={styles.ContenedorRetrocederH}> 
-    <TouchableOpacity>
+    <View style={styles.ContenedorRetroceder}> 
+    <TouchableOpacity onPress={() => {  navigation.goBack(); }}>
     <Image source={ImagenFlechaH}style={styles.FlechaHistorial}/>
     </TouchableOpacity>
     <Text style={styles.TextoFlechaH}>Historial</Text>
@@ -34,13 +34,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#FFFFFF"
   },
-  ContenedorRetrocederH:{
+  ContenedorRetroceder:{
 
   },
   ImagenMenuH:{
-    width: 30,
-    height: 40,
-    right: 145,
+    width: 35,
+    height: 45,
+    right: 30,
+    marginLeft: "7%"
   },
   ContenedorFlechaH:{
     backgroundColor: "#FFFFFF",
@@ -70,7 +71,7 @@ const styles = StyleSheet.create({
   ImageHistorial:{
     width: 90,
     height: 90,
-    left: 20,
+    right: 8,
     },
     TextHistorial:{
       fontFamily: "Roboto",
@@ -78,11 +79,11 @@ const styles = StyleSheet.create({
       color: "#fff",
       fontWeight: "bold",
       letterSpacing: 1,
-      
-      right:2,
+      top: 5,
+      right: 4,
       },
-  scrollViewH: {
+  scrollView: {
   },
 });
 
-export default Historial;
+export default Pedidos;

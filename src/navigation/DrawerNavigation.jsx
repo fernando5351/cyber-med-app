@@ -7,12 +7,14 @@ import Home from "../views/home/Home";
 import Profile from "../views/profile/Profile";
 import ProfileE from "../views/profile/ProfileE";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
-import Step1 from "../views/description/Step1";
+import Pedidos from "../components/orders/Orders";
+import Historial from "../components/record/record";
+import Carrito from "../components/shoppingcart/cart";
 
 import HomeI from "../../assets/icons/finish/home.png";
-import Pedidos from "../../assets/icons/orders/basket.png";
-import Historial from "../../assets/icons/orders/medicalcross.png";
-import Carrito from "../../assets/icons/orders/cart.png";
+import PedidosI from "../../assets/icons/orders/basket.png";
+import HistorialI from "../../assets/icons/orders/medicalcross.png";
+import CarritoI from "../../assets/icons/orders/cart.png";
 
 const Drawer = createDrawerNavigator();
 
@@ -22,8 +24,10 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeH" component={Home} />
-      <HomeStack.Screen name="Profile" component={Profile} />
-      <HomeStack.Screen name="EditProfile" component={ProfileE} />
+      <HomeStack.Screen name="Pedidos" component={Pedidos} />
+      <HomeStack.Screen name="Carrito" component={Carrito} />
+      <HomeStack.Screen name="Historial" component={Historial} />
+     
     </HomeStack.Navigator>
   );
 };
@@ -54,24 +58,24 @@ export default function DrawerNavigation() {
       />
       <Drawer.Screen
         options={{
-          drawerIcon: () => <Image style={styles.icos} source={Pedidos} />,
+          drawerIcon: () => <Image style={styles.icos} source={PedidosI} />,
         }}
         name="Pedidos"
-        component={HomeStackScreen}
+        component={Pedidos}
       />
       <Drawer.Screen
         options={{
-          drawerIcon: () => <Image style={styles.icos} source={Historial} />,
+          drawerIcon: () => <Image style={styles.icos} source={HistorialI} />,
         }}
         name="Historial de Compra"
-        component={HomeStackScreen}
+        component={Historial}
       />
       <Drawer.Screen
         options={{
-          drawerIcon: () => <Image style={styles.icos} source={Carrito} />,
+          drawerIcon: () => <Image style={styles.icos} source={CarritoI} />,
         }}
         name="Carrito"
-        component={HomeStackScreen}
+        component={Carrito}
       />
     </Drawer.Navigator>
   );
@@ -83,3 +87,4 @@ const styles = StyleSheet.create({
     height: 55,
   },
 });
+

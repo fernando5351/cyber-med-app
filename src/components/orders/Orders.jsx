@@ -4,19 +4,19 @@ import ImagenPedidos from '../../../assets/icons/orders/basket.png'
 import ImagenFlechaP from '../../../assets/icons/arrows/bluereturn.png'
 import MenuPedidos from '../../../assets/icons/home/menu.png'
 
-const Pedidos = () => {
+function Pedidos({ navigation }){
   return (
     <SafeAreaView style={styles.containerPedidos}>
       <ScrollView style={styles.scrollView}>
     <View style={styles.PedidosTop}>
-    <TouchableOpacity> 
+    <TouchableOpacity onPress={() => navigation.openDrawer() }> 
     <Image source={MenuPedidos} style={styles.ImagenMenuP}/>
     </TouchableOpacity>
     <Image source={ImagenPedidos} style={styles.ImagePedidos}/>
     <Text style={styles.TextPedidos}>Pedidos</Text>
     </View>
     <View style={styles.ContenedorRetroceder}> 
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => {  navigation.goBack(); }}>
     <Image source={ImagenFlechaP}style={styles.FlechaPedidos}/>
     </TouchableOpacity>
     <Text style={styles.TextoFlecha}>Pedidos</Text>
@@ -38,9 +38,10 @@ const styles = StyleSheet.create({
 
   },
   ImagenMenuP:{
-    width: 30,
-    height: 40,
-    right:50,
+    width: 35,
+    height: 45,
+    right: 30,
+    marginLeft: "7%"
   },
   ContenedorFlecha:{
     backgroundColor: "#FFFFFF",
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
   ImagePedidos:{
     width: 90,
     height: 90,
+    right: 5,
     },
     TextPedidos:{
       fontFamily: "Roboto",
@@ -78,7 +80,7 @@ const styles = StyleSheet.create({
       fontWeight: "bold",
       letterSpacing: 1,
       top: 5,
-      left: 5,
+      right: 4,
       },
   scrollView: {
   },

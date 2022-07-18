@@ -4,26 +4,25 @@ import ImagenCarrito from '../../../assets/icons/orders/cartblue.png'
 import ImagenFlechaC from '../../../assets/icons/arrows/return.png'
 import MenuCarrito from '../../../assets/icons/home/menublue.png'
 
-const Carrito = () => {
+function Pedidos({ navigation }){
   return (
     <SafeAreaView style={styles.containerCarrito}>
       <ScrollView style={styles.scrollView}>
-    <View style={styles.PedidosTop}>
-    <Image source={ImagenCarrito} style={styles.ImagePedidos}/>
-    <TouchableOpacity> 
+    <View style={styles.PedidosTopC}>
+    <TouchableOpacity onPress={() => navigation.openDrawer() }> 
     <Image source={MenuCarrito} style={styles.ImagenMenuC}/>
     </TouchableOpacity>
-    <Text style={styles.TextPedidos}>Carrito</Text>
+    <Image source={ImagenCarrito} style={styles.ImageCarrito}/>
+    <Text style={styles.TextCarrito}>Carrito</Text>
     </View>
-    <View> 
-    <View style={styles.ContenedorRetrocederC}> 
-    <TouchableOpacity>
+    <View style={styles.ContenedorRetroceder}> 
+    <TouchableOpacity onPress={() => {  navigation.goBack(); }}>
     <Image source={ImagenFlechaC}style={styles.FlechaCarrito}/>
     </TouchableOpacity>
-    <Text style={styles.TextoFlecha}>Carrito</Text>
+    <Text style={styles.TextoFlechaC}>Carrito</Text>
     </View>
     <View>
-    </View>
+
     </View>
       </ScrollView>
     </SafeAreaView>
@@ -35,55 +34,55 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#3271A5"
   },
-  ConteCenterH:{
-   backgroundColor: "#3271A5"
-  },
-  ContenedorRetrocederC:{
+  ContenedorRetroceder:{
 
   },
   ImagenMenuC:{
-    width: 30,
-    height: 40,
-    right: 155,
+    width: 35,
+    height: 45,
+    right: 40,
+    marginLeft: "7%"
   },
+  ContenedorFlechaC:{
+    width: 500,
+      },
     FlechaCarrito:{
     width: 31,
     height: 29,
     top: 20,  
     left: 25,
     },
-    TextoFlecha:{
-    color: "#FFFFFF",
+    TextoFlechaC:{
+    color: "#FFF",
     fontFamily: "Roboto",
     left: 100,
     top: -6,
     letterSpacing: 1,
     },
-  PedidosTop:{
+  PedidosTopC:{
     backgroundColor:  "#FFFFFF",
     height: "20%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     flex: 1,
-   
   },
-  ImagePedidos:{
+  ImageCarrito:{
     width: 90,
     height: 90,
-    left: 20,
+    right: 10,
     },
-    TextPedidos:{
+    TextCarrito:{
       fontFamily: "Roboto",
       fontSize: 35,
       color: "#3271A5",
       fontWeight: "bold",
       letterSpacing: 1,
       top: 5,
-      right: 5,
+      right: 8,
       },
   scrollView: {
   },
 });
 
-export default Carrito;
+export default Pedidos;
