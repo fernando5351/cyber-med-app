@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import Home from "../views/home/Home";
+import Profile from "../views/profile/Profile";
+import ProfileE from "../views/profile/ProfileE";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
 import Pedidos from "../components/orders/Orders";
 import Historial from "../components/record/record";
@@ -22,10 +24,11 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="HomeH" component={Home} />
+      <HomeStack.Screen name="Profile" component={Profile} />
+      <HomeStack.Screen name="EditProfile" component={ProfileE} />
       <HomeStack.Screen name="Pedidos" component={Pedidos} />
       <HomeStack.Screen name="Carrito" component={Carrito} />
       <HomeStack.Screen name="Historial" component={Historial} />
-     
     </HomeStack.Navigator>
   );
 };
@@ -85,4 +88,3 @@ const styles = StyleSheet.create({
     height: 55,
   },
 });
-
