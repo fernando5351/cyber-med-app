@@ -9,6 +9,7 @@ import {
 import SearchBarH from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
+import Product from "../../../assets/images/buscapina.jpg";
 
 function Home({ navigation }) {
   return (
@@ -27,9 +28,81 @@ function Home({ navigation }) {
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.containerCenter}>
-        <TouchableOpacity>
-          <Text style={styles.titleMain}>Destacados</Text>
-        </TouchableOpacity>
+        <View style={styles.subContainerCenter}>
+          <View style={styles.containerTitle}>
+            <Text style={styles.titleMain}>Destacados</Text>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.containerProduct}>
+            <TouchableOpacity style={styles.buttonProduct}>
+              <Image style={styles.imageProduct} source={Product} />
+              <Text style={styles.titleName}>Buscapina</Text>
+              <Text style={styles.subtitlePrice}>USD $1.50</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ScrollView>
     </View>
   );
@@ -60,7 +133,18 @@ const styles = StyleSheet.create({
     height: 60,
   },
   containerCenter: {
-    height: "80%",
+    height: "100%",
+    flex: 1,
+    width: "100%",
+  },
+  subContainerCenter: {
+    flexDirection: "row",
+    width: "100%",
+    height: "100%",
+    flexWrap: "wrap",
+    flex: 1,
+  },
+  containerTitle: {
     width: "100%",
   },
   titleMain: {
@@ -68,5 +152,39 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     fontFamily: "Roboto",
+    marginLeft: "3%",
+    marginTop: "2%",
+    marginBottom: "1%",
+  },
+  containerProduct: {
+    height: 150,
+    width: 150,
+    marginLeft: "7%",
+    marginRight: "6%",
+    marginBottom: "4%",
+    marginTop: "4%",
+  },
+  buttonProduct: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+  },
+  imageProduct: {
+    width: "100%",
+    height: "70%",
+    borderColor: "#8DCFEC",
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  titleName: {
+    color: "#5F5F5F",
+    fontFamily: "Roboto",
+    fontSize: 15,
+  },
+  subtitlePrice: {
+    color: "#3271A5",
+    fontFamily: "Roboto",
+    fontSize: 15,
+    fontWeight: "700",
   },
 });

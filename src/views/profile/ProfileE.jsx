@@ -134,9 +134,9 @@ const styles = StyleSheet.create({
   inputProfile: {
     borderBottomColor: "#8DCFEC",
     borderBottomWidth: 2,
-    height: 60,
+    height: 65,
     width: "90%",
-    marginBottom: "6%",
+    marginBottom: "5%",
     flex: 1,
     fontFamily: "Roboto",
   },
@@ -144,8 +144,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#8DCFEC",
     width: "30%",
     padding: 15,
-    marginTop: "8%",
-    marginBottom: "8%",
+    marginTop: "5%",
+    marginBottom: "7%",
     flex: 1,
   },
   textButton: {

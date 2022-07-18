@@ -7,6 +7,7 @@ import Home from "../views/home/Home";
 import Profile from "../views/profile/Profile";
 import ProfileE from "../views/profile/ProfileE";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
+import Step1 from "../views/description/Step1";
 
 import HomeI from "../../assets/icons/finish/home.png";
 import Pedidos from "../../assets/icons/orders/basket.png";
