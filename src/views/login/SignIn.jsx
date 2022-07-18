@@ -14,7 +14,7 @@ import FlechaInicio from "../../../assets/icons/arrows/blue-returndouble.png";
 
 import { AuthUser } from "../../users/User";
 
-function IniciarSesion({ navigation }) {
+function Signin({ navigation }) {
   const { signIn } = React.useContext(AuthUser);
 
   return (
@@ -144,4 +144,4 @@ const styles = StyleSheet.create({
     top: 120,
   },
 });
-export default IniciarSesion;
+export default Signin;

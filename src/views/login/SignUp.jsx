@@ -14,7 +14,7 @@ import FlechaRegreRegistrar from "../../../assets/icons/arrows/returndouble.png"
 
 import { AuthUser } from "../../users/User";
 
-function RegistroUsuario({ navigation }) {
+function Signup({ navigation }) {
   const { signUp } = React.useContext(AuthUser);
 
   return (
@@ -159,4 +159,4 @@ const styles = StyleSheet.create({
     top: -15,
   },
 });
-export default RegistroUsuario;
+export default Signup;

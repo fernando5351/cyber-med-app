@@ -9,7 +9,7 @@ import {
 import ImagenCarga from "../../../assets/images/cibermed.png";
 import ImagenFondoCarga from "../../../assets/images/loginregister.jpg";
 
-function OpcionesLogin({ navigation }) {
+function Login({ navigation }) {
   return (
     <ImageBackground
       source={ImagenFondoCarga}
@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
     top: 60,
   },
 });
-export default OpcionesLogin;
+export default Login;

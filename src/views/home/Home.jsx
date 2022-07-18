@@ -10,7 +10,6 @@ import SearchBarH from "../../components/searchbar/SearchBar";
 import Products from "../../components/products/Products";
 import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
-import Product from "../../../assets/images/buscapina.jpg";
 
 function Home({ navigation }) {
   return (
