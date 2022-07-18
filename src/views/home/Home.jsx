@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import SearchBarH from "../../components/searchbar/SearchBar";
+import Products from "../../components/products/Products";
 import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
 import Product from "../../../assets/images/buscapina.jpg";
@@ -33,74 +34,7 @@ function Home({ navigation }) {
             <Text style={styles.titleMain}>Destacados</Text>
           </View>
           <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={styles.containerProduct}>
-            <TouchableOpacity style={styles.buttonProduct}>
-              <Image style={styles.imageProduct} source={Product} />
-              <Text style={styles.titleName}>Buscapina</Text>
-              <Text style={styles.subtitlePrice}>USD $1.50</Text>
-            </TouchableOpacity>
+            <Products />
           </View>
         </View>
       </ScrollView>
@@ -163,28 +97,5 @@ const styles = StyleSheet.create({
     marginRight: "6%",
     marginBottom: "4%",
     marginTop: "4%",
-  },
-  buttonProduct: {
-    width: "100%",
-    height: "100%",
-    alignItems: "center",
-  },
-  imageProduct: {
-    width: "100%",
-    height: "70%",
-    borderColor: "#8DCFEC",
-    borderWidth: 2,
-    borderRadius: 5,
-  },
-  titleName: {
-    color: "#5F5F5F",
-    fontFamily: "Roboto",
-    fontSize: 15,
-  },
-  subtitlePrice: {
-    color: "#3271A5",
-    fontFamily: "Roboto",
-    fontSize: 15,
-    fontWeight: "700",
   },
 });
