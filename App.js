@@ -6,9 +6,9 @@ import "react-native-gesture-handler";
 import Constants from "expo-constants";
 import DrawerNavigation from "./src/navigation/DrawerNavigation";
 import PantallaCarga from "./src/views/charging/charging";
-import OpcionesLogin from "./src/views/login/opcions";
-import IniciarSesion from "./src/views/login/login";
-import RegistroUsuario from "./src/views/login/registration";
+import Login from "./src/views/login/Login";
+import Signin from "./src/views/login/SignIn";
+import Signup from "./src/views/login/SignUp";
 
 import { AuthUser } from "./src/users/User";
 
@@ -53,9 +53,9 @@ export default function App() {
             <DrawerNavigation />
           ) : (
             <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Login" component={OpcionesLogin} />
-              <Stack.Screen name="SignUp" component={RegistroUsuario} />
-              <Stack.Screen name="SignIn" component={IniciarSesion} />
+              <Stack.Screen name="Login" component={Login} />
+              <Stack.Screen name="SignUp" component={Signup} />
+              <Stack.Screen name="SignIn" component={Signin} />
             </Stack.Navigator>
           )}
         </View>
