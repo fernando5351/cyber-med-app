@@ -4,14 +4,14 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import FondoIniciar from "../../../assets/images/startbackground.jpg"
 import FlechaInicio from "../../../assets/icons/arrows/blue-returndouble.png"
 
-function SignIn ({navigation}) {
+function Signin ({navigation}) {
   return (
     <ImageBackground source={FondoIniciar} style={styles.containerInicio}> 
     <KeyboardAwareScrollView>
       <View style={styles.containerCenterInicio}>
         <View>
         <View style={styles.ContenedorInicioFlecha} > 
-        <TouchableOpacity onPress={() => {navigation.navigate("Opciones");}}> 
+        <TouchableOpacity onPress={() => {navigation.navigate("Login");}}> 
         <Image source={FlechaInicio} style={styles.FlechaInicio}/>
         </TouchableOpacity>
         </View>
@@ -119,4 +119,4 @@ const styles = StyleSheet.create({
     top: 120,
   },
 });
-export default SignIn;
+export default Signin;

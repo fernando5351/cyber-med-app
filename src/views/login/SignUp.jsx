@@ -4,14 +4,14 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import FondoRegistrarse from "../../../assets/images/backgroundrecord.jpg"
 import FlechaRegreRegistrar from "../../../assets/icons/arrows/returndouble.png"
 
-function RegistroUsuario({navigation}) {
+function Signup({navigation}) {
   return (
     <ImageBackground source={FondoRegistrarse} style={styles.containerRegis}> 
     <KeyboardAwareScrollView>
     <View style={styles.containerCenterRegis}> 
         <View>
           <View style={styles.ContenedorRegistroFlecha} > 
-        <TouchableOpacity onPress={() => {navigation.navigate("Opciones");}}> 
+        <TouchableOpacity onPress={() => {navigation.navigate("Login");}}> 
         <Image source={FlechaRegreRegistrar} style={styles.FlechaRegistro}/>
         </TouchableOpacity>
         </View>
@@ -43,7 +43,7 @@ function RegistroUsuario({navigation}) {
           secureTextEntry={true} 
         />
           <Text style={styles.TextFormularioRegis2}>Minimo 8 caracteres*</Text>
-        <TouchableOpacity onPress={() => {navigation.navigate("Home");}} style={styles.BotonRegis}>
+        <TouchableOpacity onPress={() => signU} style={styles.BotonRegis}>
           <Text style={styles.TextBotonRegis}>REGISTRARSE</Text>
         </TouchableOpacity>
       </View>
@@ -119,9 +119,7 @@ const styles = StyleSheet.create({
   TextBotonRegis:{
     color:'#8DCFEC',
     top: 15,
-    fontSize: 13,
-    fontFamily: 'monospace',
-    fontWeight: 'bold',
+    fontSize: 13, 
     letterSpacing: 4, 
   },
   BotonRegis:{
@@ -136,4 +134,4 @@ const styles = StyleSheet.create({
     
   },
 });
-export default RegistroUsuario;
+export default Signup;
