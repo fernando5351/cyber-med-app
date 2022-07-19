@@ -13,6 +13,15 @@ import Pedidos from "../../assets/icons/orders/basket.png";
 import Historial from "../../assets/icons/orders/medicalcross.png";
 import Carrito from "../../assets/icons/orders/cart.png";
 
+import Description from "../views/description/Description";
+import Step1 from "../views/description/Step1";
+import Step2 from "../views/description/Step2";
+import Step3 from "../views/description/Step3";
+import Step4 from "../views/description/Step4";
+import Android from "../views/description/Android";
+import Scroll from "../components/scrollView/Scroll";
+import SearchBarD from "../components/searchbar/SearchBarD";
+
 const Drawer = createDrawerNavigator();
 
 const HomeStack = createNativeStackNavigator();
@@ -23,6 +32,14 @@ const HomeStackScreen = () => {
       <HomeStack.Screen name="HomeH" component={Home} />
       <HomeStack.Screen name="Profile" component={Profile} />
       <HomeStack.Screen name="EditProfile" component={ProfileE} />
+      <HomeStack.Screen name="Description" component={Description} />
+      <HomeStack.Screen name="Step1" component={Step1} />
+      <HomeStack.Screen name="Step2" component={Step2} />
+      <HomeStack.Screen name="Step3" component={Step3} />
+      <HomeStack.Screen name="Step4" component={Step4} />
+      <HomeStack.Screen name="Android" component={Android} />
+      <HomeStack.Screen name="Scroll" component={Scroll} />
+      <HomeStack.Screen name="SearchBarD" component={SearchBarD} />
     </HomeStack.Navigator>
   );
 };

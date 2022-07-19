@@ -2,15 +2,14 @@ import React from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import ImagenQR from "../../../assets/icons/steps/scan.png";
-import ImagenEscaner from "../../../assets/images/QR.png";
+import ImagenPencil from "../../../assets/icons/steps/pencil.png";
 
 const Step3 = ({ navigation }) => {
   return (
     <View style={styles.content}>
       <View style={styles.containerTop}>
         <Image style={styles.ImagenCheck} source={ImagenCheck} />
-        <Text style={styles.styleText}>Paso 3</Text>
+        <Text style={styles.styleText}>Paso 4</Text>
       </View>
       <View style={styles.contentMedium}>
         <View style={styles.subcontent}>
@@ -21,22 +20,24 @@ const Step3 = ({ navigation }) => {
           >
             <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
           </TouchableOpacity>
-          <Text style={styles.styleTextDos}>Escanear codigo QR</Text>
-          <Image style={styles.ImagenQR} source={ImagenQR} />
-          <Text style={styles.textoIntro}>Escarnea el codigo QR</Text>
+          <Text style={styles.styleTextDos}>Introducir codigo</Text>
+          <Image style={styles.ImagenPencil} source={ImagenPencil} />
+          <Text style={styles.textoIntro}>
+            Introduce el codigo en la maquina
+          </Text>
         </View>
         <View style={styles.contentEscaner}>
-          <Image style={styles.ImagenEscaner} source={ImagenEscaner} />
+          <Text style={styles.codigoAlfanumerico}>13052984</Text>
           <TouchableOpacity>
-            <Text style={styles.textFinal}>Volver a enviar codigo QR</Text>
+            <Text style={styles.textcasiFinal}>Volver a enviar el codigo</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.colorBoton}
             onPress={() => {
-              navigation.navigate("Step4");
+              navigation.navigate("Step3");
             }}
           >
-            <Text style={styles.textFinal}>Cambiar a codido Alfanumerico</Text>
+            <Text style={styles.textFinal}>Cambiar a codido QR</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -63,8 +64,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#8DCFEC",
   },
   ImagenCheck: {
-    width: "15%",
-    height: "50%",
+    width: 50,
+    height: 50,
   },
   styleText: {
     fontSize: 40,
@@ -81,10 +82,11 @@ const styles = StyleSheet.create({
   subcontent: {
     width: "100%",
     height: "20%",
+    backgroundColor: "#fff",
   },
   ImagenFlecha: {
-    width: "10%",
-    height: "50%",
+    width: 30,
+    height: 30,
     marginTop: "3%",
     marginLeft: "3%",
   },
@@ -92,31 +94,41 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "17%",
-    marginTop: "-13%",
+    marginLeft: "13%",
+    marginTop: "-7%",
   },
-  ImagenQR: {
-    width: "10%",
-    height: "35%",
+  ImagenPencil: {
+    width: 35,
+    height: 35,
     marginTop: "8%",
-    marginLeft: "25%",
+    marginLeft: "15%",
   },
   textoIntro: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "39%",
-    marginTop: "-8%",
+    marginLeft: "25%",
+    marginTop: "-6%",
   },
   contentEscaner: {
     width: "100%",
     height: "80%",
     alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
   },
-  ImagenEscaner: {
-    width: "70%",
-    height: "60%",
+  codigoAlfanumerico: {
+    fontSize: 50,
+    fontWeight: "600",
     marginTop: "5%",
+  },
+  textcasiFinal: {
+    fontSize: 15,
+    fontWeight: "700",
+    color: "#3271A5",
+    marginTop: "30%",
+    borderBottomWidth: 1,
+    borderColor: "#3271A5",
   },
   textFinal: {
     fontSize: 15,

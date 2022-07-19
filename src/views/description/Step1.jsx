@@ -13,7 +13,7 @@ import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenCard from "../../../assets/icons/steps/creditcard.png";
 import CheckBox from "react-native-check-box";
 
-const Step1 = () => {
+const Step1 = ({ navigation }) => {
   return (
     <KeyboardAwareScrollView style={styles.Keyboard}>
       <View style={styles.containerMain}>
@@ -23,7 +23,11 @@ const Step1 = () => {
         </View>
         <View style={styles.containerSecundario}>
           <View style={styles.subcontent}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                navigation.goBack();
+              }}
+            >
               <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
             </TouchableOpacity>
             <Text style={styles.styleTextDos}>Registrar tarjeta</Text>
@@ -32,31 +36,38 @@ const Step1 = () => {
               Introduce los datos que se te piden
             </Text>
           </View>
-          <TextInput
-            placeholder="Titular:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <TextInput
-            placeholder="Numero de Tarjeta:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <TextInput
-            placeholder="Vecha de Vencimiento:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <TextInput
-            placeholder="CVV:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <CheckBox style={styles.checkBox} />
-          <Text style={styles.checkText}>Guardar Tarjeta</Text>
-          <TouchableOpacity style={styles.colorBoton}>
-            <Text style={styles.letraBoton}>SIGUIENTE</Text>
-          </TouchableOpacity>
+          <View style={styles.containerForm}>
+            <TextInput
+              placeholder="Titular:"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.styleForm}
+            />
+            <TextInput
+              placeholder="Numero de Tarjeta:"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.styleForm}
+            />
+            <TextInput
+              placeholder="Vecha de Vencimiento:"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.styleForm}
+            />
+            <TextInput
+              placeholder="CVV:"
+              placeholderTextColor={"#8DCFEC"}
+              style={styles.styleForm}
+            />
+            <CheckBox style={styles.checkBox} />
+            <Text style={styles.checkText}>Guardar Tarjeta</Text>
+            <TouchableOpacity
+              style={styles.colorBoton}
+              onPress={() => {
+                navigation.navigate("Step2");
+              }}
+            >
+              <Text style={styles.letraBoton}>SIGUIENTE</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </KeyboardAwareScrollView>
@@ -68,6 +79,8 @@ export default Step1;
 const styles = StyleSheet.create({
   Keyboard: {
     flex: 1,
+    width: "100%",
+    height: "100%",
     backgroundColor: "#8DCFEC",
   },
   containerMain: {
@@ -79,7 +92,7 @@ const styles = StyleSheet.create({
   containerTop: {
     flex: 1,
     width: "100%",
-    height: "15%",
+    height: "10%",
     display: "flex",
     marginTop: "5%",
     marginBottom: "5%",
@@ -100,14 +113,17 @@ const styles = StyleSheet.create({
   },
   containerSecundario: {
     width: "100%",
-    height: "85%",
+    height: "80%",
     backgroundColor: "#fff",
     flex: 1,
   },
   subcontent: {
     width: "100%",
     height: "15%",
-    backgroundColor: "#fff",
+    flex: 1,
+  },
+  containerForm: {
+    height: "85%",
     flex: 1,
   },
   ImagenFlecha: {
@@ -138,13 +154,15 @@ const styles = StyleSheet.create({
     marginBottom: "5%",
   },
   styleForm: {
+    flex: 1,
     fontSize: 15,
-    marginTop: 35,
-    marginLeft: 20,
-    marginEnd: 20,
+    width: "90%",
+    marginTop: "5%",
+    marginLeft: "5%",
     borderBottomWidth: 2,
     borderColor: "#8DCFEC",
     marginBottom: "5%",
+    height: "10%",
   },
   checkBox: {
     marginTop: "5%",
@@ -159,15 +177,16 @@ const styles = StyleSheet.create({
     marginBottom: "5%",
   },
   colorBoton: {
-    width: "35%",
-    height: "9%",
+    width: "30%",
+    padding: 10,
     marginTop: "5%",
     backgroundColor: "#8DCFEC",
-    marginBottom: "15%",
+    marginBottom: "10%",
     marginLeft: "33%",
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 20,
+    flex: 1,
   },
   letraBoton: {
     fontSize: 16,

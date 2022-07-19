@@ -19,13 +19,11 @@ const SearchBarD = () => {
 const styles = StyleSheet.create({
   containerSearchbar: {
     width: "90%",
-    height: 40,
+    height: 50,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    marginTop: "7%",
-    marginBottom: "7%",
     borderRadius: 30,
   },
   inputSearch: {
@@ -35,8 +33,8 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
   },
   icoLoupeD: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
   },
 });
 export default SearchBarD;
