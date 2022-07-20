@@ -52,7 +52,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "monospace",
     fontWeight: "bold",
-    letterSpacing: 4,
+    letterSpacing: 4 /* 
+    marginBottom: "8%",
+    marginTop: "8%", */,
   },
   Text2Carga: {
     color: "#3271A5",
@@ -60,7 +62,9 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontFamily: "monospace",
     fontWeight: "bold",
-    letterSpacing: 4,
+    letterSpacing: 4 /* 
+    marginBottom: "8%",
+    marginTop: "8%", */,
   },
   Boton1Carga: {
     backgroundColor: "#FFFFFF",

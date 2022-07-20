@@ -7,20 +7,22 @@ import Scroll from "../../components/scrollView/Scroll";
 
 const Step2 = () => {
   return (
-    <View style={styles.containerPrin}>
-      <View style={styles.contentTop}>
-        <Image style={styles.ImagenCheck} source={ImagenCheck} />
-        <Text style={styles.styleText}>Paso 2</Text>
+    <View>
+      <View style={styles.containerPrin}>
+        <View style={styles.contentTop}>
+          <Image style={styles.ImagenCheck} source={ImagenCheck} />
+          <Text style={styles.styleText}>Paso 2</Text>
+        </View>
+        <View style={styles.contentCompra}>
+          <TouchableOpacity>
+            <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
+          </TouchableOpacity>
+          <Text style={styles.styleTextDos}>Completar Compra</Text>
+          <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
+          <Text style={styles.textoIntro}>Completa tu Compra</Text>
+        </View>
+        <Scroll />
       </View>
-      <View style={styles.contentCompra}>
-        <TouchableOpacity>
-          <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
-        </TouchableOpacity>
-        <Text style={styles.styleTextDos}>Completar Compra</Text>
-        <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
-        <Text style={styles.textoIntro}>Completa tu Compra</Text>
-      </View>
-      <Scroll />
     </View>
   );
 };
