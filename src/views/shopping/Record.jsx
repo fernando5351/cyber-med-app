@@ -3,11 +3,11 @@ import { StyleSheet, Text, SafeAreaView, ScrollView, View, Image, TouchableOpaci
 import ImagenHistorial from '../../../assets/icons/orders/medicalcross.png'
 import ImagenFlechaH from '../../../assets/icons/arrows/bluereturn.png'
 import MenuHistorial from '../../../assets/icons/home/menu.png'
+import ProductosHistorial from '../../components/targets/Carthistory';
 
 function Historial({ navigation }){
   return (
-    <SafeAreaView style={styles.containerHistorial}>
-      <ScrollView style={styles.scrollView}>
+    <View style={styles.containerHistorial}>
     <View style={styles.HistorialTop}>
     <TouchableOpacity onPress={() => navigation.openDrawer() }> 
     <Image source={MenuHistorial} style={styles.ImagenMenuH}/>
@@ -21,11 +21,16 @@ function Historial({ navigation }){
     </TouchableOpacity>
     <Text style={styles.TextoFlechaH}>Historial</Text>
     </View>
-    <View>
-
+    <ScrollView style={styles.ContenedorProductosH}>
+    <ProductosHistorial/>
+    <ProductosHistorial/>
+    <ProductosHistorial/>
+    <ProductosHistorial/>
+    <ProductosHistorial/>
+    <ProductosHistorial/>
+    <ProductosHistorial/>
+    </ScrollView>
     </View>
-      </ScrollView>
-    </SafeAreaView>
   );
 }
 
@@ -36,6 +41,9 @@ const styles = StyleSheet.create({
   },
   ContenedorRetroceder:{
 
+  },
+  ContenedorProductosH: {
+    top: 10,
   },
   ImagenMenuH:{
     width: 35,
@@ -62,11 +70,10 @@ const styles = StyleSheet.create({
     },
   HistorialTop:{
     backgroundColor:  "#4DACD6",
-    height: "20%",
+    height: "12%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
   },
   ImageHistorial:{
     width: 90,

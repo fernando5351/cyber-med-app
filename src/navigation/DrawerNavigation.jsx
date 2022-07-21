@@ -7,9 +7,9 @@ import Home from "../views/home/Home";
 import Profile from "../views/profile/Profile";
 import ProfileE from "../views/profile/ProfileE";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
-import Pedidos from "../components/orders/Orders";
-import Historial from "../components/record/record";
-import Carrito from "../components/shoppingcart/cart";
+import Pedidos from "../views/shopping/Orders";
+import Historial from "../views/shopping/Record";
+import Carrito from "../views/shopping/Cart";
 
 import HomeI from "../../assets/icons/finish/home.png";
 import PedidosI from "../../assets/icons/orders/basket.png";

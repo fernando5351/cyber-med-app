@@ -3,11 +3,11 @@ import { StyleSheet, Text, SafeAreaView, ScrollView, View, Image, TouchableOpaci
 import ImagenCarrito from '../../../assets/icons/orders/cartblue.png'
 import ImagenFlechaC from '../../../assets/icons/arrows/return.png'
 import MenuCarrito from '../../../assets/icons/home/menublue.png'
+import ProductosCarrito from '../../components/targets/Cartshopp';
 
 function Carrito({ navigation }){
   return (
-    <SafeAreaView style={styles.containerCarrito}>
-      <ScrollView style={styles.scrollView}>
+    <View style={styles.containerCarrito}>
     <View style={styles.PedidosTopC}>
     <TouchableOpacity onPress={() => navigation.openDrawer() }> 
     <Image source={MenuCarrito} style={styles.ImagenMenuC}/>
@@ -21,11 +21,22 @@ function Carrito({ navigation }){
     </TouchableOpacity>
     <Text style={styles.TextoFlechaC}>Carrito</Text>
     </View>
-    <View>
-
+    <ScrollView style={styles.ContenedorProductosC}>
+      <ProductosCarrito/>
+      <ProductosCarrito/>
+      <ProductosCarrito/>
+      <ProductosCarrito/>
+      <ProductosCarrito/>
+      <ProductosCarrito/>
+    </ScrollView>
+    <View style={styles.ContenedorAbajoC}>
+    <Text style={styles.TotalStyle}>Total</Text>
+    <Text style={styles.NumeroTotal}>$16.00</Text>
+    <TouchableOpacity style={styles.BotonPago}>
+      <Text style={styles.TextBotonC}>Proceder al pago</Text>
+    </TouchableOpacity>
     </View>
-      </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
@@ -34,14 +45,56 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#3271A5"
   },
-  ContenedorRetroceder:{
-
+  ContenedorAbajoC:{
+  backgroundColor: "#FFFFFF",
+  height: "20%",
+  top: 20,
+  alignItems: "center",
+  justifyContent: "center",
+  
+  },
+  ContenedorProductosC: {
+    top: 10,
+  },
+  TotalStyle:{
+  color:"#757575",
+  fontFamily: "Roboto",
+  fontSize: 20,
+  right: 65,
+  },
+  NumeroTotal:{
+  color: "#4489C1",
+  fontWeight: "bold",
+  fontFamily: "monospace",
+  fontSize: 20,
+  left: 55,
+  top: -30,
+  },
+  BotonPago:{
+  backgroundColor: "#4489C1",
+  height: "35%",
+  width: "65%",
+ borderRadius: 17,
+ alignItems: "center",
+ borderWidth: 2.5,
+ borderColor: "#3271A5",
+ elevation: 3,
+ top: -16,
+ 
+  },
+  TextBotonC:{
+  color: "#FFFFFF",
+  fontWeight: "bold",
+  letterSpacing: 2,
+  fontSize: 21.5,
+  top: 6,
+  fontFamily: "Roboto",
   },
   ImagenMenuC:{
     width: 35,
     height: 45,
-    right: 40,
-    marginLeft: "7%"
+    right: 35,
+    marginLeft: "8%"
   },
   ContenedorFlechaC:{
     width: 500,
@@ -61,11 +114,10 @@ const styles = StyleSheet.create({
     },
   PedidosTopC:{
     backgroundColor:  "#FFFFFF",
-    height: "20%",
+    height: "12%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
   },
   ImageCarrito:{
     width: 90,

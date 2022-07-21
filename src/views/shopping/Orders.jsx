@@ -3,11 +3,11 @@ import { StyleSheet, Text, SafeAreaView, ScrollView, View, Image, TouchableOpaci
 import ImagenPedidos from '../../../assets/icons/orders/basket.png'
 import ImagenFlechaP from '../../../assets/icons/arrows/bluereturn.png'
 import MenuPedidos from '../../../assets/icons/home/menu.png'
+import ProductosPedidos from '../../components/targets/Cartorders';
 
 function Pedidos({ navigation }){
   return (
-    <SafeAreaView style={styles.containerPedidos}>
-      <ScrollView style={styles.scrollView}>
+    <View style={styles.containerPedidos}>
     <View style={styles.PedidosTop}>
     <TouchableOpacity onPress={() => navigation.openDrawer() }> 
     <Image source={MenuPedidos} style={styles.ImagenMenuP}/>
@@ -21,11 +21,16 @@ function Pedidos({ navigation }){
     </TouchableOpacity>
     <Text style={styles.TextoFlecha}>Pedidos</Text>
     </View>
-    <View>
-
+    <ScrollView style={styles.ContenedorProductosO}>
+    <ProductosPedidos/>
+    <ProductosPedidos/>
+    <ProductosPedidos/>
+    <ProductosPedidos/>
+    <ProductosPedidos/>
+    <ProductosPedidos/>
+    <ProductosPedidos/>
+    </ScrollView>
     </View>
-      </ScrollView>
-    </SafeAreaView>
   );
 }
 
@@ -62,11 +67,11 @@ const styles = StyleSheet.create({
     },
   PedidosTop:{
     backgroundColor:  "#4DACD6",
-    height: "20%",
+    height: "12%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
+  
   },
   ImagePedidos:{
     width: 90,
@@ -82,7 +87,9 @@ const styles = StyleSheet.create({
       top: 5,
       right: 4,
       },
-  scrollView: {
+  ContenedorProductosO: {
+    top: 10,
+
   },
 });
 
