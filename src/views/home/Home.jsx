@@ -32,8 +32,10 @@ function Home({ navigation }) {
           <View style={styles.containerTitle}>
             <Text style={styles.titleMain}>Destacados</Text>
           </View>
-          <View style={styles.containerProduct}>
-            <Products />
+          <View style={styles.containerProducts}>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -89,7 +91,12 @@ const styles = StyleSheet.create({
     marginTop: "2%",
     marginBottom: "1%",
   },
-  containerProduct: {
+  containerProducts: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    height: "100%",
+  },
+  viewProducts: {
     height: 150,
     width: 150,
     marginLeft: "7%",
