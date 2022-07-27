@@ -1,4 +1,12 @@
-import { View, TextInput, StyleSheet, Image } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Image,
+  Alert,
+  ToastAndroid,
+  Platform,
+} from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Loupe from "../../../assets/icons/search/search.png";
 

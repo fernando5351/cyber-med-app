@@ -9,7 +9,7 @@ import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
 
-import { AuthUser } from "../../users/User";
+import { AuthUser } from "../../utils/User";
 
 const CustomDrawer = (props) => {
   const { signOut } = React.useContext(AuthUser);

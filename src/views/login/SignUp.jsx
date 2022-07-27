@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,68 +9,159 @@ import {
   Image,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import FondoRegistrarse from "../../../assets/images/backgroundrecord.jpg";
-import FlechaRegreRegistrar from "../../../assets/icons/arrows/returndouble.png";
+import Cover from "../../../assets/images/backgroundrecord.jpg";
+import btnBack from "../../../assets/icons/arrows/returndouble.png";
+import OpenEye from "../../../assets/icons/profile/eyes.png";
+import CloseEye from "../../../assets/icons/profile/eyesclose.png";
 
-import { AuthUser } from "../../users/User";
+import {
+  isValidObjField,
+  isEmailValid,
+  updateError,
+} from "../../utils/Methods";
+
+import { AuthUser } from "../../utils/User";
 
 function Signup({ navigation }) {
   const { signUp } = React.useContext(AuthUser);
 
+  const [userInfo, setUserInfo] = useState({
+    nombres: "",
+    apellidos: "",
+    correo: "",
+    contraseña: "",
+  });
+
+  const { nombres, apellidos, correo, contraseña } = userInfo;
+
+  const [passwordSecured, setPasswordSecured] = useState(true);
+
+  const [error, setError] = useState("");
+
+  const handleOnChangeText = (value, fieldname) => {
+    setUserInfo({ ...userInfo, [fieldname]: value });
+  };
+
+  const isValidForm = () => {
+    if (!isValidObjField(userInfo))
+      return updateError("Llene todos los campos", setError);
+    if (!nombres.trim() || nombres.length < 5)
+      return updateError("Debe contener los dos nombres", setError);
+    if (!apellidos.trim() || apellidos.length < 5)
+      return updateError("Debe contener los dos apellidos", setError);
+    if (!isEmailValid(correo)) return updateError("Email invalido", setError);
+    if (!contraseña.trim() || contraseña.length < 8)
+      return updateError("Contraseña debe tener 8 caracteres");
+    return true;
+  };
+
+  const submitForm = () => {
+    //Datos para registrar a los usuarios
+    if (isValidForm()) {
+      console.log(userInfo);
+      signUp();
+    }
+  };
+
   return (
-    <ImageBackground source={FondoRegistrarse} style={styles.containerRegis}>
-      <KeyboardAwareScrollView>
-        <View style={styles.containerCenterRegis}>
-          <View>
-            <View style={styles.ContenedorRegistroFlecha}>
-              <TouchableOpacity
-                onPress={() => {
-                  navigation.goBack();
+    <ImageBackground source={Cover} style={styles.containerSignUp}>
+      <KeyboardAwareScrollView style={{ flex: 1 }}>
+        <View style={styles.subContainer}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.goBack();
+            }}
+            style={styles.btnBack}
+          >
+            <Image style={styles.icoBack} source={btnBack} />
+          </TouchableOpacity>
+          <View style={styles.containerTitle}>
+            <Text style={styles.txtSignUp}>REGISTRATE</Text>
+            <Text style={styles.txtSub}>Para tu Cuenta</Text>
+          </View>
+          <View style={styles.containerForm}>
+            {error ? (
+              <Text
+                style={{
+                  marginTop: "1%",
+                  color: "#FF0B0B",
+                  fontSize: 15,
+                  textAlign: "center",
+                  fontFamily: "Roboto",
                 }}
               >
+                {error}
+              </Text>
+            ) : null}
+            <TextInput
+              value={nombres}
+              onChangeText={(value) => handleOnChangeText(value, "nombres")}
+              autoCapitalize="words"
+              autoCorrect={true}
+              style={styles.inputs}
+              placeholderTextColor="#fff"
+              placeholder="Nombres"
+            />
+            <TextInput
+              value={apellidos}
+              onChangeText={(value) => handleOnChangeText(value, "apellidos")}
+              autoCapitalize="words"
+              autoCorrect={true}
+              style={styles.inputs}
+              placeholderTextColor="#fff"
+              placeholder="Apellidos"
+            />
+            <TextInput
+              value={correo}
+              onChangeText={(value) => handleOnChangeText(value, "correo")}
+              autoComplete="email"
+              autoCapitalize="none"
+              textContentType="emailAddress"
+              autoCorrect={true}
+              style={styles.inputs}
+              placeholderTextColor="#fff"
+              placeholder="Correo"
+            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("SignIn")}
+              style={styles.btnO}
+            >
+              <Text style={styles.txtBtnS}>
+                Ya tienes cuenta? Iniciar Sesion
+              </Text>
+            </TouchableOpacity>
+
+            <View style={styles.inputPassword}>
+              <TextInput
+                value={contraseña}
+                onChangeText={(value) =>
+                  handleOnChangeText(value, "contraseña")
+                }
+                textContentType="password"
+                autoCapitalize="sentences"
+                style={styles.inputP}
+                placeholderTextColor="#fff"
+                placeholder="Contraseña"
+                secureTextEntry={passwordSecured}
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  setPasswordSecured(!passwordSecured);
+                }}
+                style={{ marginTop: "5%", width: "8%", height: "50%" }}
+              >
                 <Image
-                  source={FlechaRegreRegistrar}
-                  style={styles.FlechaRegistro}
+                  style={{ width: "100%", height: "100%" }}
+                  source={passwordSecured ? OpenEye : CloseEye}
                 />
               </TouchableOpacity>
             </View>
-            <Text style={styles.TextRegistrarseUnder}>REGISTRARSE</Text>
-            <Text style={styles.TextParaCuenta}>Para tu cuenta</Text>
+
+            {/* <Text style={styles.txt}>*Minimo 8 caracteres</Text> */}
+            <TouchableOpacity onPress={submitForm} style={styles.btnSignUp}>
+              <Text style={styles.txtBtnSU}>REGISTRARSE</Text>
+            </TouchableOpacity>
           </View>
-          <TextInput
-            style={styles.inputRegis}
-            placeholder="Nombres"
-            placeholderTextColor={"#FFFFFF"}
-          />
-          <TextInput
-            style={styles.inputRegis}
-            placeholder="Apellidos"
-            placeholderTextColor={"#FFFFFF"}
-          />
-          <TextInput
-            style={styles.inputRegis}
-            placeholder="Correo"
-            placeholderTextColor={"#FFFFFF"}
-          />
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("Login");
-            }}
-          >
-            <Text style={styles.TextFormularioRegis1}>
-              Ya tienes cuenta? Inicia Sesion
-            </Text>
-          </TouchableOpacity>
-          <TextInput
-            style={styles.inputRegis}
-            placeholder="Contraseña"
-            placeholderTextColor={"#FFFFFF"}
-            secureTextEntry={true}
-          />
-          <Text style={styles.TextFormularioRegis2}>Minimo 8 caracteres*</Text>
-          <TouchableOpacity onPress={() => signUp()} style={styles.BotonRegis}>
-            <Text style={styles.TextBotonRegis}>REGISTRARSE</Text>
-          </TouchableOpacity>
         </View>
       </KeyboardAwareScrollView>
     </ImageBackground>
@@ -78,85 +169,105 @@ function Signup({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  containerRegis: {
+  containerSignUp: {
     flex: 1,
+    height: "100%",
+    width: "100%",
+  },
+  subContainer: {
+    flex: 3,
+    height: "100%",
+    width: "100%",
+    marginTop: "32%",
+  },
+  btnBack: {
+    width: "7%",
+    height: 25,
+    marginLeft: "4%",
+  },
+  icoBack: {
+    width: "100%",
+    height: "100%",
+  },
+  containerTitle: {
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
-    justifyContent: "space-between",
   },
-  ContenedorRegistroFlecha: {
-    width: 400,
-  },
-  FlechaRegistro: {
-    marginBottom: 3,
-    width: 27,
-    height: 27,
-    left: 5,
-    top: 20,
-  },
-  TextRegistrarseUnder: {
-    color: "#FFFFFF",
-    fontFamily: "monospace",
+  txtSignUp: {
     fontWeight: "bold",
+    fontSize: 33,
+    color: "#fff",
+    fontFamily: "Roboto",
     letterSpacing: 1,
-    fontSize: 40,
-    textAlign: "center",
   },
-  TextParaCuenta: {
-    color: "#FFFFFF",
-    fontSize: 20,
-    fontFamily: "monospace",
-    fontWeight: "bold",
-    textAlign: "center",
-    letterSpacing: 3,
-    top: -9,
+  txtSub: {
+    fontWeight: "600",
+    fontSize: 19,
+    color: "#fff",
+    fontFamily: "Roboto",
   },
-  TextFormularioRegis1: {
-    color: "#FFFFFF",
-    fontFamily: "monospace",
-    textAlign: "right",
-    top: -30,
-    right: 19,
-  },
-  TextFormularioRegis2: {
-    color: "#FFFFFF",
-    fontFamily: "monospace",
-    textAlign: "right",
-    top: -35,
-    right: 19,
-  },
-  containerCenterRegis: {
-    height: 730,
-    justifyContent: "flex-start",
-    top: 105,
+  containerForm: {
     flex: 1,
-  },
-  inputRegis: {
-    borderBottomColor: "#FFFFFF",
-    borderBottomWidth: 1,
-    width: 350,
-    height: 50,
-    color: "#FFFFFF",
-    marginBottom: 40,
-    letterSpacing: 2,
-    left: 30,
-  },
-  TextBotonRegis: {
-    color: "#8DCFEC",
-    top: 15,
-    fontSize: 13,
-    fontFamily: "monospace",
-    fontWeight: "bold",
-    letterSpacing: 4,
-  },
-  BotonRegis: {
-    backgroundColor: "#FFFFFF",
-    width: 230,
-    height: 53,
+    width: "100%",
+    height: "70%",
     alignItems: "center",
-    elevation: 6,
-    borderRadius: 4,
-    alignSelf: "center",
-    top: -15,
+    marginBottom: "70%",
+  },
+  inputs: {
+    height: "20%",
+    width: "80%",
+    borderBottomColor: "#fff",
+    borderBottomWidth: 1,
+    marginTop: "1%",
+    color: "#fff",
+  },
+  inputPassword: {
+    flexDirection: "row",
+    alignItems: "center",
+    height: "20%",
+    width: "80%",
+    borderBottomColor: "#fff",
+    borderBottomWidth: 1,
+  },
+  inputP: {
+    color: "#fff",
+    width: "90%",
+  },
+  btnO: {
+    flex: 1,
+    marginTop: "2%",
+    width: "100%",
+    marginLeft: "70%",
+  },
+  txtBtnS: {
+    color: "#fff",
+    fontFamily: "Roboto",
+    fontSize: 15,
+    width: "100%",
+  },
+  /*   txt:{
+    color:"#fff",
+    fontFamily:"Roboto",
+    fontSize:15,
+    width:"100%",
+    marginLeft:"100%",
+    marginBottom:"3%",
+  }, */
+  btnSignUp: {
+    marginTop: "10%",
+    width: "35%",
+    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  txtBtnSU: {
+    fontFamily: "Roboto",
+    fontSize: 17,
+    fontWeight: "700",
+    color: "#8DCFEC",
+    marginTop: "8%",
+    marginBottom: "8%",
   },
 });
 export default Signup;

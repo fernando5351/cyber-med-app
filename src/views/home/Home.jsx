@@ -36,6 +36,33 @@ function Home({ navigation }) {
             <View style={styles.viewProducts}>
               <Products />
             </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products />
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -52,7 +79,7 @@ const styles = StyleSheet.create({
   },
 
   containerTop: {
-    height: "13%",
+    /* height: "13%", */
     backgroundColor: "#8DCFEC",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -95,13 +122,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   viewProducts: {
     height: 150,
-    width: 150,
+    width: 120,
     marginLeft: "7%",
-    marginRight: "6%",
-    marginBottom: "4%",
+    marginRight: "8%",
+    marginBottom: "5%",
     marginTop: "4%",
   },
 });

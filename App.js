@@ -9,8 +9,9 @@ import PantallaCarga from "./src/views/charging/charging";
 import Login from "./src/views/login/Login";
 import Signin from "./src/views/login/SignIn";
 import Signup from "./src/views/login/SignUp";
+import PasswordRecover from "./src/views/login/PasswordRecover";
 
-import { AuthUser } from "./src/users/User";
+import { AuthUser } from "./src/utils/User";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,7 +39,7 @@ export default function App() {
   React.useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 1500);
   }, []);
 
   if (isLoading) {
@@ -56,6 +57,10 @@ export default function App() {
               <Stack.Screen name="Login" component={Login} />
               <Stack.Screen name="SignUp" component={Signup} />
               <Stack.Screen name="SignIn" component={Signin} />
+              <Stack.Screen
+                name="RecoverPassword"
+                component={PasswordRecover}
+              />
             </Stack.Navigator>
           )}
         </View>
