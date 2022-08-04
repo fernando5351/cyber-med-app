@@ -7,6 +7,8 @@ import {
   TextInput,
   ImageBackground,
   Image,
+  Alert,
+  Keyboard,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Cover from "../../../assets/images/startbackground.jpg";
@@ -19,9 +21,10 @@ import {
   isValidObjField,
   updateError,
 } from "../../utils/Methods";
-import { color } from "react-native-reanimated";
 
 import { AuthUser } from "../../utils/User";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import Loader from "../../components/loading/Loader";
 
 function Signin({ navigation }) {
   const { signIn } = React.useContext(AuthUser);
@@ -35,30 +38,55 @@ function Signin({ navigation }) {
 
   const [passwordSecured, setPasswordSecured] = useState(true);
 
+  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
   const handleOnChangeText = (value, fieldname) => {
     setUserInfo({ ...userInfo, [fieldname]: value });
   };
 
-  const isValidForm = () => {
+  const validate = () => {
+    Keyboard.dismiss();
+    let valid = true;
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
     if (!isEmailValid(correo)) return updateError("Email invalido", setError);
     if (!contraseña.trim() || contraseña.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
-    return true;
+    if (valid) {
+      signup();
+      console.log(userInfo);
+    }
+    valid = false;
   };
 
-  const submitForm = () => {
-    //Datos de inicio de sesion
-    if (isValidForm()) {
-      console.log(userInfo);
-      signIn();
-    }
+  const signup = () => {
+    setLoading(true);
+    setTimeout(async () => {
+      setLoading(false);
+
+      let userData = await AsyncStorage.getItem("user");
+
+      if (userData) {
+        userData = JSON.parse(userData);
+        if (correo == userData.correo && contraseña == userData.contraseña) {
+          AsyncStorage.setItem(
+            "user",
+            JSON.stringify({ ...userData, loggedIn: true })
+          );
+          signIn();
+        } else {
+          Alert.alert("Error", "Datos invalidos");
+        }
+      } else {
+        Alert.alert("Error", "El usuario no existe");
+      }
+    }, 3000);
   };
   return (
     <ImageBackground source={Cover} style={styles.containerSignIn}>
+      <Loader visible={loading} />
       <KeyboardAwareScrollView style={{ flex: 1 }}>
         <View style={styles.subContainer}>
           <TouchableOpacity
@@ -135,11 +163,7 @@ function Signin({ navigation }) {
               <Text style={styles.txtBtnS}>Olvidaste tu contraseña?</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity
-              onPress={submitForm}
-              /* onPress={() => signIn()} */
-              style={styles.btnSignIn}
-            >
+            <TouchableOpacity onPress={validate} style={styles.btnSignIn}>
               <Text style={styles.txtBtnSignIn}>INICIAR SESION</Text>
             </TouchableOpacity>
           </View>

@@ -7,12 +7,16 @@ import {
   TextInput,
   ImageBackground,
   Image,
+  Keyboard,
+  Alert,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Cover from "../../../assets/images/backgroundrecord.jpg";
 import btnBack from "../../../assets/icons/arrows/returndouble.png";
-import OpenEye from "../../../assets/icons/profile/eyes.png";
-import CloseEye from "../../../assets/icons/profile/eyesclose.png";
+import OpenEye from "../../../assets/icons/profile/whiteeyes.png";
+import CloseEye from "../../../assets/icons/profile/whiteblockeyes.png";
+
+import Loader from "../../components/loading/Loader";
 
 import {
   isValidObjField,
@@ -21,6 +25,7 @@ import {
 } from "../../utils/Methods";
 
 import { AuthUser } from "../../utils/User";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Signup({ navigation }) {
   const { signUp } = React.useContext(AuthUser);
@@ -36,13 +41,17 @@ function Signup({ navigation }) {
 
   const [passwordSecured, setPasswordSecured] = useState(true);
 
+  const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
   const handleOnChangeText = (value, fieldname) => {
     setUserInfo({ ...userInfo, [fieldname]: value });
   };
 
-  const isValidForm = () => {
+  const validate = () => {
+    Keyboard.dismiss();
+    let valid = true;
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
     if (!nombres.trim() || nombres.length < 5)
@@ -51,20 +60,31 @@ function Signup({ navigation }) {
       return updateError("Debe contener los dos apellidos", setError);
     if (!isEmailValid(correo)) return updateError("Email invalido", setError);
     if (!contraseña.trim() || contraseña.length < 8)
-      return updateError("Contraseña debe tener 8 caracteres");
-    return true;
+      return updateError("Contraseña debe tener 8 caracteres", setError);
+    if (valid) {
+      signup();
+      console.log(userInfo);
+    }
+    valid = false;
   };
 
-  const submitForm = () => {
-    //Datos para registrar a los usuarios
-    if (isValidForm()) {
-      console.log(userInfo);
-      signUp();
-    }
+  const signup = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+
+      try {
+        AsyncStorage.setItem("user", JSON.stringify(userInfo));
+        signUp();
+      } catch (error) {
+        Alert.alert("Error", "Algo salio mal");
+      }
+    }, 3000);
   };
 
   return (
     <ImageBackground source={Cover} style={styles.containerSignUp}>
+      <Loader visible={loading} />
       <KeyboardAwareScrollView style={{ flex: 1 }}>
         <View style={styles.subContainer}>
           <TouchableOpacity
@@ -158,7 +178,7 @@ function Signup({ navigation }) {
             </View>
 
             {/* <Text style={styles.txt}>*Minimo 8 caracteres</Text> */}
-            <TouchableOpacity onPress={submitForm} style={styles.btnSignUp}>
+            <TouchableOpacity onPress={validate} style={styles.btnSignUp}>
               <Text style={styles.txtBtnSU}>REGISTRARSE</Text>
             </TouchableOpacity>
           </View>
