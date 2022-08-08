@@ -13,9 +13,9 @@ import Step2 from "../views/description/Step2";
 import Step3 from "../views/description/Step3";
 import Step4 from "../views/description/Step4";
 import Android from "../views/description/Android";
-import Pedidos from "../components/orders/Orders";
-import Historial from "../components/record/record";
-import Carrito from "../components/shoppingcart/cart";
+import Pedidos from "../views/shopping/Orders";
+import Historial from "../views/shopping/Record";
+import Carrito from "../views/shopping/Cart";
 
 import HomeI from "../../assets/icons/finish/home.png";
 import PedidosI from "../../assets/icons/orders/basket.png";
