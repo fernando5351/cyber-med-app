@@ -5,7 +5,7 @@ import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenRectangle from "../../../assets/icons/steps/check.png";
 import Scroll from "../../components/scrollView/Scroll";
 
-const Step2 = () => {
+const Step2 = ({ navigation }) => {
   return (
     <View style={styles.containerPrin}>
       <View style={styles.contentTop}>
@@ -13,14 +13,31 @@ const Step2 = () => {
         <Text style={styles.styleText}>Paso 2</Text>
       </View>
       <View style={styles.contentCompra}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}
+        >
           <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
         </TouchableOpacity>
         <Text style={styles.styleTextDos}>Completar Compra</Text>
         <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
-      <Scroll />
+      <View style={styles.contentScroll}>
+        <Scroll />
+      </View>
+      <View style={styles.containerButton}>
+        <TouchableOpacity
+          style={styles.Button}
+          onPress={() => {
+            navigation.navigate("Step3");
+          }}
+        >
+          <Text style={styles.textBtn}>COMPRAR</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.contentBottom}></View>
     </View>
   );
 };
@@ -36,7 +53,7 @@ const styles = StyleSheet.create({
   },
   contentTop: {
     width: "100%",
-    height: "15%",
+    height: "10%",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -56,12 +73,12 @@ const styles = StyleSheet.create({
   },
   contentCompra: {
     width: "100%",
-    height: "15%",
+    height: "10%",
     backgroundColor: "#fff",
   },
   ImagenFlecha: {
-    width: 40,
-    height: 40,
+    width: 30,
+    height: 30,
     marginTop: "3%",
     marginLeft: "3%",
   },
@@ -69,21 +86,54 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "15%",
-    marginTop: "-8%",
+    marginLeft: "13%",
+    marginTop: "-7%",
   },
   ImagenRectangle: {
-    width: 35,
-    height: 35,
-    marginTop: "10%",
+    width: 30,
+    height: 30,
+    marginTop: "8%",
     marginLeft: "25%",
   },
   textoIntro: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "36%",
-    marginTop: "-7%",
+    marginLeft: "34%",
+    marginTop: "-6%",
     marginBottom: "5%",
+  },
+  contentScroll: {
+    height: "50%",
+    marginLeft: "5%",
+    width: "90%",
+    marginTop: "15%",
+  },
+  containerButton: {
+    backgroundColor: "#fff",
+    height: "10%",
+    marginTop: "2%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  Button: {
+    backgroundColor: "#8DCFEC",
+    width: "40%",
+    height: "70%",
+    alignItems: "center",
+    borderRadius: 20,
+    justifyContent: "center",
+  },
+  textBtn: {
+    fontFamily: "Roboto",
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#fff",
+  },
+  contentBottom: {
+    backgroundColor: "#8DCFEC",
+    width: "100%",
+    height: "20%",
+    marginTop: "5%",
   },
 });

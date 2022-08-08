@@ -36,6 +36,10 @@ function Home({ navigation }) {
             <Products />
           </View>
         </View>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Description")}>
+          <Text style={styles.titleMain}>Destacados</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );

@@ -1,177 +1,199 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, View, Image, Text, TextInput } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import ImagenCard from "../../../assets/icons/steps/creditcard.png";
 import CheckBox from "react-native-check-box";
 
-const Step1 = () => {
+const Step1 = ({ navigation }) => {
   return (
-    <KeyboardAwareScrollView style={styles.Keyboard}>
-      <View style={styles.containerMain}>
-        <View style={styles.containerTop}>
+    <View style={styles.container}>
+      <View style={styles.containerColchon}>
+        <View style={styles.containerMain}>
           <Image style={styles.ImagenCheck} source={ImagenCheck} />
           <Text style={styles.styleText}>Paso 1</Text>
         </View>
-        <View style={styles.containerSecundario}>
-          <View style={styles.subcontent}>
-            <TouchableOpacity>
-              <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
-            </TouchableOpacity>
-            <Text style={styles.styleTextDos}>Registrar tarjeta</Text>
-            <Image style={styles.ImagenCard} source={ImagenCard} />
-            <Text style={styles.textoIntro}>
-              Introduce los datos que se te piden
-            </Text>
-          </View>
-          <TextInput
-            placeholder="Titular:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <TextInput
-            placeholder="Numero de Tarjeta:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <TextInput
-            placeholder="Vecha de Vencimiento:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <TextInput
-            placeholder="CVV:"
-            placeholderTextColor={"#8DCFEC"}
-            style={styles.styleForm}
-          />
-          <CheckBox style={styles.checkBox} />
-          <Text style={styles.checkText}>Guardar Tarjeta</Text>
-          <TouchableOpacity style={styles.colorBoton}>
-            <Text style={styles.letraBoton}>SIGUIENTE</Text>
-          </TouchableOpacity>
+        <View style={styles.key}>
+          <KeyboardAwareScrollView style={styles.keyScroll}>
+            <View style={styles.contentTop}>
+              <TouchableOpacity
+                style={{
+                  width: "8%",
+                  height: "60%",
+                  marginLeft: "2%",
+                }}
+                onPress={() => {
+                  navigation.goBack();
+                }}
+              >
+                <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
+              </TouchableOpacity>
+              <Text style={styles.styleTextDos}>Completar Compra</Text>
+              <Image style={styles.ImagenCard} source={ImagenCard} />
+              <Text style={styles.textoIntro}>
+                Introducen los datos que se te piden
+              </Text>
+            </View>
+            <View style={styles.contentKey}>
+              <TextInput
+                placeholder="Titular:"
+                placeholderTextColor={"#8DCFEC"}
+                style={styles.styleForm}
+              />
+              <TextInput
+                placeholder="Numero de Tarjeta:"
+                placeholderTextColor={"#8DCFEC"}
+                style={styles.styleForm}
+              />
+              <TextInput
+                placeholder="Vecha de Vencimiento:"
+                placeholderTextColor={"#8DCFEC"}
+                style={styles.styleForm}
+              />
+              <TextInput
+                placeholder="CVV:"
+                placeholderTextColor={"#8DCFEC"}
+                style={styles.styleForm}
+              />
+            </View>
+            <View style={styles.Check}>
+              <CheckBox style={styles.CheckBox}></CheckBox>
+              <Text style={styles.Guardar}>Guardar Tarjeta</Text>
+              <TouchableOpacity
+                style={styles.Button}
+                onPress={() => {
+                  navigation.navigate("Step2");
+                }}
+              >
+                <Text style={styles.textBtn}>COMPRAR</Text>
+              </TouchableOpacity>
+            </View>
+          </KeyboardAwareScrollView>
         </View>
       </View>
-    </KeyboardAwareScrollView>
+    </View>
   );
 };
 
 export default Step1;
 
 const styles = StyleSheet.create({
-  Keyboard: {
+  container: {
     flex: 1,
     backgroundColor: "#8DCFEC",
+  },
+  containerColchon: {
+    backgroundColor: "#fff",
+    width: "100%",
+    height: "92%",
   },
   containerMain: {
-    flex: 1,
-    width: "100%",
-    height: "100%",
     backgroundColor: "#8DCFEC",
-  },
-  containerTop: {
-    flex: 1,
-    width: "100%",
-    height: "15%",
     display: "flex",
-    marginTop: "5%",
-    marginBottom: "5%",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
+    width: "100%",
+    height: "12%",
   },
   ImagenCheck: {
-    width: 50,
-    height: 50,
+    width: "15%",
+    height: "70%",
   },
   styleText: {
     fontSize: 40,
     fontWeight: "bold",
     color: "#fff",
-    marginLeft: 15,
+    marginLeft: "3%",
     fontFamily: "Roboto",
   },
-  containerSecundario: {
-    width: "100%",
-    height: "85%",
-    backgroundColor: "#fff",
-    flex: 1,
+  key: {
+    backgroundColor: "#000",
+    height: "88%",
   },
-  subcontent: {
-    width: "100%",
-    height: "15%",
+  keyScroll: {
     backgroundColor: "#fff",
-    flex: 1,
+    width: "100%",
+    height: "87%",
+  },
+  contentTop: {
+    backgroundColor: "#fff",
+    width: "100%",
+    height: "20%",
+    marginTop: "2%",
+    justifyContent: "center",
+  },
+  contentKey: {
+    backgroundColor: "#fff",
+    height: "50%",
+  },
+  styleForm: {
+    height: "20%",
+    width: "90%",
+    marginLeft: "5%",
+    marginEnd: 20,
+    borderBottomWidth: 1,
+    letterSpacing: 2,
+    borderColor: "#8DCFEC",
+    marginTop: "1%",
+    marginBottom: "2%",
+  },
+  Check: {
+    backgroundColor: "#fff",
+    height: "15%",
+    marginTop: "5%",
+    marginBottom: "81%",
   },
   ImagenFlecha: {
-    width: 40,
-    height: 40,
-    marginTop: "3%",
-    marginLeft: "3%",
+    width: "100%",
+    height: "100%",
   },
   styleTextDos: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "15%",
-    marginTop: "-8%",
+    marginLeft: "12%",
+    marginTop: "-15%",
   },
   ImagenCard: {
-    width: 40,
-    height: 40,
-    marginTop: "10%",
-    marginLeft: "8%",
+    width: "10%",
+    height: "40%",
+    marginLeft: "10%",
+    marginTop: "7%",
   },
   textoIntro: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "20%",
-    marginTop: "-8%",
-    marginBottom: "5%",
+    marginLeft: "22%",
+    marginTop: "-7%",
   },
-  styleForm: {
-    fontSize: 15,
-    marginTop: 35,
-    marginLeft: 20,
-    marginEnd: 20,
-    borderBottomWidth: 2,
-    borderColor: "#8DCFEC",
-    marginBottom: "5%",
-  },
-  checkBox: {
-    marginTop: "5%",
+  CheckBox: {
     marginLeft: "5%",
   },
-  checkText: {
+  Guardar: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "13%",
+    marginLeft: "15%",
     marginTop: "-6%",
-    marginBottom: "5%",
   },
-  colorBoton: {
-    width: "35%",
-    height: "9%",
-    marginTop: "5%",
+  Button: {
     backgroundColor: "#8DCFEC",
-    marginBottom: "15%",
-    marginLeft: "33%",
-    justifyContent: "center",
-    alignItems: "center",
+    width: "40%",
+    height: "60%",
     borderRadius: 20,
+    marginTop: "10%",
+    marginLeft: "30%",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  letraBoton: {
-    fontSize: 16,
-    fontWeight: "600",
+  textBtn: {
+    fontFamily: "Roboto",
+    fontSize: 18,
+    fontWeight: "700",
     color: "#fff",
   },
 });
