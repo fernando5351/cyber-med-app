@@ -5,7 +5,6 @@ import "react-native-gesture-handler";
 import Constants from "expo-constants";
 import AppStack from "./src/navigation/AppStack";
 import AuthStack from "./src/navigation/AuthStack";
-import { HomeStackScreen } from "./src/navigation/AppStack";
 import PantallaCarga from "./src/views/charging/charging";
 import { AuthUser } from "./src/utils/AuthContext";
 
