@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
-import SearchBarD from "../../components/searchbar/SearchBarD";
+import { SearchBar } from "../../components/searchbar/SearchBar";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenMedicamento from "../../../assets/images/buscapina.jpg";
 import ImagenPlus from "../../../assets/icons/description/pluscircle.png";
@@ -10,7 +10,7 @@ const Description = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <SearchBarD />
+        <SearchBar />
       </View>
       <View style={styles.subContent}>
         <TouchableOpacity

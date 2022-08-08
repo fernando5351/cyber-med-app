@@ -1,75 +1,166 @@
+import React from "react";
+import { useState } from "react";
 import {
   Image,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
-  Keyboard,
+  View
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import BackG from "../../../assets/icons/arrows/grayreturn.png";
 import ProfileSB from "../../../assets/icons/profile/blueusercircle.png";
 import ProfileW from "../../../assets/icons/profile/user.png";
-import Fondo from "../../../assets/images/backgroundmain.jpeg";
+import EyeClose from "../../../assets/icons/profile/eyesclose.png"
+import EyeOpen from "../../../assets/icons/profile/eyes.png"
+
+import { isValidObjField, updateError, isEmailValid } from "../../utils/Methods";
 
 const ProfileE = ({ navigation }) => {
+
+  const [userInfo, setUserInfo] = useState({
+    nombres:'',
+    apellidos:'',
+    correo:'',
+    contraseña:'',
+    numeroTarjeta:'',
+  })
+
+  const {nombres,  apellidos, correo, contraseña, numeroTarjeta} = userInfo
+
+  const handleOnChangeText = (value, fieldname) =>{
+    setUserInfo({...userInfo, [fieldname]: value})
+  };
+
+  const isValidForm = () => {
+    //Ingresar todos los datos
+    if(!isValidObjField(userInfo)) return updateError('Llene todos los campos', setError)
+    //Nombre no menor a 3 palabras
+    if(!nombres.trim() || nombres.length < 3) return updateError('Nombre muy corto', setError)
+    //Appellido no menos a 3 palabras
+    if(!apellidos.trim() || apellidos.length < 3) return updateError('Apellido muy corto', setError)
+    //Correo valido
+    if(!isEmailValid(correo)) return updateError('Email invalido', setError)
+    //Contraseña debe de contener mas de 8 caracteres
+    if(!contraseña.trim() || contraseña.length < 3) return updateError('Contraseña debe tener 8 caracteres', setError)
+    //Numero de tarjeta (Aun no se si sirve XD)
+    if (!numeroTarjeta.trim() || numeroTarjeta.length <= 9) return updateError('Numero de tarjeta corto', setError)
+
+    return true;
+  }
+
+  const submitForm = () => {
+    if(isValidForm()){
+      //Enviar formulario
+      console.log(userInfo);
+    }
+  }
+
+  const [error, setError] = useState('')
+
+  const [passwordSecured, setPasswordSecured] = useState(true); 
+
   return (
-    <KeyboardAwareScrollView style={styles.keyboard}>
-      <View source={Fondo} style={styles.containerMain}>
-        <View style={styles.containerTop}>
-          <Image style={styles.profileTop} source={ProfileW} />
-          <Text style={styles.titleTop}>Editar Perfil</Text>
-        </View>
-        <View style={styles.containerCenter}>
-          <View style={styles.containerBtn}>
-            <TouchableOpacity
-              onPress={() => {
-                navigation.goBack();
-              }}
-            >
-              <Image source={BackG} style={styles.btnBack} />
-            </TouchableOpacity>
-            <Image source={ProfileSB} style={styles.profileCenter} />
-          </View>
-          <View style={styles.containerForm}>
-            <TextInput
-              placeholder="Nombres"
-              placeholderTextColor={"#8DCFEC"}
-              style={styles.inputProfile}
-            />
-            <TextInput
-              placeholder="Apellidos"
-              placeholderTextColor={"#8DCFEC"}
-              style={styles.inputProfile}
-            />
-            <TextInput
-              placeholder="Correo"
-              placeholderTextColor={"#8DCFEC"}
-              style={styles.inputProfile}
-            />
-            <TextInput
-              secureTextEntry={true}
-              placeholder="Contraseña"
-              placeholderTextColor={"#8DCFEC"}
-              style={styles.inputProfile}
-            />
-            <TextInput
-              keyboardType="numeric"
-              placeholder="Numero de Tarjeta"
-              placeholderTextColor={"#8DCFEC"}
-              style={styles.inputProfile}
-            />
-            <TouchableOpacity
-              onPress={Keyboard.dismiss}
-              style={styles.buttonSave}
-            >
-              <Text style={styles.textButton}>Guardar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+    <View style={styles.containerMain}>
+      <View style={styles.containerTop}>
+        <Image source={ProfileW} style={styles.profileTop} />
+        <Text style={styles.titleTop}>Editar Perfil</Text>
       </View>
-    </KeyboardAwareScrollView>
+      <View style={styles.containerCenter}>
+        <KeyboardAwareScrollView
+        style={styles.containerKeyboard}>
+          <View style={styles.subContainerCenter}>
+            <View style={styles.containerBtn}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.goBack();
+                }}
+              >
+                <Image style={styles.btnBack} source={BackG} />
+              </TouchableOpacity>
+              <Image style={styles.profileCenter} source={ProfileSB} />
+            </View>
+            <View style={styles.containerForm}>
+              {error ? <Text style={{color:"#FF0B0B" ,fontSize: 15, textAlign:"center", fontFamily:"Roboto"}} >{error}</Text>: null}
+              <View style={styles.inputProfile}>
+              <TextInput
+               value={nombres}
+               onChangeText={(value) => handleOnChangeText(value, 'nombres')}
+                style={styles.inputProfileE}
+                placeholder="Nombres"
+                placeholderTextColor={"#8DCFEC"}
+                autoCapitalize="words"
+                autoCorrect={true}
+                autoComplete="name"
+              />
+              
+              </View>
+              <View style={styles.inputProfile}>
+              <TextInput
+               value={apellidos}
+               onChangeText={(value) => handleOnChangeText(value, 'apellidos')}
+                style={styles.inputProfileE}
+                placeholder="Apellidos"
+                placeholderTextColor={"#8DCFEC"}
+                autoCapitalize="words"
+                autoCorrect={true}
+                autoComplete="name"
+              />
+              </View>
+              <View style={styles.inputProfile}>
+                <TextInput
+                 value={correo}
+                 onChangeText={(value) => handleOnChangeText(value, 'correo')}
+                  style={styles.inputProfileE}
+                  placeholder="Correo"
+                  placeholderTextColor={"#8DCFEC"}
+                  autoComplete="email"
+                  autoCapitalize="none"
+                  textContentType="emailAddress"
+                  autoCorrect={true} 
+                />
+              </View>
+              <View style={styles.inputProfilePassword}>
+              <TextInput
+                value={contraseña}
+                onChangeText={(value) => handleOnChangeText(value, 'contraseña')}
+                secureTextEntry={passwordSecured}
+                style={styles.inputProfileP}
+                placeholder="Contraseña"
+                placeholderTextColor={"#8DCFEC"}
+                textContentType="password"
+                autoCapitalize="sentences"
+              />
+              <TouchableOpacity
+              onPress={() => {setPasswordSecured(!passwordSecured)}}
+              style={styles.contIco}
+              >
+              <Image style={styles.icoEye} 
+              source={passwordSecured ? EyeOpen : EyeClose }/>
+              </TouchableOpacity>
+              </View>
+              <View style={styles.inputProfile}>
+              <TextInput
+              value={numeroTarjeta}
+              onChangeText={(value) => handleOnChangeText(value, 'numeroTarjeta')}
+                style={styles.inputProfileE}
+                placeholder="Numero de Tarjeta"
+                placeholderTextColor={"#8DCFEC"}
+                keyboardType="numeric"
+                autoCorrect={true}
+              />
+              </View>
+              <TouchableOpacity 
+                onPress={submitForm}
+                style={styles.buttonSave}>
+                <Text style={styles.textButton}>GUARDAR</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </KeyboardAwareScrollView>
+      </View>
+    </View>
   );
 };
 
@@ -82,16 +173,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   containerTop: {
-    height: "20%",
+    height: "14%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
-    marginTop: "3%",
   },
   profileTop: {
-    width: 90,
-    height: 90,
+    width: "20%",
+    height: "90%",
   },
   titleTop: {
     fontSize: 29,
@@ -101,64 +190,98 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   containerCenter: {
-    marginTop: "3%",
     height: "80%",
-    backgroundColor: "#FFF",
-    alignItems: "center",
-    flex: 1,
+    backgroundColor: "#fff",
+  },
+  containerKeyboard: {
+    flex: 3,
+    height:"100%",
+    display:"flex",
+  },
+  subContainerCenter: {
+    flex: 3,
+    height: "100%",
+    justifyContent: "center",
+    marginTop:"2%",
   },
   containerBtn: {
     flexDirection: "row",
     height: "15%",
     width: "100%",
-    flex: 1,
+    marginTop: "5%",
   },
   btnBack: {
-    width: 45,
-    height: 45,
-    marginLeft: "10%",
-    marginTop: "25%",
+    width: "50%",
+    height: "40%",
+    marginTop: "20%",
+    marginLeft: "15%",
   },
   profileCenter: {
-    width: 75,
-    height: 75,
+    width: "20%",
+    height: "90%",
     marginLeft: "20%",
-    marginTop: "3%",
+    marginTop: "1%",
   },
   containerForm: {
-    flex: 1,
+    height: "85%",
     width: "100%",
     alignItems: "center",
-    height: "85%",
   },
   inputProfile: {
-    borderBottomColor: "#8DCFEC",
-    borderBottomWidth: 2,
-    height: 65,
-    width: "90%",
+    flex:2,
+    color: "#4DACD6",
+    marginTop: "5%",
     marginBottom: "5%",
-    flex: 1,
-    fontFamily: "Roboto",
+    height: "20%",
+    width: "90%",
+    borderBottomColor: "#8DCFEC",
+    borderBottomWidth: 1,
+  },
+  inputProfileE:{
+    width:"100%",
+    color:"#8DCFEC"
+  },
+  inputProfilePassword:{
+    flex:1,
+    color: "#4DACD6",
+    marginTop: "4%",
+    marginBottom:"5%",
+    height: "20%",
+    width: "90%",
+    display: "flex",
+    flexDirection: "row",
+    borderBottomColor: "#8DCFEC",
+    borderBottomWidth: 1,
+    alignItems:"center",
+  },
+  inputProfileP:{
+    width:"90%",
+    color:"#8DCFEC"
+  },
+  contIco:{
+    width:"8%",
+    height:"90%",
+  },
+  icoEye:{
+    width:"100%",
+    height:"100%"
   },
   buttonSave: {
-    backgroundColor: "#8DCFEC",
+    flex:1,
     width: "30%",
-    padding: 15,
-    marginTop: "5%",
-    marginBottom: "7%",
-    flex: 1,
+    backgroundColor: "#8DCFEC",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "13%",
+    marginBottom: "15%",
   },
   textButton: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: "700",
     fontFamily: "Roboto",
     textAlign: "center",
-    fontSize: 22,
-    fontWeight: "700",
-    color: "#fff",
-    flex: 1,
-  },
-  keyboard: {
-    flex: 1,
-    backgroundColor: "#8DCFEC",
-    height: "100%",
+    marginTop: "10%",
+    marginBottom: "10%",
   },
 });

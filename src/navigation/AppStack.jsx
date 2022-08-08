@@ -29,7 +29,7 @@ const HomeStack = createNativeStackNavigator();
 const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="HomeH" component={Home} />
+      <HomeStack.Screen name="Home2" component={Home} />
       <HomeStack.Screen name="Profile" component={Profile} />
       <HomeStack.Screen name="EditProfile" component={ProfileE} />
       <HomeStack.Screen name="Pedidos" component={Pedidos} />
@@ -45,7 +45,7 @@ const HomeStackScreen = () => {
   );
 };
 
-export default function DrawerNavigation() {
+export default function AppStack() {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
@@ -57,6 +57,8 @@ export default function DrawerNavigation() {
           color: "#fff",
           fontWeight: "600",
           fontSize: 15,
+          marginTop: "5%",
+          marginBottom: "5%",
         },
         drawerActiveBackgroundColor: "#4DACD6",
         drawerInactiveTintColor: "#8D8787",
@@ -96,7 +98,7 @@ export default function DrawerNavigation() {
 
 const styles = StyleSheet.create({
   icos: {
-    width: 55,
-    height: 55,
+    width: "20%",
+    height: "100%",
   },
 });

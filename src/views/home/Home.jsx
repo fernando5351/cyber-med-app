@@ -6,19 +6,25 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import SearchBarH from "../../components/searchbar/SearchBar";
 import Products from "../../components/products/Products";
+import { SearchBar } from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
 
 function Home({ navigation }) {
+  const Productos = () => {
+    navigation.navigate("Description");
+  };
+
   return (
     <View style={styles.containerMain}>
       <View style={styles.containerTop}>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Image style={styles.icoMenu} source={Menu} />
         </TouchableOpacity>
-        <SearchBarH />
+        <View style={styles.containerSearch}>
+          <SearchBar />
+        </View>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Profile");
@@ -32,14 +38,15 @@ function Home({ navigation }) {
           <View style={styles.containerTitle}>
             <Text style={styles.titleMain}>Destacados</Text>
           </View>
-          <View style={styles.containerProduct}>
-            <Products />
+          <View style={styles.containerProducts}>
+            <View style={styles.viewProducts}>
+              <Products onPress={Productos} />
+            </View>
+            <View style={styles.viewProducts}>
+              <Products onPress={Productos} />
+            </View>
           </View>
         </View>
-
-        <TouchableOpacity onPress={() => navigation.navigate("Description")}>
-          <Text style={styles.titleMain}>Destacados</Text>
-        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -52,9 +59,7 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
   },
-
   containerTop: {
-    height: "13%",
     backgroundColor: "#8DCFEC",
     flexDirection: "row",
     justifyContent: "space-around",
@@ -68,6 +73,10 @@ const styles = StyleSheet.create({
   icoProfile: {
     width: 60,
     height: 60,
+  },
+  containerSearch: {
+    width: "70%",
+    alignItems: "center",
   },
   containerCenter: {
     height: "100%",
@@ -93,12 +102,19 @@ const styles = StyleSheet.create({
     marginTop: "2%",
     marginBottom: "1%",
   },
-  containerProduct: {
+  containerProducts: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  viewProducts: {
     height: 150,
-    width: 150,
+    width: 120,
     marginLeft: "7%",
-    marginRight: "6%",
-    marginBottom: "4%",
+    marginRight: "8%",
+    marginBottom: "5%",
     marginTop: "4%",
   },
 });

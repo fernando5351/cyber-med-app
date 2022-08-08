@@ -28,7 +28,7 @@ const Profile = ({ navigation }) => {
           <Text style={styles.textEstablish}>
             Correo : diegocarias503ida9@gmail.com
           </Text>
-          <Text style={styles.textEstablish}>Contraseña : Holagatiti123</Text>
+          <Text style={styles.textEstablish}>Contraseña : HolaMundo123</Text>
           <Text style={styles.textEstablish}>
             Numero de tarjeta : 12345678910
           </Text>
@@ -60,8 +60,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   profileTop: {
-    width: 90,
-    height: 90,
+    width: "20%",
+    height: "90%",
   },
   titleTop: {
     color: "#8DCFEC",
@@ -82,13 +82,13 @@ const styles = StyleSheet.create({
     marginTop: "5%",
   },
   btnBack: {
-    width: 40,
-    height: 40,
-    marginLeft: "10%",
+    width: "50%",
+    height: "30%",
+    marginLeft: "15%",
   },
   profileCenter: {
-    width: 80,
-    height: 80,
+    width: "20%",
+    height: "85%",
     marginLeft: "20%",
   },
   containerForm: {
@@ -106,10 +106,10 @@ const styles = StyleSheet.create({
   },
   buttonEdit: {
     backgroundColor: "#fff",
-    padding: 15,
-    width: "30%",
+    width: "27%",
     marginLeft: "35%",
-    marginTop: "10%",
+    marginTop: "7%",
+    marginBottom:"5%"
   },
   textBtn: {
     color: "#8DCFEC",
@@ -118,5 +118,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     fontFamily: "Roboto",
     textAlign: "center",
+    marginTop: "10%",
+    marginBottom: "10%",
   },
 });

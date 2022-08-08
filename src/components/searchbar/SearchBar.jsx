@@ -2,7 +2,7 @@ import { View, TextInput, StyleSheet, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Loupe from "../../../assets/icons/search/search.png";
 
-const SearchBarH = () => {
+export const SearchBar = () => {
   return (
     <View style={styles.containerSearchbar}>
       <TextInput
@@ -18,7 +18,7 @@ const SearchBarH = () => {
 
 const styles = StyleSheet.create({
   containerSearchbar: {
-    width: "65%",
+    width: "90%",
     height: 55,
     flexDirection: "row",
     justifyContent: "center",
@@ -39,5 +39,3 @@ const styles = StyleSheet.create({
     height: 40,
   },
 });
-
-export default SearchBarH;

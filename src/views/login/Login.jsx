@@ -13,70 +13,73 @@ function Login({ navigation }) {
   return (
     <ImageBackground
       source={ImagenFondoCarga}
-      style={styles.containerIniciarRegistrar}
+      style={styles.containerLogin}
     >
-      <Image style={styles.ImageCarga} source={ImagenCarga} />
+      <Image style={styles.logo} source={ImagenCarga} />
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("SignIn");
         }}
-        style={styles.Boton1Carga}
+        style={styles.btnSignIn}
       >
-        <Text style={styles.Text1Carga}>INICIAR SESION</Text>
+        <Text style={styles.txtSignIn}>INICIAR SESION</Text>
       </TouchableOpacity>
       <TouchableOpacity
         onPress={() => {
           navigation.navigate("SignUp");
         }}
-        style={styles.Boton2Carga}
+        style={styles.btnSignUp}
       >
-        <Text style={styles.Text2Carga}>REGISTRARSE</Text>
+        <Text style={styles.txtSignUp}>REGISTRARSE</Text>
       </TouchableOpacity>
     </ImageBackground>
   );
 }
 
 const styles = StyleSheet.create({
-  containerIniciarRegistrar: {
+  containerLogin: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent:"center"
   },
-  ImageCarga: {
-    width: 243,
-    height: 243,
+  logo: {
+/*     marginTop:"60%", */
+    width: "60%",
+    height: "20%",
   },
-  Text1Carga: {
+  btnSignIn: {
+    backgroundColor: "#FFFFFF",
+    width: "70%",
+    height: "7%",
+    marginTop:"15%",
+    borderRadius: 40,
+    alignItems: "center",
+    justifyContent:"center",
+  },
+  txtSignIn: {
     color: "#3271A5",
-    top: 18,
     fontSize: 15,
     fontFamily: "monospace",
     fontWeight: "bold",
-    letterSpacing: 4,
+    letterSpacing: 2 
   },
-  Text2Carga: {
+  btnSignUp: {
+    backgroundColor: "#FFFFFF",
+    width: "70%",
+    height: "7%",
+    borderRadius: 40,
+    alignItems: "center",
+    justifyContent:"center",
+    marginTop:"15%"
+  },
+  txtSignUp: {
     color: "#3271A5",
-    top: 18,
     fontSize: 15,
     fontFamily: "monospace",
     fontWeight: "bold",
-    letterSpacing: 4,
+    letterSpacing: 4
   },
-  Boton1Carga: {
-    backgroundColor: "#FFFFFF",
-    width: 290,
-    height: 60,
-    borderRadius: 40,
-    alignItems: "center",
-    top: 20,
-  },
-  Boton2Carga: {
-    backgroundColor: "#FFFFFF",
-    width: 290,
-    height: 60,
-    borderRadius: 40,
-    alignItems: "center",
-    top: 60,
-  },
+  
+
 });
 export default Login;

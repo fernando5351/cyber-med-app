@@ -1,24 +1,18 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet, View } from "react-native";
 import "react-native-gesture-handler";
 import Constants from "expo-constants";
-import DrawerNavigation from "./src/navigation/DrawerNavigation";
+import AppStack from "./src/navigation/AppStack";
+import AuthStack from "./src/navigation/AuthStack";
 import PantallaCarga from "./src/views/charging/charging";
-import Login from "./src/views/login/Login";
-import Signin from "./src/views/login/SignIn";
-import Signup from "./src/views/login/SignUp";
-
-import { AuthUser } from "./src/users/User";
-
-const Stack = createNativeStackNavigator();
+import { AuthUser } from "./src/utils/AuthContext";
 
 export default function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userToken, setUserToken] = useState(null);
 
-  const authUser = React.useMemo(() => {
+  const AuthProvider = useMemo(() => {
     return {
       signIn: () => {
         setIsLoading(false);
@@ -35,10 +29,10 @@ export default function App() {
     };
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
   if (isLoading) {
@@ -46,18 +40,10 @@ export default function App() {
   }
 
   return (
-    <AuthUser.Provider value={authUser}>
+    <AuthUser.Provider value={AuthProvider}>
       <NavigationContainer>
         <View style={styles.containerMainApp}>
-          {userToken ? (
-            <DrawerNavigation />
-          ) : (
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Login" component={Login} />
-              <Stack.Screen name="SignUp" component={Signup} />
-              <Stack.Screen name="SignIn" component={Signin} />
-            </Stack.Navigator>
-          )}
+          {userToken !== null ? <AppStack /> : <AuthStack />}
         </View>
       </NavigationContainer>
     </AuthUser.Provider>
