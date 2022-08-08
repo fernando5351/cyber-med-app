@@ -19,7 +19,7 @@ import Step2 from "../views/description/Step2";
 import Step3 from "../views/description/Step3";
 import Step4 from "../views/description/Step4";
 import Android from "../views/description/Android";
-import Scroll from "../components/scrollView/Scroll";
+
 import SearchBarD from "../components/searchbar/SearchBarD";
 
 const Drawer = createDrawerNavigator();
@@ -38,7 +38,7 @@ const HomeStackScreen = () => {
       <HomeStack.Screen name="Step3" component={Step3} />
       <HomeStack.Screen name="Step4" component={Step4} />
       <HomeStack.Screen name="Android" component={Android} />
-      <HomeStack.Screen name="Scroll" component={Scroll} />
+
       <HomeStack.Screen name="SearchBarD" component={SearchBarD} />
     </HomeStack.Navigator>
   );

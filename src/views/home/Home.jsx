@@ -27,7 +27,7 @@ function Home({ navigation }) {
         </TouchableOpacity>
       </View>
       <ScrollView style={styles.containerCenter}>
-        <TouchableOpacity onPress={() => navigation.navigate("Step1")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Description")}>
           <Text style={styles.titleMain}>Destacados</Text>
         </TouchableOpacity>
       </ScrollView>

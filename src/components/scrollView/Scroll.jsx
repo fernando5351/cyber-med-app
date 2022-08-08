@@ -1,54 +1,78 @@
 import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import ImagenMedicina from "../../../assets/images/buscapina.jpg";
-import ImagenDelete from "../../../assets/icons/steps/eliminar.png";
+import ImgMed from "../../../assets/images/buscapina.jpg";
+import ImadDelete from "../../../assets/icons/steps/eliminar.png";
 
 const Scroll = () => {
   return (
-    <ScrollView style={styles.Scroll}>
-      <View style={styles.containerMain}>
+    <View style={styles.contentMed}>
+      <ScrollView style={styles.containerScroll}>
         <View style={styles.contentMed}>
-          <Image style={styles.ImagenMedicina} source={ImagenMedicina} />
-          <Text style={styles.NombreMedi}>BUSCAPINA</Text>
-          <Text style={styles.Precio}>USD $1.00</Text>
-          <Text style={styles.Cantidad}>Cantidad: 2</Text>
-          <TouchableOpacity>
-            <Image style={styles.ImagenDelete} source={ImagenDelete} />
-          </TouchableOpacity>
+          <Image style={styles.imgMed} source={ImgMed} />
+          <View style={styles.containerInfo}>
+            <Text style={styles.nameMed}>Acetaminofen</Text>
+            <Text style={styles.secondInf}>USD $0.50</Text>
+            <Text style={styles.secondInf}>Cantidad: 2</Text>
+          </View>
+          <View style={styles.containerIcos}>
+            <Image style={styles.icoDelete} source={ImadDelete} />
+          </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  Scroll: {
-    marginLeft: "10%",
-    marginTop: "10%",
-    width: "80%",
-    flex: 1,
-    backgroundColor: "red",
-  },
-  containerMain: {
+  contentMed: {
     height: "100%",
-    width: "100%",
-    backgroundColor: "#8DCFEC",
-    borderRadius: 30,
+  },
+  containerScroll: {
+    flex: 1,
+    height: "100%",
+    backgroundColor: "#D6F2FF",
+    marginTop: "-4%",
+    borderRadius: 20,
   },
   contentMed: {
-    marginTop: "5%",
-    height: "50%",
-    width: "90%",
+    flex: 1,
+    marginTop: "3%",
+    marginBottom: "3%",
     marginLeft: "5%",
+    height: "10%",
+    width: "90%",
+    flexDirection: "row",
+    borderRadius: 30,
     backgroundColor: "#fff",
   },
-  ImagenMedicina: {
-    width: "25%",
-    height: "15%",
+  imgMed: {
+    width: 100,
+    height: 90,
+    borderRadius: 20,
+    marginLeft: "3%",
   },
-  ImagenDelete: {
+  containerInfo: {
+    width: "43%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  nameMed: {
+    color: "#5F5F5F",
+    fontWeight: "500",
+  },
+  secondInf: {
+    color: "#3271A5",
+    fontFamily: "Roboto",
+    fontWeight: "700",
+  },
+  containerIcos: {
     width: "20%",
-    height: "10%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  icoDelete: {
+    width: "35%",
+    height: "21%",
   },
 });
 export default Scroll;

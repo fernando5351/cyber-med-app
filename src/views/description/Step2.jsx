@@ -24,18 +24,20 @@ const Step2 = ({ navigation }) => {
         <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
-      <View style={styles.Alto}>
+      <View style={styles.contentScroll}>
         <Scroll />
       </View>
-      <TouchableOpacity
-        style={styles.Boton}
-        onPress={() => {
-          navigation.navigate("Step3");
-        }}
-      >
-        <Text style={styles.TextBoton}>COMPRAR</Text>
-      </TouchableOpacity>
-      <View style={styles.contentFondo}></View>
+      <View style={styles.containerButton}>
+        <TouchableOpacity
+          style={styles.Button}
+          onPress={() => {
+            navigation.navigate("Step3");
+          }}
+        >
+          <Text style={styles.textBtn}>COMPRAR</Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.contentBottom}></View>
     </View>
   );
 };
@@ -101,29 +103,37 @@ const styles = StyleSheet.create({
     marginTop: "-6%",
     marginBottom: "5%",
   },
-  Alto: {
-    height: "80%",
-    width: "100%",
+  contentScroll: {
+    height: "50%",
+    marginLeft: "5%",
+    width: "90%",
+    marginTop: "15%",
   },
-  Boton: {
+  containerButton: {
+    backgroundColor: "#fff",
+    height: "10%",
+    marginTop: "2%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  Button: {
     backgroundColor: "#8DCFEC",
     width: "40%",
-    height: "8%",
+    height: "70%",
     alignItems: "center",
-    justifyContent: "center",
-    marginTop: "-45%",
-    marginLeft: "30%",
     borderRadius: 20,
+    justifyContent: "center",
   },
-  TextBoton: {
-    fontSize: 16,
-    fontWeight: "600",
+  textBtn: {
+    fontFamily: "Roboto",
+    fontSize: 18,
+    fontWeight: "700",
     color: "#fff",
   },
-  contentFondo: {
+  contentBottom: {
     backgroundColor: "#8DCFEC",
     width: "100%",
-    height: "10%",
-    marginTop: "13%",
+    height: "20%",
+    marginTop: "5%",
   },
 });
