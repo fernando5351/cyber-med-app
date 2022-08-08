@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Text, StyleSheet, Image } from "react-native";
 import {
   DrawerContentScrollView,
@@ -8,18 +9,11 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
-
-import { AuthUser } from "../../utils/User";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthUser } from "../../utils/AuthContext";
 
 const CustomDrawer = (props) => {
-  const { signOut } = React.useContext(AuthUser);
-
+  const { signOut } = useContext(AuthUser);
   const [userDetails, setUserDetails] = useState();
-
-  React.useEffect(() => {
-    getUserDetails();
-  }, []);
 
   const getUserDetails = async () => {
     const userData = await AsyncStorage.getItem("user");
@@ -27,6 +21,10 @@ const CustomDrawer = (props) => {
       setUserDetails(JSON.parse(userData));
     }
   };
+
+  React.useEffect(() => {
+    getUserDetails();
+  }, []);
 
   const logout = () => {
     AsyncStorage.setItem(

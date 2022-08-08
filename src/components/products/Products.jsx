@@ -3,9 +3,9 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Text, Image, StyleSheet } from "react-native";
 import Product from "../../../assets/images/buscapina.jpg";
 
-const Products = () => {
+const Products = ({ onPress = () => {} }) => {
   return (
-    <TouchableOpacity style={styles.buttonProduct}>
+    <TouchableOpacity onPress={onPress} style={styles.buttonProduct}>
       <Image style={styles.imageProduct} source={Product} />
       <Text style={styles.titleName}>Buscapina</Text>
       <Text style={styles.subtitlePrice}>USD $1.50</Text>

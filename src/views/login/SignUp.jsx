@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   View,
   Text,
@@ -15,21 +16,16 @@ import Cover from "../../../assets/images/backgroundrecord.jpg";
 import btnBack from "../../../assets/icons/arrows/returndouble.png";
 import OpenEye from "../../../assets/icons/profile/whiteeyes.png";
 import CloseEye from "../../../assets/icons/profile/whiteblockeyes.png";
-
 import Loader from "../../components/loading/Loader";
-
 import {
   isValidObjField,
   isEmailValid,
   updateError,
 } from "../../utils/Methods";
-
-import { AuthUser } from "../../utils/User";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { AuthUser } from "../../utils/AuthContext";
 
 function Signup({ navigation }) {
-  const { signUp } = React.useContext(AuthUser);
-
+  const { signUp } = useContext(AuthUser);
   const [userInfo, setUserInfo] = useState({
     nombres: "",
     apellidos: "",

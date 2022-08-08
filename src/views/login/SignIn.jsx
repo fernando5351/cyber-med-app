@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   View,
   Text,
@@ -15,20 +16,16 @@ import Cover from "../../../assets/images/startbackground.jpg";
 import btnBack from "../../../assets/icons/arrows/blue-returndouble.png";
 import EyeClose from "../../../assets/icons/profile/eyesclose.png";
 import EyeOpen from "../../../assets/icons/profile/eyes.png";
-
+import Loader from "../../components/loading/Loader";
 import {
   isEmailValid,
   isValidObjField,
   updateError,
 } from "../../utils/Methods";
-
-import { AuthUser } from "../../utils/User";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import Loader from "../../components/loading/Loader";
+import { AuthUser } from "../../utils/AuthContext";
 
 function Signin({ navigation }) {
-  const { signIn } = React.useContext(AuthUser);
-
+  const { signIn } = useContext(AuthUser);
   const [userInfo, setUserInfo] = useState({
     correo: "",
     contraseña: "",
@@ -55,13 +52,13 @@ function Signin({ navigation }) {
     if (!contraseña.trim() || contraseña.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
     if (valid) {
-      signup();
+      signin();
       console.log(userInfo);
     }
     valid = false;
   };
 
-  const signup = () => {
+  const signin = () => {
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);
@@ -84,6 +81,7 @@ function Signin({ navigation }) {
       }
     }, 3000);
   };
+
   return (
     <ImageBackground source={Cover} style={styles.containerSignIn}>
       <Loader visible={loading} />

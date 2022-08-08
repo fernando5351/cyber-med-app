@@ -12,6 +12,10 @@ import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
 
 function Home({ navigation }) {
+  const Productos = () => {
+    navigation.navigate("Paso1");
+  };
+
   return (
     <View style={styles.containerMain}>
       <View style={styles.containerTop}>
@@ -34,31 +38,7 @@ function Home({ navigation }) {
           </View>
           <View style={styles.containerProducts}>
             <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
-            </View>
-            <View style={styles.viewProducts}>
-              <Products />
+              <Products onPress={Productos} />
             </View>
             <View style={styles.viewProducts}>
               <Products />
