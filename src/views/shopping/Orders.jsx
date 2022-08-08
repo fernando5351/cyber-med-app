@@ -17,7 +17,10 @@ function Pedidos({ navigation }) {
   return (
     <View style={styles.containerPedidos}>
       <View style={styles.PedidosTop}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <TouchableOpacity
+          style={styles.contbtn}
+          onPress={() => navigation.openDrawer()}
+        >
           <Image source={MenuPedidos} style={styles.ImagenMenuP} />
         </TouchableOpacity>
         <Image source={ImagenPedidos} style={styles.ImagePedidos} />
@@ -60,6 +63,9 @@ const styles = StyleSheet.create({
     right: "130%",
     marginLeft: "8%",
   },
+  contbtn: {
+    marginLeft: "-8%",
+  },
   FlechaPedidos: {
     width: "10%",
     height: "80%",
@@ -79,7 +85,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
-    marginLeft: "-5%",
   },
   ImagePedidos: {
     width: "21%",

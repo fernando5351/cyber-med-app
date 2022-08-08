@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import Products from "../../components/products/Products";
+import Products from "../../components/targets/CartProducts";
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";

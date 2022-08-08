@@ -2,7 +2,6 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  SafeAreaView,
   ScrollView,
   View,
   Image,
@@ -17,7 +16,10 @@ function Carrito({ navigation }) {
   return (
     <View style={styles.containerCarrito}>
       <View style={styles.PedidosTopC}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
+        <TouchableOpacity
+          style={styles.contbtn}
+          onPress={() => navigation.openDrawer()}
+        >
           <Image source={MenuCarrito} style={styles.ImagenMenuC} />
         </TouchableOpacity>
         <Image source={ImagenCarrito} style={styles.ImageCarrito} />
@@ -42,7 +44,7 @@ function Carrito({ navigation }) {
         <ProductosCarrito />
       </ScrollView>
       <View style={styles.ContenedorAbajoC}>
-        <Text style={styles.TotalStyle}>Total</Text>
+        <Text style={styles.TotalStyle}>Total:</Text>
         <Text style={styles.NumeroTotal}>$16.00</Text>
         <TouchableOpacity style={styles.BotonPago}>
           <Text style={styles.TextBotonC}>Proceder al pago</Text>
@@ -59,8 +61,8 @@ const styles = StyleSheet.create({
   },
   ContenedorAbajoC: {
     backgroundColor: "#FFFFFF",
-    height: "20%",
-    top: "1%",
+    height: "12%",
+    marginTop: "1%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -70,35 +72,35 @@ const styles = StyleSheet.create({
   TotalStyle: {
     color: "#757575",
     fontFamily: "Roboto",
-    fontSize: 20,
-    right: "19%",
+    fontSize: 17,
+    right: "15%",
     top: "-1%",
   },
   NumeroTotal: {
     color: "#4489C1",
     fontWeight: "bold",
     fontFamily: "monospace",
-    fontSize: 20,
-    left: "15%",
-    top: "-20%",
+    fontSize: 17,
+    left: "10%",
+    top: "-26%",
   },
   BotonPago: {
     backgroundColor: "#4489C1",
     height: "35%",
-    width: "65%",
+    width: "50%",
     borderRadius: 17,
     alignItems: "center",
+    justifyContent: "center",
     borderWidth: 2.5,
     borderColor: "#3271A5",
-    elevation: "3%",
-    top: "-10%",
+    elevation: 3,
+    top: "-15%",
   },
   TextBotonC: {
     color: "#FFFFFF",
     fontWeight: "bold",
-    letterSpacing: 2,
-    fontSize: 21.5,
-    top: "12%",
+    letterSpacing: -1,
+    fontSize: 19,
     fontFamily: "Roboto",
   },
   ImagenMenuC: {
@@ -107,7 +109,9 @@ const styles = StyleSheet.create({
     right: "130%",
     marginLeft: "8%",
   },
-  ContenedorFlechaC: {},
+  contbtn: {
+    marginLeft: "-12%",
+  },
   FlechaCarrito: {
     width: "9%",
     height: "80%",
@@ -123,15 +127,14 @@ const styles = StyleSheet.create({
   },
   PedidosTopC: {
     backgroundColor: "#FFFFFF",
-    height: "12%",
+    height: "13%",
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
   },
   ImageCarrito: {
-    width: "25%",
-    height: "90%",
-    right: "8%",
+    width: "20%",
+    height: "70%",
   },
   TextCarrito: {
     fontFamily: "Roboto",
@@ -140,7 +143,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 1,
     top: "1%",
-    right: "7%",
   },
   scrollView: {},
 });
