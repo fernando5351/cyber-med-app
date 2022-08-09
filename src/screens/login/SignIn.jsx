@@ -46,11 +46,15 @@ function Signin({ navigation }) {
   const validate = () => {
     Keyboard.dismiss();
     let valid = true;
+    //Ingresar todos los datos
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
+    //Ingresar email existente
     if (!isEmailValid(correo)) return updateError("Email invalido", setError);
+    //Ingresar contraseña existente
     if (!contraseña.trim() || contraseña.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
+    //Recibir si hay datos existentes
     if (valid) {
       signin();
       console.log(userInfo);
@@ -235,14 +239,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   inputP: {
-    width: "90%",
-    height: "100%",
+    width: "92%",
     color: "#8DCFEC",
   },
   contIco: {
-    marginTop: "5%",
-    width: "8%",
-    height: "40%",
+    marginTop: "7%",
+    width: "7%",
+    height: "35%",
   },
   icoEye: {
     width: "100%",

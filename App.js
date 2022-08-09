@@ -3,28 +3,28 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import "react-native-gesture-handler";
 import Constants from "expo-constants";
-import AppStack from "./src/navigation/AppStack";
-import AuthStack from "./src/navigation/AuthStack";
-import PantallaCarga from "./src/views/charging/charging";
+import AppStack from "./src/navigations/AppStack";
+import AuthStack from "./src/navigations/AuthStack";
+import PantallaCarga from "./src/screens/charging/charging";
 import { AuthUser } from "./src/utils/AuthContext";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [userToken, setUserToken] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const AuthProvider = useMemo(() => {
     return {
       signIn: () => {
         setIsLoading(false);
-        setUserToken("asdf");
+        setUserData("asdf");
       },
       signUp: () => {
         setIsLoading(false);
-        setUserToken("asdf");
+        setUserData("asdf");
       },
       signOut: () => {
         setIsLoading(false);
-        setUserToken(null);
+        setUserData(null);
       },
     };
   }, []);
@@ -43,7 +43,7 @@ export default function App() {
     <AuthUser.Provider value={AuthProvider}>
       <NavigationContainer>
         <View style={styles.containerMainApp}>
-          {userToken !== null ? <AppStack /> : <AuthStack />}
+          {userData !== null ? <AppStack /> : <AuthStack />}
         </View>
       </NavigationContainer>
     </AuthUser.Provider>

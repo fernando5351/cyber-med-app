@@ -12,6 +12,7 @@ import Menu from "../../../assets/icons/home/menu.png";
 import Profile from "../../../assets/icons/profile/usercircle.png";
 
 function Home({ navigation }) {
+  //Ruta prop para ver la descripcion del medicamento
   const Productos = () => {
     navigation.navigate("Description");
   };
@@ -41,8 +42,25 @@ function Home({ navigation }) {
           <View style={styles.containerProducts}>
             <View style={styles.viewProducts}>
               <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
             </View>
+          </View>
+        </View>
+        <View style={styles.subContainerCenter}>
+          <View style={styles.containerTitle}>
+            <Text style={styles.titleMain}>Destacados</Text>
+          </View>
+          <View style={styles.containerProducts}>
             <View style={styles.viewProducts}>
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
+              <Products onPress={Productos} />
               <Products onPress={Productos} />
             </View>
           </View>
@@ -80,7 +98,6 @@ const styles = StyleSheet.create({
   },
   containerCenter: {
     height: "100%",
-    flex: 1,
     width: "100%",
   },
   subContainerCenter: {
@@ -89,6 +106,8 @@ const styles = StyleSheet.create({
     height: "100%",
     flexWrap: "wrap",
     flex: 1,
+    marginTop: "5%",
+    marginBottom: "5%",
   },
   containerTitle: {
     width: "100%",
@@ -103,18 +122,17 @@ const styles = StyleSheet.create({
     marginBottom: "1%",
   },
   containerProducts: {
-    flexDirection: "row",
-    flexWrap: "wrap",
     height: "100%",
-    alignItems: "center",
-    justifyContent: "center",
+    width: "100%",
+    marginTop: "5%",
+    marginBottom: "5%",
   },
   viewProducts: {
-    height: 150,
-    width: 120,
-    marginLeft: "7%",
-    marginRight: "8%",
-    marginBottom: "5%",
-    marginTop: "4%",
+    height: "100%",
+    width: "100%",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });

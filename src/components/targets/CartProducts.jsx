@@ -15,9 +15,12 @@ const Products = ({ onPress = () => {} }) => {
 
 const styles = StyleSheet.create({
   buttonProduct: {
-    width: "100%",
-    height: "100%",
+    width: 125,
+    height: 135,
     alignItems: "center",
+    marginRight: "9%",
+    marginLeft: "10%",
+    marginBottom: "5%",
   },
   imageProduct: {
     width: "100%",

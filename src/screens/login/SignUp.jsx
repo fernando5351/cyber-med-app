@@ -48,15 +48,21 @@ function Signup({ navigation }) {
   const validate = () => {
     Keyboard.dismiss();
     let valid = true;
+    //Ingresar todos los datos
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
-    if (!nombres.trim() || nombres.length < 5)
+    //Ingresar dos nombres
+    if (!nombres.trim() || nombres.length < 7)
       return updateError("Debe contener los dos nombres", setError);
-    if (!apellidos.trim() || apellidos.length < 5)
+    //Ingresar dos apellidos
+    if (!apellidos.trim() || apellidos.length < 7)
       return updateError("Debe contener los dos apellidos", setError);
+    //Ingresar un email valido
     if (!isEmailValid(correo)) return updateError("Email invalido", setError);
+    //Ingresar una contraseña mayor a 8
     if (!contraseña.trim() || contraseña.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
+    //Creando los datos para el usuario
     if (valid) {
       signup();
       console.log(userInfo);
@@ -164,7 +170,7 @@ function Signup({ navigation }) {
                 onPress={() => {
                   setPasswordSecured(!passwordSecured);
                 }}
-                style={{ marginTop: "5%", width: "8%", height: "50%" }}
+                style={{ marginTop: "5%", width: "7%", height: "35%" }}
               >
                 <Image
                   style={{ width: "100%", height: "100%" }}
@@ -248,7 +254,7 @@ const styles = StyleSheet.create({
   },
   inputP: {
     color: "#fff",
-    width: "90%",
+    width: "92%",
   },
   btnO: {
     flex: 1,
