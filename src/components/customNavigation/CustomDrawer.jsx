@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { View, Text, StyleSheet, Image } from "react-native";
 import {
   DrawerContentScrollView,
@@ -8,11 +9,30 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
-
-import { AuthUser } from "../../users/User";
+import { AuthUser } from "../../utils/AuthContext";
 
 const CustomDrawer = (props) => {
-  const { signOut } = React.useContext(AuthUser);
+  const { signOut } = useContext(AuthUser);
+  const [userDetails, setUserDetails] = useState();
+
+  const getUserDetails = async () => {
+    const userData = await AsyncStorage.getItem("user");
+    if (userData) {
+      setUserDetails(JSON.parse(userData));
+    }
+  };
+
+  React.useEffect(() => {
+    getUserDetails();
+  }, []);
+
+  const logout = () => {
+    AsyncStorage.setItem(
+      "user",
+      JSON.stringify({ ...userDetails, loggedIn: false })
+    );
+    signOut();
+  };
 
   return (
     <View style={styles.containerDrawer}>
@@ -32,10 +52,7 @@ const CustomDrawer = (props) => {
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
       <View style={styles.containerBottomD}>
-        <TouchableOpacity
-          onPress={() => signOut()}
-          style={styles.subContainerB}
-        >
+        <TouchableOpacity onPress={logout} style={styles.subContainerB}>
           <Image style={styles.icoLogOut} source={Logout} />
           <Text style={styles.textLogOut}>Cerrar Sesion</Text>
         </TouchableOpacity>

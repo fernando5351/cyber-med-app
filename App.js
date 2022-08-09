@@ -1,44 +1,38 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StyleSheet, View } from "react-native";
 import "react-native-gesture-handler";
 import Constants from "expo-constants";
-import DrawerNavigation from "./src/navigation/DrawerNavigation";
-import PantallaCarga from "./src/views/charging/charging";
-import Login from "./src/views/login/Login";
-import Signin from "./src/views/login/SignIn";
-import Signup from "./src/views/login/SignUp";
-
-import { AuthUser } from "./src/users/User";
-
-const Stack = createNativeStackNavigator();
+import AppStack from "./src/navigations/AppStack";
+import AuthStack from "./src/navigations/AuthStack";
+import PantallaCarga from "./src/screens/charging/charging";
+import { AuthUser } from "./src/utils/AuthContext";
 
 export default function App() {
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [userToken, setUserToken] = React.useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [userData, setUserData] = useState(null);
 
-  const authUser = React.useMemo(() => {
+  const AuthProvider = useMemo(() => {
     return {
       signIn: () => {
         setIsLoading(false);
-        setUserToken("asdf");
+        setUserData("asdf");
       },
       signUp: () => {
         setIsLoading(false);
-        setUserToken("asdf");
+        setUserData("asdf");
       },
       signOut: () => {
         setIsLoading(false);
-        setUserToken(null);
+        setUserData(null);
       },
     };
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 2000);
   }, []);
 
   if (isLoading) {
@@ -46,18 +40,10 @@ export default function App() {
   }
 
   return (
-    <AuthUser.Provider value={authUser}>
+    <AuthUser.Provider value={AuthProvider}>
       <NavigationContainer>
         <View style={styles.containerMainApp}>
-          {userToken ? (
-            <DrawerNavigation />
-          ) : (
-            <Stack.Navigator screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="Login" component={Login} />
-              <Stack.Screen name="SignUp" component={Signup} />
-              <Stack.Screen name="SignIn" component={Signin} />
-            </Stack.Navigator>
-          )}
+          {userData !== null ? <AppStack /> : <AuthStack />}
         </View>
       </NavigationContainer>
     </AuthUser.Provider>
