@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
     height: "6%",
   },
   ImagenMenuP: {
-    width: "130%",
-    height: "60%",
+    width: "170%",
+    height: "50%",
     right: "130%",
-    marginLeft: "8%",
+    marginLeft: "5%",
   },
   contbtn: {
     marginLeft: "-8%",
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   ImagePedidos: {
     width: "21%",
     height: "85%",
-    left: "5%",
+    left: "10%",
   },
   TextPedidos: {
     fontFamily: "Roboto",
