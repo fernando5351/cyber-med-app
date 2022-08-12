@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     width: "20%",
     height: "70%",
     top: "-50%",
-    left: "27%"
+    left: "26%"
   },
   TextCarrito: {
     fontFamily: "Roboto",
