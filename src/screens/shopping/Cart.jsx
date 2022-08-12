@@ -61,8 +61,7 @@ const styles = StyleSheet.create({
   },
   ContenedorAbajoC: {
     backgroundColor: "#FFFFFF",
-    height: "12%",
-    marginTop: "1%",
+    height: "13%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -86,8 +85,8 @@ const styles = StyleSheet.create({
   },
   BotonPago: {
     backgroundColor: "#4489C1",
-    height: "35%",
-    width: "50%",
+    height: "43%",
+    width: "53%",
     borderRadius: 17,
     alignItems: "center",
     justifyContent: "center",
@@ -102,12 +101,13 @@ const styles = StyleSheet.create({
     letterSpacing: -1,
     fontSize: 19,
     fontFamily: "Roboto",
+    letterSpacing: 1,
   },
   ImagenMenuC: {
-    width: "130%",
-    height: "60%",
-    right: "130%",
-    marginLeft: "8%",
+    width: "10%",
+    height: "65%",
+    top: "45%",
+    left: "13%"
   },
   contbtn: {
     marginLeft: "-12%",
@@ -128,13 +128,12 @@ const styles = StyleSheet.create({
   PedidosTopC: {
     backgroundColor: "#FFFFFF",
     height: "13%",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
   },
   ImageCarrito: {
     width: "20%",
     height: "70%",
+    top: "-50%",
+    left: "27%"
   },
   TextCarrito: {
     fontFamily: "Roboto",
@@ -142,7 +141,8 @@ const styles = StyleSheet.create({
     color: "#3271A5",
     fontWeight: "bold",
     letterSpacing: 1,
-    top: "1%",
+    top: "-110%",
+    left: "48%"
   },
   scrollView: {},
 });

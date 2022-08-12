@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import Medicina from "../../../assets/images/buscapina.jpg";
+import Medicina from "../../../assets/images/Aspirina.png";
 
 const ProductosHistorial = () => {
   return (
@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   ContenedorMedicina: {
     backgroundColor: "#C4EDFF",
     alignSelf: "center",
-    height: "12%",
-    width: "90%",
+    height: "10.5%",
+    width: "87%",
     margin: "4%",
     borderRadius: 30,
   },

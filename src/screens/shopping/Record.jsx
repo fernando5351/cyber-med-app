@@ -32,6 +32,11 @@ function Historial({ navigation }) {
           <Image source={ImagenFlechaH} style={styles.FlechaHistorial} />
         </TouchableOpacity>
         <Text style={styles.TextoFlechaH}>Historial</Text>
+        <View style={styles.BorrarContenedor}> 
+        <TouchableOpacity>  
+        <Text style={styles.TextoBorrarH}>Borrar Historial</Text>
+        </TouchableOpacity>
+        </View>
       </View>
       <ScrollView style={styles.ContenedorProductosH}>
         <ProductosHistorial />
@@ -53,6 +58,12 @@ const styles = StyleSheet.create({
   },
   ContenedorRetroceder: {
     height: "6%",
+    width: "40%",
+    left: "5%"
+  },
+  BorrarContenedor: {
+    left: "80%",
+    top: "-45%"
   },
   TextoBorrar: {
     color: "#3271A5",
@@ -60,38 +71,46 @@ const styles = StyleSheet.create({
     left: "65%",
     top: "-195%",
     letterSpacing: 1,
+    textDecorationLine: "underline",
   },
   ImagenMenuH: {
-    width: "130%",
-    height: "60%",
-    right: "130%",
-    marginLeft: "8%",
+    width: "10%",
+    height: "65%",
+    top: "45%",
+    left: "7%"
+  
   },
   FlechaHistorial: {
-    width: "10%",
-    height: "80%",
+    width: "20%",
+    height: "90%",
     top: "35%",
-    left: "8%",
+    left: "4%",
   },
   TextoFlechaH: {
     color: "#3271A5",
     fontFamily: "Roboto",
-    left: "25%",
+    left: "35%",
     top: "-43%",
     letterSpacing: 1,
+  },
+  TextoBorrarH: {
+    color: "#3271A5",
+    fontFamily: "Roboto",
+    top: "-90%",
+    left: "65%",
+    letterSpacing: 1,
+    textDecorationLine: "underline",
   },
   HistorialTop: {
     backgroundColor: "#4DACD6",
     height: "12%",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
     marginLeft: "-5%",
   },
   ImageHistorial: {
     width: "21%",
     height: "85%",
-    left: "5%",
+    left: "27%",
+    top: "-58%",
   },
   TextHistorial: {
     fontFamily: "Roboto",
@@ -99,8 +118,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     letterSpacing: 1,
-    top: "-1%",
-    left: "12%",
+    top: "-128%",
+    left: "50%",
   },
   scrollView: {},
 });

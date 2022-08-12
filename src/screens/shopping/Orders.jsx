@@ -2,7 +2,6 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  SafeAreaView,
   ScrollView,
   View,
   Image,
@@ -58,10 +57,10 @@ const styles = StyleSheet.create({
     height: "6%",
   },
   ImagenMenuP: {
-    width: "170%",
-    height: "50%",
-    right: "130%",
-    marginLeft: "5%",
+    width: "10%",
+    height: "65%",
+    top: "45%",
+    left: "10%"
   },
   contbtn: {
     marginLeft: "-8%",
@@ -82,14 +81,12 @@ const styles = StyleSheet.create({
   PedidosTop: {
     backgroundColor: "#4DACD6",
     height: "12%",
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
   },
   ImagePedidos: {
     width: "21%",
     height: "85%",
-    left: "10%",
+    left: "25%",
+    top: "-58%"
   },
   TextPedidos: {
     fontFamily: "Roboto",
@@ -97,8 +94,8 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     letterSpacing: 1,
-    top: "1.5%",
-    left: "10%",
+    top: "-120%",
+    left: "47%"
   },
 });
 

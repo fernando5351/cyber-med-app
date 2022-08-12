@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import Medicina from "../../../assets/images/buscapina.jpg";
+import Medicina from "../../../assets/images/Aspirina.png";
 import DeleteCarrito from "../../../assets/icons/orders/blueremove.png";
 
 const ProductosCarrito = () => {
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   ContenedorMedicina: {
     backgroundColor: "#FFFFFF",
     alignSelf: "center",
-    height: "14%",
-    width: "90%",
+    height: "12.5%",
+    width: "88%",
     margin: "4%",
     borderRadius: 30,
   },
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   ImagenBorrarCarrito: {
     width: "56%",
-    height: "75%",
+    height: "77%",
     top: "10%",
     left: "23%",
   },

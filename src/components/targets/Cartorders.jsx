@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import Medicina from "../../../assets/images/buscapina.jpg";
+import Medicina from "../../../assets/images/Aspirina.png";
 import DeletePedidos from "../../../assets/icons/orders/remove.png";
 
 const ProductosPedidos = () => {
@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
   ContenedorMedicina: {
     backgroundColor: "#DCF3FD",
     alignSelf: "center",
-    height: "12%",
-    width: "90%",
+    height: "11%",
+    width: "87%",
     margin: "4%",
     borderRadius: 30,
   },
@@ -43,14 +43,14 @@ const styles = StyleSheet.create({
   ImagenBorrarPedidos: {
     width: "50%",
     height: "70%",
-    top: "40%",
+    top: "30%",
     left: "25%",
   },
   ImagenMedicina: {
     width: "40%",
-    height: "70%",
+    height: "75%",
     alignSelf: "stretch",
-    top: "13%",
+    top: "12%",
     left: "4%",
   },
   ContedorPrecios: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "70%",
     height: "100%",
-    top: "-115%",
+    top: "-120%",
     alignSelf: "flex-end",
     left: "-1%",
   },
