@@ -18,8 +18,7 @@ const styles = StyleSheet.create({
     width: 125,
     height: 135,
     alignItems: "center",
-    marginRight: "9%",
-    marginLeft: "10%",
+    marginLeft:"17%",
     marginBottom: "5%",
   },
   imageProduct: {
