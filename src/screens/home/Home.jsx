@@ -125,7 +125,6 @@ const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     marginTop: "5%",
-    marginBottom: "5%",
   },
   viewProducts: {
     height: "100%",
