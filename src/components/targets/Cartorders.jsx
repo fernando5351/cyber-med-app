@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import Medicina from "../../../assets/images/Aspirina.png";
-import DeletePedidos from "../../../assets/icons/orders/remove.png";
+import DeletePedidos from "../../../assets/icons/steps/eliminar.png"
 
 const ProductosPedidos = () => {
   return (
@@ -41,8 +41,8 @@ const styles = StyleSheet.create({
     top: "-45%",
   },
   ImagenBorrarPedidos: {
-    width: "50%",
-    height: "70%",
+    width: "31%",
+    height: "57%",
     top: "30%",
     left: "25%",
   },

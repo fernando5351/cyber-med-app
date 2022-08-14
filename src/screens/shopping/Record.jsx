@@ -108,9 +108,9 @@ const styles = StyleSheet.create({
   },
   ImageHistorial: {
     width: "21%",
-    height: "85%",
+    height: "75%",
     left: "27%",
-    top: "-58%",
+    top: "-52%",
   },
   TextHistorial: {
     fontFamily: "Roboto",
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
     letterSpacing: 1,
-    top: "-128%",
+    top: "-120%",
     left: "50%",
   },
   scrollView: {},
