@@ -12,7 +12,7 @@ import BackD from "../../../assets/icons/arrows/returndouble.png";
 import { AuthUser } from "../../utils/AuthContext";
 
 const CustomDrawer = (props) => {
-  const { signOut } = useContext(AuthUser);
+  const {signOut} = useContext(AuthUser)
   const [userDetails, setUserDetails] = useState();
 
   const getUserDetails = async () => {

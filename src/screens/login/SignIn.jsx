@@ -26,6 +26,7 @@ import { AuthUser } from "../../utils/AuthContext";
 
 function Signin({ navigation }) {
   const { signIn } = useContext(AuthUser);
+
   const [userInfo, setUserInfo] = useState({
     correo: "",
     contraseña: "",
@@ -240,7 +241,7 @@ const styles = StyleSheet.create({
   },
   inputP: {
     width: "92%",
-    height:"100%",
+    height: "100%",
     color: "#8DCFEC",
   },
   contIco: {
