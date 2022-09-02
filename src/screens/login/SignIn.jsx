@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -8,7 +7,6 @@ import {
   TextInput,
   ImageBackground,
   Image,
-  Alert,
   Keyboard,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -22,21 +20,19 @@ import {
   isValidObjField,
   updateError,
 } from "../../utils/Methods";
-import { AuthUser } from "../../utils/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 function Signin({ navigation }) {
-  const { signIn } = useContext(AuthUser);
+  const { isLoading, login } = useContext(AuthContext);
 
   const [userInfo, setUserInfo] = useState({
-    correo: "",
-    contraseña: "",
+    email: "",
+    contrasenia: "",
   });
 
-  const { correo, contraseña } = userInfo;
+  const { email, contrasenia } = userInfo;
 
   const [passwordSecured, setPasswordSecured] = useState(true);
-
-  const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState("");
 
@@ -51,19 +47,19 @@ function Signin({ navigation }) {
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
     //Ingresar email existente
-    if (!isEmailValid(correo)) return updateError("Email invalido", setError);
+    if (!isEmailValid(email)) return updateError("Email invalido", setError);
     //Ingresar contraseña existente
-    if (!contraseña.trim() || contraseña.length < 8)
+    if (!contrasenia.trim() || contrasenia.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
     //Recibir si hay datos existentes
     if (valid) {
-      signin();
+      login(email, contrasenia);
       console.log(userInfo);
     }
     valid = false;
   };
 
-  const signin = () => {
+  /* const signin = () => {
     setLoading(true);
     setTimeout(async () => {
       setLoading(false);
@@ -77,7 +73,6 @@ function Signin({ navigation }) {
             "user",
             JSON.stringify({ ...userData, loggedIn: true })
           );
-          signIn();
         } else {
           Alert.alert("Error", "Datos invalidos");
         }
@@ -85,11 +80,11 @@ function Signin({ navigation }) {
         Alert.alert("Error", "El usuario no existe");
       }
     }, 3000);
-  };
+  }; */
 
   return (
     <ImageBackground source={Cover} style={styles.containerSignIn}>
-      <Loader visible={loading} />
+      <Loader visible={isLoading} />
       <KeyboardAwareScrollView style={{ flex: 1 }}>
         <View style={styles.subContainer}>
           <TouchableOpacity
@@ -119,8 +114,8 @@ function Signin({ navigation }) {
             ) : null}
             <TextInput
               style={styles.inputs}
-              value={correo}
-              onChangeText={(value) => handleOnChangeText(value, "correo")}
+              value={email}
+              onChangeText={(value) => handleOnChangeText(value, "email")}
               autoComplete="email"
               autoCapitalize="none"
               textContentType="emailAddress"
@@ -137,9 +132,9 @@ function Signin({ navigation }) {
             <View style={styles.inputPassword}>
               <TextInput
                 style={styles.inputP}
-                value={contraseña}
+                value={contrasenia}
                 onChangeText={(value) =>
-                  handleOnChangeText(value, "contraseña")
+                  handleOnChangeText(value, "contrasenia")
                 }
                 textContentType="password"
                 autoCapitalize="sentences"
