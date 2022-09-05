@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-/* import Constants from "expo-constants"; */
+import Constants from "expo-constants";
 import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, View } from "react-native";
 import AuthStack from "./AuthStack";
@@ -38,6 +38,6 @@ export const AppNav = () => {
 const styles = StyleSheet.create({
   containerMainApp: {
     flex: 1,
-    /*  marginTop: Constants.statusBarHeight, */
+    marginTop: Constants.statusBarHeight,
   },
 });

@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../api/client";
+import { BASE_URL } from "../api/connection";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
 
@@ -60,8 +60,8 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     axios
-      .post(
-        `${BASE_URL}/logout`,
+      .get(
+        `${BASE_URL}/log_out`,
         {},
         {
           headers: { Authorization: `Bearer ${userInfo.access_token}` },
