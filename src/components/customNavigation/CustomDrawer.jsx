@@ -9,33 +9,15 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
-import { AuthUser } from "../../utils/AuthContext";
+import Loader from "../loading/Loader";
+import { AuthContext } from "../../context/AuthContext";
 
 const CustomDrawer = (props) => {
-  const { signOut } = useContext(AuthUser);
-  const [userDetails, setUserDetails] = useState();
-
-  const getUserDetails = async () => {
-    const userData = await AsyncStorage.getItem("user");
-    if (userData) {
-      setUserDetails(JSON.parse(userData));
-    }
-  };
-
-  React.useEffect(() => {
-    getUserDetails();
-  }, []);
-
-  const logout = () => {
-    AsyncStorage.setItem(
-      "user",
-      JSON.stringify({ ...userDetails, loggedIn: false })
-    );
-    signOut();
-  };
+  const { isLoading, logout } = useContext(AuthContext);
 
   return (
     <View style={styles.containerDrawer}>
+      <Loader visible={isLoading} />
       <TouchableOpacity onPress={() => props.navigation.goBack()}>
         <Image style={styles.icoBackD} source={BackD} />
       </TouchableOpacity>

@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
   View,
   Text,
@@ -9,7 +8,6 @@ import {
   ImageBackground,
   Image,
   Keyboard,
-  Alert,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import Cover from "../../../assets/images/backgroundrecord.jpg";
@@ -22,34 +20,33 @@ import {
   isEmailValid,
   updateError,
 } from "../../utils/Methods";
-import { AuthUser } from "../../utils/AuthContext";
+import { AuthContext } from "../../context/AuthContext";
 
 function Signup({ navigation }) {
-  const { signUp } = useContext(AuthUser);
-  const [userInfo, setUserInfo] = useState({
+  const { isLoading, register } = useContext(AuthContext);
+
+  const [user, setUser] = useState({
     nombres: "",
     apellidos: "",
-    correo: "",
-    contraseña: "",
+    email: "",
+    contrasenia: "",
   });
 
-  const { nombres, apellidos, correo, contraseña } = userInfo;
+  const { nombres, apellidos, email, contrasenia } = user;
 
   const [passwordSecured, setPasswordSecured] = useState(true);
-
-  const [loading, setLoading] = useState(false);
 
   const [error, setError] = useState("");
 
   const handleOnChangeText = (value, fieldname) => {
-    setUserInfo({ ...userInfo, [fieldname]: value });
+    setUser({ ...user, [fieldname]: value });
   };
 
   const validate = () => {
     Keyboard.dismiss();
     let valid = true;
     //Ingresar todos los datos
-    if (!isValidObjField(userInfo))
+    if (!isValidObjField(user))
       return updateError("Llene todos los campos", setError);
     //Ingresar dos nombres
     if (!nombres.trim() || nombres.length < 7)
@@ -58,35 +55,34 @@ function Signup({ navigation }) {
     if (!apellidos.trim() || apellidos.length < 7)
       return updateError("Debe contener los dos apellidos", setError);
     //Ingresar un email valido
-    if (!isEmailValid(correo)) return updateError("Email invalido", setError);
+    if (!isEmailValid(email)) return updateError("Email invalido", setError);
     //Ingresar una contraseña mayor a 8
-    if (!contraseña.trim() || contraseña.length < 8)
+    if (!contrasenia.trim() || contrasenia.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
     //Creando los datos para el usuario
     if (valid) {
-      signup();
-      console.log(userInfo);
+      register(nombres, apellidos, email, contrasenia);
+      console.log(user);
     }
     valid = false;
   };
 
-  const signup = () => {
+  /* const signup = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
 
       try {
         AsyncStorage.setItem("user", JSON.stringify(userInfo));
-        signUp();
       } catch (error) {
         Alert.alert("Error", "Algo salio mal");
       }
     }, 3000);
-  };
+  }; */
 
   return (
     <ImageBackground source={Cover} style={styles.containerSignUp}>
-      <Loader visible={loading} />
+      <Loader visible={isLoading} />
       <KeyboardAwareScrollView style={{ flex: 1 }}>
         <View style={styles.subContainer}>
           <TouchableOpacity
@@ -134,8 +130,8 @@ function Signup({ navigation }) {
               placeholder="Apellidos"
             />
             <TextInput
-              value={correo}
-              onChangeText={(value) => handleOnChangeText(value, "correo")}
+              value={email}
+              onChangeText={(value) => handleOnChangeText(value, "email")}
               autoComplete="email"
               autoCapitalize="none"
               textContentType="emailAddress"
@@ -155,9 +151,9 @@ function Signup({ navigation }) {
 
             <View style={styles.inputPassword}>
               <TextInput
-                value={contraseña}
+                value={contrasenia}
                 onChangeText={(value) =>
-                  handleOnChangeText(value, "contraseña")
+                  handleOnChangeText(value, "contrasenia")
                 }
                 textContentType="password"
                 autoCapitalize="sentences"
@@ -178,8 +174,6 @@ function Signup({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-
-            {/* <Text style={styles.txt}>*Minimo 8 caracteres</Text> */}
             <TouchableOpacity onPress={validate} style={styles.btnSignUp}>
               <Text style={styles.txtBtnSU}>REGISTRARSE</Text>
             </TouchableOpacity>
