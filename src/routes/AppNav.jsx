@@ -25,10 +25,10 @@ export const AppNav = () => {
           <PantallaCarga />
         ) : splashLoading ? (
           <Loader />
-        ) : userInfo.access_token ? (
-          <AuthStack />
-        ) : (
+        ) : userInfo.jwt_secret ? (
           <AppStack />
+        ) : (
+          <AuthStack />
         )}
       </View>
     </NavigationContainer>

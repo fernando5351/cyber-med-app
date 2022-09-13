@@ -59,29 +59,6 @@ function Signin({ navigation }) {
     valid = false;
   };
 
-  /* const signin = () => {
-    setLoading(true);
-    setTimeout(async () => {
-      setLoading(false);
-
-      let userData = await AsyncStorage.getItem("user");
-
-      if (userData) {
-        userData = JSON.parse(userData);
-        if (correo == userData.correo && contraseña == userData.contraseña) {
-          AsyncStorage.setItem(
-            "user",
-            JSON.stringify({ ...userData, loggedIn: true })
-          );
-        } else {
-          Alert.alert("Error", "Datos invalidos");
-        }
-      } else {
-        Alert.alert("Error", "El usuario no existe");
-      }
-    }, 3000);
-  }; */
-
   return (
     <ImageBackground source={Cover} style={styles.containerSignIn}>
       <Loader visible={isLoading} />

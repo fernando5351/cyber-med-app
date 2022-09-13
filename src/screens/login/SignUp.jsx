@@ -67,19 +67,6 @@ function Signup({ navigation }) {
     valid = false;
   };
 
-  /* const signup = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-
-      try {
-        AsyncStorage.setItem("user", JSON.stringify(userInfo));
-      } catch (error) {
-        Alert.alert("Error", "Algo salio mal");
-      }
-    }, 3000);
-  }; */
-
   return (
     <ImageBackground source={Cover} style={styles.containerSignUp}>
       <Loader visible={isLoading} />

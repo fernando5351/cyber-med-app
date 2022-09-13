@@ -4,10 +4,10 @@ import { BASE_URL } from "../api/connection";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
 
-export const AuthContext = createContext();
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setuserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
 
@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       })
       .then((res) => {
         let userInfo = res.data;
-        setUserInfo(userInfo);
+        setuserInfo(userInfo);
         AsyncStorage.setItem("userInfo", JSON.stringify(userInfo));
         setIsLoading(false);
         console.log(userInfo);
@@ -45,8 +45,11 @@ export const AuthProvider = ({ children }) => {
       .then((res) => {
         let userInfo = res.data;
         console.log(userInfo);
-        setUserInfo(userInfo);
-        AsyncStorage.setItem("userInfo", JSON.stringify(userInfo));
+        setuserInfo(userInfo);
+        AsyncStorage.setItem(
+          "userInfo",
+          JSON.stringify({ ...userInfo, isLoggedIn: true })
+        );
         setIsLoading(false);
       })
       .catch((e) => {
@@ -64,13 +67,13 @@ export const AuthProvider = ({ children }) => {
         `${BASE_URL}/log_out`,
         {},
         {
-          headers: { Authorization: `Bearer ${userInfo.access_token}` },
+          headers: { Authorization: `Bearer ${userInfo.jwt_secret}` },
         }
       )
       .then((res) => {
         console.log(res.data);
         AsyncStorage.removeItem("userInfo");
-        setUserInfo({});
+        setuserInfo({});
         setIsLoading(false);
       })
       .catch((e) => {
@@ -87,7 +90,7 @@ export const AuthProvider = ({ children }) => {
       userInfo = JSON.parse(userInfo);
 
       if (userInfo) {
-        setUserInfo(userInfo);
+        setuserInfo(userInfo);
       }
       setSplashLoading(false);
     } catch (error) {
