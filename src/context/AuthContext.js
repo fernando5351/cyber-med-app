@@ -4,10 +4,10 @@ import { BASE_URL } from "../api/connection";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
 
-export const AuthContext = createContext({});
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userInfo, setuserInfo] = useState({});
+  const [info, setInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
 
@@ -21,11 +21,11 @@ export const AuthProvider = ({ children }) => {
         contrasenia,
       })
       .then((res) => {
-        let userInfo = res.data;
-        setuserInfo(userInfo);
-        AsyncStorage.setItem("userInfo", JSON.stringify(userInfo));
+        let info = res.data;
+        setInfo(info);
+        AsyncStorage.setItem("userInfo", JSON.stringify(info));
         setIsLoading(false);
-        console.log(userInfo);
+        console.log(info);
       })
       .catch((e) => {
         console.log(`Fallo al registrar ${e}`);
@@ -43,13 +43,10 @@ export const AuthProvider = ({ children }) => {
         contrasenia,
       })
       .then((res) => {
-        let userInfo = res.data;
-        console.log(userInfo);
-        setuserInfo(userInfo);
-        AsyncStorage.setItem(
-          "userInfo",
-          JSON.stringify({ ...userInfo, isLoggedIn: true })
-        );
+        let info = res.data;
+        console.log(info);
+        setInfo(info);
+        AsyncStorage.setItem("userInfo", JSON.stringify(info));
         setIsLoading(false);
       })
       .catch((e) => {
@@ -67,13 +64,13 @@ export const AuthProvider = ({ children }) => {
         `${BASE_URL}/log_out`,
         {},
         {
-          headers: { Authorization: `Bearer ${userInfo.jwt_secret}` },
+          headers: { Authorization: `Bearer ${info.jwt_secret}` },
         }
       )
       .then((res) => {
         console.log(res.data);
-        AsyncStorage.removeItem("userInfo");
-        setuserInfo({});
+        AsyncStorage.removeItem("info");
+        setInfo({});
         setIsLoading(false);
       })
       .catch((e) => {
@@ -86,11 +83,11 @@ export const AuthProvider = ({ children }) => {
   const isLoggedIn = async () => {
     try {
       setSplashLoading(true);
-      let userInfo = await AsyncStorage.getItem("userInfo");
-      userInfo = JSON.parse(userInfo);
+      let info = await AsyncStorage.getItem("info");
+      info = JSON.parse(info);
 
-      if (userInfo) {
-        setuserInfo(userInfo);
+      if (info) {
+        setInfo(info);
       }
       setSplashLoading(false);
     } catch (error) {
@@ -107,7 +104,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         isLoading,
-        userInfo,
+        info,
         splashLoading,
         register,
         login,

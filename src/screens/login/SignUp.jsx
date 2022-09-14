@@ -25,28 +25,28 @@ import { AuthContext } from "../../context/AuthContext";
 function Signup({ navigation }) {
   const { isLoading, register } = useContext(AuthContext);
 
-  const [user, setUser] = useState({
+  const [userInfo, setuserInfo] = useState({
     nombres: "",
     apellidos: "",
     email: "",
     contrasenia: "",
   });
 
-  const { nombres, apellidos, email, contrasenia } = user;
+  const { nombres, apellidos, email, contrasenia } = userInfo;
 
   const [passwordSecured, setPasswordSecured] = useState(true);
 
   const [error, setError] = useState("");
 
   const handleOnChangeText = (value, fieldname) => {
-    setUser({ ...user, [fieldname]: value });
+    setuserInfo({ ...userInfo, [fieldname]: value });
   };
 
   const validate = () => {
     Keyboard.dismiss();
     let valid = true;
     //Ingresar todos los datos
-    if (!isValidObjField(user))
+    if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
     //Ingresar dos nombres
     if (!nombres.trim() || nombres.length < 7)
@@ -62,7 +62,7 @@ function Signup({ navigation }) {
     //Creando los datos para el usuario
     if (valid) {
       register(nombres, apellidos, email, contrasenia);
-      console.log(user);
+      console.log(userInfo);
     }
     valid = false;
   };

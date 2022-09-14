@@ -9,7 +9,7 @@ import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/loading/Loader";
 
 export const AppNav = () => {
-  const { splashLoading, userInfo } = useContext(AuthContext);
+  const { splashLoading, info } = useContext(AuthContext);
   const [Loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -18,17 +18,19 @@ export const AppNav = () => {
     }, 2000);
   }, []);
 
+  if (Loading) {
+    return <PantallaCarga />;
+  }
+
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
-        {Loading ? (
-          <PantallaCarga />
-        ) : splashLoading ? (
+        {splashLoading ? (
           <Loader />
-        ) : userInfo.jwt_secret ? (
-          <AppStack />
-        ) : (
+        ) : info.jwt_secret ? (
           <AuthStack />
+        ) : (
+          <AppStack />
         )}
       </View>
     </NavigationContainer>
