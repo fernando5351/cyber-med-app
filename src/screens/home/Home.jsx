@@ -1,21 +1,27 @@
+import React, { useEffect, useState } from "react";
 import {
   View,
-  ScrollView,
   Text,
   StyleSheet,
   Image,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
-import Products from "../../components/targets/CartProducts";
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
-import Profile from "../../../assets/icons/profile/usercircle.png";
 
 function Home({ navigation }) {
-  //Ruta prop para ver la descripcion del medicamento
-  const Productos = () => {
-    navigation.navigate("Description");
-  };
+  const [med, setMed] = useState([]);
+
+  const urlApi = "https://ciber-med-api.herokuapp.com/products";
+
+  useEffect(() => {
+    fetch(urlApi)
+      .then((response) => response.json())
+      .then((json) => setMed(json))
+      .catch((error) => console.log(error));
+    console.log(med);
+  }, []);
 
   return (
     <View style={styles.containerMain}>
@@ -26,46 +32,32 @@ function Home({ navigation }) {
         <View style={styles.containerSearch}>
           <SearchBar />
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Profile");
-          }}
-        >
-          <Image style={styles.icoProfile} source={Profile} />
-        </TouchableOpacity>
       </View>
-      <ScrollView style={styles.containerCenter}>
+      <View style={styles.containerCenter}>
         <View style={styles.subContainerCenter}>
           <View style={styles.containerTitle}>
             <Text style={styles.titleMain}>Destacados</Text>
           </View>
-          <View style={styles.containerProducts}>
+          <ScrollView>
             <View style={styles.viewProducts}>
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
+              {med.map((get) => (
+                <TouchableOpacity
+                  key={get.id}
+                  onPress={() => navigation.navigate("Description")}
+                  style={styles.buttonProduct}
+                >
+                  <Image
+                    style={styles.imageProduct}
+                    source={{ uri: get.img_url }}
+                  />
+                  <Text style={styles.titleName}>{get.nombre}</Text>
+                  <Text style={styles.subtitlePrice}>USD: {get.precios} $</Text>
+                </TouchableOpacity>
+              ))}
             </View>
-          </View>
+          </ScrollView>
         </View>
-        <View style={styles.subContainerCenter}>
-          <View style={styles.containerTitle}>
-            <Text style={styles.titleMain}>Destacados</Text>
-          </View>
-          <View style={styles.containerProducts}>
-            <View style={styles.viewProducts}>
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-              <Products onPress={Productos} />
-            </View>
-          </View>
-        </View>
-      </ScrollView>
+      </View>
     </View>
   );
 }
@@ -93,18 +85,15 @@ const styles = StyleSheet.create({
     height: 60,
   },
   containerSearch: {
-    width: "70%",
-    alignItems: "center",
+    width: "80%",
   },
   containerCenter: {
     height: "100%",
     width: "100%",
   },
   subContainerCenter: {
-    flexDirection: "row",
     width: "100%",
     height: "100%",
-    flexWrap: "wrap",
     flex: 1,
     marginTop: "5%",
     marginBottom: "5%",
@@ -119,19 +108,39 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
     marginLeft: "3%",
     marginTop: "2%",
-    marginBottom: "1%",
-  },
-  containerProducts: {
-    height: "100%",
-    width: "100%",
-    marginTop: "5%",
+    marginBottom: "5%",
   },
   viewProducts: {
     height: "100%",
     width: "100%",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "center",
+    /*     flexWrap: "wrap",
+    flexDirection: "row", */
     justifyContent: "center",
+  },
+  buttonProduct: {
+    width: 115,
+    height: 125,
+    alignItems: "center",
+    marginLeft: "10%",
+    marginRight: "10%",
+    marginBottom: "5%",
+  },
+  imageProduct: {
+    width: "100%",
+    height: "70%",
+    borderColor: "#8DCFEC",
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  titleName: {
+    color: "#5F5F5F",
+    fontFamily: "Roboto",
+    fontSize: 15,
+  },
+  subtitlePrice: {
+    color: "#3271A5",
+    fontFamily: "Roboto",
+    fontSize: 15,
+    fontWeight: "700",
   },
 });

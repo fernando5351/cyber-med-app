@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import ProfileB from "../../../assets/icons/profile/blueuser.png";
 import BackW from "../../../assets/icons/arrows/return.png";
 import ProfileSW from "../../../assets/icons/profile/usercircle.png";
+import { AuthContext } from "../../context/AuthContext";
 
 const Profile = ({ navigation }) => {
+  const { userInfo } = useContext(AuthContext);
   return (
     <View style={styles.containerMain}>
       <View style={styles.containerTop}>
@@ -23,15 +25,17 @@ const Profile = ({ navigation }) => {
           <Image style={styles.profileCenter} source={ProfileSW} />
         </View>
         <View style={styles.containerForm}>
-          <Text style={styles.textEstablish}>Nombre : Diego Enrique</Text>
-          <Text style={styles.textEstablish}>Apellidos : Carias Hernandez</Text>
+          <Text style={styles.textEstablish}>Nombre : {userInfo.nombres}</Text>
           <Text style={styles.textEstablish}>
-            Correo : diegocarias503ida9@gmail.com
+            Apellidos : {userInfo.apellidos}
           </Text>
-          <Text style={styles.textEstablish}>Contraseña : HolaMundo123</Text>
+          <Text style={styles.textEstablish}>Correo : {userInfo.email}</Text>
           <Text style={styles.textEstablish}>
+            Contraseña : {userInfo.contrasenia}
+          </Text>
+          {/* <Text style={styles.textEstablish}>
             Numero de tarjeta : 12345678910
-          </Text>
+          </Text> */}
           <TouchableOpacity
             onPress={() => {
               navigation.navigate("EditProfile");
@@ -109,7 +113,7 @@ const styles = StyleSheet.create({
     width: "27%",
     marginLeft: "35%",
     marginTop: "7%",
-    marginBottom:"5%"
+    marginBottom: "5%",
   },
   textBtn: {
     color: "#8DCFEC",

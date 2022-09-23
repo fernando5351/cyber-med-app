@@ -12,7 +12,7 @@ import Loader from "../loading/Loader";
 import { AuthContext } from "../../context/AuthContext";
 
 const CustomDrawer = (props) => {
-  const { isLoading, logout } = useContext(AuthContext);
+  const { isLoading, userInfo, logout } = useContext(AuthContext);
 
   return (
     <View style={styles.containerDrawer}>
@@ -26,7 +26,7 @@ const CustomDrawer = (props) => {
           style={styles.subContainerT}
         >
           <Image style={styles.icoProfile} source={ProfileD} />
-          <Text style={styles.textProfile}>diegocarias503@gmail.com</Text>
+          <Text style={styles.textProfile}>{/* {userInfo} */}</Text>
         </TouchableOpacity>
       </View>
       <DrawerContentScrollView {...props}>

@@ -1,35 +1,35 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../api/connection";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Alert } from "react-native";
 
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [info, setInfo] = useState({});
+  const [userInfo, setUserInfo] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
 
   const register = (nombres, apellidos, email, contrasenia) => {
     setIsLoading(true);
     axios
-      .post(`${BASE_URL}/register`, {
+      .post("https://ciber-med-api.herokuapp.com/register", {
         nombres,
         apellidos,
         email,
         contrasenia,
       })
       .then((res) => {
-        let info = res.data;
-        setInfo(info);
-        AsyncStorage.setItem("userInfo", JSON.stringify(info));
+        let userInfo = res.data;
+        console.log(res.data);
+        setUserInfo(userInfo);
+        AsyncStorage.setItem("userInfo", JSON.stringify(userInfo));
+        Alert.alert("Alerta", "Registro exitoso");
         setIsLoading(false);
-        console.log(info);
       })
       .catch((e) => {
         console.log(`Fallo al registrar ${e}`);
-        Alert.alert("Falló al registrar");
+        Alert.alert("Error", "Falló al registrar");
         setIsLoading(false);
       });
   };
@@ -38,20 +38,21 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     axios
-      .post(`${BASE_URL}/login`, {
+      .post("https://ciber-med-api.herokuapp.com/login", {
         email,
         contrasenia,
       })
       .then((res) => {
-        let info = res.data;
-        console.log(info);
-        setInfo(info);
-        AsyncStorage.setItem("userInfo", JSON.stringify(info));
+        let userInfo = res.data;
+        console.log(res.data);
+        setUserInfo(userInfo);
+        AsyncStorage.setItem("userInfo", JSON.stringify(userInfo));
+        Alert.alert("Alerta", "Inicio de sesion exitoso");
         setIsLoading(false);
       })
       .catch((e) => {
         console.log(`Falló al iniciar sesion ${e}`);
-        Alert.alert("Falló al iniciar sesion");
+        Alert.alert("Error", "Falló al iniciar sesion");
         setIsLoading(false);
       });
   };
@@ -61,21 +62,22 @@ export const AuthProvider = ({ children }) => {
 
     axios
       .get(
-        `${BASE_URL}/log_out`,
+        "https://ciber-med-api.herokuapp.com/log_out",
         {},
         {
-          headers: { Authorization: `Bearer ${info.jwt_secret}` },
+          headers: { Authorization: `Bearer ${userInfo}` },
         }
       )
       .then((res) => {
         console.log(res.data);
-        AsyncStorage.removeItem("info");
-        setInfo({});
+        AsyncStorage.removeItem("userInfo");
+        setUserInfo("");
+        Alert.alert("Alerta", "Cierre de sesion exitoso");
         setIsLoading(false);
       })
       .catch((e) => {
         console.log(`Falló al cerrar sesion ${e}`);
-        Alert.alert("Falló al cerrar sesion");
+        Alert.alert("Error", "Falló al cerrar sesion");
         setIsLoading(false);
       });
   };
@@ -83,28 +85,28 @@ export const AuthProvider = ({ children }) => {
   const isLoggedIn = async () => {
     try {
       setSplashLoading(true);
-      let info = await AsyncStorage.getItem("info");
-      info = JSON.parse(info);
+      let userInfo = await AsyncStorage.getItem("userInfo");
+      userInfo = JSON.parse(userInfo);
 
-      if (info) {
-        setInfo(info);
+      if (userInfo) {
+        setUserInfo(userInfo);
       }
       setSplashLoading(false);
     } catch (error) {
       setSplashLoading(false);
-      Alert.alert("Error al cerrar sesion");
+      Alert.alert("Error", "Fallo al cerrar sesion");
     }
   };
 
   useEffect(() => {
-    isLoggedIn;
+    isLoggedIn();
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
         isLoading,
-        info,
+        userInfo,
         splashLoading,
         register,
         login,
