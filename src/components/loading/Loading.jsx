@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Image } from "react-native";
 import ImagenCarga from "../../../assets/images/cibermed.png";
 
-const PantallaCarga = () => {
+const LoadingPage = () => {
   return (
     <View style={styles.containerCarga}>
       <Image style={styles.ImageCarga} source={ImagenCarga} />
@@ -22,4 +22,4 @@ const styles = StyleSheet.create({
     height: 243,
   },
 });
-export default PantallaCarga;
+export default LoadingPage;
