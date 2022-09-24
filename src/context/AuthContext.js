@@ -6,7 +6,7 @@ import { Alert } from "react-native";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
 
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
       .then((res) => {
         console.log(res.data);
         AsyncStorage.removeItem("userInfo");
-        setUserInfo("");
+        setUserInfo({});
         Alert.alert("Alerta", "Cierre de sesion exitoso");
         setIsLoading(false);
       })

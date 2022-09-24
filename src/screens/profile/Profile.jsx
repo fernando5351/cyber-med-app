@@ -25,25 +25,14 @@ const Profile = ({ navigation }) => {
           <Image style={styles.profileCenter} source={ProfileSW} />
         </View>
         <View style={styles.containerForm}>
-          <Text style={styles.textEstablish}>Nombre : {userInfo.nombres}</Text>
+          <Text style={styles.textEstablish}>Nombre : Diego Enrique</Text>
+          <Text style={styles.textEstablish}>Apellidos : Carias Hernandez</Text>
           <Text style={styles.textEstablish}>
-            Apellidos : {userInfo.apellidos}
+            Correo : 771533diegoenrique503@gmail.com
           </Text>
-          <Text style={styles.textEstablish}>Correo : {userInfo.email}</Text>
           <Text style={styles.textEstablish}>
-            Contraseña : {userInfo.contrasenia}
+            Contraseña : HernandezCarias503jr
           </Text>
-          {/* <Text style={styles.textEstablish}>
-            Numero de tarjeta : 12345678910
-          </Text> */}
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("EditProfile");
-            }}
-            style={styles.buttonEdit}
-          >
-            <Text style={styles.textBtn}>EDITAR</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -100,29 +89,12 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   textEstablish: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "700",
     color: "#fff",
-    marginLeft: "4%",
-    marginTop: "6%",
-    marginBottom: "6%",
-    fontFamily: "Roboto",
-  },
-  buttonEdit: {
-    backgroundColor: "#fff",
-    width: "27%",
-    marginLeft: "35%",
     marginTop: "7%",
-    marginBottom: "5%",
-  },
-  textBtn: {
-    color: "#8DCFEC",
-    fontSize: 20,
-    letterSpacing: 2,
-    fontWeight: "700",
+    marginBottom: "7%",
+    marginLeft: "5%",
     fontFamily: "Roboto",
-    textAlign: "center",
-    marginTop: "10%",
-    marginBottom: "10%",
   },
 });
