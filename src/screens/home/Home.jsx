@@ -6,10 +6,12 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import Products from "../../components/targets/CartProducts";
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
+<<<<<<< HEAD
 import Profile from "../../../assets/icons/profile/usercircle.png";
+=======
+>>>>>>> test
 import { useEffect, useState } from "react";
 
 function Home({ navigation }) {
@@ -34,15 +36,9 @@ function Home({ navigation }) {
         <View style={styles.containerSearch}>
           <SearchBar />
         </View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Profile");
-          }}
-        >
-          <Image style={styles.icoProfile} source={Profile} />
-        </TouchableOpacity>
       </View>
       <View style={styles.containerCenter}>
+<<<<<<< HEAD
         <View style={styles.subContainerCenter}>
           <View style={styles.containerTitle}>
             <Text style={styles.titleMain}>Destacados</Text>
@@ -66,6 +62,27 @@ function Home({ navigation }) {
             </View>
           </ScrollView>
         </View>
+=======
+        <Text style={styles.titleMain}>Destacados</Text>
+        <ScrollView>
+          <View style={styles.viewProducts}>
+            {med.map((item) => (
+              <TouchableOpacity
+                key={item.id}
+                onPress={() => navigation.navigate("Description")}
+                style={styles.buttonProduct}
+              >
+                <Image
+                  style={styles.imageProduct}
+                  source={{ uri: item.img_url }}
+                />
+                <Text style={styles.titleName}>{item.nombre}</Text>
+                <Text style={styles.subtitlePrice}>USD {item.precios}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </ScrollView>
+>>>>>>> test
       </View>
     </View>
   );
@@ -86,31 +103,22 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   icoMenu: {
-    width: 35,
+    width: 40,
     height: 50,
   },
-  icoProfile: {
-    width: 60,
-    height: 60,
-  },
   containerSearch: {
-    width: "70%",
-    alignItems: "center",
+    width: "80%",
   },
   containerCenter: {
     height: "100%",
     width: "100%",
+    marginTop: "1%",
   },
   subContainerCenter: {
     width: "100%",
     height: "100%",
-    flexWrap: "wrap",
-    flex: 1,
     marginTop: "5%",
     marginBottom: "5%",
-  },
-  containerTitle: {
-    width: "100%",
   },
   titleMain: {
     color: "#3271A5",
@@ -126,7 +134,6 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
-    alignItems: "center",
     justifyContent: "center",
   },
   buttonProduct: {

@@ -131,13 +131,6 @@ function Signin({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("PasswordRecover")}
-              style={styles.btnO}
-            >
-              <Text style={styles.txtBtnS}>Olvidaste tu contraseña?</Text>
-            </TouchableOpacity>
-
             <TouchableOpacity onPress={validate} style={styles.btnSignIn}>
               <Text style={styles.txtBtnSignIn}>INICIAR SESION</Text>
             </TouchableOpacity>
@@ -238,7 +231,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   btnSignIn: {
-    marginTop: "5%",
+    marginTop: "15%",
     backgroundColor: "#58AFDD",
     width: "40%",
     justifyContent: "center",

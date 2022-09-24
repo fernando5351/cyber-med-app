@@ -26,7 +26,7 @@ const CustomDrawer = (props) => {
           style={styles.subContainerT}
         >
           <Image style={styles.icoProfile} source={ProfileD} />
-          <Text style={styles.textProfile}>diegocarias503@gmail.com</Text>
+          <Text style={styles.textProfile}>hola</Text>
         </TouchableOpacity>
       </View>
       <DrawerContentScrollView {...props}>

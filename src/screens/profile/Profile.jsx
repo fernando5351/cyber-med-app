@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
 import ProfileB from "../../../assets/icons/profile/blueuser.png";
 import BackW from "../../../assets/icons/arrows/return.png";
 import ProfileSW from "../../../assets/icons/profile/usercircle.png";
+import { AuthContext } from "../../context/AuthContext";
 
 const Profile = ({ navigation }) => {
+  const { userInfo } = useContext(AuthContext);
   return (
     <View style={styles.containerMain}>
       <View style={styles.containerTop}>
@@ -26,20 +28,11 @@ const Profile = ({ navigation }) => {
           <Text style={styles.textEstablish}>Nombre : Diego Enrique</Text>
           <Text style={styles.textEstablish}>Apellidos : Carias Hernandez</Text>
           <Text style={styles.textEstablish}>
-            Correo : diegocarias503ida9@gmail.com
+            Correo : 771533diegoenrique503@gmail.com
           </Text>
-          <Text style={styles.textEstablish}>Contraseña : HolaMundo123</Text>
           <Text style={styles.textEstablish}>
-            Numero de tarjeta : 12345678910
+            Contraseña : HernandezCarias503jr
           </Text>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("EditProfile");
-            }}
-            style={styles.buttonEdit}
-          >
-            <Text style={styles.textBtn}>EDITAR</Text>
-          </TouchableOpacity>
         </View>
       </View>
     </View>
@@ -96,29 +89,12 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   textEstablish: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "700",
     color: "#fff",
-    marginLeft: "4%",
-    marginTop: "6%",
-    marginBottom: "6%",
-    fontFamily: "Roboto",
-  },
-  buttonEdit: {
-    backgroundColor: "#fff",
-    width: "27%",
-    marginLeft: "35%",
     marginTop: "7%",
-    marginBottom:"5%"
-  },
-  textBtn: {
-    color: "#8DCFEC",
-    fontSize: 20,
-    letterSpacing: 2,
-    fontWeight: "700",
+    marginBottom: "7%",
+    marginLeft: "5%",
     fontFamily: "Roboto",
-    textAlign: "center",
-    marginTop: "10%",
-    marginBottom: "10%",
   },
 });

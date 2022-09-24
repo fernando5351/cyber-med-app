@@ -2,15 +2,13 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 //Rutas de las screens del Drawer
-import { HomeStackScreen } from "./HomeStack";
+import HomeStackScreen from "./HomeStack";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
-import Pedidos from "../screens/shopping/Orders";
-import Historial from "../screens/shopping/Record";
+import Profile from "../screens/profile/Profile";
 import Carrito from "../screens/shopping/Cart";
 
 import HomeI from "../../assets/icons/finish/home.png";
-import PedidosI from "../../assets/icons/orders/basket.png";
-import HistorialI from "../../assets/icons/orders/medicalcross.png";
+import ProfileIcon from "../../assets/icons/profile/usercircle.png";
 import CarritoI from "../../assets/icons/orders/cart.png";
 
 const Drawer = createDrawerNavigator();
@@ -43,17 +41,10 @@ export default function AppStack() {
       />
       <Drawer.Screen
         options={{
-          drawerIcon: () => <Image style={styles.icos} source={PedidosI} />,
+          drawerIcon: () => <Image style={styles.icos} source={ProfileIcon} />,
         }}
-        name="Pedidos"
-        component={Pedidos}
-      />
-      <Drawer.Screen
-        options={{
-          drawerIcon: () => <Image style={styles.icos} source={HistorialI} />,
-        }}
-        name="Historial de Compra"
-        component={Historial}
+        name="Perfil"
+        component={Profile}
       />
       <Drawer.Screen
         options={{
