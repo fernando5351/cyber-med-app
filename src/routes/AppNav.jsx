@@ -25,7 +25,7 @@ export const AppNav = () => {
           <PantallaCarga />
         ) : splashLoading ? (
           <Loader />
-        ) : userInfo.jwt_secret ? (
+        ) : userInfo ? (
           <AppStack />
         ) : (
           <AuthStack />

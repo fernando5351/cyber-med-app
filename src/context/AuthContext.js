@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
         `${BASE_URL}/log_out`,
         {},
         {
-          headers: { Authorization: `Bearer ${userInfo.jwt_secret}` },
+          headers: { Authorization: `Bearer ${userInfo}` },
         }
       )
       .then((res) => {
