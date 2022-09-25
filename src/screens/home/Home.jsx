@@ -12,16 +12,48 @@ import { useEffect, useState } from "react";
 
 function Home({ navigation }) {
   const [med, setMed] = useState([]);
-
-  const urlApi = "https://ciber-med-api.herokuapp.com/products";
+  const [filteredMed, setFilteredMed] = useState([]);
 
   useEffect(() => {
-    fetch(urlApi)
+    fetchData("https://ciber-med-api.herokuapp.com/products");
+  }, []);
+
+  const fetchData = async (url) => {
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+      setMed(json);
+      setFilteredMed(json);
+      console.log(med);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const searchFilteredFunction = (text) => {
+    if (text) {
+      const newMed = med.filter((item) => {
+        const itemMed = item.nombre
+          ? item.nombre.toUpperCase()
+          : "".toUpperCase();
+        const textMed = text.toUpperCase();
+        return itemMed.indexOf(textMed) > -1;
+      });
+      setFilteredMed(newMed);
+    } else {
+      setFilteredMed(med);
+    }
+  };
+
+  /* useEffect(() => {
+    fetch("https://ciber-med-api.herokuapp.com/products")
       .then((response) => response.json())
       .then((json) => setMed(json))
       .catch((error) => console.log(error));
     console.log(med);
   }, []);
+
+   */
 
   return (
     <View style={styles.containerMain}>
@@ -30,16 +62,21 @@ function Home({ navigation }) {
           <Image style={styles.icoMenu} source={Menu} />
         </TouchableOpacity>
         <View style={styles.containerSearch}>
-          <SearchBar />
+          <SearchBar
+            label={"Buscar por Nombre"}
+            onChangeText={(text) => {
+              searchFilteredFunction(text);
+            }}
+          />
         </View>
       </View>
       <View style={styles.containerCenter}>
         <Text style={styles.titleMain}>Destacados</Text>
         <ScrollView>
           <View style={styles.viewProducts}>
-            {med.map((item) => (
+            {filteredMed.map((item, index) => (
               <TouchableOpacity
-                key={item.id}
+                key={index}
                 onPress={() => navigation.navigate("Description")}
                 style={styles.buttonProduct}
               >
