@@ -17,7 +17,7 @@ export const SearchBar = ({ label, onChangeText }) => {
 
 const styles = StyleSheet.create({
   containerSearchbar: {
-    width: "90%",
+    width: "100%",
     height: 55,
     flexDirection: "row",
     justifyContent: "center",

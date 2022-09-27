@@ -25,14 +25,12 @@ const Profile = ({ navigation }) => {
           <Image style={styles.profileCenter} source={ProfileSW} />
         </View>
         <View style={styles.containerForm}>
-          <Text style={styles.textEstablish}>Nombre : Diego Enrique</Text>
-          <Text style={styles.textEstablish}>Apellidos : Carias Hernandez</Text>
+          <Text style={styles.textEstablish}>Nombre : {userInfo.nombres}</Text>
           <Text style={styles.textEstablish}>
-            Correo : 771533diegoenrique503@gmail.com
+            Apellidos : {userInfo.apellidos}
           </Text>
-          <Text style={styles.textEstablish}>
-            Contraseña : HernandezCarias503jr
-          </Text>
+          <Text style={styles.textEstablish}>Correo : {userInfo.email}</Text>
+          <Text style={styles.textEstablish}>Contraseña : ********</Text>
         </View>
       </View>
     </View>

@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   const register = (nombres, apellidos, email, contrasenia) => {
     setIsLoading(true);
     axios
-      .post("https://ciber-med-api.herokuapp.com/register", {
+      .post("https://lovely-lace-production.up.railway.app/register", {
         nombres,
         apellidos,
         email,
@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     axios
-      .post("https://ciber-med-api.herokuapp.com/login", {
+      .post("https://lovely-lace-production.up.railway.app/login", {
         email,
         contrasenia,
       })
@@ -61,13 +61,7 @@ export const AuthProvider = ({ children }) => {
     setIsLoading(true);
 
     axios
-      .get(
-        "https://ciber-med-api.herokuapp.com/log_out",
-        {},
-        {
-          headers: { Authorization: `Bearer ${userInfo}` },
-        }
-      )
+      .get("https://lovely-lace-production.up.railway.app/log_out")
       .then((res) => {
         console.log(res.data);
         AsyncStorage.removeItem("userInfo");
