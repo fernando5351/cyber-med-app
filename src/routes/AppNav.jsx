@@ -5,12 +5,12 @@ import { StyleSheet, View } from "react-native";
 import AuthStack from "./AuthStack";
 import AppStack from "./AppStack";
 import LoadingPage from "../components/loading/Loading";
-import { AuthContext } from "../context/AuthContext";
 import Loader from "../components/loading/Loader";
+import { AuthUser } from "../context/AuthUser";
 
 export const AppNav = () => {
-  const { splashLoading, userInfo } = useContext(AuthContext);
-  const [Loading, setLoading] = useState(true);
+  const { splashLoading, userToken } = useContext(AuthUser);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setTimeout(() => {
@@ -18,14 +18,20 @@ export const AppNav = () => {
     }, 2000);
   }, []);
 
-  if (Loading) {
+  if (loading) {
     return <LoadingPage />;
   }
 
   return (
     <NavigationContainer>
       <View style={styles.containerMainApp}>
-        {splashLoading ? <Loader /> : userInfo ? <AppStack /> : <AuthStack />}
+        {splashLoading ? (
+          <Loader />
+        ) : userToken !== "" ? (
+          <AppStack />
+        ) : (
+          <AuthStack />
+        )}
       </View>
     </NavigationContainer>
   );

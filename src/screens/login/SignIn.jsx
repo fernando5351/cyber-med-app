@@ -20,10 +20,10 @@ import {
   isValidObjField,
   updateError,
 } from "../../utils/Methods";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthUser } from "../../context/AuthUser";
 
 function Signin({ navigation }) {
-  const { isLoading, login } = useContext(AuthContext);
+  const { isLoading, login } = useContext(AuthUser);
 
   const [userInfo, setUserInfo] = useState({
     email: "",

@@ -20,10 +20,10 @@ import {
   isEmailValid,
   updateError,
 } from "../../utils/Methods";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthUser } from "../../context/AuthUser";
 
 function Signup({ navigation }) {
-  const { isLoading, register } = useContext(AuthContext);
+  const { isLoading, register } = useContext(AuthUser);
 
   const [userInfo, setuserInfo] = useState({
     nombres: "",

@@ -17,6 +17,7 @@ export default function AppStack() {
   return (
     <Drawer.Navigator
       drawerContent={(props) => <CustomDrawer {...props} />}
+      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         drawerLabelStyle: {
