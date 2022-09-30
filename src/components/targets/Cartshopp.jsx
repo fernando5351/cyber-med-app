@@ -7,6 +7,7 @@ import BotonVerde from "../../../assets/icons/orders/plus-circle-solid-24.png";
 
 const ProductosCarrito = ({navigation}) => {
   return (
+    <View > 
     <View style={styles.ContenedorMedicina}>
       <View style={styles.ContenedorImagen}> 
       <Image source={Medicina} style={styles.ImagenMedicina} />
@@ -33,11 +34,16 @@ const ProductosCarrito = ({navigation}) => {
         </TouchableOpacity>
       </View>
     </View>
+    </View>
   );
 };
 const styles = StyleSheet.create({
+  ContenedorGlobal: {
+    height: "300%",
+    backgroundColor:"#000"
+  },
   ContenedorImagen:{
-    height: "90%",
+    height: "75%",
     width: "40%",
     borderRadius:10,
     borderWidth: 1,
@@ -46,10 +52,11 @@ const styles = StyleSheet.create({
   },
   ContenedorMedicina: {
     alignSelf: "center",
-    height: "20%",
+    height: 140,
     width: "88%",
     margin: "4%",
     borderRadius: 30,
+   
    
   },
   ContenedorImagenCarrito: {
@@ -59,21 +66,21 @@ const styles = StyleSheet.create({
     top: "-45%",
   },
   ImagenMenosCarrito: {
-    top: "-137%",
+    top: "-115%",
     width: "40%",
     height: "62%",
     left: "25%",
   },
   ImagenMasCarrito: {
-    top: "-130%",
+    top: "-123%",
     width: "40%",
     height: "62%",
     left: "25%",
   },
   ImagenBorrarCarrito: {
-    width: "38%",
-    height: "63%",
-    top: "-135%",
+    width: "41%",
+    height: "61%",
+    top: "-100%",
     left: "26%",
   },
   ImagenMedicina: {
@@ -87,7 +94,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: "70%",
     height: "100%",
-    top: "-140%",
+    top: "-130%",
     alignSelf: "flex-end",
     left: "-2%",
   },

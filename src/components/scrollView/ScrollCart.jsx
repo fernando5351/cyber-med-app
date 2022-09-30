@@ -15,7 +15,8 @@ const ScrollCarrito = () => {
 };
 const styles = StyleSheet.create({
 ContenedorScroll:  {
-height: "100%"
+height: "100%",
+
 }
 });
 export default ScrollCarrito;
