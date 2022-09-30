@@ -16,22 +16,6 @@ function Home({ navigation }) {
   const [med, setMed] = useState([]);
   const [filteredMed, setFilteredMed] = useState([]);
 
-  /* useEffect(() => {
-    fetchData("https://ciber-med-api.herokuapp.com/products");
-  }, []);
-
-  const fetchData = async (url) => {
-    try {
-      const response = await fetch(url);
-      const json = await response.json();
-      setMed(json);
-      setFilteredMed(json);
-      console.log(med);
-    } catch (error) {
-      console.log(error);
-    }
-  };  */
-
   useEffect(() => {
     fetch("https://lovely-lace-production.up.railway.app/products")
       .then((response) => response.json())

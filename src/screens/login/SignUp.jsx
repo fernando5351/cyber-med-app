@@ -49,10 +49,10 @@ function Signup({ navigation }) {
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
     //Ingresar dos nombres
-    if (!nombres.trim() || nombres.length < 7)
+    if (!nombres.trim() || nombres.length < 5)
       return updateError("Debe contener los dos nombres", setError);
     //Ingresar dos apellidos
-    if (!apellidos.trim() || apellidos.length < 7)
+    if (!apellidos.trim() || apellidos.length < 5)
       return updateError("Debe contener los dos apellidos", setError);
     //Ingresar un email valido
     if (!isEmailValid(email)) return updateError("Email invalido", setError);
