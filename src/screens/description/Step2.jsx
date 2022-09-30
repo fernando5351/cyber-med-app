@@ -4,6 +4,7 @@ import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenRectangle from "../../../assets/icons/steps/check.png";
 import Scroll from "../../components/scrollView/Scroll";
+import ScrollCarrito from "../../components/scrollView/ScrollCart";
 
 const Step2 = ({ navigation }) => {
   return (
@@ -25,7 +26,7 @@ const Step2 = ({ navigation }) => {
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
       <View style={styles.contentScroll}>
-        <Scroll />
+       <ScrollCarrito />
       </View>
       <View style={styles.containerButton}>
         <TouchableOpacity
@@ -108,6 +109,8 @@ const styles = StyleSheet.create({
     marginLeft: "5%",
     width: "90%",
     marginTop: "15%",
+    backgroundColor: "#E7F8FF",
+    borderRadius: 20,
   },
   containerButton: {
     backgroundColor: "#fff",

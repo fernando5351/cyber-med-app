@@ -41,8 +41,8 @@ function Home({ navigation }) {
               <TouchableOpacity
                 key={item.id}
                 onPress={() => navigation.navigate("Description")}
-                style={styles.buttonProduct}
-              >
+                style={styles.buttonProduct} >
+
                 <Image
                   style={styles.imageProduct}
                   source={{ uri: item.img_url }}
