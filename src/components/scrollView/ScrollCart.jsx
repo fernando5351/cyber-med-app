@@ -7,9 +7,8 @@ const ScrollCarrito = () => {
 
 <ScrollView style={styles.ContenedorScroll}>
 <ProductosCarrito />
-<ProductosCarrito />
-<ProductosCarrito />
-<ProductosCarrito />
+
+
 </ScrollView>
     );
 };
