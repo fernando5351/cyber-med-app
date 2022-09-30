@@ -8,10 +8,6 @@ import {
 } from "react-native";
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
-<<<<<<< HEAD
-import Profile from "../../../assets/icons/profile/usercircle.png";
-=======
->>>>>>> test
 import { useEffect, useState } from "react";
 
 function Home({ navigation }) {
@@ -38,31 +34,6 @@ function Home({ navigation }) {
         </View>
       </View>
       <View style={styles.containerCenter}>
-<<<<<<< HEAD
-        <View style={styles.subContainerCenter}>
-          <View style={styles.containerTitle}>
-            <Text style={styles.titleMain}>Destacados</Text>
-          </View>
-          <ScrollView>
-            <View style={styles.viewProducts}>
-              {med.map((get) => (
-                <TouchableOpacity
-                  key={get.id}
-                  onPress={() => navigation.navigate("Description")}
-                  style={styles.buttonProduct}
-                >
-                  <Image
-                    style={styles.imageProduct}
-                    source={{ uri: get.img_url }}
-                  />
-                  <Text style={styles.titleName}>{get.nombre}</Text>
-                  <Text style={styles.subtitlePrice}>USD ${get.precios}</Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          </ScrollView>
-        </View>
-=======
         <Text style={styles.titleMain}>Destacados</Text>
         <ScrollView>
           <View style={styles.viewProducts}>
@@ -82,7 +53,6 @@ function Home({ navigation }) {
             ))}
           </View>
         </ScrollView>
->>>>>>> test
       </View>
     </View>
   );
