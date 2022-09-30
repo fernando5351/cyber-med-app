@@ -8,9 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import ImagenCarrito from "../../../assets/icons/orders/cartblue.png";
-import ImagenFlechaC from "../../../assets/icons/arrows/return.png";
+import ImagenFlechaC from "../../../assets/icons/arrows/bluereturn.png";
 import MenuCarrito from "../../../assets/icons/home/menublue.png";
 import ProductosCarrito from "../../components/targets/Cartshopp";
+import ScrollCarrito from "../../components/scrollView/ScrollCart";
 
 function Carrito({ navigation }) {
   return (
@@ -35,18 +36,12 @@ function Carrito({ navigation }) {
         </TouchableOpacity>
         <Text style={styles.TextoFlechaC}>Carrito</Text>
       </View>
-      <ScrollView style={styles.ContenedorProductosC}>
-        <ProductosCarrito />
-        <ProductosCarrito />
-        <ProductosCarrito />
-        <ProductosCarrito />
-        <ProductosCarrito />
-        <ProductosCarrito />
-      </ScrollView>
+       <ScrollCarrito />
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
         <Text style={styles.NumeroTotal}>$16.00</Text>
-        <TouchableOpacity style={styles.BotonPago}>
+        <TouchableOpacity   onPress={() => {navigation.navigate("Description");}}
+        style={styles.BotonPago}>
           <Text style={styles.TextBotonC}>Proceder al pago</Text>
         </TouchableOpacity>
       </View>
@@ -57,7 +52,7 @@ function Carrito({ navigation }) {
 const styles = StyleSheet.create({
   containerCarrito: {
     flex: 1,
-    backgroundColor: "#3271A5",
+    backgroundColor: "#E7F8FF",
   },
   ContenedorAbajoC: {
     backgroundColor: "#FFFFFF",
@@ -90,8 +85,8 @@ const styles = StyleSheet.create({
     borderRadius: 17,
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 2.5,
-    borderColor: "#3271A5",
+    //borderWidth: 2.5,
+   // borderColor: "#3271A5",
     elevation: 3,
     top: "-15%",
   },
@@ -119,7 +114,7 @@ const styles = StyleSheet.create({
     left: "8%",
   },
   TextoFlechaC: {
-    color: "#FFF",
+    color: "#4489C1",
     fontFamily: "Roboto",
     left: "25%",
     top: "-43%",

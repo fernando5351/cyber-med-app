@@ -59,29 +59,6 @@ function Signin({ navigation }) {
     valid = false;
   };
 
-  /* const signin = () => {
-    setLoading(true);
-    setTimeout(async () => {
-      setLoading(false);
-
-      let userData = await AsyncStorage.getItem("user");
-
-      if (userData) {
-        userData = JSON.parse(userData);
-        if (correo == userData.correo && contraseña == userData.contraseña) {
-          AsyncStorage.setItem(
-            "user",
-            JSON.stringify({ ...userData, loggedIn: true })
-          );
-        } else {
-          Alert.alert("Error", "Datos invalidos");
-        }
-      } else {
-        Alert.alert("Error", "El usuario no existe");
-      }
-    }, 3000);
-  }; */
-
   return (
     <ImageBackground source={Cover} style={styles.containerSignIn}>
       <Loader visible={isLoading} />
@@ -154,13 +131,6 @@ function Signin({ navigation }) {
                 />
               </TouchableOpacity>
             </View>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("PasswordRecover")}
-              style={styles.btnO}
-            >
-              <Text style={styles.txtBtnS}>Olvidaste tu contraseña?</Text>
-            </TouchableOpacity>
-
             <TouchableOpacity onPress={validate} style={styles.btnSignIn}>
               <Text style={styles.txtBtnSignIn}>INICIAR SESION</Text>
             </TouchableOpacity>
@@ -261,7 +231,7 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   btnSignIn: {
-    marginTop: "5%",
+    marginTop: "15%",
     backgroundColor: "#58AFDD",
     width: "40%",
     justifyContent: "center",
