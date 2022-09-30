@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Image, Text, TextInput } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import ImagenCard from "../../../assets/icons/steps/creditcard.png";
-import CheckBox from "react-native-check-box";
 
 const Step1 = ({ navigation }) => {
   return (
@@ -59,8 +58,6 @@ const Step1 = ({ navigation }) => {
               />
             </View>
             <View style={styles.Check}>
-              <CheckBox style={styles.CheckBox}></CheckBox>
-              <Text style={styles.Guardar}>Guardar Tarjeta</Text>
               <TouchableOpacity
                 style={styles.Button}
                 onPress={() => {
@@ -96,11 +93,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: "12%",
+    height: 100,
   },
   ImagenCheck: {
-    width: "15%",
-    height: "70%",
+    width: 60,
+    height: 60,
   },
   styleText: {
     fontSize: 40,
@@ -128,6 +125,7 @@ const styles = StyleSheet.create({
   contentKey: {
     backgroundColor: "#fff",
     height: "50%",
+    marginTop: "5%",
   },
   styleForm: {
     height: "20%",
@@ -147,21 +145,22 @@ const styles = StyleSheet.create({
     marginBottom: "81%",
   },
   ImagenFlecha: {
-    width: "100%",
-    height: "100%",
+    width: "97%",
+    height: "90%",
+    marginLeft: "10%",
   },
   styleTextDos: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "12%",
-    marginTop: "-15%",
+    marginLeft: "13%",
+    marginTop: "-17%",
   },
   ImagenCard: {
-    width: "10%",
-    height: "40%",
+    width: "8%",
+    height: "30%",
     marginLeft: "10%",
-    marginTop: "7%",
+    marginTop: "10%",
   },
   textoIntro: {
     fontSize: 15,
@@ -169,9 +168,6 @@ const styles = StyleSheet.create({
     color: "#3271A5",
     marginLeft: "22%",
     marginTop: "-7%",
-  },
-  CheckBox: {
-    marginLeft: "5%",
   },
   Guardar: {
     fontSize: 15,
@@ -183,9 +179,9 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#8DCFEC",
     width: "40%",
-    height: "60%",
+    height: "55%",
     borderRadius: 20,
-    marginTop: "10%",
+    marginTop: "15%",
     marginLeft: "30%",
     alignItems: "center",
     justifyContent: "center",

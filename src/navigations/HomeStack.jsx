@@ -5,6 +5,7 @@ import Home from "../screens/home/Home";
 import Profile from "../screens/profile/Profile";
 import ProfileE from "../screens/profile/ProfileE";
 import Description from "../screens/description/Description";
+import Checkbox from "../screens/description/Checkbox";
 import Step1 from "../screens/description/Step1";
 import Step2 from "../screens/description/Step2";
 import Step3 from "../screens/description/Step3";
@@ -20,6 +21,7 @@ export const HomeStackScreen = () => {
       <HomeStack.Screen name="Profile" component={Profile} />
       <HomeStack.Screen name="EditProfile" component={ProfileE} />
       <HomeStack.Screen name="Description" component={Description} />
+      <HomeStack.Screen name="Checkbox" component={Checkbox} />
       <HomeStack.Screen name="Step1" component={Step1} />
       <HomeStack.Screen name="Step2" component={Step2} />
       <HomeStack.Screen name="Step3" component={Step3} />

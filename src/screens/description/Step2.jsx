@@ -3,7 +3,6 @@ import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenRectangle from "../../../assets/icons/steps/check.png";
-import Scroll from "../../components/scrollView/Scroll";
 
 const Step2 = ({ navigation }) => {
   return (
@@ -24,9 +23,7 @@ const Step2 = ({ navigation }) => {
         <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
-      <View style={styles.contentScroll}>
-        <Scroll />
-      </View>
+      <View style={styles.contentScroll}></View>
       <View style={styles.containerButton}>
         <TouchableOpacity
           style={styles.Button}
@@ -53,7 +50,7 @@ const styles = StyleSheet.create({
   },
   contentTop: {
     width: "100%",
-    height: "10%",
+    height: 100,
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -61,8 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#8DCFEC",
   },
   ImagenCheck: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
   },
   styleText: {
     fontSize: 40,
@@ -77,17 +74,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   ImagenFlecha: {
-    width: 30,
-    height: 30,
-    marginTop: "3%",
-    marginLeft: "3%",
+    width: 35,
+    height: 35,
+    marginTop: "5%",
+    marginLeft: "4%",
   },
   styleTextDos: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "13%",
-    marginTop: "-7%",
+    marginLeft: "15%",
+    marginTop: "-8%",
   },
   ImagenRectangle: {
     width: 30,

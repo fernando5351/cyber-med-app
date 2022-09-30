@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
-import { SearchBar } from "../../components/searchbar/SearchBar";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenMedicamento from "../../../assets/images/buscapina.jpg";
 import ImagenPlus from "../../../assets/icons/description/pluscircle.png";
@@ -10,7 +9,7 @@ const Description = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <SearchBar />
+        <Text style={styles.styleDescription}>DESCRIPCION</Text>
       </View>
       <View style={styles.subContent}>
         <TouchableOpacity
@@ -90,6 +89,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#8DCFEC",
+  },
+  styleDescription: {
+    fontSize: 30,
+    fontWeight: "700",
+    color: "#fff",
   },
   subContent: {
     height: "7%",
@@ -239,7 +243,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   botton: {
-    backgroundColor: "#3271A5",
+    backgroundColor: "#8DCFEC",
     height: "70%",
     width: "100%",
     borderRadius: 20,
