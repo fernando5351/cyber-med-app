@@ -1,24 +1,23 @@
 import { View, TextInput, StyleSheet, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import Loupe from "../../../assets/icons/search/search.png";
 
-export const SearchBar = () => {
+export const SearchBar = ({ label, onChangeText }) => {
   return (
     <View style={styles.containerSearchbar}>
       <TextInput
         style={styles.inputSearch}
-        placeholder="Buscar por Nombre o Tipo"
+        placeholder={label}
+        onChangeText={onChangeText}
       />
-      <TouchableOpacity>
-        <Image style={styles.icoLoupe} source={Loupe} />
-      </TouchableOpacity>
+
+      <Image style={styles.icoLoupe} source={Loupe} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   containerSearchbar: {
-    width: "90%",
+    width: "100%",
     height: 55,
     flexDirection: "row",
     justifyContent: "center",

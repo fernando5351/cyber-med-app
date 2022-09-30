@@ -9,19 +9,41 @@ import {
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import Menu from "../../../assets/icons/home/menu.png";
 import { useEffect, useState } from "react";
+import { CartMed } from "../../components/targets/CartMed";
+import icoLogo from "../../../assets/images/cibermed.png";
 
 function Home({ navigation }) {
   const [med, setMed] = useState([]);
-
-  const urlApi = "https://ciber-med-api.herokuapp.com/products";
+  const [filteredMed, setFilteredMed] = useState([]);
 
   useEffect(() => {
-    fetch(urlApi)
+    fetch("https://lovely-lace-production.up.railway.app/products")
       .then((response) => response.json())
-      .then((json) => setMed(json))
+      .then((json) => {
+        setMed(json);
+        setFilteredMed(json);
+      })
       .catch((error) => console.log(error));
     console.log(med);
   }, []);
+
+  const searchFunction = (text) => {
+    if (text) {
+      const newMed = med.filter((item) => {
+        const itemNombre = item.nombre
+          ? item.nombre.toUpperCase()
+          : "".toUpperCase();
+        const itemTipo = item.tipo_consumo
+          ? item.tipo_consumo.toUpperCase()
+          : "".toUpperCase();
+        const textMed = text.toUpperCase();
+        return itemNombre.indexOf(textMed) > -1, itemTipo.indexOf(textMed) > -1;
+      });
+      setFilteredMed(newMed);
+    } else {
+      setFilteredMed(med);
+    }
+  };
 
   return (
     <View style={styles.containerMain}>
@@ -30,26 +52,21 @@ function Home({ navigation }) {
           <Image style={styles.icoMenu} source={Menu} />
         </TouchableOpacity>
         <View style={styles.containerSearch}>
-          <SearchBar />
+          <SearchBar
+            label={"Buscar por Nombre o tipo"}
+            onChangeText={(text) => {
+              searchFunction(text);
+            }}
+          />
         </View>
+        <Image style={styles.iconLogo} source={icoLogo} />
       </View>
       <View style={styles.containerCenter}>
-        <Text style={styles.titleMain}>Destacados</Text>
+        <Text style={styles.titleMain}>Medicamentos</Text>
         <ScrollView>
           <View style={styles.viewProducts}>
-            {med.map((item) => (
-              <TouchableOpacity
-                key={item.id}
-                onPress={() => navigation.navigate("Description")}
-                style={styles.buttonProduct}
-              >
-                <Image
-                  style={styles.imageProduct}
-                  source={{ uri: item.img_url }}
-                />
-                <Text style={styles.titleName}>{item.nombre}</Text>
-                <Text style={styles.subtitlePrice}>USD {item.precios}</Text>
-              </TouchableOpacity>
+            {filteredMed.map((item, index) => (
+              <CartMed type={item.tipo_consumo} key={index} item={item} />
             ))}
           </View>
         </ScrollView>
@@ -68,16 +85,20 @@ const styles = StyleSheet.create({
   containerTop: {
     backgroundColor: "#8DCFEC",
     flexDirection: "row",
-    justifyContent: "space-around",
     alignItems: "center",
+    justifyContent: "space-around",
     width: "100%",
   },
   icoMenu: {
-    width: 40,
+    width: 35,
     height: 50,
   },
   containerSearch: {
-    width: "80%",
+    width: "65%",
+  },
+  iconLogo: {
+    width: "20%",
+    height: "100%",
   },
   containerCenter: {
     height: "100%",

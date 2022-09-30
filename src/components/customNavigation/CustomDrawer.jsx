@@ -9,11 +9,10 @@ import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
 import Loader from "../loading/Loader";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthUser } from "../../context/AuthUser";
 
 const CustomDrawer = (props) => {
-  const { isLoading, logout } = useContext(AuthContext);
-
+  const { isLoading, logOut, userToken } = useContext(AuthUser);
   return (
     <View style={styles.containerDrawer}>
       <Loader visible={isLoading} />
@@ -21,19 +20,19 @@ const CustomDrawer = (props) => {
         <Image style={styles.icoBackD} source={BackD} />
       </TouchableOpacity>
       <View style={styles.containerTopD}>
-        <TouchableOpacity
-          onPress={() => props.navigation.navigate("EditProfile")}
-          style={styles.subContainerT}
-        >
-          <Image style={styles.icoProfile} source={ProfileD} />
-          <Text style={styles.textProfile}>hola</Text>
-        </TouchableOpacity>
+        <Image style={styles.icoProfile} source={ProfileD} />
+        <Text style={styles.textProfile}>{userToken.email}</Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
       <View style={styles.containerBottomD}>
-        <TouchableOpacity onPress={logout} style={styles.subContainerB}>
+        <TouchableOpacity
+          style={styles.subContainerB}
+          onPress={() => {
+            logOut();
+          }}
+        >
           <Image style={styles.icoLogOut} source={Logout} />
           <Text style={styles.textLogOut}>Cerrar Sesion</Text>
         </TouchableOpacity>
@@ -61,20 +60,21 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: "94%",
     marginLeft: "3%",
-  },
-  subContainerT: {
-    marginTop: "5%",
-    marginBottom: "5%",
-    justifyContent: "center",
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
   },
   icoProfile: {
     width: 65,
     height: 65,
+    marginLeft: "3%",
+    marginRight: "3%",
+    marginBottom: "2%",
   },
   textProfile: {
     color: "#fff",
     fontWeight: "700",
+    marginBottom: "2%",
   },
   containerBottomD: {
     width: "90%",
