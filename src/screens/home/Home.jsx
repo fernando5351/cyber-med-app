@@ -16,6 +16,17 @@ function Home({ navigation }) {
   const [med, setMed] = useState([]);
   const [filteredMed, setFilteredMed] = useState([]);
 
+  /*   useEffect(() => {
+    fetch("https://lovely-lace-production.up.railway.app/products")
+      .then((response) => response.json())
+      .then((json) => {
+        setMed(json);
+        setFilteredMed(json);
+      })
+      .catch((error) => console.log(error));
+    console.log(med);
+  }, []); */
+
   useEffect(() => {
     fetch("https://lovely-lace-production.up.railway.app/products")
       .then((response) => response.json())
