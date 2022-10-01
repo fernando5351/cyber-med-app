@@ -1,13 +1,55 @@
-import React from "react";
-import { StyleSheet, View, Image, Text, TextInput } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TextInput,
+  Keyboard,
+  TouchableOpacity,
+} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import ImagenCard from "../../../assets/icons/steps/creditcard.png";
-import CheckBox from "react-native-check-box";
+import { isValidObjField, updateError } from "../../utils/Methods";
 
 const Step1 = ({ navigation }) => {
+  const [data, setData] = useState({
+    titular: "",
+    numeroTarjeta: "",
+    fechaVencimiento: "",
+    cvv: "",
+  });
+
+  const [error, setError] = useState("");
+
+  const { titular, numeroTarjeta, fechaVencimiento, cvv } = data;
+
+  const handleOnChangeText = (value, fieldName) => {
+    setData({ ...data, [fieldName]: value });
+  };
+
+  const handleInfo = () => {
+    Keyboard.dismiss();
+    let valid = true;
+    if (!isValidObjField(data))
+      return updateError("Llene todos los campos", setError);
+    if (!titular.trim() || titular.length < 8)
+      return updateError("Ingrese el nombre", setError);
+    if (!numeroTarjeta.trim || numeroTarjeta.length < 8)
+      return updateError("Ingrese el No de la tarjeta", setError);
+    if (!fechaVencimiento.trim() || fechaVencimiento.length < 5)
+      return updateError("Ingrese la fecha de vencimiento", setError);
+    if (!cvv.trim() || cvv.length < 3)
+      return updateError("Ingrese el cvv", setError);
+    if (valid) {
+      navigation.navigate("Step2");
+      console.log(data);
+    }
+    valid = false;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.containerColchon}>
@@ -37,34 +79,60 @@ const Step1 = ({ navigation }) => {
               </Text>
             </View>
             <View style={styles.contentKey}>
+              {error ? (
+                <Text
+                  style={{
+                    color: "#FF0B0B",
+                    fontSize: 15,
+                    textAlign: "center",
+                    fontFamily: "Roboto",
+                  }}
+                >
+                  {error}
+                </Text>
+              ) : null}
               <TextInput
+                value={titular}
+                onChangeText={(value) => handleOnChangeText(value, "titular")}
                 placeholder="Titular:"
                 placeholderTextColor={"#8DCFEC"}
                 style={styles.styleForm}
               />
               <TextInput
+                value={numeroTarjeta}
+                onChangeText={(value) =>
+                  handleOnChangeText(value, "numeroTarjeta")
+                }
                 placeholder="Numero de Tarjeta:"
                 placeholderTextColor={"#8DCFEC"}
                 style={styles.styleForm}
+                keyboardType="numeric"
               />
               <TextInput
+                value={fechaVencimiento}
+                onChangeText={(value) =>
+                  handleOnChangeText(value, "fechaVencimiento")
+                }
                 placeholder="Vecha de Vencimiento:"
                 placeholderTextColor={"#8DCFEC"}
                 style={styles.styleForm}
+                autoComplete="birthdate-year"
               />
               <TextInput
+                value={cvv}
+                onChangeText={(value) => handleOnChangeText(value, "cvv")}
                 placeholder="CVV:"
                 placeholderTextColor={"#8DCFEC"}
                 style={styles.styleForm}
+                keyboardType="numeric"
               />
             </View>
             <View style={styles.Check}>
-              <CheckBox style={styles.CheckBox}></CheckBox>
               <Text style={styles.Guardar}>Guardar Tarjeta</Text>
               <TouchableOpacity
                 style={styles.Button}
                 onPress={() => {
-                  navigation.navigate("Step2");
+                  handleInfo();
                 }}
               >
                 <Text style={styles.textBtn}>COMPRAR</Text>

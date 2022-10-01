@@ -5,47 +5,47 @@ import DeleteCarrito from "../../../assets/icons/orders/blueremove.png";
 import BotonRojo from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import BotonVerde from "../../../assets/icons/orders/plus-circle-solid-24.png";
 
-const ProductosCarrito = ({navigation}) => {
+const ProductosCarrito = ({ onPress }) => {
   return (
-    <View > 
-    <View style={styles.ContenedorMedicina}>
-      <View style={styles.ContenedorImagen}> 
-      <Image source={Medicina} style={styles.ImagenMedicina} />
-      </View>
-      <View style={styles.ContenedorImagenCarrito}>
-        <TouchableOpacity>
-          <Image source={DeleteCarrito} style={styles.ImagenBorrarCarrito} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-        <Image source={BotonRojo} style={styles.ImagenMenosCarrito}/>
+    <View>
+      <View style={styles.ContenedorMedicina}>
+        <View style={styles.ContenedorImagen}>
+          <Image source={Medicina} style={styles.ImagenMedicina} />
+        </View>
+        <View style={styles.ContenedorImagenCarrito}>
+          <TouchableOpacity>
+            <Image source={DeleteCarrito} style={styles.ImagenBorrarCarrito} />
           </TouchableOpacity>
           <TouchableOpacity>
-          <Image source={BotonVerde} style={styles.ImagenMasCarrito}/>
+            <Image source={BotonRojo} style={styles.ImagenMenosCarrito} />
           </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={BotonVerde} style={styles.ImagenMasCarrito} />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.ContedorPrecios}>
+          <Text style={styles.Nombre}>ASPIRINA</Text>
+          <Text style={styles.PrecioCantidad1}>Precio:</Text>
+          <Text style={styles.Numeros1}>$4.00</Text>
+          <Text style={styles.PrecioCantidad2}>Cantidad:</Text>
+          <Text style={styles.Numeros2}>1</Text>
+          <TouchableOpacity style={styles.Boton} onPress={onPress}>
+            <Text style={styles.Textoboton}>Ver mas</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.ContedorPrecios}>
-        <Text style={styles.Nombre}>ASPIRINA</Text>
-        <Text style={styles.PrecioCantidad1}>Precio:</Text>
-        <Text style={styles.Numeros1}>$4.00</Text>
-        <Text style={styles.PrecioCantidad2}>Cantidad:</Text>
-        <Text style={styles.Numeros2}>1</Text>
-        <TouchableOpacity style={styles.Boton}  onPress={() => {navigation.navigate("Step1");}}>
-          <Text style={styles.Textoboton}>Ver mas</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
     </View>
   );
 };
 const styles = StyleSheet.create({
   ContenedorGlobal: {
     height: "300%",
-    backgroundColor:"#000"
+    backgroundColor: "#000",
   },
-  ContenedorImagen:{
+  ContenedorImagen: {
     height: "75%",
     width: "40%",
-    borderRadius:10,
+    borderRadius: 10,
     borderWidth: 1,
     borderColor: "#8DCFEC",
     backgroundColor: "#fff",
@@ -56,8 +56,6 @@ const styles = StyleSheet.create({
     width: "88%",
     margin: "4%",
     borderRadius: 30,
-   
-   
   },
   ContenedorImagenCarrito: {
     height: "50%",
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
     width: "90%",
     height: "80%",
     top: "9%",
-    left: "5%"
+    left: "5%",
   },
   ContedorPrecios: {
     justifyContent: "center",

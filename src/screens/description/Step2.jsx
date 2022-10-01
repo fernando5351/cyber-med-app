@@ -1,12 +1,18 @@
 import React from "react";
-import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenRectangle from "../../../assets/icons/steps/check.png";
-import Scroll from "../../components/scrollView/Scroll";
-import ScrollCarrito from "../../components/scrollView/ScrollCart";
+import ProductosCarrito from "../../components/targets/Cartshopp";
 
-const Step2 = ({ navigation }) => {
+const Step2 = ({ navigation, onPress }) => {
   return (
     <View style={styles.containerPrin}>
       <View style={styles.contentTop}>
@@ -26,7 +32,13 @@ const Step2 = ({ navigation }) => {
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
       <View style={styles.contentScroll}>
-       <ScrollCarrito />
+        <ScrollView>
+          <ProductosCarrito
+            onPress={() => {
+              navigation.navigate("Description");
+            }}
+          />
+        </ScrollView>
       </View>
       <View style={styles.containerButton}>
         <TouchableOpacity
