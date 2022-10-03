@@ -66,7 +66,14 @@ function Home({ navigation }) {
         <ScrollView>
           <View style={styles.viewProducts}>
             {filteredMed.map((item, index) => (
-              <CartMed type={item.tipo_consumo} key={index} item={item} />
+              <CartMed
+                onPress={() => {
+                  navigation.navigate("Description", { med: item });
+                }}
+                type={item.tipo_consumo}
+                key={index}
+                item={item}
+              />
             ))}
           </View>
         </ScrollView>

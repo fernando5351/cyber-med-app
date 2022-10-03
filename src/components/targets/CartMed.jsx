@@ -1,13 +1,13 @@
 import { TouchableOpacity, Image, Text, StyleSheet } from "react-native";
 
-export const CartMed = ({ item, index, type }) => {
+export const CartMed = ({ item, index, type, onPress }) => {
   const { img_url, nombre, precios } = item;
 
   return (
     <TouchableOpacity
       index={index}
       type={type}
-      onPress={() => navigation.navigate("Description")}
+      onPress={onPress}
       style={styles.buttonProduct}
     >
       <Image style={styles.imageProduct} source={{ uri: img_url }} />

@@ -6,7 +6,8 @@ import ImagenMedicamento from "../../../assets/images/buscapina.jpg";
 import ImagenPlus from "../../../assets/icons/description/pluscircle.png";
 import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
 
-const Description = ({ navigation }) => {
+const Description = ({ navigation, route }) => {
+  console.log(route);
   return (
     <View style={styles.container}>
       <View style={styles.content}>
