@@ -10,9 +10,9 @@ import {
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenRectangle from "../../../assets/icons/steps/check.png";
-import ProductosCarrito from "../../components/targets/Cartshopp";
+import CartShopp from "../../components/targets/CartShopp";
 
-const Step2 = ({ navigation, onPress }) => {
+const Step2 = ({ navigation }) => {
   return (
     <View style={styles.containerPrin}>
       <View style={styles.contentTop}>
@@ -33,7 +33,7 @@ const Step2 = ({ navigation, onPress }) => {
       </View>
       <View style={styles.contentScroll}>
         <ScrollView>
-          <ProductosCarrito
+          <CartShopp
             onPress={() => {
               navigation.navigate("Description");
             }}

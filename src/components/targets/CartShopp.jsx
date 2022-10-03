@@ -5,7 +5,7 @@ import DeleteCarrito from "../../../assets/icons/orders/blueremove.png";
 import BotonRojo from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import BotonVerde from "../../../assets/icons/orders/plus-circle-solid-24.png";
 
-const ProductosCarrito = ({ onPress }) => {
+const CartShopp = ({ onPress }) => {
   return (
     <View>
       <View style={styles.ContenedorMedicina}>
@@ -147,4 +147,4 @@ const styles = StyleSheet.create({
     top: "3%",
   },
 });
-export default ProductosCarrito;
+export default CartShopp;

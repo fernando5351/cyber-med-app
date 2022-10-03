@@ -10,7 +10,7 @@ import {
 import ImagenCarrito from "../../../assets/icons/orders/cartblue.png";
 import ImagenFlechaC from "../../../assets/icons/arrows/bluereturn.png";
 import MenuCarrito from "../../../assets/icons/home/menublue.png";
-import ProductosCarrito from "../../components/targets/Cartshopp";
+import CartShopp from "../../components/targets/CartShopp";
 
 function Carrito({ navigation }) {
   return (
@@ -37,7 +37,7 @@ function Carrito({ navigation }) {
       </View>
       <ScrollView>
         <View>
-          <ProductosCarrito
+          <CartShopp
             onPress={() => {
               navigation.navigate("Description");
             }}
