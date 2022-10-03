@@ -207,6 +207,7 @@ const styles = StyleSheet.create({
     borderColor: "#8DCFEC",
     marginTop: "1%",
     marginBottom: "2%",
+    color: "#2b6696",
   },
   Check: {
     backgroundColor: "#fff",

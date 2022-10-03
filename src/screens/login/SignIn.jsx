@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
   },
   inputs: {
     width: "80%",
-    color: "#8DCFEC",
+    color: "#2b6696",
     height: "25%",
     borderBottomColor: "#8DCFEC",
     borderBottomWidth: 1,
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "80%",
-    color: "#8DCFEC",
+    color: "#2b6696",
     height: "25%",
     borderBottomColor: "#8DCFEC",
     borderBottomWidth: 1,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
   inputP: {
     width: "92%",
     height: "100%",
-    color: "#8DCFEC",
+    color: "#2b6696",
   },
   contIco: {
     width: "7%",

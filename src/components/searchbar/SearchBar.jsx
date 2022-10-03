@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: "7%",
   },
   inputSearch: {
-    color: "#3271A5",
+    color: "#2b6696",
     width: "80%",
     height: "100%",
     fontFamily: "Roboto",
