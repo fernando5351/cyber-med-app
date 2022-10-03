@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import ProfileD from "../../../assets/icons/menu/circleProfile.png";
 import Logout from "../../../assets/icons/menu/logout.png";
 import BackD from "../../../assets/icons/arrows/returndouble.png";
@@ -60,7 +59,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: "94%",
     marginLeft: "3%",
-    flexDirection: "row",
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   textProfile: {
     color: "#fff",
     fontWeight: "700",
-    marginBottom: "2%",
+    marginBottom: "3%",
   },
   containerBottomD: {
     width: "90%",

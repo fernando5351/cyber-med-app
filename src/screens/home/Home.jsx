@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   View,
   ScrollView,
@@ -7,9 +8,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { SearchBar } from "../../components/searchbar/SearchBar";
-import Menu from "../../../assets/icons/home/menu.png";
-import { useEffect, useState } from "react";
 import { CartMed } from "../../components/targets/CartMed";
+import Menu from "../../../assets/icons/home/menu.png";
 import icoLogo from "../../../assets/images/cibermed.png";
 
 function Home({ navigation }) {

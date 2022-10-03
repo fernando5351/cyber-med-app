@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     borderBottomColor: "#fff",
     borderBottomWidth: 1,
     marginTop: "1%",
-    color: "#fff",
+    color: "#2b6696",
   },
   inputPassword: {
     flexDirection: "row",
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   inputP: {
-    color: "#fff",
+    color: "#2b6696",
     width: "92%",
   },
   btnO: {

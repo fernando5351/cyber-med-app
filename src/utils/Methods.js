@@ -9,7 +9,7 @@ export const updateError = (error, stateUpdater) => {
     stateUpdater("");
   }, 2000);
 };
-//Validacion de si es un Email correcto
+//Validacion de si es un Email
 export const isEmailValid = (value) => {
   const regx = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
   return regx.test(value);
