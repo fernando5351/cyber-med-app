@@ -1,9 +1,15 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Image, Text, TextInput } from "react-native";
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import { TouchableOpacity } from "react-native-gesture-handler";
 import ImagenCard from "../../../assets/icons/steps/creditcard.png";
 
 const Step1 = ({ navigation }) => {

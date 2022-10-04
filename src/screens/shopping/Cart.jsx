@@ -11,7 +11,6 @@ import ImagenCarrito from "../../../assets/icons/orders/cartblue.png";
 import ImagenFlechaC from "../../../assets/icons/arrows/bluereturn.png";
 import MenuCarrito from "../../../assets/icons/home/menublue.png";
 import ProductosCarrito from "../../components/targets/Cartshopp";
-import ScrollCarrito from "../../components/scrollView/ScrollCart";
 
 function Carrito({ navigation }) {
   return (
@@ -36,7 +35,7 @@ function Carrito({ navigation }) {
         </TouchableOpacity>
         <Text style={styles.TextoFlechaC}>Carrito</Text>
       </View>
-       <ScrollCarrito />
+       <ProductosCarrito />
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
         <Text style={styles.NumeroTotal}>$16.00</Text>

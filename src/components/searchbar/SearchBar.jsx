@@ -1,5 +1,4 @@
-import { View, TextInput, StyleSheet, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, TextInput, StyleSheet, Image, TouchableOpacity } from "react-native";
 import Loupe from "../../../assets/icons/search/search.png";
 
 export const SearchBar = () => {

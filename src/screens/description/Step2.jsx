@@ -2,7 +2,6 @@ import React from "react";
 import { StyleSheet, View, Image, Text, TouchableOpacity } from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import ScrollCarrito from "../../components/scrollView/ScrollCart";
 
 const Step2 = ({ navigation }) => {
   return (
@@ -24,7 +23,7 @@ const Step2 = ({ navigation }) => {
         <Text style={styles.textoIntro}>Completa tu Compra</Text>
       </View>
       <View style={styles.contentScroll}>
-        <ScrollCarrito />
+      
       </View>
       <View style={styles.containerButton}>
         <TouchableOpacity
