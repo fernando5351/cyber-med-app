@@ -1,12 +1,11 @@
 import { TouchableOpacity, Image, Text, StyleSheet } from "react-native";
 
-export const CartMed = ({ item, index, type, onPress }) => {
+export const CartMed = ({ item, index, onPress}) => {
   const { img_url, nombre, precios } = item;
 
   return (
     <TouchableOpacity
       index={index}
-      type={type}
       onPress={onPress}
       style={styles.buttonProduct}
     >
@@ -23,6 +22,8 @@ const styles = StyleSheet.create({
     height: 135,
     alignItems: "center",
     marginBottom: "5%",
+    marginLeft: "5%",
+    marginRight: "5%",
   },
   imageProduct: {
     width: "100%",

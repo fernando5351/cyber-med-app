@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import ImagenMedicamento from "../../../assets/images/buscapina.jpg";
 import ImagenPlus from "../../../assets/icons/description/pluscircle.png";
 import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
+import axios from "axios";
+import { AuthUser } from "../../context/AuthUser";
 
-const Description = ({ navigation, route }) => {
-  console.log(route);
+const Description = ({ navigation, route, props }) => {
+  const { userToken } = useContext(AuthUser);
+
+  const filteredMed = route.params.filteredMed;
+
+  const addOrder = async (nombre, precios) => {
+    const obj = { nombre, precios, userToken };
+    const res = await axios.post(
+      "https://lovely-lace-production.up.railway.app/carrito",
+      obj
+    );
+    console.log(res);
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -25,28 +38,26 @@ const Description = ({ navigation, route }) => {
       </View>
       <View style={styles.contentSub}>
         <View style={styles.contentTop}>
-          <Image style={styles.ImagenMedicamento} source={ImagenMedicamento} />
+          <Image
+            style={styles.ImagenMedicamento}
+            source={{ uri: filteredMed.img_url }}
+          />
           <View style={styles.containerMain}>
-            <Text style={styles.StyleText}>Precio: $1.50</Text>
-            <Text style={styles.StyleText}>Marca: Bayer</Text>
+            <Text style={styles.StyleText}>Precio: {filteredMed.precios}</Text>
+            <Text style={styles.StyleText}>Marca: {filteredMed.marca}</Text>
           </View>
         </View>
       </View>
       <View style={styles.ContentInfo}>
-        <Text style={styles.TextoInfo}>ASPIRINA</Text>
-        <Text style={styles.TextoDescripcion}>
-          Utilizado como medicamento para tratar el dolor (analgésico), la
-          fiebre (antipirético) y la inflamación (antiinflamatorio).
-        </Text>
+        <Text style={styles.TextoInfo}>{filteredMed.nombre}</Text>
+        <Text style={styles.TextoDescripcion}>{filteredMed.descripcion}</Text>
         <View style={styles.TextoUso}>
           <Text style={styles.TipoUso}>Tipo de Uso:</Text>
-          <Text style={styles.Tipo}>
-            Analgesico, antipiretico, antiinflamatorio
-          </Text>
+          <Text style={styles.Tipo}>{filteredMed.tipo_uso}</Text>
         </View>
         <View style={styles.ContenedorDos}>
           <Text style={styles.InfoVia}>Via de Administracion:</Text>
-          <Text style={styles.Info}>Oral</Text>
+          <Text style={styles.Info}>{filteredMed.tipo_consumo}</Text>
         </View>
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
@@ -67,7 +78,11 @@ const Description = ({ navigation, route }) => {
                 <Text style={styles.bottonText}>Compra Ya</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                addOrder(filteredMed.nombre, filteredMed.precios);
+              }}
+            >
               <Image style={styles.ImagenCarrito} source={ImagenCarrito} />
             </TouchableOpacity>
           </View>

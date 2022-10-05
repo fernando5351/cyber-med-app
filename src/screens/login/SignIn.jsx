@@ -54,7 +54,7 @@ function Signin({ navigation }) {
     //Recibir si hay datos existentes
     if (valid) {
       login(email, contrasenia);
-      console.log(userInfo);
+      /* console.log(userInfo); */
     }
     valid = false;
   };

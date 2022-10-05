@@ -11,8 +11,10 @@ import { SearchBar } from "../../components/searchbar/SearchBar";
 import { CartMed } from "../../components/targets/CartMed";
 import Menu from "../../../assets/icons/home/menu.png";
 import icoLogo from "../../../assets/images/cibermed.png";
+import Loader from "../../components/loading/Loader";
 
 function Home({ navigation }) {
+  const [loading, setIsLoading] = useState(true);
   const [med, setMed] = useState([]);
   const [filteredMed, setFilteredMed] = useState([]);
 
@@ -23,8 +25,8 @@ function Home({ navigation }) {
         setMed(json);
         setFilteredMed(json);
       })
-      .catch((error) => console.log(error));
-    console.log(med);
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const searchFunction = (text) => {
@@ -33,11 +35,13 @@ function Home({ navigation }) {
         const itemNombre = item.nombre
           ? item.nombre.toUpperCase()
           : "".toUpperCase();
-        const itemTipo = item.tipo_consumo
+        /* const itemTipo = item.tipo_consumo
           ? item.tipo_consumo.toUpperCase()
-          : "".toUpperCase();
+          : "".toUpperCase(); */
         const textMed = text.toUpperCase();
-        return itemNombre.indexOf(textMed) > -1, itemTipo.indexOf(textMed) > -1;
+        return (
+          itemNombre.indexOf(textMed) > -1
+        ); /* , itemTipo.indexOf(textMed) > -1; */
       });
       setFilteredMed(newMed);
     } else {
@@ -47,13 +51,14 @@ function Home({ navigation }) {
 
   return (
     <View style={styles.containerMain}>
+      <Loader visible={loading} />
       <View style={styles.containerTop}>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Image style={styles.icoMenu} source={Menu} />
         </TouchableOpacity>
         <View style={styles.containerSearch}>
           <SearchBar
-            label={"Buscar por Nombre o tipo"}
+            label={"Buscar por Nombre"}
             onChangeText={(text) => {
               searchFunction(text);
             }}
@@ -68,9 +73,8 @@ function Home({ navigation }) {
             {filteredMed.map((item, index) => (
               <CartMed
                 onPress={() => {
-                  navigation.navigate("Description", { med: item });
+                  navigation.navigate("Description", { filteredMed: item });
                 }}
-                type={item.tipo_consumo}
                 key={index}
                 item={item}
               />

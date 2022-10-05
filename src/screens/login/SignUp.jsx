@@ -62,7 +62,7 @@ function Signup({ navigation }) {
     //Creando los datos para el usuario
     if (valid) {
       register(nombres, apellidos, email, contrasenia);
-      console.log(userInfo);
+      /* console.log(userInfo); */
     }
     valid = false;
   };
