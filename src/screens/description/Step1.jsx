@@ -128,7 +128,6 @@ const Step1 = ({ navigation }) => {
               />
             </View>
             <View style={styles.Check}>
-              <Text style={styles.Guardar}>Guardar Tarjeta</Text>
               <TouchableOpacity
                 style={styles.Button}
                 onPress={() => {
@@ -164,11 +163,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     width: "100%",
-    height: "12%",
+    height: 90,
   },
   ImagenCheck: {
     width: "15%",
-    height: "70%",
+    height: 60,
   },
   styleText: {
     fontSize: 40,
@@ -198,7 +197,7 @@ const styles = StyleSheet.create({
     height: "50%",
   },
   styleForm: {
-    height: "20%",
+    height: "21%",
     width: "90%",
     marginLeft: "5%",
     marginEnd: 20,
@@ -216,15 +215,15 @@ const styles = StyleSheet.create({
     marginBottom: "81%",
   },
   ImagenFlecha: {
-    width: "100%",
-    height: "100%",
+    width: 35,
+    height: 35,
   },
   styleTextDos: {
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
     marginLeft: "12%",
-    marginTop: "-15%",
+    marginTop: "-17%",
   },
   ImagenCard: {
     width: "10%",

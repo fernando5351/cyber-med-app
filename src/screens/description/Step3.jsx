@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
   containerTop: {
     width: "100%",
-    height: "15%",
+    height: "10%",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   ImagenCheck: {
     width: "15%",
-    height: "50%",
+    height: "75%",
   },
   styleText: {
     fontSize: 40,
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   contentMedium: {
     width: "100%",
-    height: "75%",
+    height: "80%",
     backgroundColor: "#fff",
   },
   subcontent: {
