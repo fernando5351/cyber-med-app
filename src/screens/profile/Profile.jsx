@@ -25,12 +25,22 @@ const Profile = ({ navigation }) => {
           <Image style={styles.profileCenter} source={ProfileSW} />
         </View>
         <View style={styles.containerForm}>
-          <Text style={styles.textEstablish}>Nombre : {userToken.nombres}</Text>
-          <Text style={styles.textEstablish}>
-            Apellidos : {userToken.apellidos}
-          </Text>
-          <Text style={styles.textEstablish}>Correo : {userToken.email}</Text>
-          <Text style={styles.textEstablish}>Contraseña : **********</Text>
+          <Text style={styles.textEstablish}>Nombre :</Text>
+          <View style={styles.contentInfo}>
+            <Text style={styles.infoUser}>{userToken.nombres}</Text>
+          </View>
+          <Text style={styles.textEstablish}>Apellidos :</Text>
+          <View style={styles.contentInfo}>
+            <Text style={styles.infoUser}>{userToken.apellidos}</Text>
+          </View>
+          <Text style={styles.textEstablish}>Correo : </Text>
+          <View style={styles.contentInfo}>
+            <Text style={styles.infoUser}>{userToken.email}</Text>
+          </View>
+          <Text style={styles.textEstablish}>Contraseña : </Text>
+          <View style={styles.contentInfo}>
+            <Text style={styles.infoUser}>**********</Text>
+          </View>
         </View>
       </View>
     </View>
@@ -89,11 +99,28 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   textEstablish: {
+    fontSize: 18,
+    color: "#fff",
+    marginLeft: "5%",
+    fontFamily: "Roboto",
+    marginTop: "3%",
+    marginBottom: "3%",
+  },
+  contentInfo: {
+    backgroundColor: "#fff",
+    width: "90%",
+    justifyContent: "center",
+    alignItems: "center",
+    marginLeft: "5%",
+    height: "10%",
+    marginTop: "1%",
+    marginBottom: "1%",
+    borderRadius: 10,
+  },
+  infoUser: {
     fontSize: 17,
     fontWeight: "600",
-    color: "#fff",
-    marginTop: "10%",
-    marginBottom: "8%",
+    color: "#8DCFEC",
     marginLeft: "5%",
     fontFamily: "Roboto",
   },
