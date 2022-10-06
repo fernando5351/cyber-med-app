@@ -5,7 +5,7 @@ import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenQR from "../../../assets/icons/steps/scan.png";
 import ImagenEscaner from "../../../assets/images/QR.png";
 
-const Step3 = ({ navigation }) => {
+const Step2 = ({ navigation }) => {
   return (
     <View style={styles.content}>
       <View style={styles.containerTop}>
@@ -44,7 +44,7 @@ const Step3 = ({ navigation }) => {
   );
 };
 
-export default Step3;
+export default Step2;
 
 const styles = StyleSheet.create({
   content: {

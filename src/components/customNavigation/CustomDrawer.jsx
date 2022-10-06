@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     marginBottom: "2%",
   },
   containerTopD: {
-    borderBottomColor: "#fff",
+    borderColor: "#fff",
+    borderTopWidth: 1,
     borderBottomWidth: 1,
     width: "94%",
     marginLeft: "3%",
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
     marginLeft: "3%",
     marginRight: "3%",
     marginBottom: "2%",
+    marginTop: "3%",
   },
   textProfile: {
     color: "#fff",

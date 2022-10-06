@@ -8,8 +8,6 @@ import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 
-
-
 const Description = ({ navigation, route, props }) => {
   const { userToken } = useContext(AuthUser);
 
@@ -27,7 +25,7 @@ const Description = ({ navigation, route, props }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <Image style={styles.Canastita} source={Canastita}/>
+        <Image style={styles.Canastita} source={Canastita} />
         <Text style={styles.title}>Descripcion</Text>
       </View>
       <View style={styles.subContent}>
@@ -66,13 +64,13 @@ const Description = ({ navigation, route, props }) => {
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
           <TouchableOpacity>
-          <Image style={styles.Restar} source={Restar}/>
+            <Image source={Restar} />
           </TouchableOpacity>
           <View style={styles.contentNumber}>
-          <Text style={styles.number}>100</Text>
+            <Text style={styles.number}>100</Text>
           </View>
           <TouchableOpacity>
-          <Image style={styles.Sumar} source={Sumar}/>
+            <Image source={Sumar} />
           </TouchableOpacity>
         </View>
         <View style={styles.Contenedor}>
@@ -132,8 +130,8 @@ const styles = StyleSheet.create({
     height: "7%",
   },
   ImagenFlecha: {
-    width: 30,
-    height: 30,
+    width: 35,
+    height: 35,
     marginTop: "3%",
     marginLeft: "2%",
   },
@@ -186,9 +184,11 @@ const styles = StyleSheet.create({
   },
   TextoDescripcion: {
     fontSize: 15,
-    fontWeight: "400",
+    fontWeight: "500",
     color: "#3271A5",
     marginTop: "3%",
+    width: "95%",
+    textAlign: "center",
   },
   TextoUso: {
     backgroundColor: "#fff",
@@ -219,30 +219,26 @@ const styles = StyleSheet.create({
     height: "15%",
     width: "100%",
     justifyContent: "center",
-    marginTop: "3%",
   },
   InfoVia: {
     fontSize: 18,
     fontWeight: "600",
     color: "#3271A5",
-
     marginLeft: "3%",
+    marginTop: "-6.6%",
   },
   Info: {
     fontSize: 18,
-    fontWeight: "600",
     marginLeft: "55%",
-    marginTop: "-6.6%",
     color: "#3271A5",
+    marginTop: "-6.6%",
   },
   InfoCantidad: {
     backgroundColor: "#fff",
     height: "15%",
     width: "100%",
-    marginTop: "3%",
     flexDirection: "row",
-    alignItems:"center"
-    
+    alignItems: "center",
   },
   Cantidad: {
     fontSize: 18,
@@ -251,22 +247,22 @@ const styles = StyleSheet.create({
     marginLeft: "3%",
     marginRight: "3%",
   },
-  number:{
+  number: {
     fontSize: 19,
-    fontWeight: "600",
+    fontWeight: "500",
     color: "#3271A5",
-    textAlign:"center",
+    textAlign: "center",
   },
-  contentNumber:{
-    width:"10%",
-    height:"65%",
+  contentNumber: {
+    width: "10%",
+    height: "65%",
     borderColor: "#3271A5",
     borderBottomWidth: 2,
-    borderTopWidth:2,
-    borderLeftWidth:2,
-    borderRightWidth:2,
-    marginLeft:"3%",
-    marginRight:"3%",
+    borderTopWidth: 2,
+    borderLeftWidth: 2,
+    borderRightWidth: 2,
+    marginLeft: "3%",
+    marginRight: "3%",
   },
   cantidadNum: {
     fontSize: 18,

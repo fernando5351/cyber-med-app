@@ -1,6 +1,6 @@
-import { TouchableOpacity, Image, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Image, Text, StyleSheet, View } from "react-native";
 
-export const CartMed = ({ item, index, onPress}) => {
+export const CartMed = ({ item, index, onPress }) => {
   const { img_url, nombre, precios } = item;
 
   return (
@@ -9,7 +9,9 @@ export const CartMed = ({ item, index, onPress}) => {
       onPress={onPress}
       style={styles.buttonProduct}
     >
-      <Image style={styles.imageProduct} source={{ uri: img_url }} />
+      <View style={styles.contenImg}>
+        <Image style={styles.imageProduct} source={{ uri: img_url }} />
+      </View>
       <Text style={styles.titleName}>{nombre}</Text>
       <Text style={styles.subtitlePrice}>USD {precios}</Text>
     </TouchableOpacity>
@@ -22,25 +24,31 @@ const styles = StyleSheet.create({
     height: 135,
     alignItems: "center",
     marginBottom: "5%",
-    marginLeft: "5%",
-    marginRight: "5%",
+    marginLeft: "8%",
+    marginRight: "8%",
+  },
+  contenImg: {
+    width: "100%",
+    height: "75%",
+    borderColor: "#8DCFEC",
+    borderWidth: 1,
+    borderRadius: 5,
+    justifyContent: "center",
+    alignItems: "center",
   },
   imageProduct: {
-    width: "100%",
-    height: "70%",
-    borderColor: "#8DCFEC",
-    borderWidth: 2,
-    borderRadius: 5,
+    width: "80%",
+    height: "80%",
   },
   titleName: {
     color: "#5F5F5F",
-    fontFamily: "Roboto",
-    fontSize: 15,
+    fontSize: 16,
+    letterSpacing: 1,
   },
   subtitlePrice: {
     color: "#3271A5",
-    fontFamily: "Roboto",
-    fontSize: 15,
-    fontWeight: "700",
+    fontSize: 14,
+    fontWeight: "bold",
+    letterSpacing: 1,
   },
 });

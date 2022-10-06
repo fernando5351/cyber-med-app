@@ -35,8 +35,8 @@ const Step1 = ({ navigation }) => {
     let valid = true;
     if (!isValidObjField(data))
       return updateError("Llene todos los campos", setError);
-    if (!titular.trim() || titular.length < 8)
-      return updateError("Ingrese el nombre", setError);
+    if (!titular.trim() || titular.length < 10)
+      return updateError("Ingrese el nombre completo", setError);
     if (!numeroTarjeta.trim || numeroTarjeta.length < 8)
       return updateError("Ingrese el No de la tarjeta", setError);
     if (!fechaVencimiento.trim() || fechaVencimiento.length < 5)
@@ -194,7 +194,7 @@ const styles = StyleSheet.create({
   },
   contentKey: {
     backgroundColor: "#fff",
-    height: "50%",
+    height: "55%",
   },
   styleForm: {
     height: "21%",

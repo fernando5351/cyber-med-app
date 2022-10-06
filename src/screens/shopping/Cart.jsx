@@ -10,7 +10,7 @@ import {
 import ImagenCarrito from "../../../assets/icons/orders/cartblue.png";
 import ImagenFlechaC from "../../../assets/icons/arrows/bluereturn.png";
 import MenuCarrito from "../../../assets/icons/home/menublue.png";
-import CartShopp from "../../components/targets/CartShopp";
+import { CartOrder } from "../../components/targets/CartOrder";
 
 function Carrito({ navigation }) {
   return (
@@ -36,12 +36,8 @@ function Carrito({ navigation }) {
         <Text style={styles.TextoFlechaC}>Carrito</Text>
       </View>
       <ScrollView>
-        <View>
-          <CartShopp
-            onPress={() => {
-              navigation.navigate("Description");
-            }}
-          />
+        <View style={styles.contentCarts}>
+          <CartOrder />
         </View>
       </ScrollView>
       <View style={styles.ContenedorAbajoC}>
@@ -68,6 +64,7 @@ const styles = StyleSheet.create({
   ContenedorAbajoC: {
     backgroundColor: "#FFFFFF",
     height: "13%",
+    width: "100%",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -110,8 +107,8 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   ImagenMenuC: {
-    width: "10%",
-    height: "65%",
+    width: 35,
+    height: 50,
     top: "45%",
     left: "13%",
   },
@@ -133,12 +130,12 @@ const styles = StyleSheet.create({
   },
   PedidosTopC: {
     backgroundColor: "#FFFFFF",
-    height: "13%",
+    height: 100,
   },
   ImageCarrito: {
     width: "20%",
     height: "70%",
-    top: "-50%",
+    top: "-35%",
     left: "26%",
   },
   TextCarrito: {
@@ -147,8 +144,11 @@ const styles = StyleSheet.create({
     color: "#3271A5",
     fontWeight: "bold",
     letterSpacing: 1,
-    top: "-110%",
+    top: "-95%",
     left: "48%",
+  },
+  contentCarts: {
+    alignItems: "center",
   },
 });
 
