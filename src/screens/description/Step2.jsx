@@ -1,70 +1,59 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Image,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import ImagenCheck from "../../../assets/icons/steps/checkcircle.png";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import ImagenRectangle from "../../../assets/icons/steps/check.png";
-import CartShopp from "../../components/targets/CartShopp";
+import ImagenQR from "../../../assets/icons/steps/scan.png";
+import ImagenEscaner from "../../../assets/images/QR.png";
 
-const Step2 = ({ navigation }) => {
+const Step3 = ({ navigation }) => {
   return (
-    <View style={styles.containerPrin}>
-      <View style={styles.contentTop}>
+    <View style={styles.content}>
+      <View style={styles.containerTop}>
         <Image style={styles.ImagenCheck} source={ImagenCheck} />
         <Text style={styles.styleText}>Paso 2</Text>
       </View>
-      <View style={styles.contentCompra}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.goBack();
-          }}
-        >
-          <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
-        </TouchableOpacity>
-        <Text style={styles.styleTextDos}>Completar Compra</Text>
-        <Image style={styles.ImagenRectangle} source={ImagenRectangle} />
-        <Text style={styles.textoIntro}>Completa tu Compra</Text>
-      </View>
-      <View style={styles.contentScroll}>
-        <ScrollView>
-          <CartShopp
+      <View style={styles.contentMedium}>
+        <View style={styles.subcontent}>
+          <TouchableOpacity
             onPress={() => {
-              navigation.navigate("Description");
+              navigation.goBack();
             }}
-          />
-        </ScrollView>
+          >
+            <Image style={styles.ImagenFlecha} source={ImagenFlecha} />
+          </TouchableOpacity>
+          <Text style={styles.styleTextDos}>Escanear codigo QR</Text>
+          <Image style={styles.ImagenQR} source={ImagenQR} />
+          <Text style={styles.textoIntro}>Escarnea el codigo QR</Text>
+        </View>
+        <View style={styles.contentEscaner}>
+          <Image style={styles.ImagenEscaner} source={ImagenEscaner} />
+          <TouchableOpacity>
+            <Text style={styles.textFinal}>Volver a enviar codigo QR</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.colorBoton}
+            onPress={() => {
+              navigation.navigate("Step4");
+            }}
+          >
+            <Text style={styles.textFinal}>Cambiar a codido Alfanumerico</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={styles.containerButton}>
-        <TouchableOpacity
-          style={styles.Button}
-          onPress={() => {
-            navigation.navigate("Step3");
-          }}
-        >
-          <Text style={styles.textBtn}>COMPRAR</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.contentBottom}></View>
     </View>
   );
 };
 
-export default Step2;
+export default Step3;
 
 const styles = StyleSheet.create({
-  containerPrin: {
+  content: {
     flex: 1,
     width: "100%",
     height: "100%",
-    backgroundColor: "#fff",
+    backgroundColor: "#8DCFEC",
   },
-  contentTop: {
+  containerTop: {
     width: "100%",
     height: "10%",
     display: "flex",
@@ -74,8 +63,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#8DCFEC",
   },
   ImagenCheck: {
-    width: 50,
-    height: 50,
+    width: "15%",
+    height: "75%",
   },
   styleText: {
     fontSize: 40,
@@ -84,14 +73,18 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontFamily: "Roboto",
   },
-  contentCompra: {
+  contentMedium: {
     width: "100%",
-    height: "10%",
+    height: "80%",
     backgroundColor: "#fff",
   },
+  subcontent: {
+    width: "100%",
+    height: "20%",
+  },
   ImagenFlecha: {
-    width: 30,
-    height: 30,
+    width: "10%",
+    height: "50%",
     marginTop: "3%",
     marginLeft: "3%",
   },
@@ -99,12 +92,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "13%",
-    marginTop: "-7%",
+    marginLeft: "17%",
+    marginTop: "-13%",
   },
-  ImagenRectangle: {
-    width: 30,
-    height: 30,
+  ImagenQR: {
+    width: "10%",
+    height: "35%",
     marginTop: "8%",
     marginLeft: "25%",
   },
@@ -112,43 +105,25 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "600",
     color: "#3271A5",
-    marginLeft: "34%",
-    marginTop: "-6%",
-    marginBottom: "5%",
+    marginLeft: "39%",
+    marginTop: "-8%",
   },
-  contentScroll: {
-    height: "50%",
-    marginLeft: "5%",
-    width: "90%",
-    marginTop: "15%",
-    backgroundColor: "#E7F8FF",
-    borderRadius: 20,
-  },
-  containerButton: {
-    backgroundColor: "#fff",
-    height: "10%",
-    marginTop: "2%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  Button: {
-    backgroundColor: "#8DCFEC",
-    width: "40%",
-    height: "70%",
-    alignItems: "center",
-    borderRadius: 20,
-    justifyContent: "center",
-  },
-  textBtn: {
-    fontFamily: "Roboto",
-    fontSize: 18,
-    fontWeight: "700",
-    color: "#fff",
-  },
-  contentBottom: {
-    backgroundColor: "#8DCFEC",
+  contentEscaner: {
     width: "100%",
-    height: "20%",
+    height: "80%",
+    alignItems: "center",
+  },
+  ImagenEscaner: {
+    width: "70%",
+    height: "60%",
     marginTop: "5%",
+  },
+  textFinal: {
+    fontSize: 15,
+    fontWeight: "600",
+    color: "#3271A5",
+    marginTop: "8%",
+    borderBottomWidth: 1,
+    borderColor: "#3271A5",
   },
 });

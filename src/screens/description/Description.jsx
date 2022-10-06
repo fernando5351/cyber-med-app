@@ -1,11 +1,14 @@
 import React, { useContext } from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
-import { SearchBar } from "../../components/searchbar/SearchBar";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import ImagenPlus from "../../../assets/icons/description/pluscircle.png";
 import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
 import axios from "axios";
 import { AuthUser } from "../../context/AuthUser";
+import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
+import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
+import Canastita from "../../../assets/icons/orders/basket.png";
+
+
 
 const Description = ({ navigation, route, props }) => {
   const { userToken } = useContext(AuthUser);
@@ -24,7 +27,8 @@ const Description = ({ navigation, route, props }) => {
   return (
     <View style={styles.container}>
       <View style={styles.content}>
-        <SearchBar />
+        <Image style={styles.Canastita} source={Canastita}/>
+        <Text style={styles.title}>Descripcion</Text>
       </View>
       <View style={styles.subContent}>
         <TouchableOpacity
@@ -61,9 +65,14 @@ const Description = ({ navigation, route, props }) => {
         </View>
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
-          <Text style={styles.cantidadNum}>1</Text>
           <TouchableOpacity>
-            <Image style={styles.ImagenPlus} source={ImagenPlus} />
+          <Image style={styles.Restar} source={Restar}/>
+          </TouchableOpacity>
+          <View style={styles.contentNumber}>
+          <Text style={styles.number}>100</Text>
+          </View>
+          <TouchableOpacity>
+          <Image style={styles.Sumar} source={Sumar}/>
           </TouchableOpacity>
         </View>
         <View style={styles.Contenedor}>
@@ -105,7 +114,19 @@ const styles = StyleSheet.create({
     height: 100,
     justifyContent: "center",
     alignItems: "center",
+    flexDirection: "row",
     backgroundColor: "#8DCFEC",
+  },
+  title: {
+    fontSize: 40,
+    color: "#fff",
+    fontWeight: "800",
+    marginLeft: "2%",
+  },
+  Canastita: {
+    width: "15%",
+    height: "75%",
+    marginRight: "2%",
   },
   subContent: {
     height: "7%",
@@ -219,13 +240,33 @@ const styles = StyleSheet.create({
     height: "15%",
     width: "100%",
     marginTop: "3%",
-    justifyContent: "center",
+    flexDirection: "row",
+    alignItems:"center"
+    
   },
   Cantidad: {
     fontSize: 18,
     fontWeight: "600",
     color: "#3271A5",
     marginLeft: "3%",
+    marginRight: "3%",
+  },
+  number:{
+    fontSize: 19,
+    fontWeight: "600",
+    color: "#3271A5",
+    textAlign:"center",
+  },
+  contentNumber:{
+    width:"10%",
+    height:"65%",
+    borderColor: "#3271A5",
+    borderBottomWidth: 2,
+    borderTopWidth:2,
+    borderLeftWidth:2,
+    borderRightWidth:2,
+    marginLeft:"3%",
+    marginRight:"3%",
   },
   cantidadNum: {
     fontSize: 18,
