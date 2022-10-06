@@ -195,6 +195,7 @@ const styles = StyleSheet.create({
   contentKey: {
     backgroundColor: "#fff",
     height: "55%",
+    marginTop: "4%",
   },
   styleForm: {
     height: "21%",
@@ -205,13 +206,12 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
     borderColor: "#8DCFEC",
     marginTop: "1%",
-    marginBottom: "2%",
+    marginBottom: "1%",
     color: "#2b6696",
   },
   Check: {
     backgroundColor: "#fff",
     height: "15%",
-    marginTop: "5%",
     marginBottom: "81%",
   },
   ImagenFlecha: {
@@ -226,10 +226,10 @@ const styles = StyleSheet.create({
     marginTop: "-17%",
   },
   ImagenCard: {
-    width: "10%",
-    height: "40%",
+    width: "8%",
+    height: "30%",
     marginLeft: "10%",
-    marginTop: "7%",
+    marginTop: "10%",
   },
   textoIntro: {
     fontSize: 15,
@@ -237,9 +237,6 @@ const styles = StyleSheet.create({
     color: "#3271A5",
     marginLeft: "22%",
     marginTop: "-7%",
-  },
-  CheckBox: {
-    marginLeft: "5%",
   },
   Guardar: {
     fontSize: 15,
@@ -251,7 +248,7 @@ const styles = StyleSheet.create({
   Button: {
     backgroundColor: "#8DCFEC",
     width: "40%",
-    height: "60%",
+    height: "55%",
     borderRadius: 20,
     marginTop: "10%",
     marginLeft: "30%",

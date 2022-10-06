@@ -292,7 +292,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   botton: {
-    backgroundColor: "#3271A5",
+    backgroundColor: "#8DCFEC",
     height: "70%",
     width: "100%",
     borderRadius: 20,
