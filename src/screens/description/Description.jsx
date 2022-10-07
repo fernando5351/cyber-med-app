@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
 import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
 import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
@@ -8,10 +8,11 @@ import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 
-const Description = ({ navigation, route, props }) => {
+const Description = ({ navigation, route }) => {
   const { userToken } = useContext(AuthUser);
 
   const filteredMed = route.params.filteredMed;
+  const [count, setCount] = useState(0);
 
   const addOrder = async (nombre, precios) => {
     const obj = { nombre, precios, userToken };
@@ -63,15 +64,18 @@ const Description = ({ navigation, route, props }) => {
         </View>
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setCount(count - 1)}>
             <Image source={Restar} />
           </TouchableOpacity>
           <View style={styles.contentNumber}>
-            <Text style={styles.number}>100</Text>
+            <Text style={styles.number}>{count}</Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setCount(count + 1)}>
             <Image source={Sumar} />
           </TouchableOpacity>
+          <View style={styles.contTotal}>
+            <Text style={styles.infoTotal}>Total: $ 100</Text>
+          </View>
         </View>
         <View style={styles.Contenedor}>
           <View style={styles.contentBotton}>
@@ -257,10 +261,10 @@ const styles = StyleSheet.create({
     width: "10%",
     height: "65%",
     borderColor: "#3271A5",
-    borderBottomWidth: 2,
-    borderTopWidth: 2,
-    borderLeftWidth: 2,
-    borderRightWidth: 2,
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
     marginLeft: "3%",
     marginRight: "3%",
   },
@@ -276,6 +280,25 @@ const styles = StyleSheet.create({
     height: 25,
     marginTop: "-6.6%",
     marginLeft: "34%",
+  },
+  contTotal: {
+    height: "100%",
+    marginLeft: "10%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    borderColor: "#3271A5",
+    borderBottomWidth: 1,
+    borderTopWidth: 1,
+    borderRightWidth: 1,
+    borderLeftWidth: 1,
+  },
+  infoTotal: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#3271A5",
+    marginLeft: "1%",
+    marginRight: "1%",
   },
   Contenedor: {
     backgroundColor: "#fff",
