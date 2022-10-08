@@ -12,7 +12,9 @@ const Description = ({ navigation, route }) => {
   const { userToken } = useContext(AuthUser);
 
   const filteredMed = route.params.filteredMed;
-  const [count, setCount] = useState(0);
+  const [cantidad, setCantidad] = useState(0);
+  const [total, setTotal] = useState(0)
+
 
   const addOrder = async (nombre, precios) => {
     const obj = { nombre, precios, userToken };
@@ -64,17 +66,17 @@ const Description = ({ navigation, route }) => {
         </View>
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
-          <TouchableOpacity onPress={() => setCount(count - 1)}>
+          <TouchableOpacity onPress={() => setCantidad(cantidad - 1)}>
             <Image source={Restar} />
           </TouchableOpacity>
           <View style={styles.contentNumber}>
-            <Text style={styles.number}>{count}</Text>
+            <Text style={styles.number}>{cantidad}</Text>
           </View>
-          <TouchableOpacity onPress={() => setCount(count + 1)}>
+          <TouchableOpacity onPress={() => setCantidad(cantidad + 1)}>
             <Image source={Sumar} />
           </TouchableOpacity>
           <View style={styles.contTotal}>
-            <Text style={styles.infoTotal}>Total: $ 100</Text>
+            <Text style={styles.infoTotal}>Total: ${total}</Text>
           </View>
         </View>
         <View style={styles.Contenedor}>

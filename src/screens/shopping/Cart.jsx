@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,6 +13,8 @@ import MenuCarrito from "../../../assets/icons/home/menublue.png";
 import { CartOrder } from "../../components/targets/CartOrder";
 
 function Carrito({ navigation }) {
+  const [cantidad, setCantidad] = useState(0);
+
   return (
     <View style={styles.containerCarrito}>
       <View style={styles.PedidosTopC}>
@@ -37,7 +39,11 @@ function Carrito({ navigation }) {
       </View>
       <ScrollView>
         <View style={styles.contentCarts}>
-          <CartOrder />
+          <CartOrder
+            cantidad={cantidad}
+            onPressLess={() => setCantidad(cantidad - 1)}
+            onPressMore={() => setCantidad(cantidad + 1)}
+          />
         </View>
       </ScrollView>
       <View style={styles.ContenedorAbajoC}>

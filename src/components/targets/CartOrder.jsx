@@ -5,7 +5,13 @@ import trash from "../../../assets/icons/orders/blueremove.png";
 import less from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import more from "../../../assets/icons/orders/plus-circle-solid-24.png";
 
-export const CartOrder = () => {
+export const CartOrder = ({
+  onPress,
+  onPressDelete,
+  onPressLess,
+  onPressMore,
+  cantidad,
+}) => {
   return (
     <View style={styles.contentMain}>
       <View style={styles.contentImage}>
@@ -14,18 +20,19 @@ export const CartOrder = () => {
       <View style={styles.contentInfo}>
         <Text style={styles.info}>Acetaminofen</Text>
         <Text style={styles.infoM}>Precio: $50.00</Text>
-        <Text style={styles.infoM}>Cantidad: 20</Text>
-        <TouchableOpacity style={styles.btn}>
+        <Text style={styles.infoM}>Cantidad: {cantidad}</Text>
+        <TouchableOpacity onPress={onPress} style={styles.btn}>
           <Text style={styles.txtBtn}>Ver Mas</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.contentAction}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPressDelete}>
           <Image source={trash} style={styles.icoAction} />
         </TouchableOpacity>
-        <Image source={less} style={styles.icoActions} />
-        <TouchableOpacity />
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onPressLess}>
+          <Image source={less} style={styles.icoActions} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={onPressMore}>
           <Image source={more} style={styles.icoActions} />
         </TouchableOpacity>
       </View>
