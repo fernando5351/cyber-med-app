@@ -25,8 +25,8 @@ function Carrito({ navigation }) {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
-    const id = userToken.id;
     setLoading(true);
+    const id = userToken.id;
     fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
       .then((res) => res.json())
       .then((json) => setCarrito(json))
@@ -58,7 +58,7 @@ function Carrito({ navigation }) {
         <Text style={styles.TextoFlechaC}>Carrito</Text>
       </View>
       <View style={styles.contenedorCentro}>
-        {/* {carrito.length === 0 ? (
+        {carrito.length === 0 ? (
           <EmptyOrder />
         ) : (
           <ScrollView>
@@ -69,25 +69,12 @@ function Carrito({ navigation }) {
                   producto={producto}
                   onPressLess={() => restar(carrito.id)}
                   onPressMore={() => sumar(carrito.id)}
-                  onPressDelete={() => deletMed(carrito.id)}
+                  /*onPressDelete={() => deletMed(carrito.id)} */
                 />
               ))}
             </View>
           </ScrollView>
-        )} */}
-        <ScrollView>
-          <View style={styles.contentCarts}>
-            {carrito.map((producto, index) => (
-              <CartOrder
-                key={index}
-                producto={producto}
-                /*                 onPressLess={() => restar(carrito.id)}
-                onPressMore={() => sumar(carrito.id)}
-                onPressDelete={() => deletMed(carrito.id)} */
-              />
-            ))}
-          </View>
-        </ScrollView>
+        )}
       </View>
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>

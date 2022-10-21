@@ -25,6 +25,9 @@ const Description = ({ navigation, route }) => {
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
 
+  const id_cliente = userToken.id;
+  const id_producto = filteredMed.id;
+
   const buyMed = async () => {
     try {
       //send request
@@ -58,18 +61,23 @@ const Description = ({ navigation, route }) => {
   };
 
   const addOrder = async () => {
-    const id_cliente = userToken.id;
-    const id_producto = filteredMed.id;
-
-    const res = await axios.post(
-      "https://lovely-lace-production.up.railway.app/car_shop",
-      {
-        id_cliente,
-        id_producto,
-        cantidad,
+    if (cantidad > 0) {
+      if (filteredMed.id === id) {
+        const res = await axios.post(
+          "https://lovely-lace-production.up.railway.app/car_shop",
+          {
+            id_cliente,
+            id_producto,
+            cantidad,
+          }
+        );
+        console.log(res);
+      } else {
+        Alert.alert("Alerta", "El medicamento ya esta en el carrito");
       }
-    );
-    console.log(res);
+    } else {
+      Alert.alert("Error", "Debe agregar una cantidad");
+    }
   };
 
   const restar = () => {
@@ -113,7 +121,7 @@ const Description = ({ navigation, route }) => {
           />
           <View style={styles.containerMain}>
             <Text style={styles.StyleText}>
-              Precio: $ {filteredMed.precios}
+              Precio: ¢ {filteredMed.precios}
             </Text>
             <Text style={styles.StyleText}>Marca: {filteredMed.marca}</Text>
           </View>
