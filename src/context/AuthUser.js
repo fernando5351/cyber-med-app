@@ -42,10 +42,14 @@ export const AuthProvider = ({ children }) => {
       })
       .then((res) => {
         let userToken = res.data;
-        setUsertoken(userToken);
-        AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+        if (userToken === "user or password incorrect") {
+          Alert.alert("Error", "usuario o constraseña incorrecta");
+        } else {
+          setUsertoken(userToken);
+          AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+          console.log(userToken);
+        }
         setIsLoading(false);
-        console.log(userToken);
       })
       .catch((e) => {
         Alert.alert("Error", "Algo salio mal ;(");

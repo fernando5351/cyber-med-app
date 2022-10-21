@@ -103,7 +103,7 @@ function Carrito({ navigation }) {
       </View>
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
-        <Text style={styles.NumeroTotal}>¢ {total}</Text>
+        <Text style={styles.NumeroTotal}>$0.65</Text>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Step1");
