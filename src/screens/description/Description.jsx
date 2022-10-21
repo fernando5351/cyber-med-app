@@ -62,19 +62,15 @@ const Description = ({ navigation, route }) => {
 
   const addOrder = async () => {
     if (cantidad > 0) {
-      if (filteredMed.id === id) {
-        const res = await axios.post(
-          "https://lovely-lace-production.up.railway.app/car_shop",
-          {
-            id_cliente,
-            id_producto,
-            cantidad,
-          }
-        );
-        console.log(res);
-      } else {
-        Alert.alert("Alerta", "El medicamento ya esta en el carrito");
-      }
+      const res = await axios.post(
+        "https://lovely-lace-production.up.railway.app/car_shop",
+        {
+          id_cliente,
+          id_producto,
+          cantidad,
+        }
+      );
+      console.log(res);
     } else {
       Alert.alert("Error", "Debe agregar una cantidad");
     }
