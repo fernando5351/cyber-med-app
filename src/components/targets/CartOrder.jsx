@@ -9,9 +9,9 @@ export const CartOrder = ({
   onPressDelete,
   onPressLess,
   onPressMore,
-  carrito,
+  products,
 }) => {
-  const { img_url, nombre, precios, cantidad } = carrito;
+  const { img_url, nombre, precios, cantidad } = products;
 
   return (
     <View index={index} style={styles.contentMain}>

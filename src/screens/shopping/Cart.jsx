@@ -26,15 +26,10 @@ function Carrito({ navigation }) {
 
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
   useEffect(() => {
-    setLoading(true);
-    const id = userToken.id;
-    // fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
-    //   .then((res) => res.json())
-    //   .then((json) => setCarritos(json))
-    //   .catch((err) => console.log(err))
-    //   .finally(() => setLoading(false));
-
     const getData = async () => {
+      setLoading(true);
+      const id = userToken.id;
+
       const data = await fetch(`${URL}/${id}`);
       const car = await data.json();
       setCarritos(car);
@@ -51,10 +46,18 @@ function Carrito({ navigation }) {
   };
 
   useEffect(() => {
-    const cantidad = carritos.cantidad;
-    const precio = carritos.precios;
+    const cantidad = products.cantidad;
+    const precio = products.precios;
     setTotal(cantidad * precio);
   }, []);
+
+  const restar = (id) => {
+    carritos.forEach((products) => {
+      if (products.id === id) {
+        products.id - 1;
+      }
+    });
+  };
 
   return (
     <View style={styles.containerCarrito}>
@@ -85,15 +88,15 @@ function Carrito({ navigation }) {
         ) : (
           <ScrollView>
             <View style={styles.contentCarts}>
-              {carritos.map((carrito, index) => (
+              {carritos.map((products, index) => (
                 <CartOrder
                   key={index}
-                  carrito={carrito}
-                  onPressLess={() => restar(carrito.id)}
-                  onPressMore={() => sumar(carrito.id)}
+                  products={products}
+                  onPressLess={() => restar(products.id)}
+                  onPressMore={() => sumar(products.id)}
                   onPressDelete={() => {
-                    deletMed(carrito.id);
-                    console.log(carrito.id);
+                    deletMed(products.id);
+                    console.log(products.id);
                   }}
                 />
               ))}
