@@ -44,7 +44,7 @@ function Home({ navigation }) {
 
   return (
     <View style={styles.containerMain}>
-      <Loader visible={loading} />
+      {/* <Loader visible={loading} /> */}
       <View style={styles.containerTop}>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Image style={styles.icoMenu} source={Menu} />
