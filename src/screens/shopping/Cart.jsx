@@ -24,7 +24,7 @@ function Carrito({ navigation }) {
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     const id = userToken.id;
     setLoading(true);
     fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
@@ -32,7 +32,7 @@ function Carrito({ navigation }) {
       .then((json) => setCarrito(json))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, []); */
+  }, []);
 
   return (
     <View style={styles.containerCarrito}>
@@ -75,6 +75,19 @@ function Carrito({ navigation }) {
             </View>
           </ScrollView>
         )} */}
+        <ScrollView>
+          <View style={styles.contentCarts}>
+            {carrito.map((producto, index) => (
+              <CartOrder
+                key={index}
+                producto={producto}
+                /*                 onPressLess={() => restar(carrito.id)}
+                onPressMore={() => sumar(carrito.id)}
+                onPressDelete={() => deletMed(carrito.id)} */
+              />
+            ))}
+          </View>
+        </ScrollView>
       </View>
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>

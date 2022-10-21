@@ -18,15 +18,12 @@ import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 
-const Description = ({ navigation }) => {
-  /* const stripe = useStripe();
+const Description = ({ navigation, route }) => {
+  const filteredMed = route.params.filteredMed;
+  const stripe = useStripe();
   const { userToken } = useContext(AuthUser);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
-
-  const id_cliente = userToken.id;
-  const id = userToken.id;
-  const email = userToken.email;
 
   const buyMed = async () => {
     try {
@@ -35,7 +32,7 @@ const Description = ({ navigation }) => {
         "https://lovely-lace-production.up.railway.app/payments",
         {
           method: "POST",
-          body: JSON.stringify({ id, email, total }),
+          body: JSON.stringify({ user, nombre, total }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -61,6 +58,9 @@ const Description = ({ navigation }) => {
   };
 
   const addOrder = async () => {
+    const id_cliente = userToken.id;
+    const id_producto = filteredMed.id;
+
     const res = await axios.post(
       "https://lovely-lace-production.up.railway.app/car_shop",
       {
@@ -87,7 +87,7 @@ const Description = ({ navigation }) => {
   useEffect(() => {
     const precio = filteredMed.precios;
     setTotal(cantidad * precio);
-  }, [cantidad]); */
+  }, [cantidad]);
 
   return (
     <View style={styles.container}>
@@ -107,28 +107,28 @@ const Description = ({ navigation }) => {
       </View>
       <View style={styles.contentSub}>
         <View style={styles.contentTop}>
-          <Image style={styles.ImagenMedicamento} source={{ Canastita }} />
+          <Image
+            style={styles.ImagenMedicamento}
+            source={{ uri: filteredMed.img_url }}
+          />
           <View style={styles.containerMain}>
-            <Text style={styles.StyleText}>Precio: $ 120</Text>
-            <Text style={styles.StyleText}>Marca: lopaasasa</Text>
+            <Text style={styles.StyleText}>
+              Precio: $ {filteredMed.precios}
+            </Text>
+            <Text style={styles.StyleText}>Marca: {filteredMed.marca}</Text>
           </View>
         </View>
       </View>
       <View style={styles.ContentInfo}>
-        <Text style={styles.TextoInfo}>Acadad</Text>
-        <Text style={styles.TextoDescripcion}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia vitae
-          inventore optio saepe nesciunt numquam explicabo! Quia atque
-          voluptatum, consectetur minima, dicta numquam corrupti alias
-          doloribus, amet iste officia natus.
-        </Text>
+        <Text style={styles.TextoInfo}>{filteredMed.nombre}</Text>
+        <Text style={styles.TextoDescripcion}>{filteredMed.descripcion}</Text>
         <View style={styles.TextoUso}>
           <Text style={styles.TipoUso}>Tipo de Uso:</Text>
-          <Text style={styles.Tipo}>oral</Text>
+          <Text style={styles.Tipo}>{filteredMed.tipo_uso}</Text>
         </View>
         <View style={styles.ContenedorDos}>
           <Text style={styles.InfoVia}>Via de Administracion:</Text>
-          <Text style={styles.Info}>intravenosa</Text>
+          <Text style={styles.Info}>{filteredMed.tipo_consumo}</Text>
         </View>
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
@@ -159,7 +159,7 @@ const Description = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                addOrder();
+                addOrder(filteredMed.id);
               }}
             >
               <Image style={styles.ImagenCarrito} source={ImagenCarrito} />
