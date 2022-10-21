@@ -13,7 +13,7 @@ export const CartMed = ({ item, index, onPress }) => {
         <Image style={styles.imageProduct} source={{ uri: img_url }} />
       </View>
       <Text style={styles.titleName}>{nombre}</Text>
-      <Text style={styles.subtitlePrice}>USD {precios}</Text>
+      <Text style={styles.subtitlePrice}>¢ {precios}</Text>
     </TouchableOpacity>
   );
 };
