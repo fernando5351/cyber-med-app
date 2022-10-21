@@ -42,8 +42,11 @@ export const AuthProvider = ({ children }) => {
       })
       .then((res) => {
         let userToken = res.data;
-        if (userToken === "user or password incorrect") {
-          Alert.alert("Error", "usuario o constraseña incorrecta");
+        console.log(userToken);
+        if (userToken === "No se encontro ningún usuario con el correo espedificado") {
+          Alert.alert("Error", "usuario incorrecta");
+        } if ( userToken === "Contraseña incorrecta" ) {
+          Alert.alert("Error", "constraseña incorrecta");
         } else {
           setUsertoken(userToken);
           AsyncStorage.setItem("userToken", JSON.stringify(userToken));
