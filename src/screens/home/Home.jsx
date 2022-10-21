@@ -69,9 +69,9 @@ function Home({ navigation }) {
               <View style={styles.viewProducts}>
                 {filteredMed.map((meds, index) => (
                   <CartMed
-                    onPress={() => {
+                    /*                     onPress={() => {
                       navigation.navigate("Description");
-                    }}
+                    }} */
                     key={index}
                     meds={meds}
                   />
