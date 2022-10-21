@@ -20,12 +20,12 @@ export const CartMed = ({ item, index, onPress }) => {
 
 const styles = StyleSheet.create({
   buttonProduct: {
-    width: 125,
-    height: 135,
+    width: "35%",
+    height: 140,
     alignItems: "center",
     marginBottom: "5%",
-    marginLeft: "8%",
-    marginRight: "8%",
+    marginLeft: "6%",
+    marginRight: "6%",
   },
   contenImg: {
     width: "100%",

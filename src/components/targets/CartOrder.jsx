@@ -5,15 +5,16 @@ import less from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import more from "../../../assets/icons/orders/plus-circle-solid-24.png";
 
 export const CartOrder = ({
+  index,
   onPressDelete,
   onPressLess,
   onPressMore,
-  producto,
+  carrito,
 }) => {
-  const { img_url, nombre, precios, cantidad } = producto;
+  const { img_url, nombre, precios, cantidad } = carrito;
 
   return (
-    <View style={styles.contentMain}>
+    <View index={index} style={styles.contentMain}>
       <View style={styles.contentImage}>
         <Image source={{ uri: img_url }} style={styles.image} />
       </View>
