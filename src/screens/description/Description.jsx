@@ -26,24 +26,21 @@ const Description = ({ navigation, route }) => {
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
-
   const id_cliente = userToken.id;
   const id_producto = filteredMed.id;
+  let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
 
   const buyMed = async () => {
     setLoading(true);
     try {
       //send request
-      const response = await fetch(
-        "https://lovely-lace-production.up.railway.app/payments",
-        {
-          method: "POST",
-          body: JSON.stringify({ id_cliente, total }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`${URL}/payments`, {
+        method: "POST",
+        body: JSON.stringify({ id_cliente, total }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const data = await response.json();
       if (!response.ok) return Alert.alert(data.message);
       const clientSecret = data.clientSecret;
@@ -59,7 +56,7 @@ const Description = ({ navigation, route }) => {
       navigation.navigate("Step1");
     } catch (err) {
       console.error(err);
-      Alert.alert("Error", "Algo salio mal intente de nuevo!");
+      Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
     }
     setLoading(false);
   };
@@ -67,17 +64,24 @@ const Description = ({ navigation, route }) => {
   const addOrder = async () => {
     setLoading(true);
     if (cantidad > 0) {
-      const res = await axios
-        .post("https://lovely-lace-production.up.railway.app/car_shop", {
-          id_cliente,
-          id_producto,
-          cantidad,
-        })
-        .catch((err) => console.log(err));
-      Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
-      console.log(res);
+      if (id_producto === id_producto) {
+        Alert.alert("Alerta", "El medicamento ya esta en carrito");
+      } else {
+        const res = await axios
+          .post(`${URL}/car_shop`, {
+            id_cliente,
+            id_producto,
+            cantidad,
+          })
+          .catch((err) => {
+            console.log(err);
+            Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
+          });
+        Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
+        console.log(res);
+      }
     } else {
-      Alert.alert("Alerta", "Debe agregar una cantidad");
+      Alert.alert("Alerta", "Debe agregar la cantidad deseada");
     }
     setLoading(false);
   };
