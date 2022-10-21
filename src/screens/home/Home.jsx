@@ -12,6 +12,7 @@ import { CartMed } from "../../components/targets/CartMed";
 import Menu from "../../../assets/icons/home/menu.png";
 import icoLogo from "../../../assets/images/cibermed.png";
 import Loader from "../../components/loading/Loader";
+import { EmptyMed } from "../../components/targets/EmptyMed";
 
 function Home({ navigation }) {
   const [loading, setIsLoading] = useState(true);
@@ -68,19 +69,25 @@ function Home({ navigation }) {
       </View>
       <View style={styles.containerCenter}>
         <Text style={styles.titleMain}>Medicamentos</Text>
-        <ScrollView>
-          <View style={styles.viewProducts}>
-            {filteredMed.map((item, index) => (
-              <CartMed
-                onPress={() => {
-                  navigation.navigate("Description", { filteredMed: item });
-                }}
-                key={index}
-                item={item}
-              />
-            ))}
-          </View>
-        </ScrollView>
+        {filteredMed === 0 ? (
+          <EmptyMed />
+        ) : (
+          <>
+            <ScrollView>
+              <View style={styles.viewProducts}>
+                {filteredMed.map((item, index) => (
+                  <CartMed
+                    onPress={() => {
+                      navigation.navigate("Description", { filteredMed: item });
+                    }}
+                    key={index}
+                    item={item}
+                  />
+                ))}
+              </View>
+            </ScrollView>
+          </>
+        )}
       </View>
     </View>
   );
@@ -112,15 +119,9 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   containerCenter: {
-    height: "100%",
+    height: "89%",
     width: "100%",
     marginTop: "1%",
-  },
-  subContainerCenter: {
-    width: "100%",
-    height: "100%",
-    marginTop: "5%",
-    marginBottom: "5%",
   },
   titleMain: {
     color: "#3271A5",

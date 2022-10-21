@@ -21,17 +21,39 @@ import { AuthUser } from "../../context/AuthUser";
 function Carrito({ navigation }) {
   const { userToken } = useContext(AuthUser);
   const [loading, setLoading] = useState(false);
-  const [carrito, setCarrito] = useState([]);
+  const [carritos, setCarritos] = useState([]);
   const [total, setTotal] = useState(0);
 
+  let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
   useEffect(() => {
     setLoading(true);
     const id = userToken.id;
-    fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
-      .then((res) => res.json())
-      .then((json) => setCarrito(json))
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
+    // fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
+    //   .then((res) => res.json())
+    //   .then((json) => setCarritos(json))
+    //   .catch((err) => console.log(err))
+    //   .finally(() => setLoading(false));
+
+    const getData = async () => {
+      const data = await fetch(`${URL}/${id}`);
+      const car = await data.json();
+      setCarritos(car);
+      console.log(carritos);
+    };
+    getData();
+    setLoading(false);
+  }, []);
+
+  const deletMed = async (id) => {
+    await axios
+      .delete(`${URL}/${id}`)
+      .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
+  };
+
+  useEffect(() => {
+    const cantidad = carritos.cantidad;
+    const precio = carritos.precios;
+    setTotal(cantidad * precio);
   }, []);
 
   return (
@@ -58,18 +80,21 @@ function Carrito({ navigation }) {
         <Text style={styles.TextoFlechaC}>Carrito</Text>
       </View>
       <View style={styles.contenedorCentro}>
-        {carrito.length === 0 ? (
+        {carritos.length === 0 ? (
           <EmptyOrder />
         ) : (
           <ScrollView>
             <View style={styles.contentCarts}>
-              {carrito.map((producto, index) => (
+              {carritos.map((carrito, index) => (
                 <CartOrder
                   key={index}
-                  producto={producto}
+                  carrito={carrito}
                   onPressLess={() => restar(carrito.id)}
                   onPressMore={() => sumar(carrito.id)}
-                  /*onPressDelete={() => deletMed(carrito.id)} */
+                  onPressDelete={() => {
+                    deletMed(carrito.id);
+                    console.log(carrito.id);
+                  }}
                 />
               ))}
             </View>

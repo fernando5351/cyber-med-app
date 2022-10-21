@@ -4,7 +4,7 @@ import { StyleSheet, View, Text, Image, ImageBackground } from "react-native";
 import ImagenFondo from "../../../assets/images/thankyoubackground.jpg";
 import ImagenCasita from "../../../assets/icons/steps/checkcircle.png";
 
-const Android = ({ navigation }) => {
+const Android = () => {
   return (
     <ImageBackground source={ImagenFondo} style={styles.ImagenFondo}>
       <View style={styles.contentFondo}>

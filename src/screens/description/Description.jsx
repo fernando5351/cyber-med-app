@@ -17,6 +17,7 @@ import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
 import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
+import Loader from "../../components/loading/Loader";
 
 const Description = ({ navigation, route }) => {
   const filteredMed = route.params.filteredMed;
@@ -24,18 +25,20 @@ const Description = ({ navigation, route }) => {
   const { userToken } = useContext(AuthUser);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const id_cliente = userToken.id;
   const id_producto = filteredMed.id;
 
   const buyMed = async () => {
+    setLoading(true);
     try {
       //send request
       const response = await fetch(
         "https://lovely-lace-production.up.railway.app/payments",
         {
           method: "POST",
-          body: JSON.stringify({ user, nombre, total }),
+          body: JSON.stringify({ id_cliente, total }),
           headers: {
             "Content-Type": "application/json",
           },
@@ -58,22 +61,25 @@ const Description = ({ navigation, route }) => {
       console.error(err);
       Alert.alert("Error", "Algo salio mal intente de nuevo!");
     }
+    setLoading(false);
   };
 
   const addOrder = async () => {
+    setLoading(true);
     if (cantidad > 0) {
-      const res = await axios.post(
-        "https://lovely-lace-production.up.railway.app/car_shop",
-        {
+      const res = await axios
+        .post("https://lovely-lace-production.up.railway.app/car_shop", {
           id_cliente,
           id_producto,
           cantidad,
-        }
-      );
+        })
+        .catch((err) => console.log(err));
+      Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
       console.log(res);
     } else {
-      Alert.alert("Error", "Debe agregar una cantidad");
+      Alert.alert("Alerta", "Debe agregar una cantidad");
     }
+    setLoading(false);
   };
 
   const restar = () => {
@@ -95,6 +101,7 @@ const Description = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
+      <Loader visible={loading} />
       <View style={styles.content}>
         <Image style={styles.Canastita} source={Canastita} />
         <Text style={styles.title}>Descripcion</Text>
@@ -131,7 +138,7 @@ const Description = ({ navigation, route }) => {
           <Text style={styles.Tipo}>{filteredMed.tipo_uso}</Text>
         </View>
         <View style={styles.ContenedorDos}>
-          <Text style={styles.InfoVia}>Via de Administracion:</Text>
+          <Text style={styles.InfoVia}>Administracion:</Text>
           <Text style={styles.Info}>{filteredMed.tipo_consumo}</Text>
         </View>
         <View style={styles.InfoCantidad}>
@@ -222,47 +229,43 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: "20%",
     width: "100%",
+    marginTop: "3%",
   },
   contentTop: {
-    flex: 1,
     height: "100%",
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
   },
   ImagenMedicamento: {
-    height: "80%",
+    height: "95%",
     width: "40%",
-    marginLeft: "7%",
+    marginLeft: "5%",
   },
   containerMain: {
-    width: "52%",
+    width: "55%",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center",
   },
   StyleText: {
     fontSize: 20,
     fontWeight: "600",
     color: "#3271A5",
+    marginLeft: "8%",
   },
   ContentInfo: {
-    backgroundColor: "#fff",
     height: "40%",
     alignItems: "center",
-    marginTop: "4%",
+    marginTop: "3%",
   },
   TextoInfo: {
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: "700",
     color: "#3271A5",
   },
   TextoDescripcion: {
     fontSize: 15,
-    fontWeight: "500",
     color: "#3271A5",
-    marginTop: "3%",
     width: "95%",
     textAlign: "center",
   },
@@ -270,7 +273,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: "20%",
     width: "100%",
-    marginTop: "5%",
+    marginTop: "4%",
   },
   TipoUso: {
     fontSize: 18,
@@ -279,25 +282,22 @@ const styles = StyleSheet.create({
     marginLeft: "3%",
   },
   Texto: {
-    backgroundColor: "#000",
     height: "10%",
     width: "50%",
   },
   Tipo: {
-    fontSize: 18,
-    fontWeight: "400",
+    fontSize: 17,
     marginLeft: "35%",
-    marginTop: "-7%",
+    marginTop: "-6%",
     color: "#3271A5",
   },
   ContenedorDos: {
-    backgroundColor: "#fff",
     height: "15%",
     width: "100%",
     justifyContent: "center",
   },
   InfoVia: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "600",
     color: "#3271A5",
     marginLeft: "3%",
@@ -305,7 +305,7 @@ const styles = StyleSheet.create({
   },
   Info: {
     fontSize: 18,
-    marginLeft: "55%",
+    marginLeft: "40%",
     color: "#3271A5",
     marginTop: "-6.6%",
   },
@@ -373,8 +373,7 @@ const styles = StyleSheet.create({
     marginRight: "1%",
   },
   Contenedor: {
-    backgroundColor: "#fff",
-    height: "43%",
+    height: "40%",
     width: "100%",
     justifyContent: "center",
   },
