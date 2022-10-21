@@ -10,17 +10,20 @@ import {
   Keyboard,
 } from "react-native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import Cover from "../../../assets/images/backgroundrecord.jpg";
-import btnBack from "../../../assets/icons/arrows/returndouble.png";
-import OpenEye from "../../../assets/icons/profile/whiteeyes.png";
-import CloseEye from "../../../assets/icons/profile/whiteblockeyes.png";
-import Loader from "../../components/loading/Loader";
+import { AuthUser } from "../../context/AuthUser";
+//Metodos de los formularios
 import {
   isValidObjField,
   isEmailValid,
   updateError,
 } from "../../utils/Methods";
-import { AuthUser } from "../../context/AuthUser";
+//Componente
+import Loader from "../../components/loading/Loader";
+//Fondo de pantalla e Iconos
+import Cover from "../../../assets/images/backgroundrecord.jpg";
+import btnBack from "../../../assets/icons/arrows/returndouble.png";
+import OpenEye from "../../../assets/icons/profile/whiteeyes.png";
+import CloseEye from "../../../assets/icons/profile/whiteblockeyes.png";
 
 function Signup({ navigation }) {
   const { isLoading, register } = useContext(AuthUser);

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import {
   DrawerContentScrollView,
@@ -12,6 +12,7 @@ import { AuthUser } from "../../context/AuthUser";
 
 const CustomDrawer = (props) => {
   const { isLoading, logOut, userToken } = useContext(AuthUser);
+
   return (
     <View style={styles.containerDrawer}>
       <Loader visible={isLoading} />

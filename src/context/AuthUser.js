@@ -80,11 +80,21 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     IsLoggedIn();
+    /*     return () => {
+      removeEventListener("userToken", userToken)
+    } */
   }, []);
 
   return (
     <AuthUser.Provider
-      value={{ userToken, isLoading, splashLoading, register, login, logOut }}
+      value={{
+        userToken,
+        isLoading,
+        splashLoading,
+        register,
+        login,
+        logOut,
+      }}
     >
       {children}
     </AuthUser.Provider>

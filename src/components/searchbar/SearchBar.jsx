@@ -9,7 +9,6 @@ export const SearchBar = ({ label, onChangeText }) => {
         placeholder={label}
         onChangeText={onChangeText}
       />
-
       <Image style={styles.icoLoupe} source={Loupe} />
     </View>
   );
@@ -18,14 +17,14 @@ export const SearchBar = ({ label, onChangeText }) => {
 const styles = StyleSheet.create({
   containerSearchbar: {
     width: "100%",
-    height: 55,
+    height: 50,
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
-    borderRadius: 40,
-    marginTop: "7%",
-    marginBottom: "7%",
+    borderRadius: 50,
+    marginTop: "6%",
+    marginBottom: "6%",
   },
   inputSearch: {
     color: "#2b6696",

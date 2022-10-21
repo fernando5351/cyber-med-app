@@ -6,7 +6,7 @@ import HomeStackScreen from "./HomeStack";
 import CustomDrawer from "../components/customNavigation/CustomDrawer";
 import Profile from "../screens/profile/Profile";
 import Carrito from "../screens/shopping/Cart";
-
+//Iconos
 import HomeI from "../../assets/icons/finish/home.png";
 import ProfileIcon from "../../assets/icons/profile/usercircle.png";
 import CarritoI from "../../assets/icons/orders/cart.png";

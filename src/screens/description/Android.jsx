@@ -1,7 +1,7 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, ImageBackground } from "react-native";
+//Iconos
 import ImagenFondo from "../../../assets/images/thankyoubackground.jpg";
-import { ImageBackground } from "react-native";
 import ImagenCasita from "../../../assets/icons/steps/checkcircle.png";
 
 const Android = ({ navigation }) => {

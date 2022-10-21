@@ -1,29 +1,29 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import Aspirina from "../../../assets/images/Aspirina.png";
 import trash from "../../../assets/icons/orders/blueremove.png";
 import less from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import more from "../../../assets/icons/orders/plus-circle-solid-24.png";
 
 export const CartOrder = ({
-  onPress,
   onPressDelete,
   onPressLess,
   onPressMore,
-  cantidad,
+  producto,
 }) => {
+  const { img_url, nombre, precios, cantidad } = producto;
+
   return (
     <View style={styles.contentMain}>
       <View style={styles.contentImage}>
-        <Image source={Aspirina} style={styles.image} />
+        <Image source={{ uri: img_url }} style={styles.image} />
       </View>
       <View style={styles.contentInfo}>
-        <Text style={styles.info}>Acetaminofen</Text>
-        <Text style={styles.infoM}>Precio: $50.00</Text>
+        <Text style={styles.info}>{nombre}</Text>
+        <Text style={styles.infoM}>Precio: ¢ {precios}</Text>
         <Text style={styles.infoM}>Cantidad: {cantidad}</Text>
-        <TouchableOpacity onPress={onPress} style={styles.btn}>
+        {/*         <TouchableOpacity onPress={onPress} style={styles.btn}>
           <Text style={styles.txtBtn}>Ver Mas</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       <View style={styles.contentAction}>
         <TouchableOpacity onPress={onPressDelete}>
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   },
   contentInfo: {
     width: "45%",
+    justifyContent: "center",
     alignItems: "center",
   },
   info: {

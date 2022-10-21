@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,16 +7,36 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
+import axios from "axios";
+//Componentes
+import { CartOrder } from "../../components/targets/CartOrder";
+import { EmptyOrder } from "../../components/targets/EmptyOrder";
+import Loader from "../../components/loading/Loader";
+//Iconos
 import ImagenCarrito from "../../../assets/icons/orders/cartblue.png";
 import ImagenFlechaC from "../../../assets/icons/arrows/bluereturn.png";
 import MenuCarrito from "../../../assets/icons/home/menublue.png";
-import { CartOrder } from "../../components/targets/CartOrder";
+import { AuthUser } from "../../context/AuthUser";
 
 function Carrito({ navigation }) {
-  const [cantidad, setCantidad] = useState(0);
+  const { userToken } = useContext(AuthUser);
+  const [loading, setLoading] = useState(false);
+  const [carrito, setCarrito] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  /*   useEffect(() => {
+    const id = userToken.id;
+    setLoading(true);
+    fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
+      .then((res) => res.json())
+      .then((json) => setCarrito(json))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, []); */
 
   return (
     <View style={styles.containerCarrito}>
+      <Loader visible={loading} />
       <View style={styles.PedidosTopC}>
         <TouchableOpacity
           style={styles.contbtn}
@@ -37,18 +57,28 @@ function Carrito({ navigation }) {
         </TouchableOpacity>
         <Text style={styles.TextoFlechaC}>Carrito</Text>
       </View>
-      <ScrollView>
-        <View style={styles.contentCarts}>
-          <CartOrder
-            cantidad={cantidad}
-            onPressLess={() => setCantidad(cantidad - 1)}
-            onPressMore={() => setCantidad(cantidad + 1)}
-          />
-        </View>
-      </ScrollView>
+      <View style={styles.contenedorCentro}>
+        {/* {carrito.length === 0 ? (
+          <EmptyOrder />
+        ) : (
+          <ScrollView>
+            <View style={styles.contentCarts}>
+              {carrito.map((producto, index) => (
+                <CartOrder
+                  key={index}
+                  producto={producto}
+                  onPressLess={() => restar(carrito.id)}
+                  onPressMore={() => sumar(carrito.id)}
+                  onPressDelete={() => deletMed(carrito.id)}
+                />
+              ))}
+            </View>
+          </ScrollView>
+        )} */}
+      </View>
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
-        <Text style={styles.NumeroTotal}>$16.00</Text>
+        <Text style={styles.NumeroTotal}>¢ {total}</Text>
         <TouchableOpacity
           onPress={() => {
             navigation.navigate("Step1");
@@ -155,6 +185,10 @@ const styles = StyleSheet.create({
   },
   contentCarts: {
     alignItems: "center",
+  },
+  contenedorCentro: {
+    height: "61%",
+    marginBottom: "10%",
   },
 });
 

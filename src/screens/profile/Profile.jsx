@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
+import { AuthUser } from "../../context/AuthUser";
+//Iconos
 import ProfileB from "../../../assets/icons/profile/blueuser.png";
 import BackW from "../../../assets/icons/arrows/return.png";
 import ProfileSW from "../../../assets/icons/profile/usercircle.png";
-import { AuthUser } from "../../context/AuthUser";
 
 const Profile = ({ navigation }) => {
   const { userToken } = useContext(AuthUser);

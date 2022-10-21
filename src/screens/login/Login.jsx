@@ -6,15 +6,13 @@ import {
   TouchableOpacity,
   Text,
 } from "react-native";
+//Fondos de pantalla
 import ImagenCarga from "../../../assets/images/cibermed.png";
 import ImagenFondoCarga from "../../../assets/images/loginregister.jpg";
 
 function Login({ navigation }) {
   return (
-    <ImageBackground
-      source={ImagenFondoCarga}
-      style={styles.containerLogin}
-    >
+    <ImageBackground source={ImagenFondoCarga} style={styles.containerLogin}>
       <Image style={styles.logo} source={ImagenCarga} />
       <TouchableOpacity
         onPress={() => {
@@ -40,10 +38,10 @@ const styles = StyleSheet.create({
   containerLogin: {
     flex: 1,
     alignItems: "center",
-    justifyContent:"center"
+    justifyContent: "center",
   },
   logo: {
-/*     marginTop:"60%", */
+    /*     marginTop:"60%", */
     width: "60%",
     height: "20%",
   },
@@ -51,17 +49,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     width: "70%",
     height: "7%",
-    marginTop:"15%",
+    marginTop: "15%",
     borderRadius: 40,
     alignItems: "center",
-    justifyContent:"center",
+    justifyContent: "center",
   },
   txtSignIn: {
     color: "#3271A5",
     fontSize: 15,
     fontFamily: "monospace",
     fontWeight: "bold",
-    letterSpacing: 2 
+    letterSpacing: 2,
   },
   btnSignUp: {
     backgroundColor: "#FFFFFF",
@@ -69,17 +67,15 @@ const styles = StyleSheet.create({
     height: "7%",
     borderRadius: 40,
     alignItems: "center",
-    justifyContent:"center",
-    marginTop:"15%"
+    justifyContent: "center",
+    marginTop: "15%",
   },
   txtSignUp: {
     color: "#3271A5",
     fontSize: 15,
     fontFamily: "monospace",
     fontWeight: "bold",
-    letterSpacing: 4
+    letterSpacing: 4,
   },
-  
-
 });
 export default Login;

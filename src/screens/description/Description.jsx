@@ -1,29 +1,93 @@
-import React, { useContext, useState } from "react";
-import { StyleSheet, View, TouchableOpacity, Image, Text } from "react-native";
-import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
-import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  Alert,
+} from "react-native";
 import axios from "axios";
 import { AuthUser } from "../../context/AuthUser";
+//Controlador de la pasarela de pago
+import { useStripe } from "@stripe/stripe-react-native";
+//Iconos
+import ImagenFlecha from "../../../assets/icons/arrows/bluereturn.png";
+import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
 import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 
-const Description = ({ navigation, route }) => {
+const Description = ({ navigation }) => {
+  /* const stripe = useStripe();
   const { userToken } = useContext(AuthUser);
-
-  const filteredMed = route.params.filteredMed;
   const [cantidad, setCantidad] = useState(0);
-  const [total, setTotal] = useState(0)
+  const [total, setTotal] = useState(0);
 
+  const id_cliente = userToken.id;
+  const id = userToken.id;
+  const email = userToken.email;
 
-  const addOrder = async (nombre, precios) => {
-    const obj = { nombre, precios, userToken };
+  const buyMed = async () => {
+    try {
+      //send request
+      const response = await fetch(
+        "https://lovely-lace-production.up.railway.app/payments",
+        {
+          method: "POST",
+          body: JSON.stringify({ id, email, total }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) return Alert.alert(data.message);
+      const clientSecret = data.clientSecret;
+      const initSheet = await stripe.initPaymentSheet({
+        paymentIntentClientSecret: clientSecret,
+      });
+      if (initSheet.error) return Alert.alert(initSheet.error.message);
+      const presentSheet = await stripe.presentPaymentSheet({
+        clientSecret,
+      });
+      if (presentSheet.error) return Alert.alert(presentSheet.error.message);
+      Alert.alert("Felicidades", "Pago exitoso");
+      navigation.navigate("Step1");
+    } catch (err) {
+      console.error(err);
+      Alert.alert("Error", "Algo salio mal intente de nuevo!");
+    }
+  };
+
+  const addOrder = async () => {
     const res = await axios.post(
-      "https://lovely-lace-production.up.railway.app/carrito",
-      obj
+      "https://lovely-lace-production.up.railway.app/car_shop",
+      {
+        id_cliente,
+        id_producto,
+        cantidad,
+      }
     );
     console.log(res);
   };
+
+  const restar = () => {
+    if (cantidad !== 0) {
+      setCantidad(cantidad - 1);
+    }
+  };
+
+  const sumar = () => {
+    if (cantidad >= 0) {
+      setCantidad(cantidad + 1);
+    }
+  };
+
+  useEffect(() => {
+    const precio = filteredMed.precios;
+    setTotal(cantidad * precio);
+  }, [cantidad]); */
 
   return (
     <View style={styles.container}>
@@ -43,40 +107,42 @@ const Description = ({ navigation, route }) => {
       </View>
       <View style={styles.contentSub}>
         <View style={styles.contentTop}>
-          <Image
-            style={styles.ImagenMedicamento}
-            source={{ uri: filteredMed.img_url }}
-          />
+          <Image style={styles.ImagenMedicamento} source={{ Canastita }} />
           <View style={styles.containerMain}>
-            <Text style={styles.StyleText}>Precio: {filteredMed.precios}</Text>
-            <Text style={styles.StyleText}>Marca: {filteredMed.marca}</Text>
+            <Text style={styles.StyleText}>Precio: $ 120</Text>
+            <Text style={styles.StyleText}>Marca: lopaasasa</Text>
           </View>
         </View>
       </View>
       <View style={styles.ContentInfo}>
-        <Text style={styles.TextoInfo}>{filteredMed.nombre}</Text>
-        <Text style={styles.TextoDescripcion}>{filteredMed.descripcion}</Text>
+        <Text style={styles.TextoInfo}>Acadad</Text>
+        <Text style={styles.TextoDescripcion}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia vitae
+          inventore optio saepe nesciunt numquam explicabo! Quia atque
+          voluptatum, consectetur minima, dicta numquam corrupti alias
+          doloribus, amet iste officia natus.
+        </Text>
         <View style={styles.TextoUso}>
           <Text style={styles.TipoUso}>Tipo de Uso:</Text>
-          <Text style={styles.Tipo}>{filteredMed.tipo_uso}</Text>
+          <Text style={styles.Tipo}>oral</Text>
         </View>
         <View style={styles.ContenedorDos}>
           <Text style={styles.InfoVia}>Via de Administracion:</Text>
-          <Text style={styles.Info}>{filteredMed.tipo_consumo}</Text>
+          <Text style={styles.Info}>intravenosa</Text>
         </View>
         <View style={styles.InfoCantidad}>
           <Text style={styles.Cantidad}>Cantidad:</Text>
-          <TouchableOpacity onPress={() => setCantidad(cantidad - 1)}>
+          <TouchableOpacity onPress={() => restar()}>
             <Image source={Restar} />
           </TouchableOpacity>
           <View style={styles.contentNumber}>
             <Text style={styles.number}>{cantidad}</Text>
           </View>
-          <TouchableOpacity onPress={() => setCantidad(cantidad + 1)}>
+          <TouchableOpacity onPress={() => sumar()}>
             <Image source={Sumar} />
           </TouchableOpacity>
           <View style={styles.contTotal}>
-            <Text style={styles.infoTotal}>Total: ${total}</Text>
+            <Text style={styles.infoTotal}>Total: ¢ {total}</Text>
           </View>
         </View>
         <View style={styles.Contenedor}>
@@ -84,7 +150,7 @@ const Description = ({ navigation, route }) => {
             <TouchableOpacity
               style={styles.Button}
               onPress={() => {
-                navigation.navigate("Step1");
+                buyMed();
               }}
             >
               <View style={styles.botton}>
@@ -93,7 +159,7 @@ const Description = ({ navigation, route }) => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                addOrder(filteredMed.nombre, filteredMed.precios);
+                addOrder();
               }}
             >
               <Image style={styles.ImagenCarrito} source={ImagenCarrito} />
