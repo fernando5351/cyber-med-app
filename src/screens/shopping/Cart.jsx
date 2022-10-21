@@ -34,6 +34,19 @@ function Carrito({ navigation }) {
       .finally(() => setLoading(false));
   }, []);
 
+  const deletMed = async () => {
+    const id = carrito.id;
+    await axios.delete(
+      `https://lovely-lace-production.up.railway.app/car_shop/${id}`
+    );
+  };
+
+  useEffect(() => {
+    const cantidad = carrito.cantidad;
+    const precio = carrito.precios;
+    setTotal(cantidad * precio);
+  }, []);
+
   return (
     <View style={styles.containerCarrito}>
       <Loader visible={loading} />
@@ -69,7 +82,7 @@ function Carrito({ navigation }) {
                   producto={producto}
                   onPressLess={() => restar(carrito.id)}
                   onPressMore={() => sumar(carrito.id)}
-                  /*onPressDelete={() => deletMed(carrito.id)} */
+                  onPressDelete={() => deletMed()}
                 />
               ))}
             </View>

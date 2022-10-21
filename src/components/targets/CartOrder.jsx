@@ -21,9 +21,6 @@ export const CartOrder = ({
         <Text style={styles.info}>{nombre}</Text>
         <Text style={styles.infoM}>Precio: ¢ {precios}</Text>
         <Text style={styles.infoM}>Cantidad: {cantidad}</Text>
-        {/*         <TouchableOpacity onPress={onPress} style={styles.btn}>
-          <Text style={styles.txtBtn}>Ver Mas</Text>
-        </TouchableOpacity> */}
       </View>
       <View style={styles.contentAction}>
         <TouchableOpacity onPress={onPressDelete}>
@@ -44,10 +41,11 @@ const styles = StyleSheet.create({
   contentMain: {
     height: 100,
     width: "90%",
-    justifyContent: "center",
     flexDirection: "row",
-    marginBottom: "5%",
-    marginTop: "5%",
+    marginBottom: "4%",
+    marginTop: "4%",
+    backgroundColor: "#fff",
+    borderRadius: 20,
   },
   contentImage: {
     width: "35%",
@@ -66,6 +64,7 @@ const styles = StyleSheet.create({
     width: "85%",
   },
   contentInfo: {
+    marginLeft: "2%",
     width: "45%",
     justifyContent: "center",
     alignItems: "center",
@@ -104,11 +103,12 @@ const styles = StyleSheet.create({
   icoAction: {
     width: 24,
     height: 24,
-    marginBottom: "10%",
+    marginBottom: "8%",
+    marginTop: "5%",
   },
   icoActions: {
     width: 27,
     height: 27,
-    marginBottom: "10%",
+    marginBottom: "5%",
   },
 });
