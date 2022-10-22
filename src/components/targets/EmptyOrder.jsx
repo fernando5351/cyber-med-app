@@ -40,13 +40,13 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontStyle: "italic",
     color: "#4489C1",
-    marginTop: "15%",
+    marginTop: "20%",
     textAlign: "center",
   },
   imgCart: {
-    marginTop: "-13%",
-    height: 252,
-    width: 225,
+    marginTop: "-5%",
+    height: 250,
+    width: 250,
   },
   contentThird: {
     height: "30%",

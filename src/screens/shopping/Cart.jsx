@@ -23,18 +23,12 @@ function Carrito({ navigation }) {
   const [loading, setLoading] = useState(false);
   const [carritos, setCarritos] = useState([]);
   const [total, setTotal] = useState(0);
-
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
-  useEffect(() => {
-    setLoading(true);
-    const id = userToken.id;
-    // fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
-    //   .then((res) => res.json())
-    //   .then((json) => setCarritos(json))
-    //   .catch((err) => console.log(err))
-    //   .finally(() => setLoading(false));
 
+  useEffect(() => {
     const getData = async () => {
+      setLoading(true);
+      const id = userToken.id;
       const data = await fetch(`${URL}/${id}`);
       const car = await data.json();
       setCarritos(car);

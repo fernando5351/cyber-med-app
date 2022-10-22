@@ -43,7 +43,6 @@ const styles = StyleSheet.create({
   titleName: {
     color: "#5F5F5F",
     fontSize: 16,
-    letterSpacing: 1,
   },
   subtitlePrice: {
     color: "#3271A5",
