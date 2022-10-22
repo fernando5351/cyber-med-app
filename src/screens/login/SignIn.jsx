@@ -27,16 +27,12 @@ import EyeOpen from "../../../assets/icons/profile/eyes.png";
 
 function Signin({ navigation }) {
   const { isLoading, login } = useContext(AuthUser);
-
   const [userInfo, setUserInfo] = useState({
     email: "",
     contrasenia: "",
   });
-
   const { email, contrasenia } = userInfo;
-
   const [passwordSecured, setPasswordSecured] = useState(true);
-
   const [error, setError] = useState("");
 
   const handleOnChangeText = (value, fieldname) => {

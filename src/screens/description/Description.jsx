@@ -19,7 +19,7 @@ import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 import Loader from "../../components/loading/Loader";
 
-const Description = ({ navigation, route }) => {
+const Description = ({ navigation, route}) => {
   const filteredMed = route.params.filteredMed;
   const stripe = useStripe();
   const { userToken } = useContext(AuthUser);
@@ -28,7 +28,7 @@ const Description = ({ navigation, route }) => {
   const [loading, setLoading] = useState(false);
   const id_cliente = userToken.id;
   const id_producto = filteredMed.id;
-  let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
+  let URL = `https://lovely-lace-production.up.railway.app`;
 
   const buyMed = async () => {
     setLoading(true);
@@ -64,22 +64,23 @@ const Description = ({ navigation, route }) => {
   const addOrder = async () => {
     setLoading(true);
     if (cantidad > 0) {
-      if (id_producto === id_producto) {
-        Alert.alert("Alerta", "El medicamento ya esta en carrito");
-      } else {
-        const res = await axios
-          .post(`${URL}/car_shop`, {
-            id_cliente,
-            id_producto,
-            cantidad,
-          })
-          .catch((err) => {
-            console.log(err);
-            Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
-          });
-        Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
+      const res = await axios
+        .post(`${URL}/car_shop`, {
+          id_cliente,
+          id_producto,
+          cantidad,
+        })
+        .then(() =>
+          Alert.alert(
+            "Felicidades",
+            "Ya has agregado el medicamento al carrito"
+          )
+        )
+        .catch((err) => {
+          console.log(err);
+          Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
+        });
         console.log(res);
-      }
     } else {
       Alert.alert("Alerta", "Debe agregar la cantidad deseada");
     }
@@ -91,7 +92,6 @@ const Description = ({ navigation, route }) => {
       setCantidad(cantidad - 1);
     }
   };
-
   const sumar = () => {
     if (cantidad >= 0) {
       setCantidad(cantidad + 1);

@@ -79,15 +79,15 @@ function Carrito({ navigation }) {
         ) : (
           <ScrollView>
             <View style={styles.contentCarts}>
-              {carritos.map((carrito, index) => (
+              {carritos.map((products, index) => (
                 <CartOrder
                   key={index}
-                  carrito={carrito}
-                  onPressLess={() => restar(carrito.id)}
-                  onPressMore={() => sumar(carrito.id)}
+                  products={products}
+                  onPressLess={() => restar(products.id)}
+                  onPressMore={() => sumar(products.id)}
                   onPressDelete={() => {
-                    deletMed(carrito.id);
-                    console.log(carrito.id);
+                    deletMed(products.id);
+                    console.log(products.id);
                   }}
                 />
               ))}

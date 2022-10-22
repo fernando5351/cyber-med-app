@@ -27,18 +27,14 @@ import CloseEye from "../../../assets/icons/profile/whiteblockeyes.png";
 
 function Signup({ navigation }) {
   const { isLoading, register } = useContext(AuthUser);
-
   const [userInfo, setuserInfo] = useState({
     nombres: "",
     apellidos: "",
     email: "",
     contrasenia: "",
   });
-
   const { nombres, apellidos, email, contrasenia } = userInfo;
-
   const [passwordSecured, setPasswordSecured] = useState(true);
-
   const [error, setError] = useState("");
 
   const handleOnChangeText = (value, fieldname) => {
