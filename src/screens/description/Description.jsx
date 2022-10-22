@@ -64,22 +64,17 @@ const Description = ({ navigation, route}) => {
   const addOrder = async () => {
     setLoading(true);
     if (cantidad > 0) {
-      const res = await axios
-        .post(`${URL}/car_shop`, {
-          id_cliente,
-          id_producto,
-          cantidad,
-        })
-        .then(() =>
-          Alert.alert(
-            "Felicidades",
-            "Ya has agregado el medicamento al carrito"
-          )
-        )
-        .catch((err) => {
-          console.log(err);
-          Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
-        });
+        const res = await axios
+          .post(`${URL}/car_shop`, {
+            id_cliente,
+            id_producto,
+            cantidad,
+          })
+          .catch((err) => {
+            console.log(err);
+            Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
+          });
+        Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
         console.log(res);
     } else {
       Alert.alert("Alerta", "Debe agregar la cantidad deseada");

@@ -25,7 +25,7 @@ function Carrito({ navigation }) {
   const [total, setTotal] = useState(0);
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
 
-  useEffect(() => {
+  /* useEffect(() => {
     const getData = async () => {
       setLoading(true);
       const id = userToken.id;
@@ -36,6 +36,24 @@ function Carrito({ navigation }) {
     };
     getData();
     setLoading(false);
+  }, []); */
+
+  useEffect(() => {
+    // const getData = async () => {
+    //   setLoading(true);
+    //   const id = userToken.id;
+    //   const data = await fetch(`${URL}/${id}`);
+    //   const car = await data.json();
+    //   setCarritos({...carritos, car});
+    //   console.log(carritos);
+    // };
+    setLoading(true);
+    const id = userToken.id;
+    axios
+      .get(`${URL}/${id}`)
+      .then((res) => res.data)
+      .then((data) => setCarritos([...carritos, data]))
+      .finally(() => setLoading(false));
   }, []);
 
   const deletMed = async (id) => {
@@ -44,11 +62,11 @@ function Carrito({ navigation }) {
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
 
-  useEffect(() => {
+  /*   useEffect(() => {
     const cantidad = carritos.cantidad;
     const precio = carritos.precios;
     setTotal(cantidad * precio);
-  }, []);
+  }, []); */
 
   return (
     <View style={styles.containerCarrito}>
@@ -77,22 +95,24 @@ function Carrito({ navigation }) {
         {carritos.length === 0 ? (
           <EmptyOrder />
         ) : (
-          <ScrollView>
-            <View style={styles.contentCarts}>
-              {carritos.map((products, index) => (
-                <CartOrder
-                  key={index}
-                  products={products}
-                  onPressLess={() => restar(products.id)}
-                  onPressMore={() => sumar(products.id)}
-                  onPressDelete={() => {
-                    deletMed(products.id);
-                    console.log(products.id);
-                  }}
-                />
-              ))}
-            </View>
-          </ScrollView>
+          <>
+            <ScrollView>
+              <View style={styles.contentCarts}>
+                {carritos.map((carrito, index) => (
+                  <CartOrder
+                    key={index}
+                    carrito={carrito}
+                    onPressLess={() => restar(carrito.id)}
+                    onPressMore={() => sumar(carrito.id)}
+                    onPressDelete={() => {
+                      deletMed(carrito.id);
+                      console.log(carrito.id);
+                    }}
+                  />
+                ))}
+              </View>
+            </ScrollView>
+          </>
         )}
       </View>
       <View style={styles.ContenedorAbajoC}>
