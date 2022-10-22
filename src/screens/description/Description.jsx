@@ -64,9 +64,6 @@ const Description = ({ navigation, route }) => {
   const addOrder = async () => {
     setLoading(true);
     if (cantidad > 0) {
-      if (id_producto === id_producto) {
-        Alert.alert("Alerta", "El medicamento ya esta en carrito");
-      } else {
         const res = await axios
           .post(`${URL}/car_shop`, {
             id_cliente,
@@ -79,7 +76,6 @@ const Description = ({ navigation, route }) => {
           });
         Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
         console.log(res);
-      }
     } else {
       Alert.alert("Alerta", "Debe agregar la cantidad deseada");
     }
