@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { serviceProduct } from "./serviceProducts";
 
 export const MedContext = createContext();
-const serviceproduct = new serviceProduct();
+const Serviceproduct = new serviceProduct();
 
 const ProductsContext = (props) => {
   const [meds, setMeds] = useState([]);
@@ -10,22 +10,21 @@ const ProductsContext = (props) => {
   const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
-    serviceproduct.readAll().then((data) => setMeds(data));
+    Serviceproduct.readAll().then((data) => setMeds(data));
   }, []);
 
   const viewMed = (id) => {
-    serviceproduct.readProduct(id).then((data) => setViewMeds(data));
+    Serviceproduct.readProduct(id).then((data) => setViewMeds(data));
   };
 
   const createKarts = (carrito) => {
-    serviceproduct
+    Serviceproduct
       .createKart(carrito)
       .then((data) => setCarrito([...carrito, data]));
   };
 
   const readKarts = (id) => {
-    serviceproduct.readKart(id).then((data) => console.log(data));
-    console.log(readKarts);
+    Serviceproduct.readKart(id).then((data) => console.log(data));
   };
 
   return (

@@ -8,7 +8,7 @@ export class serviceProduct {
   }
 
   readProducts(id) {
-    return axios.get(`${this.url}/products/,${id}`).then((res) => res.data);
+    return axios.get(`${this.url}/products/${id}`).then((res) => res.data);
   }
 
   createKart(carrito) {
