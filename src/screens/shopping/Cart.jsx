@@ -26,17 +26,23 @@ function Carrito({ navigation }) {
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
 
   useEffect(() => {
-    const getData = async () => {
+    // const getData = async () => {
+    //   setLoading(true);
+    //   const id = userToken.id;
+    //   const data = await fetch(`${URL}/${id}`);
+    //   const car = await data.json();
+    //   setCarritos({...carritos, car});
+    //   console.log(carritos);
+    // };
+
+    
+
       setLoading(true);
       const id = userToken.id;
-      const data = await fetch(`${URL}/${id}`);
-      const car = await data.json();
-      setCarritos(car);
-      console.log(carritos);
-    };
-    getData();
-    setLoading(false);
-  }, []);
+      axios.get(`${URL}/${id}`)
+      .then( res => setCarritos( res.data ))
+      .finally( () => setLoading(false) )
+   }, []);
 
   const deletMed = async (id) => {
     await axios
@@ -44,11 +50,11 @@ function Carrito({ navigation }) {
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
 
-  useEffect(() => {
-    const cantidad = carritos.cantidad;
-    const precio = carritos.precios;
-    setTotal(cantidad * precio);
-  }, []);
+  // useEffect(() => {
+  //   const cantidad = carritos.cantidad;
+  //   const precio = carritos.precios;
+  //   setTotal(cantidad * precio);
+  // }, []);
 
   return (
     <View style={styles.containerCarrito}>
@@ -87,7 +93,6 @@ function Carrito({ navigation }) {
                   onPressMore={() => sumar(carrito.id)}
                   onPressDelete={() => {
                     deletMed(carrito.id);
-                    console.log(carrito.id);
                   }}
                 />
               ))}
