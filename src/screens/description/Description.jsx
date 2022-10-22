@@ -28,7 +28,7 @@ const Description = ({ navigation, route }) => {
   const [loading, setLoading] = useState(false);
   const id_cliente = userToken.id;
   const id_producto = filteredMed.id;
-  let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
+  let URL = `https://lovely-lace-production.up.railway.app`;
 
   const buyMed = async () => {
     setLoading(true);
