@@ -17,6 +17,7 @@ import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
 import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
+import { MedContext } from "../../context/contextProducts/ProductsContext";
 
 const Description = ({ navigation, route }) => {
   const filteredMed = route.params.filteredMed;
@@ -56,6 +57,11 @@ const Description = ({ navigation, route }) => {
       Alert.alert("Error", "Algo salio mal intente de nuevo!");
     }
   };
+
+  const id_cliente = userToken.id;
+  const id_producto = filteredMed.id;
+
+  const array = { id_cliente,id_producto, cantidad }
 
   const addOrder = async () => {
     const id_cliente = userToken.id;
