@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 import {
   View,
   ScrollView,
@@ -18,10 +19,12 @@ import icoLogo from "../../../assets/images/cibermed.png";
 //Context
 import { MedContext } from "../../context/contextProducts/ProductsContext";
 
-function Home({ navigation }) {
+function Home() {
   const { meds } = useContext(MedContext);
   const [filteredMed, setFilteredMed] = useState([]);
   const [loading, setIsLoading] = useState(false);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     setFilteredMed(meds);
@@ -69,9 +72,9 @@ function Home({ navigation }) {
               <View style={styles.viewProducts}>
                 {filteredMed.map((meds, index) => (
                   <CartMed
-                    /*                     onPress={() => {
-                      navigation.navigate("Description");
-                    }} */
+                    onPress={() => {
+                      navigation("Description");
+                    }}
                     key={index}
                     meds={meds}
                   />
