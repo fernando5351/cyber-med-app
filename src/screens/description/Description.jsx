@@ -18,17 +18,20 @@ import ImagenCarrito from "../../../assets/icons/description/bluecartadd.png";
 import Restar from "../../../assets/icons/orders/minus-circle-solid-24.png";
 import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
+import Loader from "../../components/loading/Loader";
 import { MedContext } from "../../context/contextProducts/ProductsContext";
 
 const Description = ({ route }) => {
-  const filteredMed = route.params.filteredMed;
+  const navigation = useNavigation()
+
+  const filteredMed = route.params.filteredMed
   const stripe = useStripe();
-  //const { createKarts } = useContext(MedContext)
+  const { createKarts } = useContext(MedContext)
   const { userToken } = useContext(AuthUser);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false)
 
-  const navigation = useNavigation()
   const buyMed = async () => {
     setLoading(true);
     try {
@@ -63,25 +66,11 @@ const Description = ({ route }) => {
     setLoading(false);
   };
 
-  const id_cliente = userToken.id;
-  const id_producto = filteredMed.id;
-
-  const array = { id_cliente,id_producto, cantidad }
-  console.log(array);
-
   const addOrder = async () => {
     const id_cliente = userToken.id;
     const id_producto = filteredMed.id;
 
-    const res = await axios.post(
-      "https://lovely-lace-production.up.railway.app/car_shop",
-      {
-        id_cliente,
-        id_producto,
-        cantidad,
-      }
-    );
-    console.log(res);
+    createKarts(id_cliente, id_producto, cantidad)
   };
 
   const restar = () => {
@@ -307,7 +296,7 @@ const styles = StyleSheet.create({
   },
   Info: {
     fontSize: 18,
-    marginLeft: "40%",
+    marginLeft: "53%",
     color: "#3271A5",
     marginTop: "-6.6%",
   },

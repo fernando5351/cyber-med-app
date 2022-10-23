@@ -26,7 +26,6 @@ function Home() {
   useEffect(() => {
 
     setFilteredMed(meds)
-    console.log(filteredMed);
     setLoading(false)
 
 
