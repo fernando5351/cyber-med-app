@@ -14,27 +14,27 @@ import Menu from "../../../assets/icons/home/menu.png";
 import icoLogo from "../../../assets/images/cibermed.png";
 import Loader from "../../components/loading/Loader";
 import { EmptyMed } from "../../components/targets/EmptyMed";
+import { MedContext } from "../../context/contextProducts/ProductsContext"
 
 function Home() {
   const { meds } = useContext(MedContext);
   const [filteredMed, setFilteredMed] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    fetch("https://lovely-lace-production.up.railway.app/products")
-      .then((res) => res.json())
-      .then((json) => {
-        setMed(json);
-        setFilteredMed(json);
-      })
-      .catch((error) => console.log(error))
-      .finally(() => setIsLoading(false));
-  }, []);
+
+    setFilteredMed(meds)
+    console.log(filteredMed);
+    setLoading(false)
+
+
+  }, [meds]);
 
   const searchFunction = (text) => {
     if (text) {
-      const newMed = med.filter((item) => {
+      const newMed = meds.filter((item) => {
         const itemNombre = item.nombre
           ? item.nombre.toUpperCase()
           : "".toUpperCase();
@@ -48,13 +48,13 @@ function Home() {
       });
       setFilteredMed(newMed);
     } else {
-      setFilteredMed(med);
+      setFilteredMed(meds);
     }
   };
 
   return (
     <View style={styles.containerMain}>
-      {/* <Loader visible={loading} /> */}
+      <Loader visible={loading} />
       <View style={styles.containerTop}>
         <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <Image style={styles.icoMenu} source={Menu} />
@@ -77,15 +77,18 @@ function Home() {
           <>
             <ScrollView>
               <View style={styles.viewProducts}>
-                {filteredMed.map((item, index) => (
-                  <CartMed
-                    onPress={() => {
-                      navigation.navigate("Description", {filteredMed: meds});
-                    }}
-                    key={index}
-                    item={item}
-                  />
-                ))}
+                <>
+                  {filteredMed.map((meds, index) => (
+                    <CartMed
+                      onPress={() => {
+                        navigation.navigate("Description", { filteredMed: meds });
+                      }}
+                      key={index}
+                      meds={meds}
+                    />
+                  ))}
+                </>
+
               </View>
             </ScrollView>
           </>

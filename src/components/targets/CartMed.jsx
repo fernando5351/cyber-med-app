@@ -1,7 +1,7 @@
 import { TouchableOpacity, Image, Text, StyleSheet, View } from "react-native";
 
-export const CartMed = ({ item, index, onPress }) => {
-  const { img_url, nombre, precios } = item;
+export const CartMed = ({ meds, index, onPress }) => {
+  const { img_url, nombre, precios } = meds;
 
   return (
     <TouchableOpacity
