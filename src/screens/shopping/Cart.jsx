@@ -20,7 +20,7 @@ import { AuthUser } from "../../context/AuthUser";
 
 function Carrito({ navigation }) {
   const { userToken } = useContext(AuthUser);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [carritos, setCarritos] = useState([]);
   const [total, setTotal] = useState(0);
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
@@ -47,14 +47,13 @@ function Carrito({ navigation }) {
     //   setCarritos({...carritos, car});
     //   console.log(carritos);
     // };
-    setLoading(true);
     const id = userToken.id;
     axios
       .get(`${URL}/${id}`)
       .then((res) => res.data)
-      .then((data) => setCarritos([...carritos, data]))
+      .then((data) => setCarritos(data))
       .finally(() => setLoading(false));
-  }, []);
+  }, [carritos]);
 
   const deletMed = async (id) => {
     await axios
