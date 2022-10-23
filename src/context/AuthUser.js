@@ -9,11 +9,12 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [splashLoading, setSplashLoading] = useState(false);
   const [userToken, setUsertoken] = useState("");
+  let URL = `https://lovely-lace-production.up.railway.app`;
 
   const register = (nombres, apellidos, email, contrasenia) => {
     setIsLoading(true);
     axios
-      .post("https://lovely-lace-production.up.railway.app/register", {
+      .post(`${URL}/register`, {
         nombres,
         apellidos,
         email,
@@ -21,13 +22,17 @@ export const AuthProvider = ({ children }) => {
       })
       .then((res) => {
         let userToken = res.data;
-        setUsertoken(userToken);
-        AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+        if (userToken === "El usuario ya esta registrado") {
+          Alert.alert("Error", "Usuario ya existente");
+        } else {
+          setUsertoken(userToken);
+          AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+          console.log(userToken);
+        }
         setIsLoading(false);
-        console.log(userToken);
       })
       .catch((e) => {
-        Alert.alert("Error", "Algo salio mal ;(");
+        Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
         console.log(e);
         setIsLoading(false);
       });
@@ -36,19 +41,30 @@ export const AuthProvider = ({ children }) => {
   const login = (email, contrasenia) => {
     setIsLoading(true);
     axios
-      .post("https://lovely-lace-production.up.railway.app/login", {
+      .post(`${URL}/login`, {
         email,
         contrasenia,
       })
       .then((res) => {
         let userToken = res.data;
-        setUsertoken(userToken);
-        AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+        if (
+          userToken ===
+          "No se encontro ningún usuario con el correo espedificado"
+        ) {
+          Alert.alert("Alerta", "Email incorrecta");
+        } else {
+          if (userToken === "Contraseña incorrecta") {
+            Alert.alert("Alerta", "Contraseña incorrecta");
+          } else {
+            setUsertoken(userToken);
+            AsyncStorage.setItem("userToken", JSON.stringify(userToken));
+            console.log(userToken);
+          }
+        }
         setIsLoading(false);
-        console.log(userToken);
       })
       .catch((e) => {
-        Alert.alert("Error", "Algo salio mal ;(");
+        Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
         console.log(e);
         setIsLoading(false);
       });
@@ -80,9 +96,6 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     IsLoggedIn();
-    /*     return () => {
-      removeEventListener("userToken", userToken)
-    } */
   }, []);
 
   return (

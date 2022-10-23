@@ -30,6 +30,7 @@ const Description = ({ route }) => {
 
   const navigation = useNavigation()
   const buyMed = async () => {
+    setLoading(true);
     try {
       //send request
       const response = await fetch(
@@ -57,8 +58,9 @@ const Description = ({ route }) => {
       navigation.navigate("Step1");
     } catch (err) {
       console.error(err);
-      Alert.alert("Error", "Algo salio mal intente de nuevo!");
+      Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
     }
+    setLoading(false);
   };
 
   const id_cliente = userToken.id;
@@ -101,6 +103,7 @@ const Description = ({ route }) => {
 
   return (
     <View style={styles.container}>
+      <Loader visible={loading} />
       <View style={styles.content}>
         <Image style={styles.Canastita} source={Canastita} />
         <Text style={styles.title}>Descripcion</Text>
@@ -228,47 +231,43 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: "20%",
     width: "100%",
+    marginTop: "3%",
   },
   contentTop: {
-    flex: 1,
     height: "100%",
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#fff",
   },
   ImagenMedicamento: {
-    height: "80%",
+    height: "95%",
     width: "40%",
-    marginLeft: "7%",
+    marginLeft: "5%",
   },
   containerMain: {
-    width: "52%",
+    width: "55%",
     height: "100%",
     justifyContent: "center",
-    alignItems: "center",
   },
   StyleText: {
     fontSize: 20,
     fontWeight: "600",
     color: "#3271A5",
+    marginLeft: "8%",
   },
   ContentInfo: {
-    backgroundColor: "#fff",
     height: "40%",
     alignItems: "center",
-    marginTop: "4%",
+    marginTop: "3%",
   },
   TextoInfo: {
-    fontSize: 20,
+    fontSize: 19,
     fontWeight: "700",
     color: "#3271A5",
   },
   TextoDescripcion: {
     fontSize: 15,
-    fontWeight: "500",
     color: "#3271A5",
-    marginTop: "3%",
     width: "95%",
     textAlign: "center",
   },
@@ -276,7 +275,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     height: "20%",
     width: "100%",
-    marginTop: "5%",
+    marginTop: "4%",
   },
   TipoUso: {
     fontSize: 18,
@@ -285,25 +284,22 @@ const styles = StyleSheet.create({
     marginLeft: "3%",
   },
   Texto: {
-    backgroundColor: "#000",
     height: "10%",
     width: "50%",
   },
   Tipo: {
-    fontSize: 18,
-    fontWeight: "400",
+    fontSize: 17,
     marginLeft: "35%",
-    marginTop: "-7%",
+    marginTop: "-6%",
     color: "#3271A5",
   },
   ContenedorDos: {
-    backgroundColor: "#fff",
     height: "15%",
     width: "100%",
     justifyContent: "center",
   },
   InfoVia: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: "600",
     color: "#3271A5",
     marginLeft: "3%",
@@ -311,7 +307,7 @@ const styles = StyleSheet.create({
   },
   Info: {
     fontSize: 18,
-    marginLeft: "55%",
+    marginLeft: "40%",
     color: "#3271A5",
     marginTop: "-6.6%",
   },
@@ -379,8 +375,7 @@ const styles = StyleSheet.create({
     marginRight: "1%",
   },
   Contenedor: {
-    backgroundColor: "#fff",
-    height: "43%",
+    height: "40%",
     width: "100%",
     justifyContent: "center",
   },

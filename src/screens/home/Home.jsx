@@ -8,40 +8,47 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-//Componentes
 import { SearchBar } from "../../components/searchbar/SearchBar";
 import { CartMed } from "../../components/targets/CartMed";
-import { EmptyMed } from "../../components/targets/EmptyMed";
-import Loader from "../../components/loading/Loader";
-//Iconos
 import Menu from "../../../assets/icons/home/menu.png";
 import icoLogo from "../../../assets/images/cibermed.png";
-//Context
-import { MedContext } from "../../context/contextProducts/ProductsContext";
+import Loader from "../../components/loading/Loader";
+import { EmptyMed } from "../../components/targets/EmptyMed";
 
 function Home() {
   const { meds } = useContext(MedContext);
   const [filteredMed, setFilteredMed] = useState([]);
-  const [loading, setIsLoading] = useState(false);
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    setFilteredMed(meds);
+    fetch("https://lovely-lace-production.up.railway.app/products")
+      .then((res) => res.json())
+      .then((json) => {
+        setMed(json);
+        setFilteredMed(json);
+      })
+      .catch((error) => console.log(error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   const searchFunction = (text) => {
     if (text) {
-      const newMed = meds.filter((item) => {
+      const newMed = med.filter((item) => {
         const itemNombre = item.nombre
           ? item.nombre.toUpperCase()
           : "".toUpperCase();
+        /* const itemTipo = item.tipo_consumo
+          ? item.tipo_consumo.toUpperCase()
+          : "".toUpperCase(); */
         const textMed = text.toUpperCase();
-        return itemNombre.indexOf(textMed) > -1;
+        return (
+          itemNombre.indexOf(textMed) > -1
+        ); /* , itemTipo.indexOf(textMed) > -1; */
       });
       setFilteredMed(newMed);
     } else {
-      setFilteredMed(meds);
+      setFilteredMed(med);
     }
   };
 
@@ -64,19 +71,19 @@ function Home() {
       </View>
       <View style={styles.containerCenter}>
         <Text style={styles.titleMain}>Medicamentos</Text>
-        {filteredMed.length === 0 ? (
+        {filteredMed === 0 ? (
           <EmptyMed />
         ) : (
           <>
             <ScrollView>
               <View style={styles.viewProducts}>
-                {filteredMed.map((meds, index) => (
+                {filteredMed.map((item, index) => (
                   <CartMed
                     onPress={() => {
                       navigation.navigate("Description", {filteredMed: meds});
                     }}
                     key={index}
-                    meds={meds}
+                    item={item}
                   />
                 ))}
               </View>
@@ -114,7 +121,7 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   containerCenter: {
-    height: "88%",
+    height: "89%",
     width: "100%",
     marginTop: "1%",
   },
@@ -125,12 +132,37 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto",
     marginLeft: "3%",
     marginTop: "2%",
+    marginBottom: "6%",
   },
   viewProducts: {
-    justifyContent: "center",
-    alignItems: "center",
+    height: "100%",
+    width: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
+  },
+  buttonProduct: {
+    width: 125,
+    height: 135,
+    alignItems: "center",
+    marginBottom: "5%",
+  },
+  imageProduct: {
+    width: "100%",
+    height: "70%",
+    borderColor: "#8DCFEC",
+    borderWidth: 2,
+    borderRadius: 5,
+  },
+  titleName: {
+    color: "#5F5F5F",
+    fontFamily: "Roboto",
+    fontSize: 15,
+  },
+  subtitlePrice: {
+    color: "#3271A5",
+    fontFamily: "Roboto",
+    fontSize: 15,
+    fontWeight: "700",
   },
 });
