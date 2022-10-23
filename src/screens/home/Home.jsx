@@ -73,7 +73,7 @@ function Home() {
                 {filteredMed.map((meds, index) => (
                   <CartMed
                     onPress={() => {
-                      navigation("Description");
+                      navigation.navigate("Description", {filteredMed: meds});
                     }}
                     key={index}
                     meds={meds}

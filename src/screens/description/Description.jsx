@@ -7,6 +7,7 @@ import {
   Text,
   Alert,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import { AuthUser } from "../../context/AuthUser";
 //Controlador de la pasarela de pago
@@ -19,13 +20,14 @@ import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 import { MedContext } from "../../context/contextProducts/ProductsContext";
 
-const Description = ({ navigation, route }) => {
+const Description = ({ route }) => {
   const filteredMed = route.params.filteredMed;
   const stripe = useStripe();
   const { userToken } = useContext(AuthUser);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
 
+  const navigation = useNavigation()
   const buyMed = async () => {
     try {
       //send request
