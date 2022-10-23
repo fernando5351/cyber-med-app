@@ -23,6 +23,7 @@ import { MedContext } from "../../context/contextProducts/ProductsContext";
 const Description = ({ route }) => {
   const filteredMed = route.params.filteredMed;
   const stripe = useStripe();
+  //const { createKarts } = useContext(MedContext)
   const { userToken } = useContext(AuthUser);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
@@ -64,6 +65,7 @@ const Description = ({ route }) => {
   const id_producto = filteredMed.id;
 
   const array = { id_cliente,id_producto, cantidad }
+  console.log(array);
 
   const addOrder = async () => {
     const id_cliente = userToken.id;
