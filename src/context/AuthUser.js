@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
           userToken ===
           "No se encontro ningún usuario con el correo espedificado"
         ) {
-          Alert.alert("Alerta", "Email incorrecta");
+          Alert.alert("Alerta", "Email no encontrado");
         } else {
           if (userToken === "Contraseña incorrecta") {
             Alert.alert("Alerta", "Contraseña incorrecta");

@@ -19,63 +19,69 @@ import Sumar from "../../../assets/icons/orders/plus-circle-solid-24.png";
 import Canastita from "../../../assets/icons/orders/basket.png";
 import Loader from "../../components/loading/Loader";
 
-const Description = ({ navigation, route}) => {
+const Description = ({ navigation, route }) => {
   const filteredMed = route.params.filteredMed;
+  let URL = `https://lovely-lace-production.up.railway.app`;
   const stripe = useStripe();
   const { userToken } = useContext(AuthUser);
   const [cantidad, setCantidad] = useState(0);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const id_cliente = userToken.id;
+  const id = userToken.id;
+  const email = userToken.email;
   const id_producto = filteredMed.id;
-  let URL = `https://lovely-lace-production.up.railway.app`;
 
   const buyMed = async () => {
-    setLoading(true);
-    try {
-      //send request
-      const response = await fetch(`${URL}/payments`, {
-        method: "POST",
-        body: JSON.stringify({ id_cliente, total }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      if (!response.ok) return Alert.alert(data.message);
-      const clientSecret = data.clientSecret;
-      const initSheet = await stripe.initPaymentSheet({
-        paymentIntentClientSecret: clientSecret,
-      });
-      if (initSheet.error) return Alert.alert(initSheet.error.message);
-      const presentSheet = await stripe.presentPaymentSheet({
-        clientSecret,
-      });
-      if (presentSheet.error) return Alert.alert(presentSheet.error.message);
-      Alert.alert("Felicidades", "Pago exitoso");
-      navigation.navigate("Step1");
-    } catch (err) {
-      console.error(err);
-      Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
+    //    setLoading(true);
+    if (cantidad > 0) {
+      try {
+        // sending request
+        const response = await fetch(`${URL}/payments`, {
+          method: "POST",
+          body: JSON.stringify({ id, email, total }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        const data = await response.json();
+        if (!response.ok) return Alert.alert("data message");
+        const clientSecret = data.clientSecret;
+        const initSheet = await stripe.initPaymentSheet({
+          paymentIntentClientSecret: clientSecret,
+        });
+        if (initSheet.error) return Alert.alert("initSheet error message");
+        const presentSheet = await stripe.presentPaymentSheet({
+          clientSecret,
+        });
+        if (presentSheet.error)
+          return Alert.alert("presentSheet error message");
+        Alert.alert("Payment complete, thank you!");
+      } catch (err) {
+        console.error(err);
+        Alert.alert("Something went wrong, try again later!");
+      }
+    } else {
+      Alert.alert("Alerta", "Debe agregar la cantidad deseada");
     }
-    setLoading(false);
+    //    setLoading(false);
   };
 
   const addOrder = async () => {
     setLoading(true);
     if (cantidad > 0) {
-        const res = await axios
-          .post(`${URL}/car_shop`, {
-            id_cliente,
-            id_producto,
-            cantidad,
-          })
-          .catch((err) => {
-            console.log(err);
-            Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
-          });
-        Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
-        console.log(res);
+      const res = await axios
+        .post(`${URL}/car_shop`, {
+          id_cliente,
+          id_producto,
+          cantidad,
+        })
+        .catch((err) => {
+          console.log(err);
+          Alert.alert("Ups!", "Algo salio mal, intentelo de nuevo");
+        });
+      Alert.alert("Felicidades", "Ya has agregado el medicamento al carrito");
+      console.log(res);
     } else {
       Alert.alert("Alerta", "Debe agregar la cantidad deseada");
     }
