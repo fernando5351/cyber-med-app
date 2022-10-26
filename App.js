@@ -8,7 +8,7 @@ import { AuthProvider } from "./src/context/AuthUser";
 export default function App() {
   return (
     <AuthProvider>
-        <AppNav />
+      <AppNav />
     </AuthProvider>
   );
 }
