@@ -41,16 +41,48 @@ function Carrito({ navigation }) {
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
 
-  /* const mapEd = Object.keys(carritos).forEach((key) => {
-    carritos[key].carritos.forEach
-  });
-  */
+  const pay = () => {
 
-  Object.keys(carritos).forEach((key) => {
+    // Primero iteramos en el arreglo obj
+    carritos.forEach(function(item) {
+      // Luego iteramos las llaves de cada elemento del arreglo
+      Object.keys(item).forEach(function (key) {
+        /* 
+         * Registramos en la consola la llave y los valores de las propiedades first y
+         * last de cada elemento del arreglo
+         */
+        const llave = key[4]
+        item[Symbol.iterator] = function* () {
+          yield llave
+          yield item.precios
+        }
+       console.log(llave)
+      });
+    });
+  }
+
+  //console.log(carritos)
+
+  //console.log(pay());
+
+  /*   const mapEd = Object.keys(carritos).forEach((key) => {
     carritos[key].carritos.forEach;
-    //const values = carritos[key];
-    console.log(carritos);
-  });
+  }); */
+
+  /* const results =  Object.entries(carritos).map(entry =>{
+    const [key, value] = entry
+    console.log({key, value});
+    //console.log(key, "->",value)
+  }) */
+
+  //console.log(results);
+  
+  /* carritos[key].carritos.forEach;
+    console.log(carritos); */
+
+  /*   for (const carritos in Object) {
+    console.log(`${carritos}: ${Object[carritos]}`);
+  } */
 
   return (
     <View style={styles.containerCarrito}>
@@ -86,8 +118,8 @@ function Carrito({ navigation }) {
                   <CartOrder
                     key={id}
                     products={products}
-                    onPressLess={() => restar(products.id)}
-                    onPressMore={() => sumar(products.id)}
+                    // onPressLess={() => restar()}
+                    // onPressMore={() => sumar()}
                     onPressDelete={() => {
                       deletMed(products.id);
                       console.log(products.id);

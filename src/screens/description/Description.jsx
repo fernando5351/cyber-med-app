@@ -29,7 +29,7 @@ const Description = ({ navigation, route }) => {
   const email = userToken.email; */
   const id_producto = filteredMed.id;
 
-  const buyMed = async () => {};
+//  const buyMed = async () => {};
 
   const addOrder = async () => {
     setLoading(true);
@@ -129,9 +129,9 @@ const Description = ({ navigation, route }) => {
           <View style={styles.contentBotton}>
             <TouchableOpacity
               style={styles.Button}
-              onPress={() => {
+              /* onPress={() => {
                 buyMed();
-              }}
+              }} */
             >
               <View style={styles.botton}>
                 <Text style={styles.bottonText}>Compra Ya</Text>
