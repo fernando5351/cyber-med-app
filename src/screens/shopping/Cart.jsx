@@ -41,17 +41,16 @@ function Carrito({ navigation }) {
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
 
-  const mapEd = Object.entries(carritos).map((entry) => {
-    const [key, value] = entry;
-    console.log({ key, value });
+  /* const mapEd = Object.keys(carritos).forEach((key) => {
+    carritos[key].carritos.forEach
   });
-  /*   useEffect(() => {
-    const cantidad = carritos.cantidad;
-    const precio = carritos.precios;
-    setTotal(cantidad * precio);
-  }, []); */
+  */
 
-  //const {cantidad, id_cliente} = infoCart();
+  Object.keys(carritos).forEach((key) => {
+    carritos[key].carritos.forEach;
+    //const values = carritos[key];
+    console.log(carritos);
+  });
 
   return (
     <View style={styles.containerCarrito}>

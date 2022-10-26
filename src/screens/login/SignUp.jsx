@@ -54,7 +54,9 @@ function Signup({ navigation }) {
     if (!apellidos.trim() || apellidos.length < 5)
       return updateError("Debe contener los dos apellidos", setError);
     //Ingresar un email valido
-    if (!isEmailValid(email)) return updateError("Email invalido", setError);
+    if (!isEmailValid(email))
+      return updateError("Email invalido, o espacio en blanco", setError);
+    if (!email.trim()) return updateError("Espacio en blanco", setError);
     //Ingresar una contraseña mayor a 8
     if (!contrasenia.trim() || contrasenia.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);

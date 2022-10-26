@@ -34,7 +34,6 @@ function Signin({ navigation }) {
   const { email, contrasenia } = userInfo;
   const [passwordSecured, setPasswordSecured] = useState(true);
   const [error, setError] = useState("");
-
   const handleOnChangeText = (value, fieldname) => {
     setUserInfo({ ...userInfo, [fieldname]: value });
   };
@@ -46,7 +45,9 @@ function Signin({ navigation }) {
     if (!isValidObjField(userInfo))
       return updateError("Llene todos los campos", setError);
     //Ingresar email existente
-    if (!isEmailValid(email)) return updateError("Email invalido", setError);
+    if (!isEmailValid(email))
+      return updateError("Email invalido o espacio en blanco", setError);
+    if (!email.trim()) return updateError("Espacio en blanco", setError);
     //Ingresar contraseña existente
     if (!contrasenia.trim() || contrasenia.length < 8)
       return updateError("Contraseña debe tener 8 caracteres", setError);
