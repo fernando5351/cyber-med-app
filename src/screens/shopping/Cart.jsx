@@ -41,6 +41,16 @@ function Carrito({ navigation }) {
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
 
+  let totalC = 0;
+
+  for (let i = 0; i < carritos.length; i++) {
+    totalC = totalC + (carritos[i].precios * carritos[i].cantidad);
+  }
+
+  useEffect(() => {
+    setTotal(totalC);
+  }, [totalC]);
+
   return (
     <View style={styles.containerCarrito}>
       <Loader visible={loading} />
@@ -77,7 +87,6 @@ function Carrito({ navigation }) {
                     products={products}
                     onPressDelete={() => {
                       deletMed(products.id);
-                      console.log(products.id);
                     }}
                   />
                 ))}
