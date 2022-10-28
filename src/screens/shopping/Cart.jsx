@@ -100,8 +100,11 @@ function Carrito({ navigation }) {
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
         <Text style={styles.NumeroTotal}>¢ {total}</Text>
-        <TouchableOpacity style={styles.BotonPago}>
-          <Text style={styles.TextBotonC}>Pagar con PayPal</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navite("stripe")
+          }} style={styles.BotonPago}>
+          <Text style={styles.TextBotonC}>Completar pago</Text>
         </TouchableOpacity>
       </View>
     </View>
