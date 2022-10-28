@@ -6,11 +6,7 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
-  Modal,
-  ActivityIndicator
 } from "react-native";
-import { WebView } from "react-native-webview"
-import Feather from "react-native-vector-icons"
 import axios from "axios";
 //Componentes
 import { CartOrder } from "../../components/targets/CartOrder";
@@ -28,7 +24,6 @@ function Carrito({ navigation }) {
   const [carritos, setCarritos] = useState([]);
   console.log(carritos);
   const [total, setTotal] = useState(0);
-  const [showGateWay, setShowGateWay] = useState(false)
   const id = userToken.id;
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
 
@@ -47,55 +42,15 @@ function Carrito({ navigation }) {
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
 
-  const payment = () => {
-    {showGateWay ? (
-      <Modal
-        visible={showGateWay}
-        onDismiss={() => setShowGateWay(false)}
-        onRequestClose={() => setShowGateWay(false)}
-        animationType={"fade"}
-        transparent>
-        <View style={styles.webViewCon}>
-          <View style={styles.wbHead}>
-            <TouchableOpacity
-              style={{padding: 13}}
-              onPress={() => setShowGateWay(false)}>
-              <Feather name={'x'} size={24} />
-            </TouchableOpacity>
-            <Text
-              style={{
-                flex: 1,
-                textAlign: 'center',
-                fontSize: 16,
-                fontWeight: 'bold',
-                color: '#00457C',
-              }}>
-              PayPal GateWay
-            </Text>
-            <View style={{padding: 13}}>
-              <ActivityIndicator size={24} color={'#00457C'} />
-            </View>
-          </View>
-          <WebView
-            source={{uri: 'https://www.google.com'}}
-            style={{flex: 1}}
-          />
-        </View>
-      </Modal>
-    ) : null}
+  let totalC = 0;
 
+  for (let i = 0; i < carritos.length; i++) {
+    totalC = totalC + (carritos[i].precios * carritos[i].cantidad);
   }
 
-  /* const mapEd = Object.keys(carritos).forEach((key) => {
-    carritos[key].carritos.forEach
-  });
-  */
-
-  // Object.keys(carritos).forEach((key) => {
-  //   carritos[key].carritos.forEach;
-  //   //const values = carritos[key];
-  //   console.log(carritos);
-  // });
+  useEffect(() => {
+    setTotal(totalC);
+  }, [totalC]);
 
   return (
     <View style={styles.containerCarrito}>
@@ -131,11 +86,8 @@ function Carrito({ navigation }) {
                   <CartOrder
                     key={id}
                     products={products}
-                    onPressLess={() => restar(products.id)}
-                    onPressMore={() => sumar(products.id)}
                     onPressDelete={() => {
                       deletMed(products.id);
-                      console.log(products.id);
                     }}
                   />
                 ))}
@@ -150,7 +102,7 @@ function Carrito({ navigation }) {
         <TouchableOpacity
           onPress={() => {
             //navigation.navigate("Step1")
-            payment()
+            payment();
           }}
           style={styles.BotonPago}
         >

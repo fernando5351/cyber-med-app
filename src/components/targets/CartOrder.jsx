@@ -1,14 +1,10 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity } from "react-native";
-import trash from "../../../assets/icons/orders/blueremove.png";
-import less from "../../../assets/icons/orders/minus-circle-solid-24.png";
-import more from "../../../assets/icons/orders/plus-circle-solid-24.png";
+import less from "../../../assets/icons/orders/blueremove.png";
 
 export const CartOrder = ({
   id,
   onPressDelete,
-  onPressLess,
-  onPressMore,
   products,
 }) => {
   const { img_url, nombre, precios, cantidad } = products;
@@ -25,13 +21,7 @@ export const CartOrder = ({
       </View>
       <View style={styles.contentAction}>
         <TouchableOpacity onPress={onPressDelete}>
-          <Image source={trash} style={styles.icoAction} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onPressLess}>
-          <Image source={less} style={styles.icoActions} />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onPressMore}>
-          <Image source={more} style={styles.icoActions} />
+          <Image source={less} style={styles.icoAction} />
         </TouchableOpacity>
       </View>
     </View>
