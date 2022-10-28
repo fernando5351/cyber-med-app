@@ -26,6 +26,7 @@ function Carrito({ navigation }) {
   const { userToken } = useContext(AuthUser);
   const [loading, setLoading] = useState(true);
   const [carritos, setCarritos] = useState([]);
+  console.log(carritos);
   const [total, setTotal] = useState(0);
   const [showGateWay, setShowGateWay] = useState(false)
   const id = userToken.id;
@@ -34,8 +35,8 @@ function Carrito({ navigation }) {
   useEffect(() => {
     axios
       .get(`${URL}/${id}`)
-      .then((res) => res.data)
-      .then((data) => setCarritos(data))
+      .then((res) => res.json)
+      .then((json) => setCarritos(json))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [carritos]);
