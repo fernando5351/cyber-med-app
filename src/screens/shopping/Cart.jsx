@@ -20,41 +20,26 @@ import { AuthUser } from "../../context/AuthUser";
 
 function Carrito({ navigation }) {
   const { userToken } = useContext(AuthUser);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [carritos, setCarritos] = useState([]);
   const [total, setTotal] = useState(0);
-
+  const id = userToken.id;
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
-  useEffect(() => {
-    setLoading(true);
-    const id = userToken.id;
-    // fetch(`https://lovely-lace-production.up.railway.app/car_shop/${id}`)
-    //   .then((res) => res.json())
-    //   .then((json) => setCarritos(json))
-    //   .catch((err) => console.log(err))
-    //   .finally(() => setLoading(false));
 
-    const getData = async () => {
-      const data = await fetch(`${URL}/${id}`);
-      const car = await data.json();
-      setCarritos(car);
-      console.log(carritos);
-    };
-    getData();
-    setLoading(false);
-  }, []);
+  useEffect(() => {
+    axios
+      .get(`${URL}/${id}`)
+      .then((res) => res.data)
+      .then((data) => setCarritos(data))
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, [carritos]);
 
   const deletMed = async (id) => {
     await axios
       .delete(`${URL}/${id}`)
       .then(() => setCarritos(carritos.filter((p) => p.id !== id)));
   };
-
-  useEffect(() => {
-    const cantidad = carritos.cantidad;
-    const precio = carritos.precios;
-    setTotal(cantidad * precio);
-  }, []);
 
   return (
     <View style={styles.containerCarrito}>
@@ -83,34 +68,37 @@ function Carrito({ navigation }) {
         {carritos.length === 0 ? (
           <EmptyOrder />
         ) : (
-          <ScrollView>
-            <View style={styles.contentCarts}>
-              {carritos.map((carrito, index) => (
-                <CartOrder
-                  key={index}
-                  carrito={carrito}
-                  onPressLess={() => restar(carrito.id)}
-                  onPressMore={() => sumar(carrito.id)}
-                  onPressDelete={() => {
-                    deletMed(carrito.id);
-                    console.log(carrito.id);
-                  }}
-                />
-              ))}
-            </View>
-          </ScrollView>
+          <>
+            <ScrollView>
+              <View style={styles.contentCarts}>
+                {carritos.map((products, id) => (
+                  <CartOrder
+                    key={id}
+                    products={products}
+                    onPressLess={() => restar(products.id)}
+                    onPressMore={() => sumar(products.id)}
+                    onPressDelete={() => {
+                      deletMed(products.id);
+                      console.log(products.id);
+                    }}
+                  />
+                ))}
+              </View>
+            </ScrollView>
+          </>
         )}
       </View>
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
-        <Text style={styles.NumeroTotal}>$0.75</Text>
+        <Text style={styles.NumeroTotal}>¢ {total}</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Step1");
+            //navigation.navigate("Step1")
+            payment();
           }}
           style={styles.BotonPago}
         >
-          <Text style={styles.TextBotonC}>Proceder al pago</Text>
+          <Text style={styles.TextBotonC}>Pagar con PayPal</Text>
         </TouchableOpacity>
       </View>
     </View>
