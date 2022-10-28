@@ -6,7 +6,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from "react-native";
+import WebView from "react-native-webview";
 import axios from "axios";
 //Componentes
 import { CartOrder } from "../../components/targets/CartOrder";
@@ -98,13 +100,7 @@ function Carrito({ navigation }) {
       <View style={styles.ContenedorAbajoC}>
         <Text style={styles.TotalStyle}>Total:</Text>
         <Text style={styles.NumeroTotal}>¢ {total}</Text>
-        <TouchableOpacity
-          onPress={() => {
-            //navigation.navigate("Step1")
-            payment();
-          }}
-          style={styles.BotonPago}
-        >
+        <TouchableOpacity style={styles.BotonPago}>
           <Text style={styles.TextBotonC}>Pagar con PayPal</Text>
         </TouchableOpacity>
       </View>
