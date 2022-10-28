@@ -7,8 +7,10 @@ import {
   TouchableOpacity,
   ScrollView,
   Modal,
+  Alert
 } from "react-native";
 import WebView from "react-native-webview";
+import { useStripe } from "@stripe/stripe-react-native";
 import axios from "axios";
 //Componentes
 import { CartOrder } from "../../components/targets/CartOrder";
@@ -26,6 +28,8 @@ function Carrito({ navigation }) {
   const [carritos, setCarritos] = useState([]);
   const [total, setTotal] = useState(0);
   const id = userToken.id;
+  const email = userToken.email ;
+  const {confirmPayment} = useStripe();
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
 
   useEffect(() => {
@@ -52,6 +56,25 @@ function Carrito({ navigation }) {
   useEffect(() => {
     setTotal(totalC);
   }, [totalC]);
+
+/*   useEffect(() => {
+    fetch('https://lovely-lace-production.up.railway.app/payment', {
+      method: 'POST',
+    })
+      .then(res => res)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(e => Alert.alert(e.message));
+  }, []); */
+
+  const handleConfirmation = async() => {
+    await axios.post('https://lovely-lace-production.up.railway.app/payment')
+    .then((res) => res)
+    Alert.alert("Felicidades", "Ya puedes pasar en la farmacia mas cercana");
+    
+  };
+
 
   return (
     <View style={styles.containerCarrito}>
@@ -102,7 +125,7 @@ function Carrito({ navigation }) {
         <Text style={styles.NumeroTotal}>¢ {total}</Text>
         <TouchableOpacity
           onPress={() => {
-            navigation.navite("stripe")
+            handleConfirmation()
           }} style={styles.BotonPago}>
           <Text style={styles.TextBotonC}>Completar pago</Text>
         </TouchableOpacity>

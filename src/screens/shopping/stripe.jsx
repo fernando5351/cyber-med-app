@@ -3,22 +3,29 @@ import {
   StripeProvider,
   useStripe,
 } from '@stripe/stripe-react-native';
-import React, {useEffect, useState} from 'react';
-import {Alert, Button, SafeAreaView, View} from 'react-native';
+import React, {useEffect, useState, useContext} from 'react';
+import {Alert, Button, View} from 'react-native';
+import {AuthUser} from "../../context/AuthUser"
 
-const StripeTest = () => {
+const StripeTest = ({total}) => {
+  const {userToken} = useContext(AuthUser)
+  const email = userToken.email
     const {confirmPayment} = useStripe();
   
     const [key, setKey] = useState('');
   
     useEffect(() => {
-      fetch('http://localhost:4000/payment', {
+      fetch('https://lovely-lace-production.up.railway.app/payment', {
         method: 'POST',
+        body: {
+          email 
+        }
       })
         .then(res => res.json())
         .then(res => {
+          Alert.alert()
           console.log('intent', res);
-          setKey();
+          setKey(pi_3LxsJ0L1ZhEreWQq0LfdKP3B_secret_fwQAM12mfN5Fzoj2mQaPKZbwB);
         })
         .catch(e => Alert.alert(e.message));
     }, []);
@@ -32,6 +39,7 @@ const StripeTest = () => {
             payment_method: 'pm_card_visa',
             billingDetails: {
               email: email,
+              total: total
             },
           }
         )
@@ -71,3 +79,5 @@ const StripeTest = () => {
       </View>
     );
   };
+
+export default StripeTest;
