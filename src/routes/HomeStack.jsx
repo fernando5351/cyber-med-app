@@ -6,6 +6,7 @@ import Description from "../screens/description/Description";
 import Step from "../screens/description/Step";
 import Step1 from "../screens/description/Step1";
 import Android from "../screens/description/Android";
+import Stripe from "../screens/shopping/stripe"
 
 const HomeStack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export default function HomeStackScreen() {
       <HomeStack.Screen name="Step" component={Step} />
       <HomeStack.Screen name="Step1" component={Step1} />
       <HomeStack.Screen name="Android" component={Android} />
+      <HomeStack.Screen name="stripe" component={Stripe} />
     </HomeStack.Navigator>
   );
 }

@@ -6,7 +6,9 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Modal,
 } from "react-native";
+import WebView from "react-native-webview";
 import axios from "axios";
 //Componentes
 import { CartOrder } from "../../components/targets/CartOrder";
@@ -22,7 +24,6 @@ function Carrito({ navigation }) {
   const { userToken } = useContext(AuthUser);
   const [loading, setLoading] = useState(true);
   const [carritos, setCarritos] = useState([]);
-  console.log(carritos);
   const [total, setTotal] = useState(0);
   const id = userToken.id;
   let URL = `https://lovely-lace-production.up.railway.app/car_shop`;
@@ -30,8 +31,8 @@ function Carrito({ navigation }) {
   useEffect(() => {
     axios
       .get(`${URL}/${id}`)
-      .then((res) => res.json)
-      .then((json) => setCarritos(json))
+      .then((res) => res.data)
+      .then((data) => setCarritos(data))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [carritos]);
@@ -101,12 +102,9 @@ function Carrito({ navigation }) {
         <Text style={styles.NumeroTotal}>¢ {total}</Text>
         <TouchableOpacity
           onPress={() => {
-            //navigation.navigate("Step1")
-            payment();
-          }}
-          style={styles.BotonPago}
-        >
-          <Text style={styles.TextBotonC}>Pagar con PayPal</Text>
+            navigation.navite("stripe")
+          }} style={styles.BotonPago}>
+          <Text style={styles.TextBotonC}>Completar pago</Text>
         </TouchableOpacity>
       </View>
     </View>
